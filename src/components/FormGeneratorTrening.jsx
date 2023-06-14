@@ -2,19 +2,18 @@ import { useState } from 'react'
 import style from './formgeneratortraining.module.css'
 import trening from '../data/data'
 import DownloadButton from './DownloadButton'
+import { useForm } from 'react-hook-form'
 
 function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
     const [finishedTrening, setFinishedTrening] = useState(false)
+    const { register, handleSubmit } = useForm()
+
+    const onSubmit = (data) => {
+        setData(data)
+    }
 
     let arr = []
     const [data, setData] = useState({})
-
-    function onSubmit(e) {
-        e.preventDefault()
-        const formData = new FormData(e.currentTarget)
-        const values = Object.fromEntries(formData)
-        setData(values)
-    }
 
     const clear = (e) => {
         e.preventDefault()
@@ -24,7 +23,9 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
 
     const generateTraining = (e, obj) => {
         e.preventDefault()
-        arr = trening.filter((el) => el.folding == 'middle')
+        console.log(data)
+        arr = trening.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        // arr = arr.filter((el) => el.category == 'press')
         setFinishedTrening(true)
         onDataChange(arr)
         onBulChange(true)
@@ -32,7 +33,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
 
     return (
         <div className={style.wrapper}>
-            <form className={style.form} onChange={(e) => onSubmit(e)}>
+            <form className={style.form} onChange={handleSubmit(onSubmit)}>
                 <div className={style.nameForm}>
                     <label className={style.labelNameForm}>
                         First Name
@@ -40,6 +41,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                             type="text"
                             placeholder="Name..."
                             name="firstName"
+                            {...register('firstName')}
                         />
                     </label>
                     <label className={style.labelNameForm}>
@@ -48,6 +50,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                             type="text"
                             placeholder="Last Name..."
                             name="lastName"
+                            {...register('lastName')}
                         />
                     </label>
                     <label className={style.labelNameForm}>
@@ -56,6 +59,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                             type="text"
                             placeholder="Email..."
                             name="email"
+                            {...register('email')}
                         />
                     </label>
                 </div>
@@ -65,21 +69,122 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                         Male
                         <input
                             type="radio"
-                            name="male"
+                            name="sex"
                             value="male"
-                            defaultChecked
+                            {...register('sex')}
                         />
                     </label>
                     <label className={style.labelSex}>
                         Female
-                        <input type="radio" name="female" value="female" />
+                        <input
+                            type="radio"
+                            name="sex"
+                            value="female"
+                            {...register('sex')}
+                        />
                     </label>
                 </div>
-
+                {/* <section className={style.section}>
+                    <p>Level Exercises:</p>
+                    <article className={style.article}>
+                        <label>
+                            Low
+                            <input
+                                type="radio"
+                                name="levelExercises"
+                                value="lowExercises"
+                                defaultChecked
+                            />
+                        </label>
+                        <label>
+                            {' '}
+                            Middle
+                            <input
+                                type="radio"
+                                name="levelExercises"
+                                value="middleExercises"
+                            />
+                        </label>
+                        <label>
+                            Hight
+                            <input
+                                type="radio"
+                                name="levelExercises"
+                                value="hightExercises"
+                            />
+                        </label>
+                    </article>
+                </section> */}
+                <section className={style.section}>
+                    <p>Fitness level:</p>
+                    <article className={style.article}>
+                        <label>
+                            Low
+                            <input
+                                type="radio"
+                                name="fitnessLevel"
+                                value="low"
+                                {...register('fitnessLevel')}
+                            />
+                        </label>
+                        <label>
+                            {' '}
+                            Middle
+                            <input
+                                type="radio"
+                                name="fitnessLevel"
+                                value="middle"
+                                {...register('fitnessLevel')}
+                            />
+                        </label>
+                        <label>
+                            Hight
+                            <input
+                                type="radio"
+                                name="fitnessLevel"
+                                value="hight"
+                                {...register('fitnessLevel')}
+                            />
+                        </label>
+                    </article>
+                </section>
+                <section className={style.section}>
+                    <p>Focus:</p>
+                    <article className={style.article}>
+                        <label>
+                            Lower body
+                            <input
+                                type="radio"
+                                name="focus"
+                                value="lowerBody"
+                                {...register('focus')}
+                            />
+                        </label>
+                        <label>
+                            Upper body
+                            <input
+                                type="radio"
+                                name="focus"
+                                value="upperBody"
+                                {...register('focus')}
+                            />
+                        </label>
+                        <label>
+                            Optimal load
+                            <input
+                                type="radio"
+                                name="focus"
+                                value="optimalLoad"
+                                {...register('focus')}
+                            />
+                        </label>
+                    </article>
+                </section>
                 <select
                     className={style.select}
                     name="weight"
                     defaultValue={'weight'}
+                    {...register('weight')}
                 >
                     <option value="weight">Weight</option>
                     <option>~50</option>
@@ -96,6 +201,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                     className={style.select}
                     name="target"
                     defaultValue={'Sports goals'}
+                    {...register('sportGoals')}
                 >
                     <option value="Sports goals">Sports goals</option>
                     <option>Form suport</option>
@@ -108,6 +214,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                     multiple
                     name="contraindications"
                     defaultValue={['State of the musculoskeletal system']}
+                    {...register('contraindications')}
                 >
                     <option value="State of the musculoskeletal system">
                         State of the musculoskeletal system
@@ -122,6 +229,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                     <option>Elbow problems</option>
                     <option>Problems with brushes</option>
                 </select>
+
                 <div className={style.blockButton}>
                     <button
                         className={style.buttonSend}

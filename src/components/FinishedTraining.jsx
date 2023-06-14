@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { SlCheck, SlClose } from 'react-icons/sl'
 import style from './finishedTraining.module.css'
 
 function FinishedTraining({ value, onDataChange }) {
     const [arrTraining, setArrTraining] = useState(value)
+    let newValue = useMemo(() => value, [value])
+
+    useEffect(() => {
+        setArrTraining(newValue)
+    }, [newValue])
+    console.log(arrTraining)
 
     const toggleTodo = (id) => {
         setArrTraining(
