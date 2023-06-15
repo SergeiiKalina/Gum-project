@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import style from './mobileMenu.module.css'
 
 function MobileMenu({ isHidden }) {
-    console.log(isHidden)
     return (
         <nav
             style={
@@ -19,7 +18,9 @@ function MobileMenu({ isHidden }) {
                           zIndex: 5,
                           borderRadius: 30 + 'px',
                       }
-                    : { display: 'none' }
+                    : {
+                          display: 'none',
+                      }
             }
             className={style.shodow}
         >
