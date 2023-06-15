@@ -1,36 +1,41 @@
 import { NavLink } from 'react-router-dom'
-import MobileMenu from './MobileMenu'
-import style from './menu.module.css'
-import { useState } from 'react'
+import style from './mobileMenu.module.css'
 
-function Menu() {
-    const [isHidden, setIsHidden] = useState(false)
-
-    function showBurgerMenu() {
-        if (isHidden == false) {
-            setIsHidden(true)
-        }
-        if (isHidden) {
-            setIsHidden(false)
-        }
-    }
+function MobileMenu({ isHidden }) {
+    console.log(isHidden)
     return (
-        <div style={{ display: 'flex', width: '100%' }}>
-            <ul className={style.menu}>
-                <li className={style.btn}>
-                    <NavLink to="." onClick={showBurgerMenu}>
-                        <span />
-                    </NavLink>
-                </li>
+        <nav
+            style={
+                isHidden
+                    ? {
+                          position: 'absolute',
+                          top: 145 + 'px',
+                          left: 1050 + 'px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          width: 250 + 'px',
+                          height: 500 + 'px',
+                          backgroundColor: '#598234',
+                          zIndex: 5,
+                          borderRadius: 30 + 'px',
+                      }
+                    : { display: 'none' }
+            }
+            className={style.shodow}
+        >
+            <ul>
                 <li>
                     <NavLink
                         to="."
                         style={({ isActive }) =>
                             isActive
                                 ? { color: 'black', textDecoration: 'none' }
-                                : { color: 'red', textDecoration: 'underline' }
+                                : {
+                                      color: 'white',
+                                      textDecoration: 'none',
+                                  }
                         }
-                        className={style.notMobile}
+                        className={style.linkActive}
                     >
                         Про мене
                     </NavLink>
@@ -41,9 +46,11 @@ function Menu() {
                         style={({ isActive }) =>
                             isActive
                                 ? { color: 'black', textDecoration: 'none' }
-                                : { color: 'red', textDecoration: 'underline' }
+                                : {
+                                      color: 'white',
+                                      textDecoration: 'none',
+                                  }
                         }
-                        className={style.notMobile}
                     >
                         Тренування
                     </NavLink>
@@ -54,9 +61,11 @@ function Menu() {
                         style={({ isActive }) =>
                             isActive
                                 ? { color: 'black', textDecoration: 'none' }
-                                : { color: 'red', textDecoration: 'underline' }
+                                : {
+                                      color: 'white',
+                                      textDecoration: 'none',
+                                  }
                         }
-                        className={style.notMobile}
                     >
                         Генератор Тренування
                     </NavLink>
@@ -67,9 +76,11 @@ function Menu() {
                         style={({ isActive }) =>
                             isActive
                                 ? { color: 'black', textDecoration: 'none' }
-                                : { color: 'red', textDecoration: 'underline' }
+                                : {
+                                      color: 'white',
+                                      textDecoration: 'none',
+                                  }
                         }
-                        className={style.notMobile}
                     >
                         Запис на тренування
                     </NavLink>
@@ -80,9 +91,11 @@ function Menu() {
                         style={({ isActive }) =>
                             isActive
                                 ? { color: 'black', textDecoration: 'none' }
-                                : { color: 'red', textDecoration: 'underline' }
+                                : {
+                                      color: 'white',
+                                      textDecoration: 'none',
+                                  }
                         }
-                        className={style.notMobile}
                     >
                         Контакти
                     </NavLink>
@@ -95,11 +108,10 @@ function Menu() {
                                 isActive
                                     ? { color: 'black', textDecoration: 'none' }
                                     : {
-                                          color: 'red',
-                                          textDecoration: 'underline',
+                                          color: 'white',
+                                          textDecoration: 'none',
                                       }
                             }
-                            className={style.notMobile}
                         >
                             Авторизація
                         </NavLink>
@@ -110,19 +122,17 @@ function Menu() {
                                 isActive
                                     ? { color: 'black', textDecoration: 'none' }
                                     : {
-                                          color: 'red',
-                                          textDecoration: 'underline',
+                                          color: 'white',
+                                          textDecoration: 'none',
                                       }
                             }
-                            className={style.notMobile}
                         >
                             Вихід
                         </NavLink>
                     )}
                 </li>
             </ul>
-            <MobileMenu isHidden={isHidden} />
-        </div>
+        </nav>
     )
 }
-export default Menu
+export default MobileMenu

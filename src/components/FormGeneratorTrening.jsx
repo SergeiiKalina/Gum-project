@@ -3,6 +3,7 @@ import style from './formgeneratortraining.module.css'
 import trening from '../data/data'
 import DownloadButton from './DownloadButton'
 import { useForm } from 'react-hook-form'
+import { el } from 'date-fns/locale'
 
 function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
     const [finishedTrening, setFinishedTrening] = useState(false)
@@ -22,10 +23,32 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
     }
 
     const generateTraining = (e, obj) => {
+        let allEx = []
         e.preventDefault()
         console.log(data)
-        arr = trening.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        // arr = arr.filter((el) => el.category == 'press')
+        arr = trening.filter((el) => el.category == 'legg')
+        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        allEx.push(arr)
+        arr = trening.filter((el) => el.category == 'shoulders')
+        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        allEx.push(arr)
+        arr = trening.filter((el) => el.category == 'back')
+        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        allEx.push(arr)
+        arr = trening.filter((el) => el.category == 'pectoral muscles')
+        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        allEx.push(arr)
+        arr = trening.filter((el) => el.category == 'biceps')
+        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        allEx.push(arr)
+        arr = trening.filter((el) => el.category == 'triceps')
+        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        allEx.push(arr)
+        arr = []
+        for (let i = 0; i < allEx.length; i++) {
+            arr.push(allEx[i])
+        }
+
         setFinishedTrening(true)
         onDataChange(arr)
         onBulChange(true)
