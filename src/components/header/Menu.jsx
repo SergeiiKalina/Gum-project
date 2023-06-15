@@ -16,7 +16,11 @@ function Menu() {
     }
     return (
         <div style={{ display: 'flex', width: '100%' }}>
-            <ul className={style.menu}>
+            <ul
+                className={
+                    isHidden ? `${style.menu} ${style.afterClick}` : style.menu
+                }
+            >
                 <li className={style.btn}>
                     <NavLink to="." onClick={showBurgerMenu}>
                         <span />

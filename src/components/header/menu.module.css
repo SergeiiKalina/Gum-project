@@ -16,29 +16,44 @@
 .menu span:before {
     content: '';
     position: absolute;
-    top: 22px;
+    top: -9px;
     height: 3px;
     width: 30px;
     background-color: black;
     cursor: pointer;
+    transition: all 500ms;
 }
 
 .menu span::after {
     content: '';
     position: absolute;
-    top: 12px;
+    top: 14px;
     height: 3px;
     width: 30px;
     background-color: black;
     cursor: pointer;
+    transition: all 500ms;
 }
 .menu span {
     position: absolute;
-    top: 80px;
+    top: 100px;
     height: 3px;
     width: 30px;
     border-bottom: 3px solid black;
     cursor: pointer;
+}
+.menu.afterClick span {
+    border-bottom: none;
+}
+.menu.afterClick span::after {
+    top: 0;
+    rotate: 45deg;
+    transition: all 500ms;
+}
+.menu.afterClick span:before {
+    top: 0;
+    rotate: -45deg;
+    transition: all 500ms;
 }
 .burgerMenu {
     display: none;
