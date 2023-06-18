@@ -5,7 +5,7 @@ import RegistrationForTraining from './components/RegistrationForTraining'
 import AboutMe from './components/AboutMe'
 import Contacts from './components/Contacts'
 import GeneratorTraining from './components/GeneratorTraining'
-import './App.css'
+import './App.scss'
 import React, { useState } from 'react'
 import Login from './components/header/Login'
 import Logout from './components/header/Logout'
@@ -24,7 +24,10 @@ function App() {
                     <Route path="/" element={<Mylayouts value={user} />}>
                         <Route index element={<AboutMe />} />
                         <Route path="about" element={<Trening />} />
-                        <Route path="gentraining" element={<GeneratorTraining />} />
+                        <Route
+                            path="gentraining"
+                            element={<GeneratorTraining />}
+                        />
                         <Route
                             path="registrationfortraining"
                             element={<RegistrationForTraining />}
