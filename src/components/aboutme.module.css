@@ -19,11 +19,9 @@
 }
 
 .block .blockImg {
+    display: flex;
     width: 100%;
     margin: 0 auto;
-}
-.hiddenImg {
-    display: none;
 }
 
 @media (max-width: 767px) {
@@ -47,6 +45,6 @@
         margin-right: 20px;
     }
     .mainFoto {
-        margin-left: 20px;
+        margin: 0 auto;
     }
 }
