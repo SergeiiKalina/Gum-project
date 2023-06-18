@@ -1,11 +1,13 @@
 import img from '../image/IMG-39ecee3d968d544e854d0d857e831f16-V-removebg-preview.png'
+import img2 from '../image/2.jpg'
 import style from './aboutme.module.css'
 
 function AboutMe() {
     return (
         <div className={style.block}>
-            <div>
-                <img src={img} />
+            <div className={style.blockImg}>
+                <img src={img} className={style.mainFoto} />
+                <img src={img2} className={style.hiddenImg} />
             </div>
             <div className={style.block_paragraph}>
                 <p>

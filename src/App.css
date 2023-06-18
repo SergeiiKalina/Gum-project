@@ -1,13 +1,12 @@
 .App {
-    width: 1280px;
+    max-width: 1280px;
     margin: 0 auto;
 }
-
 
 h1 {
     text-align: center;
 }
 
-h2{
+h2 {
     text-align: center;
 }

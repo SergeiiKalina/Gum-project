@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import style from './mobileMenu.module.css'
 
@@ -8,8 +9,8 @@ function MobileMenu({ isHidden }) {
                 isHidden
                     ? {
                           position: 'absolute',
-                          top: 145 + 'px',
-                          left: 1050 + 'px',
+                          top: 90,
+                          right: 0,
                           display: 'flex',
                           flexDirection: 'column',
                           width: 250 + 'px',

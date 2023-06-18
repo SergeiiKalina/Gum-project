@@ -9,8 +9,6 @@ function FinishedTraining({ value, onDataChange }) {
     useEffect(() => {
         setArrTraining(newValue)
     }, [newValue])
-    console.log(arrTraining)
-
     const toggleTodo = (id) => {
         setArrTraining(
             arrTraining.map((el) =>
