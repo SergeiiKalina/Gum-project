@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import style from './formgeneratortraining.module.css'
+import style from './formgeneratortraining.module.scss'
 import trening from '../data/data'
 import DownloadButton from './DownloadButton'
 import { useForm } from 'react-hook-form'
-import { el } from 'date-fns/locale'
 
 function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
     const [finishedTrening, setFinishedTrening] = useState(false)
@@ -24,31 +23,40 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
 
     const generateTraining = (e, obj) => {
         let allEx = []
-        e.preventDefault()
+        let arr1 = []
+        let arr2 = []
         console.log(data)
-        arr = trening.filter((el) => el.category == 'legg')
-        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        allEx.push(arr)
-        arr = trening.filter((el) => el.category == 'shoulders')
-        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        allEx.push(arr)
-        arr = trening.filter((el) => el.category == 'back')
-        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        allEx.push(arr)
-        arr = trening.filter((el) => el.category == 'pectoral muscles')
-        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        allEx.push(arr)
-        arr = trening.filter((el) => el.category == 'biceps')
-        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        allEx.push(arr)
-        arr = trening.filter((el) => el.category == 'triceps')
-        arr = arr.filter((el) => el.fitnessLevel == data.fitnessLevel)
-        allEx.push(arr)
+        e.preventDefault()
+        if (data.split == 'Leggs + Shoulders') {
+            let arr1 = trening.filter((el) => el.category == 'legg')
+            let arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+            allEx = [...allEx, arr2]
+            arr1 = trening.filter((el) => el.category == 'shoulders')
+            arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+            allEx = [...allEx, arr2]
+        }
+        if (data.split == 'Сhest + Back') {
+            arr1 = trening.filter((el) => el.category == 'back')
+            arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+            allEx = [...allEx, arr2]
+            arr1 = trening.filter((el) => el.category == 'pectoral muscles')
+            arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+            allEx = [...allEx, arr2]
+        }
+        if (data.split == 'Biceps + Triceps') {
+            arr1 = trening.filter((el) => el.category == 'biceps')
+            arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+            allEx = [...allEx, arr2]
+            arr1 = trening.filter((el) => el.category == 'triceps')
+            arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+            allEx = [...allEx, arr2]
+        }
         arr = []
         for (let i = 0; i < allEx.length; i++) {
-            arr.push(allEx[i])
+            for (let j = 0; j < allEx[i].length; j++) {
+                arr.push(allEx[i][j])
+            }
         }
-
         setFinishedTrening(true)
         onDataChange(arr)
         onBulChange(true)
@@ -167,6 +175,38 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                                 name="fitnessLevel"
                                 value="hight"
                                 {...register('fitnessLevel')}
+                            />
+                        </label>
+                    </article>
+                </section>
+                <section className={`${style.section} ${style.split}`}>
+                    <p>Muscle split:</p>
+                    <article className={style.article}>
+                        <label>
+                            Leggs + Shoulders
+                            <input
+                                type="radio"
+                                name="split"
+                                value="Leggs + Shoulders"
+                                {...register('split')}
+                            />
+                        </label>
+                        <label>
+                            Сhest + Back
+                            <input
+                                type="radio"
+                                name="split"
+                                value="Сhest + Back"
+                                {...register('split')}
+                            />
+                        </label>
+                        <label>
+                            Biceps + Triceps
+                            <input
+                                type="radio"
+                                name="split"
+                                value="Biceps + Triceps"
+                                {...register('split')}
                             />
                         </label>
                     </article>

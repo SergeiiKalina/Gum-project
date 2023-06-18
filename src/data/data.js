@@ -361,6 +361,16 @@ const trening = [
         sex: 'unsex',
         title: 'Hammer Curls',
     },
+    {
+        id: 137,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'pectoral muscles',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'unsex',
+        title: 'Press Svend',
+    },
 ]
 
 export default trening

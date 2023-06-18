@@ -5,7 +5,6 @@ import style from './finishedTraining.module.css'
 function FinishedTraining({ value, onDataChange }) {
     const [arrTraining, setArrTraining] = useState(value)
     let newValue = useMemo(() => value, [value])
-
     useEffect(() => {
         setArrTraining(newValue)
     }, [newValue])
@@ -35,17 +34,17 @@ function FinishedTraining({ value, onDataChange }) {
             <ul className={style.list}>
                 {arrTraining.map((el) => (
                     <li key={el.id}>
-                        {el.title}{' '}
+                        {el.title}
                         <div>
                             <SlCheck
                                 style={
                                     el.isComplited
                                         ? {
-                                              color: 'lightgreen',
+                                              color: '#B5B8B1',
                                               cursor: 'pointer',
                                           }
                                         : {
-                                              color: 'darkblue',
+                                              color: ' #00ff00',
                                               cursor: 'pointer',
                                           }
                                 }
