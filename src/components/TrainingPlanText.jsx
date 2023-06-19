@@ -15,7 +15,14 @@ function TrainingPlanText({ plan }) {
     }, [newPlan])
 
     return (
-        <div>
+        <div
+            style={{
+                width: '100%',
+                height: 'auto',
+                display: 'flex',
+                margin: '0 auto',
+            }}
+        >
             <textarea
                 value={str ? title + str : '\xA0\xA0 No Training plan'}
                 className={style.textarea}

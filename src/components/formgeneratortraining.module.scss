@@ -1,5 +1,9 @@
 @import './adaptive-fontMixin.scss';
 
+.wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
 .form {
     width: 100%;
     display: flex;
@@ -11,12 +15,12 @@
     display: flex;
 }
 .article input {
-    margin: 0 0 0 10px;
+    margin: 0 0 0 1rem;
 }
 .article label {
     display: flex;
-    font-size: 18px;
-    padding: 0 0 0 24px;
+    @include adaptive-font(18, 14);
+    padding: 0 0 0 1rem;
 }
 .section {
     width: 100%;
@@ -25,13 +29,11 @@
     align-items: center;
 }
 .section p {
-    font-size: 20px;
+    @include adaptive-font(20, 14);
     font-weight: 600;
     color: orangered;
 }
-.wrapper {
-    width: 100%;
-}
+
 .select {
     width: 100%;
     margin: 24px 0 0 0;
@@ -44,13 +46,13 @@
     align-items: center;
 }
 .radio p {
-    font-size: 20px;
+    @include adaptive-font(18, 14);
     font-weight: 600;
     color: orangered;
 }
 .labelSex {
     display: flex;
-    font-size: 18px;
+    @include adaptive-font(18, 14);
     padding: 0 0 0 24px;
 }
 .labelSex input {
@@ -62,16 +64,19 @@
     flex-direction: column;
 }
 .labelNameForm {
-    font-size: 16px;
+    @include adaptive-font(18, 14);
     display: flex;
     justify-content: space-between;
     margin: 12px 0 0 0;
+    input {
+        width: 50%;
+        min-width: 200px;
+        padding: 4px;
+        outline: none;
+        margin: 0 0 0 1rem;
+    }
 }
-.labelNameForm input {
-    min-width: 300px;
-    padding: 4px;
-    outline: none;
-}
+
 .blockButton {
     display: flex;
     justify-content: space-around;
@@ -83,7 +88,7 @@
     color: aliceblue;
     background-color: indianred;
     padding: 12px 32px;
-    font-size: 20px;
+    @include adaptive-font(18, 14);
     border: none;
     border-radius: 24px;
     cursor: pointer;
@@ -92,7 +97,7 @@
     color: aliceblue;
     background-color: royalblue;
     padding: 12px 32px;
-    font-size: 20px;
+    @include adaptive-font(18, 14);
     border: none;
     border-radius: 24px;
     cursor: pointer;
@@ -100,5 +105,18 @@
 .split {
     label {
         @include adaptive-font(12, 12);
+    }
+}
+@media (max-width: 767px) {
+    .wrapper {
+        width: 90%;
+    }
+}
+@media (max-width: 460px) {
+    .labelNameForm {
+        flex-direction: column;
+        input {
+            margin: 8px 0 0 0;
+        }
     }
 }

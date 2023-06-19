@@ -1,0 +1,53 @@
+@import './adaptive-fontMixin.scss';
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.list {
+    margin-top: 24px;
+    color: #fff;
+    padding: 0;
+}
+.list li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #8e824a;
+    @include adaptive-font(20, 12);
+    margin: 10px 0 0 0;
+    padding: 12px 12px 12px 12px;
+    border-radius: 20px;
+}
+.buttonTodo {
+    @include adaptive-font(20, 16);
+}
+.head {
+    @include adaptive-font(30, 20);
+    margin: 0 auto;
+}
+.head span {
+    padding: 0 0 0 10px;
+    color: darkred;
+}
+.blockButton {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    button {
+        @include adaptive-font(18, 12);
+        padding: 0.8rem 1rem;
+
+        border: none;
+        border-radius: 24px;
+        background-color: indianred;
+        color: #fff;
+        margin: 0 0 0 7px;
+    }
+    .btnBacktoForm {
+        background-color: royalblue;
+    }
+}

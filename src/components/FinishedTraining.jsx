@@ -1,8 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { SlCheck, SlClose } from 'react-icons/sl'
-import style from './finishedTraining.module.css'
+import style from './finishedTraining.module.scss'
 
-function FinishedTraining({ value, onDataChange }) {
+function FinishedTraining({
+    value,
+    onDataChange,
+    onShowTextArea,
+    onBulChange,
+}) {
     const [arrTraining, setArrTraining] = useState(value)
     let newValue = useMemo(() => value, [value])
     useEffect(() => {
@@ -35,7 +40,7 @@ function FinishedTraining({ value, onDataChange }) {
                 {arrTraining.map((el) => (
                     <li key={el.id}>
                         {el.title}
-                        <div>
+                        <div style={{ display: 'flex', flexWrap: 'nowrap' }}>
                             <SlCheck
                                 style={
                                     el.isComplited
@@ -48,6 +53,7 @@ function FinishedTraining({ value, onDataChange }) {
                                               cursor: 'pointer',
                                           }
                                 }
+                                className={style.buttonTodo}
                                 onClick={() => toggleTodo(el.id)}
                             />
                             <SlClose
@@ -57,11 +63,21 @@ function FinishedTraining({ value, onDataChange }) {
                                     cursor: 'pointer',
                                     padding: '0 0 0 10px',
                                 }}
+                                className={style.buttonTodo}
                             />
                         </div>
                     </li>
                 ))}
             </ul>
+            <section className={style.blockButton}>
+                <button onClick={onShowTextArea}>Show text</button>
+                <button
+                    className={style.btnBacktoForm}
+                    onClick={() => onBulChange(false)}
+                >
+                    Back to form
+                </button>
+            </section>
         </div>
     )
 }
