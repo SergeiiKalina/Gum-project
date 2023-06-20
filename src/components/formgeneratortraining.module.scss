@@ -39,25 +39,7 @@
     margin: 24px 0 0 0;
     padding: 10px;
 }
-.radio {
-    width: 100%;
-    display: flex;
-    margin: 12px 0 0 0;
-    align-items: center;
-}
-.radio p {
-    @include adaptive-font(18, 14);
-    font-weight: 600;
-    color: orangered;
-}
-.labelSex {
-    display: flex;
-    @include adaptive-font(18, 14);
-    padding: 0 0 0 24px;
-}
-.labelSex input {
-    margin: auto 0 3px 8px;
-}
+
 .nameForm {
     width: 100%;
     display: flex;
@@ -78,9 +60,10 @@
 }
 
 .blockButton {
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    width: 100%;
+
     margin: 24px 0 0 0;
     padding: 10px;
 }
@@ -117,6 +100,18 @@
         flex-direction: column;
         input {
             margin: 8px 0 0 0;
+        }
+    }
+
+    .section {
+        flex-direction: column;
+        align-items: start;
+    }
+    .article {
+        flex-direction: column;
+        label {
+            justify-content: space-between;
+            padding: 6px 0 0 0;
         }
     }
 }

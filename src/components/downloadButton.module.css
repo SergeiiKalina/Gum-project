@@ -1,6 +1,11 @@
-.btnDownload{
+.downloadDuttonBlock {
+    margin-top: 12px;
+}
+.btnDownload {
+    margin: 0 auto;
+    width: 50%;
     color: aliceblue;
-    background-color:royalblue;
+    background-color: royalblue;
     padding: 12px 32px;
     font-size: 20px;
     border: none;

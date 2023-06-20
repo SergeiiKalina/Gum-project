@@ -94,26 +94,28 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                         />
                     </label>
                 </div>
-                <div className={style.radio}>
+                <div className={style.section}>
                     <p>Sex:</p>
-                    <label className={style.labelSex}>
-                        Male
-                        <input
-                            type="radio"
-                            name="sex"
-                            value="male"
-                            {...register('sex')}
-                        />
-                    </label>
-                    <label className={style.labelSex}>
-                        Female
-                        <input
-                            type="radio"
-                            name="sex"
-                            value="female"
-                            {...register('sex')}
-                        />
-                    </label>
+                    <article className={style.article}>
+                        <label>
+                            Male
+                            <input
+                                type="radio"
+                                name="sex"
+                                value="male"
+                                {...register('sex')}
+                            />
+                        </label>
+                        <label>
+                            Female
+                            <input
+                                type="radio"
+                                name="sex"
+                                value="female"
+                                {...register('sex')}
+                            />
+                        </label>
+                    </article>
                 </div>
                 {/* <section className={style.section}>
                     <p>Level Exercises:</p>
@@ -303,7 +305,6 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
                     <button className={style.buttonClear} onClick={clear}>
                         clear
                     </button>
-                    {finishedTrening ? <DownloadButton plan={plan} /> : ''}
                 </div>
             </form>
         </div>

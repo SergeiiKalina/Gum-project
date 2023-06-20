@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { SlCheck, SlClose } from 'react-icons/sl'
+import DownloadButton from './DownloadButton'
 import style from './finishedTraining.module.scss'
 
 function FinishedTraining({
@@ -7,6 +8,8 @@ function FinishedTraining({
     onDataChange,
     onShowTextArea,
     onBulChange,
+    bulTextArea,
+    plan,
 }) {
     const [arrTraining, setArrTraining] = useState(value)
     let newValue = useMemo(() => value, [value])
@@ -70,13 +73,18 @@ function FinishedTraining({
                 ))}
             </ul>
             <section className={style.blockButton}>
-                <button onClick={onShowTextArea}>Show text</button>
-                <button
-                    className={style.btnBacktoForm}
-                    onClick={() => onBulChange(false)}
-                >
-                    Back to form
-                </button>
+                <div>
+                    <button onClick={onShowTextArea}>
+                        {bulTextArea ? 'Hide Text' : 'Show Text'}
+                    </button>
+                    <button
+                        className={style.btnBacktoForm}
+                        onClick={() => onBulChange(false)}
+                    >
+                        Back to form
+                    </button>
+                </div>
+                {bulTextArea ? <DownloadButton plan={plan} /> : ''}
             </section>
         </div>
     )

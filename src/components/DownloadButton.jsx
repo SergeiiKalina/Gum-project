@@ -19,9 +19,11 @@ function DownloadButton({ plan }) {
     }
 
     return (
-        <button onClick={handleDownload} className={style.btnDownload}>
-            Download
-        </button>
+        <div className={style.downloadDuttonBlock}>
+            <button onClick={handleDownload} className={style.btnDownload}>
+                Download
+            </button>
+        </div>
     )
 }
 

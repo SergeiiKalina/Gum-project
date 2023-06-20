@@ -14,6 +14,7 @@ function GeneratorTraining() {
     }
     const handlerBulChange = (newBul) => {
         setBul(newBul)
+        heandelShowTextArea()
     }
 
     const heandelShowTextArea = () => {
@@ -44,6 +45,8 @@ function GeneratorTraining() {
                             onDataChange={handleDataChange}
                             onShowTextArea={heandelShowTextArea}
                             onBulChange={handlerBulChange}
+                            bulTextArea={bulTextArea}
+                            plan={arr}
                         />
                     ) : (
                         ''
