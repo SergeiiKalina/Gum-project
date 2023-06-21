@@ -75,3 +75,32 @@
         outline: 2px solid lightseagreen;
     }
 }
+@media (max-width: 1024px) {
+    .wrapper {
+        form {
+            width: 70%;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .wrapper {
+        form {
+            width: 80%;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .wrapper {
+        form {
+            input {
+                width: 80%;
+            }
+            .textarea {
+                width: 80%;
+            }
+            button {
+                width: 50%;
+            }
+        }
+    }
+}
