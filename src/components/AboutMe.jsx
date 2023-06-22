@@ -1,21 +1,18 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { A11y, Navigation, Pagination, Scrollbar } from 'swiper'
-import 'swiper/css'
+import SwiperCore, { Pagination } from 'swiper'
 import img from '../image/IMG-39ecee3d968d544e854d0d857e831f16-V-removebg-preview.png'
 import style from './aboutme.module.scss'
+import 'swiper/swiper.min.css'
+import './../../node_modules/swiper/modules/pagination/pagination.min.css'
 
 function AboutMe() {
+    SwiperCore.use([Pagination])
     return (
         <Swiper
             style={{ borderRadius: '20px' }}
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={0}
+            spaceBetween={10}
             slidesPerView={1}
-            navigation
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
         >
             <SwiperSlide>
                 {' '}
