@@ -5,6 +5,7 @@
     flex-direction: column;
     h2 {
         @include adaptive-font(30, 20);
+        margin: 0 0 32px 0;
     }
     form {
         width: 50%;
