@@ -1,8 +1,9 @@
+import { hi } from 'date-fns/locale'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import style from './mobileMenu.module.css'
 
-function MobileMenu({ isHidden }) {
+function MobileMenu({ isHidden, showBurgerMenu }) {
     return (
         <nav
             style={
@@ -38,6 +39,7 @@ function MobileMenu({ isHidden }) {
                                   }
                         }
                         className={style.linkActive}
+                        onClick={showBurgerMenu}
                     >
                         Про мене
                     </NavLink>
@@ -53,6 +55,7 @@ function MobileMenu({ isHidden }) {
                                       textDecoration: 'none',
                                   }
                         }
+                        onClick={showBurgerMenu}
                     >
                         Тренування
                     </NavLink>
@@ -68,6 +71,7 @@ function MobileMenu({ isHidden }) {
                                       textDecoration: 'none',
                                   }
                         }
+                        onClick={showBurgerMenu}
                     >
                         Генератор Тренування
                     </NavLink>
@@ -83,6 +87,7 @@ function MobileMenu({ isHidden }) {
                                       textDecoration: 'none',
                                   }
                         }
+                        onClick={showBurgerMenu}
                     >
                         Запис на тренування
                     </NavLink>
@@ -98,6 +103,7 @@ function MobileMenu({ isHidden }) {
                                       textDecoration: 'none',
                                   }
                         }
+                        onClick={showBurgerMenu}
                     >
                         Контакти
                     </NavLink>
@@ -114,6 +120,7 @@ function MobileMenu({ isHidden }) {
                                           textDecoration: 'none',
                                       }
                             }
+                            onClick={showBurgerMenu}
                         >
                             Авторизація
                         </NavLink>
@@ -128,6 +135,7 @@ function MobileMenu({ isHidden }) {
                                           textDecoration: 'none',
                                       }
                             }
+                            onClick={showBurgerMenu}
                         >
                             Вихід
                         </NavLink>

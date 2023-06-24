@@ -18,7 +18,7 @@ function BurgerMenu({ isHidden, showBurgerMenu }) {
             >
                 <span />
             </NavLink>
-            <MobileMenu isHidden={isHidden} />
+            <MobileMenu isHidden={isHidden} showBurgerMenu={showBurgerMenu} />
         </div>
     )
 }
