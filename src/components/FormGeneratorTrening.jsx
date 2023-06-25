@@ -21,44 +21,51 @@ function FormGeneratorTraining({ onDataChange, onBulChange, plan }) {
         onBulChange(false)
     }
 
+    function filterExLegg() {
+        let arr = []
+        let generalArr = []
+        let arr1 = trening.filter((el) => el.category == 'legg')
+        let arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        arr2 = arr2.filter((el) => el.basicExercise)
+        arr = arr.concat(arr2)
+        generalArr = arr.slice(0, 2)
+        arr1 = trening.filter((el) => el.category == 'legg')
+        arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        arr2 = arr2.filter((el) => !el.basicExercise)
+        generalArr = generalArr.concat(arr2.slice(0, 2))
+        arr1 = trening.filter((el) => el.category == 'shoulders')
+        arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
+        generalArr = generalArr.concat(arr2)
+        return generalArr
+    }
+
     const generateTraining = (e, obj) => {
         let allEx = []
         let arr1 = []
         let arr2 = []
-        console.log(data)
         e.preventDefault()
         if (data.split == 'Leggs + Shoulders') {
-            let arr1 = trening.filter((el) => el.category == 'legg')
-            let arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
-            allEx = [...allEx, arr2]
-            arr1 = trening.filter((el) => el.category == 'shoulders')
-            arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
-            allEx = [...allEx, arr2]
+            allEx = filterExLegg()
         }
         if (data.split == 'Сhest + Back') {
             arr1 = trening.filter((el) => el.category == 'back')
             arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
-            allEx = [...allEx, arr2]
+            allEx = allEx.concat(arr2)
             arr1 = trening.filter((el) => el.category == 'pectoral muscles')
             arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
-            allEx = [...allEx, arr2]
+            allEx = allEx.concat(arr2)
         }
         if (data.split == 'Biceps + Triceps') {
             arr1 = trening.filter((el) => el.category == 'biceps')
             arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
-            allEx = [...allEx, arr2]
+            allEx = allEx.concat(arr2)
             arr1 = trening.filter((el) => el.category == 'triceps')
             arr2 = arr1.filter((el) => el.fitnessLevel == data.fitnessLevel)
-            allEx = [...allEx, arr2]
+            allEx = allEx.concat(arr2)
         }
-        arr = []
-        for (let i = 0; i < allEx.length; i++) {
-            for (let j = 0; j < allEx[i].length; j++) {
-                arr.push(allEx[i][j])
-            }
-        }
+
         setFinishedTrening(true)
-        onDataChange(arr)
+        onDataChange(allEx)
         onBulChange(true)
     }
 

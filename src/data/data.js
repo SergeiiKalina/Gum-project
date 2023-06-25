@@ -7,6 +7,7 @@ const trening = [
         fitnessLevel: 'hight',
         LFC: false,
         sex: 'male',
+        basicExercise: true,
         title: 'Squats with sandbag',
     },
     {
@@ -17,6 +18,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: false,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Run',
     },
     {
@@ -27,6 +29,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: false,
         sex: 'male',
+        basicExercise: true,
         title: 'Ring Dips',
     },
     {
@@ -37,6 +40,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Sit-up',
     },
     {
@@ -47,6 +51,7 @@ const trening = [
         fitnessLevel: 'hight',
         LFC: false,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Deadlift',
         video: '1',
     },
@@ -58,6 +63,7 @@ const trening = [
         fitnessLevel: 'hight',
         LFC: false,
         sex: 'male',
+        basicExercise: true,
         title: 'KB snatch',
     },
     {
@@ -68,6 +74,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Air Squat',
     },
     {
@@ -78,6 +85,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Lunges',
     },
     {
@@ -95,9 +103,10 @@ const trening = [
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
         category: 'legg',
-        fitnessLevel: 'hight',
+        fitnessLevel: 'middle',
         LFC: false,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Cossacks Squats',
     },
     {
@@ -108,6 +117,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: false,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Goblet Squats',
     },
     {
@@ -118,6 +128,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Glute Bridge',
     },
     {
@@ -128,6 +139,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Push-ups from the knees',
     },
     {
@@ -138,6 +150,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Push-up',
     },
     {
@@ -148,6 +161,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: false,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Bench press',
     },
 
@@ -169,6 +183,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Reverse Push-Up',
     },
     {
@@ -189,6 +204,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Pull-up',
     },
     {
@@ -199,6 +215,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Horizontal pull',
     },
     {
@@ -209,6 +226,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Vertical pull',
     },
     {
@@ -219,7 +237,8 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: false,
         sex: 'male',
-        title: 'solder press',
+        basicExercise: true,
+        title: 'Solder Press',
     },
     {
         id: 123,
@@ -229,6 +248,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Dumbbell Lateral Raise Swings',
     },
     {
@@ -239,6 +259,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: false,
         sex: 'unsex',
+        basicExercise: true,
         title: 'V-up',
     },
     {
@@ -249,6 +270,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Ab crunch',
     },
     {
@@ -259,6 +281,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Alt v-up',
     },
     {
@@ -269,6 +292,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Alt Front Raises',
     },
     {
@@ -279,6 +303,7 @@ const trening = [
         fitnessLevel: 'middle',
         LFC: true,
         sex: 'unsex',
+        basicExercise: true,
         title: 'Seated Dumbbell Press',
     },
     {
@@ -289,6 +314,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Prone Opposite Arm Leg Lift',
     },
     {
@@ -299,6 +325,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Prone Leg Raise',
     },
     {
@@ -309,6 +336,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Overhead Dumbbell Lateral Raise',
     },
     {
@@ -319,6 +347,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Dumbbell Front Raises',
     },
     {
@@ -329,6 +358,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Resistance Band Hammer Curls',
     },
     {
@@ -339,6 +369,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Hammer Curls',
     },
     {
@@ -349,6 +380,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Standing Tricep Kickback',
     },
     {
@@ -359,6 +391,7 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Hammer Curls',
     },
     {
@@ -369,7 +402,74 @@ const trening = [
         fitnessLevel: 'low',
         LFC: true,
         sex: 'unsex',
+        basicExercise: false,
         title: 'Press Svend',
+    },
+    {
+        id: 138,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'legg',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'unsex',
+        basicExercise: true,
+        title: 'Box Step',
+    },
+    {
+        id: 139,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'legg',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'unsex',
+        basicExercise: false,
+        title: 'Leg Extension',
+    },
+    {
+        id: 140,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'legg',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'unsex',
+        basicExercise: false,
+        title: 'Leg Curl',
+    },
+    {
+        id: 141,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'legg',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'unsex',
+        basicExercise: false,
+        title: 'Back Extesions',
+    },
+    {
+        id: 142,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'legg',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'unsex',
+        basicExercise: false,
+        title: 'Leg Abduction',
+    },
+    {
+        id: 143,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'legg',
+        fitnessLevel: 'low',
+        LFC: true,
+        sex: 'female',
+        basicExercise: false,
+        title: 'Leg Adduction',
     },
 ]
 
