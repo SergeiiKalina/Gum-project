@@ -27,8 +27,8 @@ function FinishedTraining({
     }
 
     const deleteExercises = (id) => {
-        setArrTraining(arrTraining.filter((el) => el.id != id))
-        onDataChange(arrTraining.filter((el) => el.id != id))
+        setArrTraining(arrTraining.filter((el) => el.id !== id))
+        onDataChange(arrTraining.filter((el) => el.id !== id))
     }
 
     return (
@@ -36,7 +36,7 @@ function FinishedTraining({
             <h2 className={style.head}>
                 Exercises complited:
                 <span>
-                    {arrTraining.filter((el) => el.isComplited == true).length}
+                    {arrTraining.filter((el) => el.isComplited === true).length}
                 </span>
             </h2>
             <ul className={style.list}>

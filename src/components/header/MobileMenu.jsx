@@ -1,5 +1,3 @@
-import { hi } from 'date-fns/locale'
-import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import style from './mobileMenu.module.css'
 
@@ -46,7 +44,7 @@ function MobileMenu({ isHidden, showBurgerMenu }) {
                 </li>
                 <li>
                     <NavLink
-                        to="about"
+                        to="workout"
                         style={({ isActive }) =>
                             isActive
                                 ? { color: 'black', textDecoration: 'none' }

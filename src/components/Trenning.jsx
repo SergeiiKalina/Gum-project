@@ -3,15 +3,13 @@ import styles from './training.module.css'
 function Trening() {
     return (
         <div className={styles.blockTrening}>
-            {' '}
             {trening.map((tr) => {
-                const { id, img, category, folding, LFC, sex, title, video } =
-                    tr
+                const { id, img, title } = tr
                 return tr.video ? (
                     <div key={id} className={styles.trainingItem}>
                         <iframe
                             width="100%"
-                            height="100%"
+                            height="88%"
                             src="https://www.youtube.com/embed/1ZXobu7JvvE"
                             title="YouTube video player"
                             frameBorder="0"

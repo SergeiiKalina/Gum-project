@@ -46,7 +46,7 @@ function Menu() {
     }, [])
 
     function showBurgerMenu() {
-        if (isHidden == false) {
+        if (isHidden === false) {
             setIsHidden(true)
         }
         if (isHidden) {
@@ -55,14 +55,12 @@ function Menu() {
     }
 
     function scrollRight() {
-        const parent = elementRef.current
         blockRef.current.scrollLeft += blockRef.current.clientWidth / 4
         if (blockRef.current.scrollLeft > 100) {
             setArrowLeftHidden(true)
         }
     }
     function scrollLeft() {
-        const parent = elementRef.current
         blockRef.current.scrollLeft -= blockRef.current.clientWidth / 4
         if (blockRef.current.scrollLeft < 10) {
             setArrowLeftHidden(false)
@@ -104,7 +102,7 @@ function Menu() {
                     </li>
                     <li>
                         <NavLink
-                            to="about"
+                            to="workout"
                             style={({ isActive }) =>
                                 isActive
                                     ? {

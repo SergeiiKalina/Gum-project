@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
 import img from '../image/IMG-39ecee3d968d544e854d0d857e831f16-V-removebg-preview.png'
+import img1 from '../image/4.jpg'
 import style from './aboutme.module.scss'
 import 'swiper/swiper.min.css'
 import './../../node_modules/swiper/modules/pagination/pagination.min.css'
@@ -15,7 +16,6 @@ function AboutMe() {
             pagination={{ clickable: true }}
         >
             <SwiperSlide>
-                {' '}
                 <div className={style.block}>
                     <div className={style.blockImg}>
                         <img src={img} className={style.mainFoto} />
@@ -30,7 +30,6 @@ function AboutMe() {
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-                {' '}
                 <div className={style.block}>
                     <div className={style.blockImg}>
                         <img src={img} className={style.mainFoto} />
@@ -45,10 +44,9 @@ function AboutMe() {
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-                {' '}
                 <div className={style.block}>
                     <div className={style.blockImg}>
-                        <img src={img} className={style.mainFoto} />
+                        <img src={img1} className={style.mainFoto} />
                     </div>
                     <div className={style.block_paragraph}>
                         <p className={style.paragraphe}>
@@ -60,7 +58,6 @@ function AboutMe() {
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-                {' '}
                 <div className={style.block}>
                     <div className={style.blockImg}>
                         <img src={img} className={style.mainFoto} />

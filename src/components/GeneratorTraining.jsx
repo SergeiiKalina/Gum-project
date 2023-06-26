@@ -7,8 +7,11 @@ import style from './generatorTraining.module.scss'
 function GeneratorTraining() {
     const [arr, setArr] = useState([])
     const [bul, setBul] = useState(false)
+    const [dataForm, setDataForm] = useState({})
     const [bulTextArea, setBulTextArea] = useState(false)
-
+    const handelDataForm = (obj) => {
+        setDataForm(obj)
+    }
     const handleDataChange = (newArr) => {
         setArr(newArr)
     }
@@ -35,6 +38,7 @@ function GeneratorTraining() {
                         onDataChange={handleDataChange}
                         onBulChange={handlerBulChange}
                         plan={arr}
+                        handelDataForm={handelDataForm}
                     />
                 )}
 

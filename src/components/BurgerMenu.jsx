@@ -3,7 +3,6 @@ import style from './burgerMenu.module.css'
 import MobileMenu from './header/MobileMenu'
 
 function BurgerMenu({ isHidden, showBurgerMenu }) {
-    let viewportWidth = window.innerWidth
     function pageChange() {
         let currentUrl = window.location.href
         return currentUrl.replace('http://localhost:3000', '')

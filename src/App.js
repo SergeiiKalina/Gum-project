@@ -23,7 +23,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Mylayouts value={user} />}>
                         <Route index element={<AboutMe />} />
-                        <Route path="about" element={<Trening />} />
+                        <Route path="workout" element={<Trening />} />
                         <Route
                             path="gentraining"
                             element={<GeneratorTraining />}

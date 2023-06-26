@@ -8,8 +8,18 @@ function TrainingPlanText({ plan }) {
 
     useEffect(() => {
         str = ''
-        newPlan.forEach((element) => {
-            str += '\xA0\xA0' + element.title + ' ' + '-' + ' ' + '4x15' + '\n'
+        newPlan.forEach((element, i) => {
+            str +=
+                '\xA0\xA0' +
+                Number(i + 1) +
+                '.' +
+                '\xA0' +
+                element.title +
+                ' ' +
+                '-' +
+                ' ' +
+                '4x15' +
+                '\n'
         })
         setStr(str)
     }, [newPlan])
