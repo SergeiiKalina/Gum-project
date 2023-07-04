@@ -11,7 +11,9 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         setData(data)
         handelDataForm(data)
     }
-
+    for (let a of trening.filter((el) => el.category === 'shoulders')) {
+        console.log(a.title)
+    }
     const clear = (e) => {
         e.preventDefault()
         onBulChange(false)

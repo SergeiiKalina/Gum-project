@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
 import Mylayouts from './components/layouts/Mylayouts'
 import Trening from './components/Trenning'
 import RegistrationForTraining from './components/RegistrationForTraining'
@@ -6,12 +7,14 @@ import AboutMe from './components/AboutMe'
 import Contacts from './components/Contacts'
 import GeneratorTraining from './components/GeneratorTraining'
 import './App.scss'
-import React, { useState } from 'react'
+import { dataFormExercise } from './components/layouts/Context'
 import Login from './components/header/Login'
 import Logout from './components/header/Logout'
+import AdminForm from './components/AdminForm'
 
 function App() {
     const [user, setUser] = useState(true)
+    const dataForm = useContext(dataFormExercise)
 
     const funkUser = (user) => {
         setUser(user)
@@ -32,6 +35,7 @@ function App() {
                             path="registrationfortraining"
                             element={<RegistrationForTraining />}
                         />
+                        <Route path="Admin" element={<AdminForm />} />
                         <Route path="contacts" element={<Contacts />} />
                         <Route
                             path="login"

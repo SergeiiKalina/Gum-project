@@ -2,6 +2,7 @@ import FormGeneratorTraining from './FormGeneratorTrening'
 import FinishedTraining from './FinishedTraining'
 import { useState } from 'react'
 import TrainingPlanText from './TrainingPlanText'
+
 import style from './generatorTraining.module.scss'
 
 function GeneratorTraining() {
@@ -9,6 +10,7 @@ function GeneratorTraining() {
     const [bul, setBul] = useState(false)
     const [dataForm, setDataForm] = useState({})
     const [bulTextArea, setBulTextArea] = useState(false)
+
     const handelDataForm = (obj) => {
         setDataForm(obj)
     }
