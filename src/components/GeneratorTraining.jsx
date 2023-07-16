@@ -41,7 +41,7 @@ function GeneratorTraining() {
                         onBulChange={handlerBulChange}
                         plan={arr}
                         handelDataForm={handelDataForm}
-                    />
+                    ></FormGeneratorTraining>
                 )}
 
                 <section className={style.section}>

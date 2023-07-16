@@ -74,11 +74,11 @@ function FinishedTraining({
             </ul>
             <section className={style.blockButton}>
                 <div>
-                    <button onClick={onShowTextArea}>
+                    <button onClick={onShowTextArea} className={style.button}>
                         {bulTextArea ? 'Hide Text' : 'Show Text'}
                     </button>
                     <button
-                        className={style.btnBacktoForm}
+                        className={`${style.btnBacktoForm} ${style.button}`}
                         onClick={() => onBulChange(false)}
                     >
                         Back to form

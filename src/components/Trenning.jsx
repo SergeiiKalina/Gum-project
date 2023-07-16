@@ -1,12 +1,61 @@
-import { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import FormTraining from './FormTraining'
 import trening from '../data/data'
-import Pagination from './Pagination'
-import styles from './training.module.css'
+import styles from './training.module.scss'
+import NotTraining from './Nottraining'
+
+const Pagination = React.lazy(() => import('./Pagination'))
 
 function Trening() {
-    const [arr, setArr] = useState(trening.slice(0, 18))
+    const { register, handleSubmit } = useForm()
+    const [arrTraining, setArrTraining] = useState([])
+    const [arr, setArr] = useState(arrTraining.slice(0, 18))
     const [activeId, setActiveId] = useState(1)
     const [count, setCount] = useState(1)
+    const [categories, setCategories] = useState([])
+    const [data, setData] = useState(['all'])
+    const [isChecked, setIsChecked] = useState({
+        all: true,
+        legs: false,
+        cardio: false,
+        functional: false,
+        press: false,
+        back: false,
+        biceps: false,
+        pectoral: false,
+        shoulders: false,
+        triceps: false,
+    })
+
+    useEffect(() => {
+        if (data.includes()) {
+            console.log(data.includes())
+        }
+    }, [isChecked])
+
+    useEffect(() => {
+        if (data.includes('all')) {
+            setArrTraining(trening)
+        } else {
+            const filteredTraining = trening.filter((item) =>
+                data.includes(item.category)
+            )
+            setArrTraining(filteredTraining)
+        }
+    }, [data, trening])
+    const onSubmit = (data) => {
+        setData(Object.values(data))
+        setIsChecked(data)
+    }
+
+    useEffect(() => {
+        let set = new Set()
+        for (let el of trening) {
+            set.add(el.category)
+        }
+        setCategories(Array.from(set))
+    }, [])
 
     const paginationList = (e, countItems) => {
         if (e.currentTarget.name === 'left') {
@@ -38,27 +87,43 @@ function Trening() {
         let notePage = 18
         let start = (count - 1) * notePage
         let end = start + notePage
-        setArr(trening.slice(start, end))
-    }, [count])
+        setArr(arrTraining.slice(start, end))
+    }, [count, arrTraining])
 
     return (
-        <section>
-            <div className={styles.blockTrening}>
-                {arr.map((tr) => {
-                    const { id, img, title } = tr
-                    return (
-                        <div key={id} className={styles.trainingItem}>
-                            <img src={img} alt="img" />
-                            <p>{title}</p>
-                        </div>
-                    )
-                })}
-            </div>
-            <Pagination
-                trening={trening}
-                paginationList={paginationList}
-                activeId={activeId}
-            />
+        <section className={styles.section}>
+            <article className={styles.article}>
+                <FormTraining
+                    handleSubmit={handleSubmit}
+                    onSubmit={onSubmit}
+                    register={register}
+                    categories={categories}
+                    isChecked={isChecked}
+                />
+                <div className={styles.blockTrening}>
+                    {arr.length ? (
+                        arr.map((tr) => {
+                            const { id, img, title } = tr
+                            return (
+                                <div key={id} className={styles.trainingItem}>
+                                    <img src={img} alt="img" />
+                                    <p>{title}</p>
+                                </div>
+                            )
+                        })
+                    ) : (
+                        <NotTraining />
+                    )}
+                </div>
+            </article>
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Pagination
+                    trening={trening}
+                    paginationList={paginationList}
+                    activeId={activeId}
+                    arrTraining={arrTraining}
+                />
+            </Suspense>
         </section>
     )
 }

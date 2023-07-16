@@ -1,12 +1,13 @@
 @import './adaptive-fontMixin.scss';
 .paginationBlock {
     display: flex;
-    width: 30%;
-    margin: 0 auto;
+    width: 80%;
+    margin-left: auto;
     ul {
         width: 100%;
         display: flex;
         justify-content: space-evenly;
+        padding: 0;
     }
 }
 .input {

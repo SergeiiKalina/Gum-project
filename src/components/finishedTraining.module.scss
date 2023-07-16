@@ -41,9 +41,12 @@
         display: flex;
         justify-content: space-around;
     }
-    button {
+    .button {
+        display: flex;
         @include adaptive-font(18, 11);
         padding: 0.8rem 1rem;
+        align-items: center;
+        justify-content: center;
         border: none;
         border-radius: 24px;
         background-color: indianred;

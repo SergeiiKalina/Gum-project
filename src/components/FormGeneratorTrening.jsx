@@ -11,9 +11,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         setData(data)
         handelDataForm(data)
     }
-    for (let a of trening.filter((el) => el.category === 'shoulders')) {
-        console.log(a.title)
-    }
+
     const clear = (e) => {
         e.preventDefault()
         onBulChange(false)
@@ -24,13 +22,22 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         let generalArr = []
         let arr1 = trening.filter((el) => el.sex === data.sex)
         arr1 = arr1.concat(trening.filter((el) => el.sex === 'unsex'))
-        arr1 = arr1.filter((el) => el.category === 'legg')
+        arr1 = arr1.filter((el) => el.category === 'legs')
 
         let arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
         arr2 = arr2.filter((el) => el.basicExercise)
 
         arr = arr.concat(arr2)
-        generalArr = arr.slice(0, 2)
+
+        // generalArr = arr.slice(0, 2)
+
+        for (let i = 0; i < 2; i++) {
+            generalArr = [
+                ...generalArr,
+                arr[Math.floor(Math.random() * arr.length)],
+            ]
+        }
+        console.log(generalArr)
         arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
         arr2 = arr2.filter((el) => !el.basicExercise)
 
@@ -62,7 +69,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         generalArr = generalArr.concat(arr2.slice(0, 2))
         arr1 = trening.filter((el) => el.sex === data.sex)
         arr1 = arr1.concat(trening.filter((el) => el.sex === 'unsex'))
-        arr1 = trening.filter((el) => el.category === 'pectoral muscles')
+        arr1 = trening.filter((el) => el.category === 'pectoral')
         arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
         arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
         arr2 = arr2.filter((el) => el.basicExercise)

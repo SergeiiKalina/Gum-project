@@ -68,19 +68,23 @@
     padding: 10px;
 }
 .buttonSend {
+    display: flex;
     color: aliceblue;
     background-color: indianred;
     padding: 12px 32px;
     @include adaptive-font(18, 14);
+    align-items: center;
     border: none;
     border-radius: 24px;
     cursor: pointer;
 }
 .buttonClear {
+    display: flex;
     color: aliceblue;
     background-color: royalblue;
     padding: 12px 32px;
     @include adaptive-font(18, 14);
+    align-items: center;
     border: none;
     border-radius: 24px;
     cursor: pointer;

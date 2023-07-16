@@ -1,0 +1,50 @@
+@import './adaptive-fontMixin.scss';
+.aside {
+    width: 15%;
+    summary {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        @include adaptive-font(20, 16);
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.5s;
+        .arrow {
+            padding: 4px 0 0 0;
+            transition: transform 0.5s;
+        }
+        .rotate {
+            padding: 4px 0 0 0;
+            transform: rotate(-90deg);
+        }
+    }
+    summary:hover {
+        color: #9b5656;
+    }
+
+    summary:hover .arrow,
+    summary:active .arrow {
+        color: red; // Изменение цвета стрелки при наведении на summary
+    }
+    summary:active {
+        transform: scale(0.9);
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        label {
+            @include adaptive-font(18, 16);
+            .button {
+                margin: 12px 10px 12px 0;
+                background-color: cornflowerblue;
+                border: 1px solid #9b5656;
+                border-radius: 10px;
+                color: aliceblue;
+                transition: background-color 0.3s, color 0.3s;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
