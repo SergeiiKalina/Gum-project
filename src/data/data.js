@@ -11,6 +11,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['sandbag'],
         LFC: ['hip joint', 'knees', 'back'],
+        subCatigories: 'fSq',
     },
     {
         id: 102,
@@ -63,6 +64,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['back'],
+        subCatigories: 'dl',
     },
     {
         id: 106,
@@ -89,6 +91,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'aSq',
     },
     {
         id: 108,
@@ -102,6 +105,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'ln',
     },
     {
         id: 109,
@@ -128,6 +132,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '110',
     },
     {
         id: 111,
@@ -141,19 +146,21 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettlebell'],
         LFC: ['knees'],
+        subCatigories: 'fSq',
     },
     {
         id: 112,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
         category: 'legs',
-        fitnessLevel: 'middle',
+        fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: true,
         title: 'Air Glute Bridge',
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'aBr',
     },
     {
         id: 113,
@@ -493,6 +500,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['box'],
         LFC: ['knees'],
+        subCatigories: 'bs',
     },
     {
         id: 139,
@@ -506,6 +514,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '139',
     },
     {
         id: 140,
@@ -519,6 +528,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '140',
     },
     {
         id: 141,
@@ -532,6 +542,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: '141',
     },
     {
         id: 142,
@@ -545,6 +556,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '142',
     },
     {
         id: 143,
@@ -558,6 +570,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '143',
     },
     {
         id: 144,
@@ -623,6 +636,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['hothing'],
+        subCatigories: 'aSq',
     },
     {
         id: 149,
@@ -636,6 +650,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['knees'],
+        subCatigories: 'aSq',
     },
     {
         id: 150,
@@ -649,6 +664,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'aSq',
     },
     {
         id: 151,
@@ -662,6 +678,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['PVS'],
         LFC: ['back'],
+        subCatigories: 'aSq',
     },
     {
         id: 152,
@@ -675,6 +692,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['fitball'],
         LFC: ['nothing'],
+        subCatigories: 'aSq',
     },
     {
         id: 153,
@@ -688,6 +706,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['back', 'kness'],
+        subCatigories: 'aSq',
     },
     {
         id: 154,
@@ -701,6 +720,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['nothing'],
+        subCatigories: 'bSq',
     },
     {
         id: 155,
@@ -714,6 +734,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'bSq',
     },
     {
         id: 156,
@@ -727,6 +748,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'fSq',
     },
     {
         id: 157,
@@ -740,6 +762,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'bSq',
     },
     {
         id: 158,
@@ -753,6 +776,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'bSq',
     },
     {
         id: 159,
@@ -766,6 +790,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'bSq',
     },
     {
         id: 160,
@@ -779,6 +804,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'fSq',
     },
     {
         id: 161,
@@ -792,6 +818,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '161',
     },
     {
         id: 162,
@@ -805,6 +832,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '162',
     },
 
     {
@@ -819,6 +847,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '163',
     },
     {
         id: 164,
@@ -832,6 +861,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '164',
     },
     {
         id: 165,
@@ -845,6 +875,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '165',
     },
     {
         id: 166,
@@ -858,6 +889,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '166',
     },
     {
         id: 167,
@@ -871,6 +903,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'hip joint'],
+        subCatigories: '167',
     },
     {
         id: 168,
@@ -884,6 +917,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['knees'],
+        subCatigories: 'ln',
     },
     {
         id: 169,
@@ -897,6 +931,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettlebell'],
         LFC: ['knees'],
+        subCatigories: 'ln',
     },
     {
         id: 170,
@@ -910,6 +945,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'ln',
     },
     {
         id: 171,
@@ -923,6 +959,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['knees'],
+        subCatigories: 'ln',
     },
     {
         id: 172,
@@ -936,6 +973,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettlebell'],
         LFC: ['knees'],
+        subCatigories: 'ln',
     },
     {
         id: 173,
@@ -949,6 +987,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['knees', 'back', 'hip joint'],
+        subCatigories: 'ln',
     },
     {
         id: 174,
@@ -962,6 +1001,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['knees', 'back', 'hip joint'],
+        subCatigories: 'ln',
     },
     {
         id: 175,
@@ -975,6 +1015,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['knees', 'back', 'hip joint'],
+        subCatigories: 'ln',
     },
     {
         id: 176,
@@ -988,6 +1029,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['knees', 'back', 'hip joint'],
+        subCatigories: 'ln',
     },
     {
         id: 177,
@@ -1001,6 +1043,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['knees', 'back', 'hip joint', 'shoulders'],
+        subCatigories: 'ln',
     },
     {
         id: 178,
@@ -1014,6 +1057,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['knees', 'back', 'hip joint', 'shoulders'],
+        subCatigories: 'ln',
     },
     {
         id: 179,
@@ -1027,6 +1071,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'ln',
     },
     {
         id: 180,
@@ -1040,6 +1085,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['knees'],
+        subCatigories: 'ln',
     },
     {
         id: 181,
@@ -1053,6 +1099,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees', 'back'],
+        subCatigories: 'ln',
     },
     {
         id: 182,
@@ -1066,6 +1113,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'agm',
     },
     {
         id: 183,
@@ -1079,6 +1127,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'gm',
     },
     {
         id: 184,
@@ -1092,6 +1141,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'aSq',
     },
     {
         id: 185,
@@ -1105,6 +1155,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['back'],
+        subCatigories: 'gm',
     },
     {
         id: 186,
@@ -1118,6 +1169,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: 'gm',
     },
     {
         id: 187,
@@ -1131,6 +1183,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['knees'],
+        subCatigories: 'ln',
     },
     {
         id: 188,
@@ -1144,6 +1197,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'dl',
     },
     {
         id: 189,
@@ -1157,6 +1211,7 @@ const trening = [
         workingOut: ['gym', ' home'],
         inventory: ['PVS'],
         LFC: ['nothing'],
+        subCatigories: 'dl',
     },
     {
         id: 190,
@@ -1170,6 +1225,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['back'],
+        subCatigories: 'dl',
     },
     {
         id: 191,
@@ -1183,6 +1239,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettlebell'],
         LFC: ['back'],
+        subCatigories: 'dl',
     },
     {
         id: 192,
@@ -1196,6 +1253,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['back', 'kness'],
+        subCatigories: 'sDl',
     },
     {
         id: 193,
@@ -1209,6 +1267,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: 'dl',
     },
     {
         id: 194,
@@ -1222,6 +1281,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: 'sDl',
     },
     {
         id: 195,
@@ -1235,6 +1295,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['hip joint', 'back'],
+        subCatigories: 'sDl',
     },
     {
         id: 196,
@@ -1248,19 +1309,21 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettlebell'],
         LFC: ['hip joint', 'back'],
+        subCatigories: 'sDl',
     },
     {
         id: 197,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567431021086.jpg',
         category: 'legs',
-        fitnessLevel: 'low',
+        fitnessLevel: 'replays',
         sex: 'unsex',
         basicExercise: true,
         title: 'Air Glute Bridge',
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'aGb',
     },
     {
         id: 198,
@@ -1274,6 +1337,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['nothing'],
+        subCatigories: 'gb',
     },
     {
         id: 199,
@@ -1287,6 +1351,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettleBell'],
         LFC: ['nothing'],
+        subCatigories: 'gb',
     },
     {
         id: 200,
@@ -1300,6 +1365,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'aGb',
     },
     {
         id: 201,
@@ -1313,6 +1379,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['nothing'],
+        subCatigories: 'gb',
     },
     {
         id: 202,
@@ -1326,6 +1393,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'gb',
     },
     {
         id: 203,
@@ -1339,6 +1407,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'gb',
     },
     {
         id: 204,
@@ -1352,6 +1421,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'aGb',
     },
     {
         id: 205,
@@ -1365,6 +1435,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'aGb',
     },
     {
         id: 206,
@@ -1378,6 +1449,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: 'bs',
     },
     {
         id: 207,
@@ -1391,6 +1463,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['knees', 'back'],
+        subCatigories: 'bs',
     },
     {
         id: 208,
@@ -1404,6 +1477,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['kettlebell'],
         LFC: ['knees'],
+        subCatigories: 'bs',
     },
     {
         id: 209,
@@ -1417,6 +1491,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['knees'],
+        subCatigories: 'bs',
     },
 
     {
@@ -1431,6 +1506,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '210',
     },
     {
         id: 211,
@@ -1444,6 +1520,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: '211',
     },
     {
         id: 212,
@@ -1457,6 +1534,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '212',
     },
     {
         id: 213,
@@ -1470,6 +1548,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '213',
     },
     {
         id: 214,
@@ -1483,6 +1562,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '214',
     },
     {
         id: 215,
@@ -1496,6 +1576,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '215',
     },
     {
         id: 216,
@@ -1509,6 +1590,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '216',
     },
     {
         id: 217,
@@ -1522,6 +1604,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '217',
     },
     {
         id: 218,
@@ -1535,6 +1618,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['hothing'],
         LFC: ['nothing'],
+        subCatigories: '218',
     },
     {
         id: 219,
@@ -1548,6 +1632,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: '219',
     },
     {
         id: 220,
@@ -1561,6 +1646,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: '220',
     },
     {
         id: 221,
@@ -1574,6 +1660,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '221',
     },
     {
         id: 222,
@@ -1587,6 +1674,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '222',
     },
     {
         id: 223,
@@ -1600,6 +1688,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'aSq',
     },
     {
         id: 224,
@@ -1613,6 +1702,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['band', 'barbell'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'bSq',
     },
     {
         id: 225,
@@ -1626,6 +1716,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['barbell', 'band'],
         LFC: ['back', 'knees', 'hip joint'],
+        subCatigories: 'fSq',
     },
     {
         id: 226,
@@ -1639,6 +1730,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: '226',
     },
     {
         id: 227,
@@ -2204,7 +2296,7 @@ const trening = [
         id: 270,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'legs',
+        category: 'shoulders',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4089,7 +4181,7 @@ const trening = [
         id: 415,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'hight',
         sex: 'unsex',
         basicExercise: false,
@@ -4102,7 +4194,7 @@ const trening = [
         id: 416,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4115,7 +4207,7 @@ const trening = [
         id: 417,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'hight',
         sex: 'male',
         basicExercise: false,
@@ -4128,7 +4220,7 @@ const trening = [
         id: 418,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'middle',
         sex: 'unsex',
         basicExercise: false,
@@ -4141,7 +4233,7 @@ const trening = [
         id: 419,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4154,7 +4246,7 @@ const trening = [
         id: 420,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'hight',
         sex: 'unsex',
         basicExercise: false,
@@ -4167,7 +4259,7 @@ const trening = [
         id: 421,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4180,7 +4272,7 @@ const trening = [
         id: 422,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'hight',
         sex: 'unsex',
         basicExercise: false,
@@ -4193,7 +4285,7 @@ const trening = [
         id: 423,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4206,7 +4298,7 @@ const trening = [
         id: 424,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'middle',
         sex: 'unsex',
         basicExercise: false,
@@ -4219,7 +4311,7 @@ const trening = [
         id: 425,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'middle',
         sex: 'unsex',
         basicExercise: false,
@@ -4232,7 +4324,7 @@ const trening = [
         id: 426,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4245,7 +4337,7 @@ const trening = [
         id: 427,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4258,7 +4350,7 @@ const trening = [
         id: 428,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4271,7 +4363,7 @@ const trening = [
         id: 429,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'middle',
         sex: 'unsex',
         basicExercise: false,
@@ -4284,7 +4376,7 @@ const trening = [
         id: 430,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,
@@ -4297,7 +4389,7 @@ const trening = [
         id: 431,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'press',
+        category: 'pres',
         fitnessLevel: 'low',
         sex: 'unsex',
         basicExercise: false,

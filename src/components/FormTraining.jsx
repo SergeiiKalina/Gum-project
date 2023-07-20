@@ -12,11 +12,7 @@ export default function FormTraining({
     const [rev, setRev] = useState(false)
 
     const reverseArrow = () => {
-        if (rev) {
-            setRev(false)
-        } else {
-            setRev(true)
-        }
+        setRev((prev) => !prev)
     }
     return (
         <details className={styles.aside}>
@@ -29,23 +25,6 @@ export default function FormTraining({
                 />
             </summary>
             <form className={styles.nav} onChange={handleSubmit(onSubmit)}>
-                <label
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                    }}
-                >
-                    All
-                    <input
-                        type="checkbox"
-                        className={styles.button}
-                        key="all"
-                        value="all"
-                        checked={isChecked.all && true}
-                        {...register('all')}
-                    />
-                </label>
                 {categories.length > 0 &&
                     categories.map((el) => {
                         let str = ''
@@ -71,7 +50,7 @@ export default function FormTraining({
                                     type="checkbox"
                                     className={styles.button}
                                     value={el}
-                                    checked={isChecked[el] && true}
+                                    checked={isChecked[el] || false}
                                     {...register(el)}
                                 />
                             </label>

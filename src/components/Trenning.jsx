@@ -8,16 +8,15 @@ import NotTraining from './Nottraining'
 const Pagination = React.lazy(() => import('./Pagination'))
 
 function Trening() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm({})
     const [arrTraining, setArrTraining] = useState([])
     const [arr, setArr] = useState(arrTraining.slice(0, 18))
     const [activeId, setActiveId] = useState(1)
     const [count, setCount] = useState(1)
     const [categories, setCategories] = useState([])
-    const [data, setData] = useState(['all'])
+    const [data, setData] = useState(['legs'])
     const [isChecked, setIsChecked] = useState({
-        all: true,
-        legs: false,
+        legs: 'legs',
         cardio: false,
         functional: false,
         press: false,
@@ -28,32 +27,25 @@ function Trening() {
         triceps: false,
     })
 
-    useEffect(() => {
-        if (data.includes()) {
-            console.log(data.includes())
-        }
-    }, [isChecked])
-
-    useEffect(() => {
-        if (data.includes('all')) {
-            setArrTraining(trening)
-        } else {
-            const filteredTraining = trening.filter((item) =>
-                data.includes(item.category)
-            )
-            setArrTraining(filteredTraining)
-        }
-    }, [data, trening])
     const onSubmit = (data) => {
         setData(Object.values(data))
         setIsChecked(data)
     }
 
     useEffect(() => {
+        const filteredTraining = trening.filter((item) =>
+            data.includes(item.category)
+        )
+        setArrTraining(filteredTraining)
+    }, [data])
+
+    useEffect(() => {
         let set = new Set()
+
         for (let el of trening) {
             set.add(el.category)
         }
+
         setCategories(Array.from(set))
     }, [])
 

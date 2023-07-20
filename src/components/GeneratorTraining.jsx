@@ -23,12 +23,7 @@ function GeneratorTraining() {
     }
 
     const heandelShowTextArea = () => {
-        if (bulTextArea) {
-            setBulTextArea(false)
-        }
-        if (!bulTextArea) {
-            setBulTextArea(true)
-        }
+        setBulTextArea((prev) => !prev)
     }
 
     return (
@@ -41,7 +36,7 @@ function GeneratorTraining() {
                         onBulChange={handlerBulChange}
                         plan={arr}
                         handelDataForm={handelDataForm}
-                    ></FormGeneratorTraining>
+                    />
                 )}
 
                 <section className={style.section}>
