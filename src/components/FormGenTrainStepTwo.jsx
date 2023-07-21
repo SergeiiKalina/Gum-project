@@ -29,9 +29,9 @@ export default function FormGenTrainStepTwo({ register, nextStep }) {
                 </select>
                 <select {...register('fitnessLevel')}>
                     <option value="fitnessLevel">Fitness Level</option>
-                    <option value="low">Low</option>
-                    <option value="middle">Average</option>
-                    <option value="high">High</option>
+                    <option value="1">Low</option>
+                    <option value="2">Average</option>
+                    <option value="3">High</option>
                 </select>
                 <button onClick={(e) => nextStep(e)}>Third Step</button>
             </section>

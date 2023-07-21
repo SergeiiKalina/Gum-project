@@ -30,8 +30,8 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
 
     function filterExLegg(data) {
         let generalArr = []
-        let filterdProblem = trening.filter((el) =>
-            el.LFC.some((item) => !data.problems.includes(item))
+        let filterdProblem = trening.filter(
+            (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
             item.workingOut.some((el) => el === data.placeOfTraining)
@@ -42,9 +42,11 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         let filteresBasic = filteredSex.filter(
             (el) =>
                 el.category === 'legs' &&
-                el.fitnessLevel === data.fitnessLevel &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1) &&
                 el.basicExercise
         )
+
         if (filteresBasic.length >= 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -57,13 +59,12 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     randomElement = filteresBasic[randomIndex]
                 } while (
                     generalArr.includes(randomElement) &&
-                    generalArr.some(
-                        (el) => el.subCatigories !== randomElement.subCatigories
+                    !generalArr.some(
+                        (el) => el.subCatigories === randomElement.subCatigories
                     )
                 )
 
                 generalArr = [...generalArr, randomElement]
-                console.log(generalArr)
             }
         } else {
             generalArr = [...generalArr, filteresBasic]
@@ -72,10 +73,11 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         let filteresNoBasic = filteredSex.filter(
             (el) =>
                 el.category === 'legs' &&
-                (el.fitnessLevel === data.fitnessLevel ||
-                    el.fitnessLevel === 'low') &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1) &&
                 !el.basicExercise
         )
+
         if (filteresNoBasic.length >= 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -88,15 +90,38 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     randomElement = filteresNoBasic[randomIndex]
                 } while (
                     generalArr.includes(randomElement) &&
-                    generalArr.some(
-                        (el) => el.subCatigories !== randomElement.subCatigories
+                    !generalArr.some(
+                        (el) => el.subCatigories === randomElement.subCatigories
                     )
                 )
 
                 generalArr = [...generalArr, randomElement]
             }
         } else {
-            if (filteresNoBasic.length === 0) {
+            if (filteresNoBasic.length === 1) {
+                for (let i = 0; i < 1; i++) {
+                    let randomIndex
+                    let randomElement
+
+                    do {
+                        randomIndex = Math.floor(
+                            Math.random() * filteresBasic.length
+                        )
+                        randomElement = filteresBasic[randomIndex]
+                    } while (
+                        generalArr.includes(randomElement) &&
+                        !generalArr.some(
+                            (el) =>
+                                el.subCatigories === randomElement.subCatigories
+                        )
+                    )
+
+                    generalArr = [...generalArr, randomElement]
+                }
+                for (let j = 0; j < filteresNoBasic.length; j++) {
+                    generalArr = [...generalArr, filteresNoBasic[j]]
+                }
+            } else if (filteresNoBasic.length === 0) {
                 for (let i = 0; i < 2; i++) {
                     let randomIndex
                     let randomElement
@@ -106,13 +131,15 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                             Math.random() * filteresBasic.length
                         )
                         randomElement = filteresBasic[randomIndex]
-                    } while (generalArr.includes(randomElement))
+                    } while (
+                        generalArr.includes(randomElement) &&
+                        !generalArr.some(
+                            (el) =>
+                                el.subCatigories === randomElement.subCatigories
+                        )
+                    )
 
                     generalArr = [...generalArr, randomElement]
-                }
-            } else {
-                for (let j = 0; j < filteresNoBasic.length; j++) {
-                    generalArr = [...generalArr, filteresNoBasic[j]]
                 }
             }
         }
@@ -122,8 +149,8 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
 
     function filterExShoulders(data) {
         let generalArr = []
-        let filterdProblem = trening.filter((el) =>
-            el.LFC.some((item) => !data.problems.includes(item))
+        let filterdProblem = trening.filter(
+            (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
             item.workingOut.some((el) => el === data.placeOfTraining)
@@ -134,7 +161,8 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         let filteresBasic = filteredSex.filter(
             (el) =>
                 el.category === 'shoulders' &&
-                el.fitnessLevel === data.fitnessLevel &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1) &&
                 el.basicExercise
         )
 
@@ -148,7 +176,12 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                         Math.random() * filteresBasic.length
                     )
                     randomElement = filteresBasic[randomIndex]
-                } while (generalArr.includes(randomElement))
+                } while (
+                    generalArr.includes(randomElement) &&
+                    !generalArr.some(
+                        (el) => el.subCatigories === randomElement.subCatigories
+                    )
+                )
 
                 generalArr = [...generalArr, randomElement]
             }
@@ -159,10 +192,12 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         let filteresNoBasic = filteredSex.filter(
             (el) =>
                 el.category === 'shoulders' &&
-                (el.fitnessLevel === data.fitnessLevel ||
-                    el.fitnessLevel === 'low') &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1 ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 2) &&
                 !el.basicExercise
         )
+
         if (filteresNoBasic.length >= 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -173,13 +208,63 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                         Math.random() * filteresNoBasic.length
                     )
                     randomElement = filteresNoBasic[randomIndex]
-                } while (generalArr.includes(randomElement))
+                } while (
+                    generalArr.includes(randomElement) &&
+                    !generalArr.some(
+                        (el) => el.subCatigories == randomElement.subCatigories
+                    )
+                )
 
                 generalArr = [...generalArr, randomElement]
             }
         } else {
-            generalArr = [...generalArr, filteresNoBasic]
+            if (filteresNoBasic.length === 1) {
+                for (let i = 0; i < 1; i++) {
+                    let randomIndex
+                    let randomElement
+
+                    do {
+                        randomIndex = Math.floor(
+                            Math.random() * filteresBasic.length
+                        )
+                        randomElement = filteresBasic[randomIndex]
+                    } while (
+                        generalArr.includes(randomElement) &&
+                        !generalArr.some(
+                            (el) =>
+                                el.subCatigories === randomElement.subCatigories
+                        )
+                    )
+
+                    generalArr = [...generalArr, randomElement]
+                }
+                for (let j = 0; j < filteresNoBasic.length; j++) {
+                    generalArr = [...generalArr, filteresNoBasic[j]]
+                }
+            } else if (filteresNoBasic.length === 0) {
+                for (let i = 0; i < 2; i++) {
+                    let randomIndex
+                    let randomElement
+
+                    do {
+                        randomIndex = Math.floor(
+                            Math.random() * filteresBasic.length
+                        )
+                        randomElement = filteresBasic[randomIndex]
+                    } while (
+                        generalArr.includes(randomElement) &&
+                        !generalArr.some(
+                            (el) =>
+                                el.subCatigories === randomElement.subCatigories
+                        )
+                    )
+
+                    generalArr = [...generalArr, randomElement]
+                }
+            }
         }
+
+        return generalArr
     }
 
     function filterExBack() {
@@ -239,11 +324,9 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
     }
 
     const generateTraining = (data) => {
-        let allEx = []
+        let allEx = filterExLegg(data)
+        allEx = allEx.concat(filterExShoulders(data))
 
-        if (data.focus === 'legs') {
-            allEx = filterExLegg(data)
-        }
         if (data.split === 'Сhest + Back') {
             allEx = filterExBack(data)
         }
