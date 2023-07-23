@@ -15,7 +15,7 @@ export default function FormGenTrainStepFourth({ register, data, nextStep }) {
                         <option value="high">High</option>
                     </select>
                     <select {...register('problems')} multiple>
-                        <option value="nothing">
+                        <option value="">
                             Problems with the musculoskeletal system
                         </option>
                         <option value="back">Back</option>
