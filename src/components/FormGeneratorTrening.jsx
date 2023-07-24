@@ -10,7 +10,7 @@ import FormGenTrainStepFourth from './FormGenTrainStepFourth'
 function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
     const { register, handleSubmit } = useForm()
     const [data, setData] = useState({})
-    const [step, setStep] = useState(2)
+    const [step, setStep] = useState(1)
 
     const nextStep = (e) => {
         e.preventDefault()
