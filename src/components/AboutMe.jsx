@@ -46,7 +46,7 @@ function AboutMe() {
             <SwiperSlide>
                 <div className={style.block}>
                     <div className={style.blockImg}>
-                        <img src={img1} className={style.mainFoto} />
+                        <img src={img} className={style.mainFoto} />
                     </div>
                     <div className={style.block_paragraph}>
                         <p className={style.paragraphe}>
