@@ -40,37 +40,46 @@ function FinishedTraining({
                 </span>
             </h2>
             <ul className={style.list}>
-                {arrTraining.map((el) => (
-                    <li key={el.id}>
-                        {el.title}
-                        <div style={{ display: 'flex', flexWrap: 'nowrap' }}>
-                            <SlCheck
-                                style={
-                                    el.isComplited
-                                        ? {
-                                              color: '#B5B8B1',
-                                              cursor: 'pointer',
-                                          }
-                                        : {
-                                              color: ' #00ff00',
-                                              cursor: 'pointer',
-                                          }
-                                }
-                                className={style.buttonTodo}
-                                onClick={() => toggleTodo(el.id)}
-                            />
-                            <SlClose
-                                onClick={() => deleteExercises(el.id)}
-                                style={{
-                                    color: 'red',
-                                    cursor: 'pointer',
-                                    padding: '0 0 0 10px',
-                                }}
-                                className={style.buttonTodo}
-                            />
-                        </div>
-                    </li>
-                ))}
+                {arrTraining.map((el, i) => {
+                    return (
+                        <li
+                            key={el.id}
+                            className={
+                                el.style ? `${style.dayTrainingStyle}` : ''
+                            }
+                        >
+                            {el.title}
+                            <div
+                                style={{ display: 'flex', flexWrap: 'nowrap' }}
+                            >
+                                <SlCheck
+                                    style={
+                                        el.isComplited
+                                            ? {
+                                                  color: '#B5B8B1',
+                                                  cursor: 'pointer',
+                                              }
+                                            : {
+                                                  color: ' #00ff00',
+                                                  cursor: 'pointer',
+                                              }
+                                    }
+                                    className={style.buttonTodo}
+                                    onClick={() => toggleTodo(el.id)}
+                                />
+                                <SlClose
+                                    onClick={() => deleteExercises(el.id)}
+                                    style={{
+                                        color: 'red',
+                                        cursor: 'pointer',
+                                        padding: '0 0 0 10px',
+                                    }}
+                                    className={style.buttonTodo}
+                                />
+                            </div>
+                        </li>
+                    )
+                })}
             </ul>
             <section className={style.blockButton}>
                 <div>

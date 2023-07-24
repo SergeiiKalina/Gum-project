@@ -51,6 +51,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['back'],
+        subCatigories: '104',
     },
     {
         id: 105,
@@ -226,10 +227,11 @@ const trening = [
         fitnessLevel: 2,
         sex: 'unsex',
         basicExercise: true,
-        title: 'Reverse Push-Up',
+        title: 'Reverse Box Dips',
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['elbows', 'shoulders'],
+        subCatigories: '117',
     },
     {
         id: 118,
@@ -327,6 +329,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['hothing'],
         LFC: ['back'],
+        subCatigories: '124',
     },
     {
         id: 125,
@@ -340,6 +343,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['hothing'],
         LFC: ['nothing'],
+        subCatigories: '125',
     },
     {
         id: 126,
@@ -353,6 +357,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['hothing'],
         LFC: ['nothing'],
+        subCatigories: '126',
     },
     {
         id: 127,
@@ -478,6 +483,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'kb',
     },
     {
         id: 136,
@@ -491,6 +497,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 137,
@@ -2918,15 +2925,15 @@ const trening = [
         id: 310,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
-        category: 'biceps',
-        fitnessLevel: 'replays',
-        sex: 'male',
+        category: 'triceps',
+        fitnessLevel: 2,
+        sex: 'unsex',
         basicExercise: true,
-        title: 'Pull ups reverse grip',
+        title: 'Dumbbell Close-grip bench press',
         workingOut: ['gym', 'home'],
-        inventory: ['bar'],
+        inventory: ['dumbbell'],
         LFC: ['nothing'],
-        subCatigories: 'pu',
+        subCatigories: '310',
     },
     {
         id: 311,
@@ -3998,6 +4005,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'kb',
     },
     {
         id: 388,
@@ -4005,12 +4013,13 @@ const trening = [
         img: '/images/mini/FB_IMG_1567430209194.jpg',
         category: 'triceps',
         fitnessLevel: 2,
-        sex: 'male',
+        sex: 'unsex',
         basicExercise: true,
         title: 'Dips',
         workingOut: ['gym', 'home'],
         inventory: ['dips'],
         LFC: ['elbows'],
+        subCatigories: 'dt',
     },
     {
         id: 389,
@@ -4024,6 +4033,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['elbows'],
+        subCatigories: 'dt',
     },
     {
         id: 390,
@@ -4037,6 +4047,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['elbows'],
+        subCatigories: 'dt',
     },
     {
         id: 391,
@@ -4046,10 +4057,11 @@ const trening = [
         fitnessLevel: 2,
         sex: 'male',
         basicExercise: true,
-        title: 'Сlose-grip bench press',
+        title: 'Close-grip bench press',
         workingOut: ['gym'],
         inventory: ['barbell'],
         LFC: ['elbows'],
+        subCatigories: '391',
     },
     {
         id: 392,
@@ -4063,6 +4075,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'st',
     },
     {
         id: 393,
@@ -4076,6 +4089,7 @@ const trening = [
         workingOut: ['gym', ' home'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'st',
     },
     {
         id: 394,
@@ -4089,6 +4103,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['bar'],
         LFC: ['elbows'],
+        subCatigories: 'st',
     },
     {
         id: 395,
@@ -4102,6 +4117,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['bar'],
         LFC: ['elbows'],
+        subCatigories: 'st',
     },
     {
         id: 396,
@@ -4115,6 +4131,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['bar'],
         LFC: ['elbows'],
+        subCatigories: 'st',
     },
     {
         id: 397,
@@ -4128,6 +4145,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'et',
     },
     {
         id: 398,
@@ -4141,6 +4159,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'et',
     },
     {
         id: 399,
@@ -4154,6 +4173,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'kb',
     },
     {
         id: 400,
@@ -4167,6 +4187,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'et',
     },
     {
         id: 401,
@@ -4180,6 +4201,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['dumbbell'],
         LFC: ['elbows'],
+        subCatigories: 'st',
     },
     {
         id: 402,
@@ -4193,6 +4215,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['elbows'],
+        subCatigories: 'et',
     },
     {
         id: 403,
@@ -4206,13 +4229,14 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'ct',
     },
     {
         id: 404,
         isComplited: false,
         img: '/images/mini/FB_IMG_1567430209194.jpg',
         category: 'triceps',
-        fitnessLevel: 1,
+        fitnessLevel: 'replays',
         sex: 'unsex',
         basicExercise: false,
         title: 'Seated Dumbbell Supinated Curls',
@@ -4232,6 +4256,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 406,
@@ -4245,6 +4270,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 407,
@@ -4258,6 +4284,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 408,
@@ -4271,6 +4298,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 409,
@@ -4284,6 +4312,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 410,
@@ -4297,6 +4326,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '410',
     },
     {
         id: 411,
@@ -4310,6 +4340,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 412,
@@ -4323,6 +4354,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'kb',
     },
     {
         id: 413,
@@ -4336,6 +4368,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['bodybar'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 414,
@@ -4349,6 +4382,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: 'et',
     },
     {
         id: 415,
@@ -4362,6 +4396,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: '415',
     },
     {
         id: 416,
@@ -4375,6 +4410,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: '416',
     },
     {
         id: 417,
@@ -4388,6 +4424,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['back'],
+        subCatigories: '417',
     },
     {
         id: 418,
@@ -4401,6 +4438,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: '418',
     },
     {
         id: 419,
@@ -4414,6 +4452,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '419',
     },
     {
         id: 420,
@@ -4427,6 +4466,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['roll'],
         LFC: ['back'],
+        subCatigories: '420',
     },
     {
         id: 421,
@@ -4440,6 +4480,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['fitball'],
         LFC: ['nothing'],
+        subCatigories: '421',
     },
     {
         id: 422,
@@ -4453,6 +4494,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
+        subCatigories: '422',
     },
     {
         id: 423,
@@ -4466,6 +4508,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '423',
     },
     {
         id: 424,
@@ -4479,6 +4522,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['back'],
+        subCatigories: '424',
     },
     {
         id: 425,
@@ -4491,7 +4535,8 @@ const trening = [
         title: "Captain's Chair Leg Raise",
         workingOut: ['gym'],
         inventory: ['machine'],
-        LFC: ['nothing'],
+        LFC: ['back'],
+        subCatigories: '425',
     },
     {
         id: 426,
@@ -4505,6 +4550,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
+        subCatigories: '426',
     },
     {
         id: 427,
@@ -4518,6 +4564,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['back'],
+        subCatigories: '427',
     },
     {
         id: 428,
@@ -4531,6 +4578,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '428',
     },
     {
         id: 429,
@@ -4544,6 +4592,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['back'],
+        subCatigories: '429',
     },
     {
         id: 430,
@@ -4557,6 +4606,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['nothing'],
+        subCatigories: '430',
     },
     {
         id: 431,
@@ -4570,6 +4620,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['nothing'],
         LFC: ['back'],
+        subCatigories: '431',
     },
     {
         id: 432,

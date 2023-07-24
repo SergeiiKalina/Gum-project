@@ -238,7 +238,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     el.fitnessLevel === Number(data.fitnessLevel) - 1) &&
                 el.basicExercise
         )
-        console.log(filteresBasic)
+
         if (filteresBasic.length > 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -263,7 +263,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                 el.fitnessLevel === Number(data.fitnessLevel) &&
                 !el.basicExercise
         )
-        console.log(filteresNoBasic)
+
         if (filteresNoBasic.length >= 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -346,8 +346,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     el.fitnessLevel === Number(data.fitnessLevel) - 2) &&
                 !el.basicExercise
         )
-        console.log(filteresBasic)
-        console.log(filteresNoBasic)
+
         if (filteresBasic.length > 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -394,7 +393,6 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     if (count === 20) {
                         break
                     }
-                    console.log(2)
                 } while (obj.has(randomElement.subCatigories))
                 obj.add(randomElement.subCatigories)
                 generalArr = [...generalArr, randomElement]
@@ -470,8 +468,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     el.fitnessLevel === Number(data.fitnessLevel) - 2) &&
                 !el.basicExercise
         )
-        console.log(filteresBasic)
-        console.log(filteresNoBasic)
+
         if (filteresBasic.length > 2) {
             for (let i = 0; i < 2; i++) {
                 let randomIndex
@@ -518,7 +515,6 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                     if (count === 20) {
                         break
                     }
-                    console.log(2)
                 } while (obj.has(randomElement.subCatigories))
                 obj.add(randomElement.subCatigories)
                 generalArr = [...generalArr, randomElement]
@@ -568,14 +564,12 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
                 }
                 let randomIndex
                 let randomElement
-                let count = 0
+
                 do {
                     randomIndex = Math.floor(
                         Math.random() * filteresNoBasic.length
                     )
                     randomElement = filteresNoBasic[randomIndex]
-                    console.log(2)
-                    count++
                 } while (obj.has(randomElement.subCatigories))
                 obj.add(randomElement.subCatigories)
                 generalArr = [...generalArr, randomElement]
@@ -585,49 +579,205 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         return generalArr
     }
 
-    function filterExHand() {
-        let arr = []
+    function filterExTriceps(data) {
         let generalArr = []
-        let arr1 = trening.filter((el) => el.sex === data.sex)
-        arr1 = arr1.concat(trening.filter((el) => el.sex === 'unsex'))
-        arr1 = trening.filter((el) => el.category === 'biceps')
+        let filterdProblem = trening.filter(
+            (el) => !el.LFC.some((item) => data.problems.includes(item))
+        )
+        filterdProblem = filterdProblem.filter((item) =>
+            item.workingOut.some((el) => el === data.placeOfTraining)
+        )
+        let filteredSex = filterdProblem.filter(
+            (el) => el.sex === data.sex || el.sex === 'unsex'
+        )
+        let obj = new Set()
 
-        let arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
-        arr2 = arr2.filter((el) => el.basicExercise)
-        arr = arr.concat(arr2)
-        generalArr = arr.slice(0, 2)
-        arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
-        arr2 = arr2.filter((el) => !el.basicExercise)
-        generalArr = generalArr.concat(arr2.slice(0, 2))
-        arr1 = trening.filter((el) => el.sex === data.sex)
-        arr1 = arr1.concat(trening.filter((el) => el.sex === 'unsex'))
-        arr1 = trening.filter((el) => el.category === 'triceps')
-        console.log(arr1)
-        arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
-        arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
-        arr2 = arr2.filter((el) => el.basicExercise)
-        arr = arr.concat(arr2)
-        generalArr = generalArr.concat(arr2.slice(0, 2))
-        arr2 = arr1.filter((el) => el.fitnessLevel === data.fitnessLevel)
-        arr2 = arr2.filter((el) => !el.basicExercise)
-        generalArr = generalArr.concat(arr2.slice(0, 2))
+        let filteresBasic = filteredSex.filter(
+            (el) =>
+                el.category === 'triceps' &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1) &&
+                el.basicExercise
+        )
+        let filteresNoBasic = filteredSex.filter(
+            (el) =>
+                el.category === 'triceps' &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1 ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 2) &&
+                !el.basicExercise
+        )
+
+        if (filteresBasic.length > 2) {
+            for (let i = 0; i < 2; i++) {
+                let randomIndex
+                let randomElement
+                let count = 0
+                do {
+                    count++
+                    randomIndex = Math.floor(
+                        Math.random() * filteresBasic.length
+                    )
+                    randomElement = filteresBasic[randomIndex]
+                    if (count === 40) {
+                        break
+                    }
+                } while (obj.has(randomElement.subCatigories))
+                if (count < 40) {
+                    obj.add(randomElement.subCatigories)
+                    generalArr = [...generalArr, randomElement]
+                }
+            }
+        } else {
+            for (let i of filteresBasic) {
+                let randomIndex = Math.floor(
+                    Math.random() * filteresBasic.length
+                )
+                if (!obj.has(filteresBasic[randomIndex].subCatigories)) {
+                    obj.add(filteresBasic[randomIndex].subCatigories)
+                    generalArr = [...generalArr, filteresBasic[randomIndex]]
+                }
+            }
+        }
+
+        if (filteresNoBasic.length >= 2) {
+            for (let i = 0; i < 2; i++) {
+                let randomIndex
+                let randomElement
+                let count = 0
+                do {
+                    count++
+                    randomIndex = Math.floor(
+                        Math.random() * filteresNoBasic.length
+                    )
+                    randomElement = filteresNoBasic[randomIndex]
+                    if (count === 20) {
+                        break
+                    }
+                } while (obj.has(randomElement.subCatigories))
+                obj.add(randomElement.subCatigories)
+                generalArr = [...generalArr, randomElement]
+            }
+        } else {
+            if (filteresNoBasic.length === 1) {
+                for (let i = 0; i < 1; i++) {
+                    obj.add(filteresNoBasic[i].subCatigories)
+                    generalArr = [...generalArr, filteresNoBasic[i]]
+                }
+            }
+            if (generalArr.length === 3) {
+                for (let i = 0; i < filteresBasic.length; i++) {
+                    let randomIndex = Math.floor(
+                        Math.random() * filteresBasic.length
+                    )
+                    if (!obj.has(filteresBasic[randomIndex].subCatigories)) {
+                        obj.add(filteresBasic[randomIndex].subCatigories)
+                        generalArr = [...generalArr, filteresBasic[randomIndex]]
+                    }
+                    if (generalArr.length === 4) {
+                        break
+                    }
+                }
+            }
+            if (filteresNoBasic.length === 0) {
+                for (let i = 0; i < 2; i++) {
+                    let randomIndex
+                    let randomElement
+
+                    do {
+                        randomIndex = Math.floor(
+                            Math.random() * filteresBasic.length
+                        )
+                        randomElement = filteresBasic[randomIndex]
+                    } while (obj.has(randomElement.subCatigories))
+                    obj.add(randomElement.subCatigories)
+                    generalArr = [...generalArr, randomElement]
+                }
+            }
+        }
+        if (generalArr.length <= 3) {
+            for (let i = 0; i < 2; i++) {
+                if (generalArr.length === 4) {
+                    break
+                }
+                let randomIndex
+                let randomElement
+
+                do {
+                    randomIndex = Math.floor(
+                        Math.random() * filteresNoBasic.length
+                    )
+                    randomElement = filteresNoBasic[randomIndex]
+                } while (obj.has(randomElement.subCatigories))
+                obj.add(randomElement.subCatigories)
+                generalArr = [...generalArr, randomElement]
+            }
+        }
+
+        return generalArr
+    }
+
+    function filterExPres(data) {
+        let generalArr = []
+        let filterdProblem = trening.filter(
+            (el) => !el.LFC.some((item) => data.problems.includes(item))
+        )
+        filterdProblem = filterdProblem.filter((item) =>
+            item.workingOut.some((el) => el === data.placeOfTraining)
+        )
+        let filteredSex = filterdProblem.filter(
+            (el) => el.sex === data.sex || el.sex === 'unsex'
+        )
+        let filteresNoBasic = filteredSex.filter(
+            (el) =>
+                el.category === 'pres' &&
+                (el.fitnessLevel === Number(data.fitnessLevel) ||
+                    el.fitnessLevel === Number(data.fitnessLevel) - 1) &&
+                !el.basicExercise
+        )
+
+        if (filteresNoBasic.length >= 2) {
+            for (let i = 0; i < 2; i++) {
+                let randomIndex
+                let randomElement
+                randomIndex = Math.floor(Math.random() * filteresNoBasic.length)
+                randomElement = filteresNoBasic[randomIndex]
+                if (!generalArr.includes(randomElement)) {
+                    generalArr = [...generalArr, randomElement]
+                }
+            }
+        }
         return generalArr
     }
 
     const generateTraining = (data) => {
         let allEx = []
-        // allEx = filterExLegg(data)
-        // allEx = allEx.concat(filterExShoulders(data))
-        // allEx = allEx.concat(filterExBack(data))
-        // allEx = allEx.concat(filterExPectoral(data))
-        allEx = allEx.concat(filterExBiceps(data))
 
-        if (data.split === 'Сhest + Back') {
-            allEx = filterExBack(data)
-        }
-        if (data.split === 'Biceps + Triceps') {
-            allEx = filterExHand(data)
-        }
+        allEx = filterExLegg(data)
+        allEx = allEx.concat(filterExShoulders(data))
+
+        allEx.unshift({
+            id: 1,
+            title: 'Training Day One',
+            style: true,
+        })
+
+        allEx.push({
+            id: 2,
+            title: 'Training Day Two',
+            style: true,
+        })
+        allEx = allEx.concat(filterExBack(data))
+        allEx = allEx.concat(filterExPectoral(data))
+
+        allEx.push({
+            id: 3,
+            title: 'Training Day Three',
+            style: true,
+        })
+        allEx = allEx.concat(filterExBiceps(data))
+        allEx = allEx.concat(filterExTriceps(data))
+        allEx = allEx.concat(filterExPres(data))
 
         onDataChange(allEx)
         onBulChange(true)

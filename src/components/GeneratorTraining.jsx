@@ -10,7 +10,7 @@ function GeneratorTraining() {
     const [bul, setBul] = useState(false)
     const [dataForm, setDataForm] = useState({})
     const [bulTextArea, setBulTextArea] = useState(false)
-
+    console.log(arr)
     const handelDataForm = (obj) => {
         setDataForm(obj)
     }
