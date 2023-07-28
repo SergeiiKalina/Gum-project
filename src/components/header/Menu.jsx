@@ -1,22 +1,39 @@
 import { NavLink } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { RxCaretRight, RxCaretLeft } from 'react-icons/rx'
 import BurgerMenu from '../BurgerMenu'
 import style from './menu.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { arrowLHidden, arrowRHidden, showMenu } from '../../store/menuReduser'
 
 function Menu() {
-    const [isHidden, setIsHidden] = useState(false)
-    const [arrowLeftHidden, setArrowLeftHidden] = useState(false)
-    const [arrowRightHidden, setArrowRightHidden] = useState(false)
     const elementRef = useRef(null)
     const blockRef = useRef(null)
+    const dispatch = useDispatch()
+    const burgerMenu = useSelector((state) => state.showMenu.showMenu)
+    const arrowLeftHidden = useSelector(
+        (state) => state.showMenu.arrowLeftHidden
+    )
+    const arrowRightHidden = useSelector(
+        (state) => state.showMenu.arrowRightHidden
+    )
+
+    function showBurgerMenu() {
+        if (!burgerMenu) {
+            dispatch(showMenu(true))
+        }
+        if (burgerMenu) {
+            dispatch(showMenu(false))
+        }
+    }
+
     window.addEventListener('resize', () => {
         if (window.innerWidth > 767) {
-            setIsHidden(false)
+            dispatch(showMenu(false))
         }
         if (window.innerWidth > 1250) {
-            setArrowRightHidden(false)
-            setArrowLeftHidden(false)
+            dispatch(arrowRHidden(false))
+            dispatch(arrowLHidden(false))
         }
     })
 
@@ -25,10 +42,10 @@ function Menu() {
             if (blockRef.current) {
                 const width = blockRef.current.offsetWidth
                 if (width < 1080) {
-                    setArrowRightHidden(true)
+                    dispatch(arrowRHidden(true))
                 }
                 if (width > 1080) {
-                    setArrowRightHidden(false)
+                    dispatch(arrowRHidden(false))
                 }
             }
         }
@@ -45,31 +62,22 @@ function Menu() {
         }
     }, [])
 
-    function showBurgerMenu() {
-        if (isHidden === false) {
-            setIsHidden(true)
-        }
-        if (isHidden) {
-            setIsHidden(false)
-        }
-    }
-
     function scrollRight() {
         blockRef.current.scrollLeft += blockRef.current.clientWidth / 4
         if (blockRef.current.scrollLeft > 100) {
-            setArrowLeftHidden(true)
+            dispatch(arrowLHidden(true))
         }
     }
     function scrollLeft() {
         blockRef.current.scrollLeft -= blockRef.current.clientWidth / 4
         if (blockRef.current.scrollLeft < 10) {
-            setArrowLeftHidden(false)
+            dispatch(arrowLHidden(false))
         }
     }
 
     return (
         <>
-            <BurgerMenu isHidden={isHidden} showBurgerMenu={showBurgerMenu} />
+            <BurgerMenu showBurgerMenu={showBurgerMenu} />
             {arrowLeftHidden && (
                 <RxCaretLeft
                     style={{

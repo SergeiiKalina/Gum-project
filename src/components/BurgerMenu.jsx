@@ -1,23 +1,25 @@
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import style from './burgerMenu.module.css'
 import MobileMenu from './header/MobileMenu'
 
-function BurgerMenu({ isHidden, showBurgerMenu }) {
+function BurgerMenu({ showBurgerMenu }) {
     function pageChange() {
         let currentUrl = window.location.href
         return currentUrl.replace('http://localhost:3000', '')
     }
+    const burgerMenu = useSelector((state) => state.showMenu.showMenu)
 
     return (
         <div className={style.btnBurger}>
             <NavLink
                 to={pageChange}
                 onClick={showBurgerMenu}
-                className={`${isHidden ? style.afterClick : ''}`}
+                className={`${burgerMenu ? style.afterClick : ''}`}
             >
                 <span />
             </NavLink>
-            <MobileMenu isHidden={isHidden} showBurgerMenu={showBurgerMenu} />
+            <MobileMenu showBurgerMenu={showBurgerMenu} />
         </div>
     )
 }

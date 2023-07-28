@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.scss'
 import App from './App'
-import Context from './components/layouts/Context'
+
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 const isMobile = {
     Android: function () {
@@ -38,7 +40,7 @@ if (isMobile.any()) {
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <Context>
+    <Provider store={store}>
         <App />
-    </Context>
+    </Provider>
 )

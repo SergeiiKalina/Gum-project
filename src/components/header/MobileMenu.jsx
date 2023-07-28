@@ -1,11 +1,14 @@
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import style from './mobileMenu.module.css'
 
-function MobileMenu({ isHidden, showBurgerMenu }) {
+function MobileMenu({ showBurgerMenu }) {
+    const burgerMenu = useSelector((state) => state.showMenu.showMenu)
+
     return (
         <nav
             style={
-                isHidden
+                burgerMenu
                     ? {
                           position: 'absolute',
                           top: 90,
