@@ -1,6 +1,6 @@
 import style from './formGenTrainStep.module.scss'
 
-export default function FormGenTrainStepFourth({ register, data, nextStep }) {
+export default function FormGenTrainStepFourth({ register, nextStep }) {
     return (
         <div className={style.wrapper}>
             <section>

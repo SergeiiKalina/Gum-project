@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import style from './formgeneratortraining.module.scss'
 import trening from '../data/data'
 import { useForm } from 'react-hook-form'
@@ -6,26 +5,31 @@ import FormGenTrainStepOne from './FormGenTrainStepOne'
 import FormGenTrainStepTwo from './FormGenTrainStepTwo'
 import FormGenTrainStepThird from './FormGenTrainStepThird'
 import FormGenTrainStepFourth from './FormGenTrainStepFourth'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    chandeStepForm,
+    changeBul,
+    writeFormData,
+} from '../store/generatorTreining'
 
-function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
+function FormGeneratorTraining({ onDataChange }) {
     const { register, handleSubmit } = useForm()
-    const [data, setData] = useState({})
-    const [step, setStep] = useState(1)
-
+    const data = useSelector((state) => state.training.formData)
+    const step = useSelector((state) => state.training.step)
+    const dispatch = useDispatch()
     const nextStep = (e) => {
         e.preventDefault()
-        setStep((prev) => prev + 1)
+        dispatch(chandeStepForm(step + 1))
     }
 
     const onSubmit = (data) => {
-        setData(data)
-        handelDataForm(data)
+        dispatch(writeFormData(data))
         generateTraining(data)
     }
 
     const clear = (e) => {
         e.preventDefault()
-        onBulChange(false)
+        dispatch(changeBul(false))
     }
 
     function filterExLegg(data) {
@@ -780,7 +784,7 @@ function FormGeneratorTraining({ onDataChange, onBulChange, handelDataForm }) {
         allEx = allEx.concat(filterExPres(data))
 
         onDataChange(allEx)
-        onBulChange(true)
+        dispatch(changeBul(true))
     }
 
     return (

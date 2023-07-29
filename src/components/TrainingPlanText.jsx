@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { writeTxtPlan } from '../store/generatorTreining'
 import style from './trainingPlanText.module.css'
 
-function TrainingPlanText({ plan }) {
+function TrainingPlanText() {
+    const plan = useSelector((state) => state.training.arr)
     let title = '\xA0\xA0 Training plan \n'
     let newPlan = useMemo(() => plan, [plan])
-    let [str, setStr] = useState('')
-
+    const dispatch = useDispatch()
+    let str = useSelector((state) => state.training.textPlan)
     useEffect(() => {
         str = ''
         newPlan.forEach((element, i) => {
@@ -21,7 +24,7 @@ function TrainingPlanText({ plan }) {
                 '4x15' +
                 '\n'
         })
-        setStr(str)
+        dispatch(writeTxtPlan(str))
     }, [newPlan])
 
     return (

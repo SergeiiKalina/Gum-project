@@ -1,34 +1,33 @@
-import { useEffect, useMemo, useState } from 'react'
 import { SlCheck, SlClose } from 'react-icons/sl'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    chandeCompleted,
+    chandeStepForm,
+    changeBul,
+    changeBulTextArea,
+} from '../store/generatorTreining'
 import DownloadButton from './DownloadButton'
 import style from './finishedTraining.module.scss'
 
-function FinishedTraining({
-    value,
-    onDataChange,
-    onShowTextArea,
-    onBulChange,
-    bulTextArea,
-    plan,
-}) {
-    const [arrTraining, setArrTraining] = useState(value)
-    let newValue = useMemo(() => value, [value])
-    useEffect(() => {
-        setArrTraining(newValue)
-    }, [newValue])
+function FinishedTraining({ onDataChange, onShowTextArea }) {
+    const value = useSelector((state) => state.training.arr)
+    const bulTextArea = useSelector((state) => state.training.bulTextArea)
+    const dispatch = useDispatch()
     const toggleTodo = (id) => {
-        setArrTraining(
-            arrTraining.map((el) =>
-                el.id === id
-                    ? { ...el, isComplited: !el.isComplited }
-                    : { ...el }
+        dispatch(
+            chandeCompleted(
+                value.map((el) =>
+                    el.id === id
+                        ? { ...el, isComplited: !el.isComplited }
+                        : { ...el }
+                )
             )
         )
     }
 
     const deleteExercises = (id) => {
-        setArrTraining(arrTraining.filter((el) => el.id !== id))
-        onDataChange(arrTraining.filter((el) => el.id !== id))
+        dispatch(chandeCompleted(value.filter((el) => el.id !== id)))
+        onDataChange(value.filter((el) => el.id !== id))
     }
 
     return (
@@ -36,11 +35,11 @@ function FinishedTraining({
             <h2 className={style.head}>
                 Exercises complited:
                 <span>
-                    {arrTraining.filter((el) => el.isComplited === true).length}
+                    {value.filter((el) => el.isComplited === true).length}
                 </span>
             </h2>
             <ul className={style.list}>
-                {arrTraining.map((el, i) => {
+                {value.map((el, i) => {
                     return (
                         <li
                             key={el.id}
@@ -88,12 +87,18 @@ function FinishedTraining({
                     </button>
                     <button
                         className={`${style.btnBacktoForm} ${style.button}`}
-                        onClick={() => onBulChange(false)}
+                        onClick={() =>
+                            dispatch(
+                                changeBul(false),
+                                dispatch(changeBulTextArea(false)),
+                                dispatch(chandeStepForm(1))
+                            )
+                        }
                     >
                         Back to form
                     </button>
                 </div>
-                {bulTextArea ? <DownloadButton plan={plan} /> : ''}
+                {bulTextArea ? <DownloadButton /> : ''}
             </section>
         </div>
     )

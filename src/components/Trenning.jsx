@@ -110,7 +110,6 @@ function Trening() {
             </article>
             <Suspense fallback={<h1>Loading...</h1>}>
                 <Pagination
-                    trening={trening}
                     paginationList={paginationList}
                     activeId={activeId}
                     arrTraining={arrTraining}

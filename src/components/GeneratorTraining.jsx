@@ -1,29 +1,26 @@
 import FormGeneratorTraining from './FormGeneratorTrening'
 import FinishedTraining from './FinishedTraining'
-import { useState } from 'react'
 import TrainingPlanText from './TrainingPlanText'
-
 import style from './generatorTraining.module.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeBulTextArea, writeArr } from '../store/generatorTreining'
 
 function GeneratorTraining() {
-    const [arr, setArr] = useState([])
-    const [bul, setBul] = useState(false)
-    const [dataForm, setDataForm] = useState({})
-    const [bulTextArea, setBulTextArea] = useState(false)
-    console.log(arr)
-    const handelDataForm = (obj) => {
-        setDataForm(obj)
-    }
+    const dispatch = useDispatch()
+    const bul = useSelector((state) => state.training.bul)
+    const bulTextArea = useSelector((state) => state.training.bulTextArea)
+
     const handleDataChange = (newArr) => {
-        setArr(newArr)
-    }
-    const handlerBulChange = (newBul) => {
-        setBul(newBul)
-        heandelShowTextArea()
+        dispatch(writeArr(newArr))
     }
 
     const heandelShowTextArea = () => {
-        setBulTextArea((prev) => !prev)
+        if (bulTextArea) {
+            dispatch(changeBulTextArea(false))
+        }
+        if (!bulTextArea) {
+            dispatch(changeBulTextArea(true))
+        }
     }
 
     return (
@@ -31,28 +28,20 @@ function GeneratorTraining() {
             <h2 className={style.header}>Generator Form</h2>
             <div className={style.block}>
                 {!bul && (
-                    <FormGeneratorTraining
-                        onDataChange={handleDataChange}
-                        onBulChange={handlerBulChange}
-                        plan={arr}
-                        handelDataForm={handelDataForm}
-                    />
+                    <FormGeneratorTraining onDataChange={handleDataChange} />
                 )}
 
                 <section className={style.section}>
                     {bul ? (
                         <FinishedTraining
-                            value={arr}
                             onDataChange={handleDataChange}
                             onShowTextArea={heandelShowTextArea}
-                            onBulChange={handlerBulChange}
                             bulTextArea={bulTextArea}
-                            plan={arr}
                         />
                     ) : (
                         ''
                     )}
-                    {bulTextArea ? <TrainingPlanText plan={arr} /> : ''}
+                    {bulTextArea ? <TrainingPlanText /> : ''}
                 </section>
             </div>
         </div>
