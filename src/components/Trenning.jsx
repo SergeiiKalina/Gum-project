@@ -4,74 +4,72 @@ import FormTraining from './FormTraining'
 import trening from '../data/data'
 import styles from './training.module.scss'
 import NotTraining from './Nottraining'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    changeActiveId,
+    changeIsChecked,
+    writeArrTraining,
+    writeCategories,
+    writeData,
+} from '../store/filterTrainingReduser'
 
 const Pagination = React.lazy(() => import('./Pagination'))
 
 function Trening() {
+    const dispatch = useDispatch()
+    const data = useSelector((state) => state.filterTraining.data)
     const { register, handleSubmit } = useForm({})
-    const [arrTraining, setArrTraining] = useState([])
+    const arrTraining = useSelector((state) => state.filterTraining.arrTraining)
     const [arr, setArr] = useState(arrTraining.slice(0, 18))
-    const [activeId, setActiveId] = useState(1)
     const [count, setCount] = useState(1)
-    const [categories, setCategories] = useState([])
-    const [data, setData] = useState(['legs'])
-    const [isChecked, setIsChecked] = useState({
-        legs: 'legs',
-        cardio: false,
-        functional: false,
-        press: false,
-        back: false,
-        biceps: false,
-        pectoral: false,
-        shoulders: false,
-        triceps: false,
-    })
 
     const onSubmit = (data) => {
-        setData(Object.values(data))
-        setIsChecked(data)
+        dispatch(writeData(Object.values(data)))
+        dispatch(changeIsChecked(data))
     }
-
     useEffect(() => {
-        const filteredTraining = trening.filter((item) =>
-            data.includes(item.category)
+        dispatch(
+            writeArrTraining(
+                trening.filter((item) => data.includes(item.category))
+            )
         )
-        setArrTraining(filteredTraining)
     }, [data])
 
     useEffect(() => {
         let set = new Set()
-
         for (let el of trening) {
             set.add(el.category)
         }
 
-        setCategories(Array.from(set))
+        dispatch(writeCategories(Array.from(set)))
     }, [])
 
     const paginationList = (e, countItems) => {
         if (e.currentTarget.name === 'left') {
             if (count === 1) {
                 setCount(1)
-                setActiveId(count)
+                dispatch(changeActiveId(count))
             } else {
                 setCount((prev) => prev - 1)
-                setActiveId(count - 1)
+
+                dispatch(changeActiveId(count - 1))
             }
         }
         if (e.currentTarget.name === 'right') {
             if (count === countItems) {
                 setCount(countItems)
-                setActiveId(count)
+
+                dispatch(changeActiveId(count))
             } else {
                 setCount((prev) => prev + 1)
-                setActiveId(count + 1)
+
+                dispatch(changeActiveId(count + 1))
             }
         }
         if (e.currentTarget.value) {
             setCount(Number(e.currentTarget.id))
             if (e.currentTarget.id) {
-                setActiveId(Number(e.currentTarget.id))
+                dispatch(changeActiveId(Number(e.currentTarget.id)))
             }
         }
     }
@@ -89,8 +87,6 @@ function Trening() {
                     handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
                     register={register}
-                    categories={categories}
-                    isChecked={isChecked}
                 />
                 <div className={styles.blockTrening}>
                     {arr.length ? (
@@ -109,11 +105,7 @@ function Trening() {
                 </div>
             </article>
             <Suspense fallback={<h1>Loading...</h1>}>
-                <Pagination
-                    paginationList={paginationList}
-                    activeId={activeId}
-                    arrTraining={arrTraining}
-                />
+                <Pagination paginationList={paginationList} />
             </Suspense>
         </section>
     )

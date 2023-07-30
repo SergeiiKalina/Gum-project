@@ -1,14 +1,11 @@
 import styles from './formTraining.module.scss'
 import { GrFormDown } from 'react-icons/gr'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
-export default function FormTraining({
-    handleSubmit,
-    onSubmit,
-    register,
-    categories,
-    isChecked,
-}) {
+export default function FormTraining({ handleSubmit, onSubmit, register }) {
+    const isChecked = useSelector((state) => state.filterTraining.isChecked)
+    const categories = useSelector((state) => state.filterTraining.categories)
     const [rev, setRev] = useState(false)
 
     const reverseArrow = () => {

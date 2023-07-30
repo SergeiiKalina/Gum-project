@@ -1,7 +1,9 @@
 import style from './pagination.module.scss'
-
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi'
-export default function Pagination({ paginationList, activeId, arrTraining }) {
+import { useSelector } from 'react-redux'
+export default function Pagination({ paginationList }) {
+    const arrTraining = useSelector((state) => state.filterTraining.arrTraining)
+    const activeId = useSelector((state) => state.filterTraining.activeId)
     let count = arrTraining.length
     let notePage = 18
     let countItems = Math.ceil(count / notePage)

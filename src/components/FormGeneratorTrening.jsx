@@ -10,7 +10,7 @@ import {
     chandeStepForm,
     changeBul,
     writeFormData,
-} from '../store/generatorTreining'
+} from '../store/generatorTreiningReduser'
 
 function FormGeneratorTraining({ onDataChange }) {
     const { register, handleSubmit } = useForm()
@@ -25,11 +25,6 @@ function FormGeneratorTraining({ onDataChange }) {
     const onSubmit = (data) => {
         dispatch(writeFormData(data))
         generateTraining(data)
-    }
-
-    const clear = (e) => {
-        e.preventDefault()
-        dispatch(changeBul(false))
     }
 
     function filterExLegg(data) {

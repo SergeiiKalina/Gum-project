@@ -3,7 +3,7 @@ import FinishedTraining from './FinishedTraining'
 import TrainingPlanText from './TrainingPlanText'
 import style from './generatorTraining.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeBulTextArea, writeArr } from '../store/generatorTreining'
+import { changeBulTextArea, writeArr } from '../store/generatorTreiningReduser'
 
 function GeneratorTraining() {
     const dispatch = useDispatch()

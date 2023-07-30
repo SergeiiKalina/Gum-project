@@ -5,7 +5,7 @@ import {
     chandeStepForm,
     changeBul,
     changeBulTextArea,
-} from '../store/generatorTreining'
+} from '../store/generatorTreiningReduser'
 import DownloadButton from './DownloadButton'
 import style from './finishedTraining.module.scss'
 
