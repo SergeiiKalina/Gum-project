@@ -4,6 +4,7 @@ import TrainingPlanText from './TrainingPlanText'
 import style from './generatorTraining.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeBulTextArea, writeArr } from '../store/generatorTreiningReduser'
+import React from 'react'
 
 function GeneratorTraining() {
     const dispatch = useDispatch()

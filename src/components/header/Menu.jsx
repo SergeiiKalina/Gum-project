@@ -4,7 +4,7 @@ import { RxCaretRight, RxCaretLeft } from 'react-icons/rx'
 import BurgerMenu from '../BurgerMenu'
 import style from './menu.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { arrowLHidden, arrowRHidden, showMenu } from '../../store/menuReduser'
+import { arrowLHidden, arrowRHidden, showMenu } from '../../store/menuSlice'
 
 function Menu() {
     const elementRef = useRef(null)

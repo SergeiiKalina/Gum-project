@@ -4,7 +4,7 @@ export default function FormGenTrainStepThird({ register }) {
     return (
         <div className={style.wrapper}>
             <section>
-                <h2>Third Step</h2>
+                <h2>Fourth Step</h2>
 
                 <h3>Place Of Training</h3>
                 <article className={style.inlineRadio}>

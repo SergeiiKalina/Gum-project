@@ -11,7 +11,7 @@ import {
     writeArrTraining,
     writeCategories,
     writeData,
-} from '../store/filterTrainingReduser'
+} from '../store/filterTrainingSlice'
 
 const Pagination = React.lazy(() => import('./Pagination'))
 

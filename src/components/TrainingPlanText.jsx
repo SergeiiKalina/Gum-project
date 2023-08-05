@@ -12,17 +12,27 @@ function TrainingPlanText() {
     useEffect(() => {
         str = ''
         newPlan.forEach((element, i) => {
-            str +=
-                '\xA0\xA0' +
-                Number(i + 1) +
-                '.' +
-                '\xA0' +
-                element.title +
-                ' ' +
-                '-' +
-                ' ' +
-                '4x15' +
-                '\n'
+            if (element.length === 1) {
+                return
+            }
+            element.forEach((el, index) => {
+                if (el.id === 0 || el.id === 10 || el.id === 20) {
+                    str += '\n' + '\xA0\xA0' + el.title + '\n'
+
+                    return
+                }
+                str +=
+                    '\xA0\xA0' +
+                    Number(index) +
+                    '.' +
+                    '\xA0' +
+                    el.title +
+                    ' ' +
+                    '-' +
+                    ' ' +
+                    '4x15' +
+                    '\n'
+            })
         })
         dispatch(writeTxtPlan(str))
     }, [newPlan])
@@ -33,7 +43,7 @@ function TrainingPlanText() {
                 width: '100%',
                 height: 'auto',
                 display: 'flex',
-                margin: '0 auto',
+                margin: '78px auto 0 auto',
             }}
         >
             <textarea

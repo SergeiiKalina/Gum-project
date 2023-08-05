@@ -716,7 +716,7 @@ function FormGeneratorTraining({ onDataChange }) {
         return generalArr
     }
 
-    function filterExPres(data) {
+    function filterExPres(data, num) {
         let generalArr = []
         let filterdProblem = trening.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
@@ -736,7 +736,7 @@ function FormGeneratorTraining({ onDataChange }) {
         )
 
         if (filteresNoBasic.length >= 2) {
-            for (let i = 0; i < 2; i++) {
+            for (let i = 0; i < num; i++) {
                 let randomIndex
                 let randomElement
                 randomIndex = Math.floor(Math.random() * filteresNoBasic.length)
@@ -751,33 +751,38 @@ function FormGeneratorTraining({ onDataChange }) {
 
     const generateTraining = (data) => {
         let allEx = []
-
-        allEx = filterExLegg(data)
-        allEx = allEx.concat(filterExShoulders(data))
-
-        allEx.unshift({
-            id: 1,
-            title: 'Training Day One',
+        let firstDay = []
+        let secondDay = []
+        let thirdDay = []
+        firstDay = filterExLegg(data)
+        firstDay = firstDay.concat(filterExShoulders(data))
+        firstDay = firstDay.concat(filterExPres(data, 1))
+        firstDay.unshift({
+            id: 0,
+            title: 'First training day',
             style: true,
         })
 
-        allEx.push({
-            id: 2,
-            title: 'Training Day Two',
+        secondDay.push({
+            id: 10,
+
+            title: 'Second Day Two',
             style: true,
         })
-        allEx = allEx.concat(filterExBack(data))
-        allEx = allEx.concat(filterExPectoral(data))
 
-        allEx.push({
-            id: 3,
-            title: 'Training Day Three',
+        secondDay = secondDay.concat(filterExBack(data))
+        secondDay = secondDay.concat(filterExPectoral(data))
+        secondDay = secondDay.concat(filterExPres(data, 1))
+
+        thirdDay.push({
+            id: 20,
+            title: 'Third training day',
             style: true,
         })
-        allEx = allEx.concat(filterExBiceps(data))
-        allEx = allEx.concat(filterExTriceps(data))
-        allEx = allEx.concat(filterExPres(data))
-
+        thirdDay = thirdDay.concat(filterExBiceps(data))
+        thirdDay = thirdDay.concat(filterExTriceps(data))
+        thirdDay = thirdDay.concat(filterExPres(data, 1))
+        allEx.push(firstDay, secondDay, thirdDay)
         onDataChange(allEx)
         dispatch(changeBul(true))
     }

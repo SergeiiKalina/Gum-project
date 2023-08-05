@@ -300,7 +300,7 @@ const trening = [
         title: 'Solder Press',
         workingOut: ['gym'],
         inventory: ['barbell'],
-        LFC: ['shoulder'],
+        LFC: ['shoulders'],
         subCatigories: 'ad',
     },
     {
@@ -385,7 +385,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['shoulders'],
-        subCatigories: 'ad',
+        subCatigories: 'adD',
     },
     {
         id: 129,
@@ -1785,7 +1785,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['band'],
         LFC: ['nothing'],
-        subCatigories: 'ad',
+        subCatigories: 'adB',
     },
     {
         id: 229,
@@ -1799,7 +1799,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['nothing'],
-        subCatigories: 'ad',
+        subCatigories: 'adD',
     },
     {
         id: 230,
@@ -1813,7 +1813,7 @@ const trening = [
         workingOut: ['gym'],
         inventory: ['machine'],
         LFC: ['nothing'],
-        subCatigories: 'ad',
+        subCatigories: 'adM',
     },
     {
         id: 231,
@@ -1827,7 +1827,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['nothing'],
-        subCatigories: 'ad',
+        subCatigories: 'adD',
     },
     {
         id: 232,
@@ -1855,7 +1855,7 @@ const trening = [
         workingOut: ['gym', 'home'],
         inventory: ['dumbbell'],
         LFC: ['back', 'shoulders'],
-        subCatigories: 'ad',
+        subCatigories: 'adD',
     },
     {
         id: 234,
@@ -4635,6 +4635,20 @@ const trening = [
         inventory: ['machine'],
         LFC: ['nothing'],
         subCatigories: 'bo',
+    },
+    {
+        id: 433,
+        isComplited: false,
+        img: '/images/mini/FB_IMG_1567430209194.jpg',
+        category: 'shoulders',
+        fitnessLevel: 2,
+        sex: 'unsex',
+        basicExercise: true,
+        title: 'Seated Dumbbell Military Press (Neutral Grip)',
+        workingOut: ['gym', 'home'],
+        inventory: ['dumbbell'],
+        LFC: ['nothing'],
+        subCatigories: 'adD',
     },
 ]
 export default trening
