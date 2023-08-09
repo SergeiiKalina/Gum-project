@@ -35,8 +35,6 @@ const generatorTreiningSlice = createSlice({
     },
 })
 
-console.log(generatorTreiningSlice)
-
 export const {
     writeArr,
     writeTxtPlan,

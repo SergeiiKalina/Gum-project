@@ -759,13 +759,14 @@ function FormGeneratorTraining({ onDataChange }) {
         firstDay = firstDay.concat(filterExPres(data, 1))
         firstDay.unshift({
             id: 0,
+            category: 'legs',
             title: 'First training day',
             style: true,
         })
 
         secondDay.push({
             id: 10,
-
+            category: 'back',
             title: 'Second Day Two',
             style: true,
         })
@@ -776,6 +777,7 @@ function FormGeneratorTraining({ onDataChange }) {
 
         thirdDay.push({
             id: 20,
+            category: 'biceps',
             title: 'Third training day',
             style: true,
         })

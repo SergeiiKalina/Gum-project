@@ -22,10 +22,11 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         20: '20',
     })
     const [showDialog, setShowDialog] = useState({
-        0: 0,
-        10: 10,
-        20: 20,
+        0: false,
+        10: false,
+        20: false,
     })
+    const [thisCatigories, setthisCatigories] = useState([])
     const dispatch = useDispatch()
     const toggleTodo = (index, id) => {
         const clonedValue = JSON.parse(JSON.stringify(value))
@@ -38,6 +39,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                 : el
         )
 
+        console.log(clonedValue)
         dispatch(writeArr(clonedValue))
     }
 
@@ -56,11 +58,20 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         }
     }
 
-    function toggleDialog(key, id) {
+    function toggleDialog(key, id, element) {
+        const newShowDialog = {}
+        let set = new Set()
+        for (let el of element) {
+            set.add(el.category)
+        }
+        setthisCatigories(Array.from(set))
         if (showDialog[key] === id) {
             setShowDialog({ ...showDialog, [key]: false })
         } else if (showDialog[key] === false) {
-            setShowDialog({ ...showDialog, [key]: id })
+            for (let prop in showDialog) {
+                newShowDialog[prop] = prop === key.toString() ? id : false
+            }
+            setShowDialog(newShowDialog)
         }
     }
 
@@ -77,19 +88,19 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                 return (
                     <article
                         key={el[0].id}
-                        className={
+                        className={`${style.article} ${
                             showList[el[0].id] === el[0].id.toString()
                                 ? style.open
                                 : null
-                        }
+                        }`}
                     >
                         <div className={style.titleButton}>
                             <button
-                                className={
+                                className={`${style.button} ${
                                     value[index].length === 1
                                         ? style.hiddenButton
                                         : null
-                                }
+                                }`}
                                 id={el[0].id}
                                 onClick={(e) =>
                                     toggleList(
@@ -103,14 +114,21 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     className={style.buttonCheckAll}
                                 />
                             </button>
-                            <div
-                                className={style.addExcerciseBlock}
-                                onClick={() => toggleDialog(el[0].id, el[0].id)}
-                            >
-                                <span>Add Excercice</span>
-                                <SlPlus className={style.addExcercise} />
+                            <div className={style.addExcerciseBlock}>
+                                <button
+                                    className={style.addExcerciseButton}
+                                    onClick={() => {
+                                        toggleDialog(el[0].id, el[0].id, el)
+                                    }}
+                                >
+                                    Add Excercice
+                                    <SlPlus className={style.addExcercise} />
+                                </button>
                                 {showDialog[el[0].id] === el[0].id ? (
-                                    <AddExcercise />
+                                    <AddExcercise
+                                        thisCatigories={thisCatigories}
+                                        currentArrIndex={index}
+                                    />
                                 ) : null}
                             </div>
                         </div>

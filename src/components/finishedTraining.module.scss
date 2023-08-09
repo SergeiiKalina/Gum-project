@@ -4,48 +4,48 @@
     width: 90%;
     margin: 0 auto;
     padding: 0 15px;
-    article {
+    .article {
         margin: 50px 0 0 0;
     }
-    button {
+    .button {
         display: flex;
         margin: 20px 0 0 10px;
         font-size: 20px;
         border: none;
-        background: none;
         cursor: pointer;
+        color: black;
         transition: background-color 0.3s ease;
         .buttonCheckAll {
-            margin: 2px 0 0 5px;
+            margin: 3px 0 0 5px;
         }
     }
-    article.open button {
+    .article.open .button {
         background-color: #f5f5f5;
     }
 
-    article button {
+    .article .button {
         border: 1px solid #ccc;
         padding: 3px 12px;
         border-radius: 10px;
     }
-    article button .buttonCheckAll {
+    .article .button .buttonCheckAll {
         color: red;
         transform: rotate(-90deg);
         transition: transform 0.3s ease;
     }
-    article.open button .buttonCheckAll {
+    .article.open .button .buttonCheckAll {
         color: red;
         transform: rotate(0deg);
         transition: transform 0.3s ease;
     }
-    article.open button:hover {
+    .article.open .button:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
 
-    button:hover {
+    .button:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
-    button:active {
+    .button:active {
         background-color: rgba(0, 0, 0, 0.2);
         transition: background-color 0.2s ease;
     }
@@ -58,8 +58,8 @@
         transition: max-height 0.3s ease;
     }
 
-    article.open .list {
-        max-height: 700px; /* Задайте здесь желаемую максимальную высоту списка */
+    .article.open .list {
+        max-height: 700px;
     }
 }
 .titleButton {
@@ -71,13 +71,28 @@
         cursor: pointer;
     }
     .addExcercise {
-        margin: 22px 0 0 8px;
+        margin: 0 0 0 8px;
         color: green;
         cursor: pointer;
     }
     span {
         @include adaptive-font(17, 12);
         margin: 24px 0 0 3rem;
+    }
+    .addExcerciseButton {
+        display: flex;
+        margin: 20px 0 0 10px;
+        padding: 6px 12px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        color: black;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    .button:hover {
+        color: black;
     }
 }
 
