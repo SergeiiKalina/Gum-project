@@ -3,6 +3,9 @@
 .wrapper {
     width: 50%;
     margin: 0 auto;
+    h3 {
+        @include adaptive-font(24, 16);
+    }
 }
 .form {
     width: 100%;
