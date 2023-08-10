@@ -7,21 +7,32 @@ export default function FormTraining({ handleSubmit, onSubmit, register }) {
     const isChecked = useSelector((state) => state.filterTraining.isChecked)
     const categories = useSelector((state) => state.filterTraining.categories)
     const [rev, setRev] = useState(false)
-
+    const [close, setClose] = useState(false)
+    console.log(rev)
     const reverseArrow = () => {
         setRev((prev) => !prev)
     }
+    const closeCatigories = () => {
+        setRev(false)
+        setClose(true)
+    }
     return (
-        <details className={styles.aside}>
-            <summary onClick={reverseArrow}>
+        <article
+            className={`${styles.aside} ${rev ? styles.mobile : ''}`}
+            open={rev}
+        >
+            <button onClick={reverseArrow} className={styles.buttonList}>
                 Categories
                 <GrFormDown
                     className={`${styles.arrow}  ${
                         rev ? `${styles.rotate}` : ''
                     }`}
                 />
-            </summary>
-            <form className={styles.nav} onChange={handleSubmit(onSubmit)}>
+            </button>
+            <form
+                className={`${styles.nav} ${rev ? '' : styles.toggleNav}`}
+                onChange={handleSubmit(onSubmit)}
+            >
                 {categories.length > 0 &&
                     categories.map((el) => {
                         let str = ''
@@ -54,6 +65,9 @@ export default function FormTraining({ handleSubmit, onSubmit, register }) {
                         )
                     })}
             </form>
-        </details>
+            <button className={styles.closeButton} onClick={closeCatigories}>
+                Close
+            </button>
+        </article>
     )
 }

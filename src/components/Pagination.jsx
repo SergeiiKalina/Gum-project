@@ -12,7 +12,11 @@ export default function Pagination({ paginationList }) {
         <div className={style.paginationBlock}>
             <ul>
                 {countItems >= 10 && (
-                    <button name="left" onClick={(e) => paginationList(e)}>
+                    <button
+                        name="left"
+                        onClick={(e) => paginationList(e)}
+                        className={style.buttonPagination}
+                    >
                         <FiArrowLeft />
                     </button>
                 )}
@@ -38,6 +42,7 @@ export default function Pagination({ paginationList }) {
                     <button
                         name="right"
                         onClick={(e) => paginationList(e, countItems)}
+                        className={style.buttonPagination}
                     >
                         <FiArrowRight />
                     </button>

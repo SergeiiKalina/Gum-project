@@ -142,7 +142,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     return
                                 }
                                 return (
-                                    <li key={element.id}>
+                                    <li draggable={true} key={element.id}>
                                         {element.title}
 
                                         <div

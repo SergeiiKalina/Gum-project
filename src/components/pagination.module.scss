@@ -32,7 +32,7 @@
     background-color: white;
     color: black;
 }
-button {
+.buttonPagination {
     height: 40px;
     padding: 8px 6px;
     margin: 35px 0 0 0;
@@ -45,7 +45,13 @@ button {
     transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover {
+.buttonPagination:hover {
     background-color: #9b5656;
     color: white;
+}
+
+@media (max-width: 560px) {
+    .paginationBlock {
+        width: 100%;
+    }
 }
