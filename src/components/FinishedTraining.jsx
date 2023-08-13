@@ -244,7 +244,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                         onDrag={(e) => drag(e)}
                                     >
                                         <li>
-                                            {element.title}
+                                            {`${i}. ${element.title}`}
 
                                             <div
                                                 style={{
