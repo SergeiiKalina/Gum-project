@@ -3,11 +3,25 @@
     position: absolute;
     top: 65px;
     left: -200px;
-    min-width: 600px;
     height: 400px;
     background-color: antiquewhite;
     border: 1px black solid;
     border-radius: 20px;
+    padding-right: 20px;
+    padding-left: 10px;
+    margin: 0 15px;
+    z-index: 1;
+
+    form {
+        display: flex;
+        align-items: center;
+        .label {
+            margin: 0 0 0 10px;
+            input {
+                padding: 2px 5px;
+            }
+        }
+    }
 }
 ol {
     display: flex;
@@ -63,5 +77,22 @@ ol {
         background-color: rgba(0, 0, 0, 0.2);
         transform: scale(0.9);
         transition: all 0.3s ease;
+    }
+}
+
+@media (max-width: 460px) {
+    .container {
+        left: -30px;
+        height: 450px;
+        margin: 0 15px 0 15px;
+        form {
+            flex-direction: column;
+            .label {
+                margin: 4px 0 0 0;
+            }
+        }
+        .articlePagination {
+            margin: 0;
+        }
     }
 }

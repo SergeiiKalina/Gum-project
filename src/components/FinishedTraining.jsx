@@ -27,6 +27,9 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         20: false,
     })
     const [thisCatigories, setthisCatigories] = useState([])
+    const [thisDragElement, setThisDragElement] = useState(null)
+    const [checked, setChecked] = useState(0)
+    const [currentTarget, setCurrentTarget] = useState(null)
     const dispatch = useDispatch()
     const toggleTodo = (index, id) => {
         const clonedValue = JSON.parse(JSON.stringify(value))
@@ -38,8 +41,19 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                   }
                 : el
         )
+        let count = 0
+        clonedValue.forEach((el) => {
+            el.forEach((element) => {
+                if (element.isComplited === true) {
+                    count += 1
+                    setChecked(count)
+                }
+            })
+        })
+        if (count === 0) {
+            setChecked(0)
+        }
 
-        console.log(clonedValue)
         dispatch(writeArr(clonedValue))
     }
 
@@ -75,13 +89,85 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         }
     }
 
+    const dragStart = (e, currentElementIndex, arrayIndex) => {
+        setCurrentTarget(e.currentTarget)
+        setThisDragElement(value[arrayIndex][currentElementIndex])
+    }
+
+    const drag = (e) => {
+        const target = e.currentTarget.style
+
+        target.opacity = '1'
+        target.transition = 'all 1s ease'
+    }
+
+    const dragEnter = (e) => {
+        const target = e.currentTarget.style
+        target.paddingTop = '0'
+    }
+
+    const dragOver = (e) => {
+        e.preventDefault()
+        if (currentTarget === e.currentTarget) {
+            return
+        }
+        const target = e.currentTarget.style
+
+        target.transition = 'all 0.5s ease'
+        target.paddingTop = '60px'
+    }
+
+    const dragLeave = (e) => {
+        const target = e.currentTarget.style
+
+        target.paddingTop = '0'
+        target.transition = 'all 1s ease'
+    }
+
+    const dragDrop = (e, currentElementIndex, arrayIndex) => {
+        e.preventDefault()
+        const target = e.currentTarget.style
+
+        target.paddingTop = '0'
+        target.transition = 'padding-top 0.3s ease, transform 0.3s ease'
+        const clonedValue = JSON.parse(JSON.stringify(value))
+        clonedValue[arrayIndex] = clonedValue[arrayIndex].filter(
+            (el) => el.id !== thisDragElement.id
+        )
+        clonedValue[arrayIndex].splice(currentElementIndex, 0, thisDragElement)
+        dispatch(writeArr(clonedValue))
+        let animationFrameId
+        let paddingValue = 60
+
+        const animateDrop = () => {
+            paddingValue -= 5
+            if (paddingValue <= 0) {
+                paddingValue = 0
+                target.transition = 'all 0.3s ease'
+                cancelAnimationFrame(animationFrameId)
+            } else {
+                animationFrameId = requestAnimationFrame(animateDrop)
+            }
+            target.paddingTop = `${paddingValue}px`
+        }
+
+        animationFrameId = requestAnimationFrame(animateDrop)
+    }
+
+    const dragEnd = (e) => {
+        e.preventDefault()
+        const target = e.currentTarget.style
+
+        target.transform = 'scale(1)'
+        target.paddingTop = '0'
+        target.transition = 'all 1s ease'
+    }
+
     return (
         <div className={style.container}>
             <h2 className={style.head}>
                 Exercises complited:
-                <span>
-                    {value.filter((el) => el.isComplited === true).length}
-                </span>
+                <span>{checked}</span>
             </h2>
 
             {value.map((el, index) => {
@@ -133,7 +219,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                             </div>
                         </div>
                         <ul className={style.list}>
-                            {el.map((element) => {
+                            {el.map((element, i) => {
                                 if (
                                     element.id === 0 ||
                                     element.id === 10 ||
@@ -142,51 +228,67 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     return
                                 }
                                 return (
-                                    <li draggable={true} key={element.id}>
-                                        {element.title}
+                                    <div
+                                        className={style.containerTodo}
+                                        draggable={true}
+                                        key={element.id}
+                                        id={element.id}
+                                        onDragStart={(e) =>
+                                            dragStart(e, i, index)
+                                        }
+                                        onDragEnter={(e) => dragEnter(e)}
+                                        onDragOver={(e) => dragOver(e)}
+                                        onDragLeave={(e) => dragLeave(e)}
+                                        onDrop={(e) => dragDrop(e, i, index)}
+                                        onDragEnd={(e) => dragEnd(e)}
+                                        onDrag={(e) => drag(e)}
+                                    >
+                                        <li>
+                                            {element.title}
 
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                flexWrap: 'nowrap',
-                                            }}
-                                        >
-                                            <SlCheck
-                                                style={
-                                                    element.isComplited
-                                                        ? {
-                                                              color: '#B5B8B1',
-                                                              cursor: 'pointer',
-                                                          }
-                                                        : {
-                                                              color: ' #00ff00',
-                                                              cursor: 'pointer',
-                                                          }
-                                                }
-                                                className={style.buttonTodo}
-                                                onClick={() =>
-                                                    toggleTodo(
-                                                        index,
-                                                        element.id
-                                                    )
-                                                }
-                                            />
-                                            <SlClose
-                                                onClick={() =>
-                                                    deleteExercises(
-                                                        index,
-                                                        element.id
-                                                    )
-                                                }
+                                            <div
                                                 style={{
-                                                    color: 'red',
-                                                    cursor: 'pointer',
-                                                    padding: '0 0 0 10px',
+                                                    display: 'flex',
+                                                    flexWrap: 'nowrap',
                                                 }}
-                                                className={style.buttonTodo}
-                                            />
-                                        </div>
-                                    </li>
+                                            >
+                                                <SlCheck
+                                                    style={
+                                                        element.isComplited
+                                                            ? {
+                                                                  color: '#B5B8B1',
+                                                                  cursor: 'pointer',
+                                                              }
+                                                            : {
+                                                                  color: ' #00ff00',
+                                                                  cursor: 'pointer',
+                                                              }
+                                                    }
+                                                    className={style.buttonTodo}
+                                                    onClick={() =>
+                                                        toggleTodo(
+                                                            index,
+                                                            element.id
+                                                        )
+                                                    }
+                                                />
+                                                <SlClose
+                                                    onClick={() =>
+                                                        deleteExercises(
+                                                            index,
+                                                            element.id
+                                                        )
+                                                    }
+                                                    style={{
+                                                        color: 'red',
+                                                        cursor: 'pointer',
+                                                        padding: '0 0 0 10px',
+                                                    }}
+                                                    className={style.buttonTodo}
+                                                />
+                                            </div>
+                                        </li>
+                                    </div>
                                 )
                             })}
                         </ul>

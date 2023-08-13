@@ -55,11 +55,13 @@
     .list {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 1s ease;
     }
 
     .article.open .list {
         max-height: 700px;
+        overflow: visible;
+        transition: max-height 1s ease;
     }
 }
 .titleButton {
@@ -99,10 +101,25 @@
 .list {
     margin-top: 24px;
     color: #fff;
+
     padding: 0;
+    .containerTodo {
+        width: 90%;
+        border-radius: 20px;
+        cursor: grab;
+    }
+    div[draggable='true'] {
+        -webkit-opacity: 1;
+        -webkit-box-shadow: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: move;
+    }
 }
 .list li {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: #8e824a;
@@ -110,6 +127,7 @@
     margin: 10px 0 0 0;
     padding: 12px 12px 12px 12px;
     border-radius: 20px;
+    cursor: grab;
 }
 .buttonTodo {
     @include adaptive-font(20, 16);
@@ -153,5 +171,44 @@
     }
     .btnBacktoForm:hover {
         background-color: royalblue;
+    }
+}
+@media (max-width: 560px) {
+    .container {
+        .article {
+            margin: 20px 0 0 0;
+        }
+    }
+    .titleButton {
+        width: 90%;
+        .addExcerciseBlock {
+            width: 50%;
+        }
+        .button {
+            display: flex;
+            align-items: center;
+            width: 150px;
+            height: 30px;
+            @include adaptive-font(18, 11);
+        }
+
+        .addExcerciseButton {
+            @include adaptive-font(20, 12);
+        }
+    }
+}
+@media (max-width: 460px) {
+    .article {
+        width: 100%;
+    }
+    .titleButton {
+        display: flex;
+        flex-direction: column-reverse;
+        .addExcerciseBlock {
+            width: 100%;
+        }
+        .button {
+            width: 132px;
+        }
     }
 }

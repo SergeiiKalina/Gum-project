@@ -95,16 +95,14 @@ export default function AddExcercise({ thisCatigories, currentArrIndex }) {
                                 </label>
                             </li>
                         ))}
-                        <li>
-                            <label>
-                                <input
-                                    type="text"
-                                    placeholder="excersice"
-                                    onChange={(e) => changeForm(e.target.value)}
-                                />
-                            </label>
-                        </li>
                     </ol>
+                    <label className={style.label}>
+                        <input
+                            type="text"
+                            placeholder="excersice"
+                            onChange={(e) => changeForm(e.target.value)}
+                        />
+                    </label>
                 </form>
             </menu>
             <section className={style.excerciseBloc}>
