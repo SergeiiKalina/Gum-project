@@ -9,31 +9,54 @@ export default function StartTraining() {
     const [exercise, setExercise] = useState(value[index][numExercise])
     const [showTimer, setShowTimer] = useState(false)
     const [workTime, setWorkTime] = useState(60)
-    let timerInterval
-    console.log('render')
 
+    console.log('render')
     function onTimer() {
         setShowTimer(true)
     }
+    function increment() {
+        if (value[index].length - 1 === numExercise) {
+            return
+        } else {
+            setShowTimer(false)
+            setWorkTime(60)
+            setNumExercise((prev) => prev + 1)
+        }
+    }
+    function decrement() {
+        if (numExercise === 1) {
+            return
+        } else {
+            setShowTimer(false)
+            setWorkTime(60)
+            setNumExercise((prev) => prev - 1)
+        }
+    }
+
     useEffect(() => {
         setExercise(value[index][numExercise])
     }, [numExercise, value, index])
 
     useEffect(() => {
-        if (workTime <= 0) {
-            clearInterval(timerInterval)
+        if (workTime === 0) {
             setShowTimer(false)
+            setWorkTime(60)
         }
     }, [workTime])
 
     useEffect(() => {
-        if (showTimer) {
-            timerInterval = setInterval(() => {
+        let interval
+        if (showTimer && workTime > 0) {
+            interval = setInterval(() => {
                 setWorkTime((prev) => prev - 1)
             }, 1000)
-        } else if (!showTimer) {
-            clearInterval(timerInterval)
-            return
+        } else if (workTime === 0) {
+            clearInterval(interval)
+            setShowTimer(false)
+            setWorkTime(60)
+        }
+        return () => {
+            clearInterval(interval)
         }
     }, [showTimer, workTime])
     return (
@@ -44,15 +67,21 @@ export default function StartTraining() {
                 <div>{exercise.title}</div>
             </article>
             <article className={style.blockButton}>
-                <button className={style.buttonDirection}>Prev</button>
+                <button className={style.buttonDirection} onClick={decrement}>
+                    Prev
+                </button>
                 {showTimer ? (
-                    <div> {workTime} </div>
+                    <button className={style.buttonGo} onClick={onTimer}>
+                        {workTime}
+                    </button>
                 ) : (
                     <button className={style.buttonGo} onClick={onTimer}>
                         Go
                     </button>
                 )}
-                <button className={style.buttonDirection}>Next</button>
+                <button className={style.buttonDirection} onClick={increment}>
+                    Next
+                </button>
             </article>
         </section>
     )
