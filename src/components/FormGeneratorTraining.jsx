@@ -1,16 +1,16 @@
-import style from './formgeneratortraining.module.scss'
-import trening from '../data/data'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import FormGenTrainStepOne from './FormGenTrainStepOne'
 import FormGenTrainStepTwo from './FormGenTrainStepTwo'
 import FormGenTrainStepThird from './FormGenTrainStepThird'
 import FormGenTrainStepFourth from './FormGenTrainStepFourth'
-import { useDispatch, useSelector } from 'react-redux'
 import {
-    chandeStepForm,
+    changeStepForm,
     changeBul,
     writeFormData,
-} from '../store/generatorTreiningReduser'
+} from '../store/generatorTrainingReduser'
+import training from '../data/data'
+import style from './formGeneratorTraining.module.scss'
 
 function FormGeneratorTraining({ onDataChange }) {
     const { register, handleSubmit } = useForm()
@@ -19,7 +19,7 @@ function FormGeneratorTraining({ onDataChange }) {
     const dispatch = useDispatch()
     const nextStep = (e) => {
         e.preventDefault()
-        dispatch(chandeStepForm(step + 1))
+        dispatch(changeStepForm(step + 1))
     }
 
     const onSubmit = (data) => {
@@ -27,9 +27,9 @@ function FormGeneratorTraining({ onDataChange }) {
         generateTraining(data)
     }
 
-    function filterExLegg(data) {
+    function filterExLeg(data) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -131,7 +131,7 @@ function FormGeneratorTraining({ onDataChange }) {
 
     function filterExShoulders(data) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -219,7 +219,7 @@ function FormGeneratorTraining({ onDataChange }) {
 
     function filterExBack(data) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -319,7 +319,7 @@ function FormGeneratorTraining({ onDataChange }) {
     }
     function filterExPectoral(data) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -440,7 +440,7 @@ function FormGeneratorTraining({ onDataChange }) {
 
     function filterExBiceps(data) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -580,7 +580,7 @@ function FormGeneratorTraining({ onDataChange }) {
 
     function filterExTriceps(data) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -718,7 +718,7 @@ function FormGeneratorTraining({ onDataChange }) {
 
     function filterExPres(data, num) {
         let generalArr = []
-        let filterdProblem = trening.filter(
+        let filterdProblem = training.filter(
             (el) => !el.LFC.some((item) => data.problems.includes(item))
         )
         filterdProblem = filterdProblem.filter((item) =>
@@ -754,7 +754,7 @@ function FormGeneratorTraining({ onDataChange }) {
         let firstDay = []
         let secondDay = []
         let thirdDay = []
-        firstDay = filterExLegg(data)
+        firstDay = filterExLeg(data)
         firstDay = firstDay.concat(filterExShoulders(data))
         firstDay = firstDay.concat(filterExPres(data, 1))
         firstDay.unshift({
@@ -805,18 +805,18 @@ function FormGeneratorTraining({ onDataChange }) {
                     />
                 )}
                 {step === 3 && (
-                    <FormGenTrainStepFourth
-                        register={register}
-                        nextStep={nextStep}
-                        data={data}
-                    />
-                )}
-                {step === 4 && (
                     <FormGenTrainStepThird
                         register={register}
                         nextStep={nextStep}
                         data={data}
                         generateTraining={generateTraining}
+                    />
+                )}
+                {step === 4 && (
+                    <FormGenTrainStepFourth
+                        register={register}
+                        nextStep={nextStep}
+                        data={data}
                     />
                 )}
             </form>

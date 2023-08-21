@@ -1,17 +1,21 @@
+import React, { useState } from 'react'
 import { SlCheck, SlClose, SlPlus } from 'react-icons/sl'
+import { FcStart } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
 import { LuChevronDown } from 'react-icons/lu'
 import {
-    chandeCompleted,
-    chandeStepForm,
+    changeCompleted,
+    changeStepForm,
     changeBul,
     changeBulTextArea,
     writeArr,
-} from '../store/generatorTreiningReduser'
+    setIndexStartTraining,
+} from '../store/generatorTrainingReduser'
 import DownloadButton from './DownloadButton'
+import AddExercise from './AddExercise'
 import style from './finishedTraining.module.scss'
-import React, { useState } from 'react'
-import AddExcercise from './AddExcercise'
+import MenuExercise from './MenuExercise'
+import { useNavigate } from 'react-router-dom'
 
 function FinishedTraining({ onDataChange, onShowTextArea }) {
     const value = useSelector((state) => state.training.arr)
@@ -26,13 +30,22 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         10: false,
         20: false,
     })
-    const [thisCatigories, setthisCatigories] = useState([])
+    const [thisCategories, setThisCategories] = useState([])
     const [thisDragElement, setThisDragElement] = useState(null)
     const [checked, setChecked] = useState(0)
     const [currentTarget, setCurrentTarget] = useState(null)
+    const [startTraining, setStartTraining] = useState(9999)
+    const [showMenuExercise, setShowMenuExercise] = useState('')
+    const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    function showStartTraining(index) {
+        dispatch(setIndexStartTraining(index))
+        navigate('/start_training')
+    }
     const toggleTodo = (index, id) => {
-        const clonedValue = JSON.parse(JSON.stringify(value))
+        const clonedValue = structuredClone(value)
+
         clonedValue[index] = clonedValue[index].map((el) =>
             el.id === id
                 ? {
@@ -58,9 +71,9 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     }
 
     const deleteExercises = (index, id) => {
-        const clonedValue = JSON.parse(JSON.stringify(value))
+        const clonedValue = structuredClone(value)
         clonedValue[index] = clonedValue[index].filter((el) => el.id !== id)
-        dispatch(chandeCompleted(clonedValue))
+        dispatch(changeCompleted(clonedValue))
         onDataChange(clonedValue)
     }
 
@@ -73,12 +86,13 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     }
 
     function toggleDialog(key, id, element) {
+        setShowMenuExercise('')
         const newShowDialog = {}
         let set = new Set()
         for (let el of element) {
             set.add(el.category)
         }
-        setthisCatigories(Array.from(set))
+        setThisCategories(Array.from(set))
         if (showDialog[key] === id) {
             setShowDialog({ ...showDialog, [key]: false })
         } else if (showDialog[key] === false) {
@@ -130,7 +144,8 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
 
         target.paddingTop = '0'
         target.transition = 'padding-top 0.3s ease, transform 0.3s ease'
-        const clonedValue = JSON.parse(JSON.stringify(value))
+        const clonedValue = structuredClone(value)
+
         clonedValue[arrayIndex] = clonedValue[arrayIndex].filter(
             (el) => el.id !== thisDragElement.id
         )
@@ -161,6 +176,18 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         target.transform = 'scale(1)'
         target.paddingTop = '0'
         target.transition = 'all 1s ease'
+    }
+
+    function openInfoExercise(e) {
+        for (let key in showDialog) {
+            setShowDialog((prev) => ({ ...prev, [key]: false }))
+        }
+        console.log(showDialog)
+        if (e.currentTarget.id === showMenuExercise) {
+            setShowMenuExercise('')
+        } else {
+            setShowMenuExercise(e.currentTarget.id)
+        }
     }
 
     return (
@@ -200,22 +227,29 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     className={style.buttonCheckAll}
                                 />
                             </button>
-                            <div className={style.addExcerciseBlock}>
+                            <div className={style.addExerciseBlock}>
                                 <button
-                                    className={style.addExcerciseButton}
+                                    className={style.addExerciseButton}
                                     onClick={() => {
                                         toggleDialog(el[0].id, el[0].id, el)
                                     }}
                                 >
-                                    Add Excercice
-                                    <SlPlus className={style.addExcercise} />
+                                    Add Exercise
+                                    <SlPlus className={style.addExercise} />
                                 </button>
                                 {showDialog[el[0].id] === el[0].id ? (
-                                    <AddExcercise
-                                        thisCatigories={thisCatigories}
+                                    <AddExercise
+                                        thisCategories={thisCategories}
                                         currentArrIndex={index}
                                     />
                                 ) : null}
+                                <button
+                                    className={style.startTraining}
+                                    onClick={() => showStartTraining(index)}
+                                >
+                                    Start this training
+                                    <FcStart className={style.startExercise} />
+                                </button>
                             </div>
                         </div>
                         <ul className={style.list}>
@@ -244,8 +278,50 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                         onDrag={(e) => drag(e)}
                                     >
                                         <li>
-                                            {`${i}. ${element.title}`}
-
+                                            <div
+                                                style={{
+                                                    position: 'relative',
+                                                    width: '90%',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                }}
+                                                id={element.id}
+                                                onClick={(e) =>
+                                                    openInfoExercise(e)
+                                                }
+                                                title={element.title}
+                                            >
+                                                {`${i}. ${
+                                                    element.title.length > 17
+                                                        ? `${element.title.slice(
+                                                              0,
+                                                              17
+                                                          )}...`
+                                                        : element.title
+                                                }`}
+                                                <div
+                                                    className={
+                                                        style.blockStartExercise
+                                                    }
+                                                >
+                                                    <aside
+                                                        className={style.aside}
+                                                    >
+                                                        Start the exercise
+                                                    </aside>
+                                                    {showMenuExercise ==
+                                                    element.id ? (
+                                                        <MenuExercise
+                                                            showMenuExercise={
+                                                                showMenuExercise
+                                                            }
+                                                            setShowMenuExercise={
+                                                                setShowMenuExercise
+                                                            }
+                                                        />
+                                                    ) : null}
+                                                </div>
+                                            </div>
                                             <div
                                                 style={{
                                                     display: 'flex',
@@ -302,12 +378,12 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                         {bulTextArea ? 'Hide Text' : 'Show Text'}
                     </button>
                     <button
-                        className={`${style.btnBacktoForm} ${style.button}`}
+                        className={`${style.btnBackToForm} ${style.button}`}
                         onClick={() =>
                             dispatch(
                                 changeBul(false),
                                 dispatch(changeBulTextArea(false)),
-                                dispatch(chandeStepForm(1))
+                                dispatch(changeStepForm(1))
                             )
                         }
                     >

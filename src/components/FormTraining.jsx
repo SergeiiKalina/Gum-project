@@ -1,7 +1,7 @@
-import styles from './formTraining.module.scss'
-import { GrFormDown } from 'react-icons/gr'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { GrFormDown } from 'react-icons/gr'
+import styles from './formTraining.module.scss'
 
 export default function FormTraining({ handleSubmit, onSubmit, register }) {
     const isChecked = useSelector((state) => state.filterTraining.isChecked)
@@ -12,7 +12,7 @@ export default function FormTraining({ handleSubmit, onSubmit, register }) {
     const reverseArrow = () => {
         setRev((prev) => !prev)
     }
-    const closeCatigories = () => {
+    const closeCategories = () => {
         setRev(false)
         setClose(true)
     }
@@ -65,7 +65,7 @@ export default function FormTraining({ handleSubmit, onSubmit, register }) {
                         )
                     })}
             </form>
-            <button className={styles.closeButton} onClick={closeCatigories}>
+            <button className={styles.closeButton} onClick={closeCategories}>
                 Close
             </button>
         </article>

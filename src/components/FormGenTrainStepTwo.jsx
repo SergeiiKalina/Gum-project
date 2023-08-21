@@ -22,7 +22,7 @@ export default function FormGenTrainStepTwo({ register, nextStep }) {
                 <select {...register('focus')}>
                     <option value="focus">Focus</option>
                     <option value="fullBody">Full Body</option>
-                    <option value="upperBody">Weight Gain</option>
+                    <option value="upperBody">Upper Body</option>
                     <option value="legs">Legs</option>
                     <option value="hand">Hand</option>
                     <option value="press">Press</option>

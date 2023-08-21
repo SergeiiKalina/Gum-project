@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 import trainingSlice from './filterTrainingSlice'
-import generatorTreiningSlice from './generatorTreiningReduser'
+import generatorTrainingSlice from './generatorTrainingReduser'
 import toolkitSlice from './menuSlice'
 
 const rootReduser = combineReducers({
     showMenu: toolkitSlice,
-    training: generatorTreiningSlice,
+    training: generatorTrainingSlice,
     filterTraining: trainingSlice,
 })
 

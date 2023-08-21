@@ -1,4 +1,4 @@
-const trening = [
+const training = [
     {
         id: 101,
         isComplited: false,
@@ -4651,4 +4651,4 @@ const trening = [
         subCatigories: 'adD',
     },
 ]
-export default trening
+export default training

@@ -1,10 +1,6 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import FormTraining from './FormTraining'
-import trening from '../data/data'
-import styles from './training.module.scss'
-import NotTraining from './Nottraining'
 import { useDispatch, useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
 import {
     changeActiveId,
     changeIsChecked,
@@ -12,10 +8,15 @@ import {
     writeCategories,
     writeData,
 } from '../store/filterTrainingSlice'
+import FormTraining from './FormTraining'
+import training from '../data/data'
+import NotTraining from './NotTraining'
+
+import styles from './training.module.scss'
 
 const Pagination = React.lazy(() => import('./Pagination'))
 
-function Trening() {
+function Training() {
     const dispatch = useDispatch()
     const data = useSelector((state) => state.filterTraining.data)
     const { register, handleSubmit } = useForm({})
@@ -30,14 +31,14 @@ function Trening() {
     useEffect(() => {
         dispatch(
             writeArrTraining(
-                trening.filter((item) => data.includes(item.category))
+                training.filter((item) => data.includes(item.category))
             )
         )
     }, [data])
 
     useEffect(() => {
         let set = new Set()
-        for (let el of trening) {
+        for (let el of training) {
             set.add(el.category)
         }
 
@@ -110,4 +111,4 @@ function Trening() {
         </section>
     )
 }
-export default Trening
+export default Training

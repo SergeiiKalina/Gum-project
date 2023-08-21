@@ -21,7 +21,7 @@ function DownloadButton() {
     }
 
     return (
-        <div className={style.downloadDuttonBlock}>
+        <div className={style.downloadButtonBlock}>
             <button onClick={handleDownload} className={style.btnDownload}>
                 Download
             </button>

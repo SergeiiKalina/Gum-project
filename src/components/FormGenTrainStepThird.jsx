@@ -1,35 +1,31 @@
 import style from './formGenTrainStep.module.scss'
 
-export default function FormGenTrainStepThird({ register }) {
+export default function FormGenTrainStepThird({ register, nextStep }) {
     return (
         <div className={style.wrapper}>
             <section>
-                <h2>Fourth Step</h2>
+                <h2>Third Step</h2>
 
                 <h3>Place Of Training</h3>
-                <article className={style.inlineRadio}>
-                    <label className={style.radio}>
-                        <input
-                            type="radio"
-                            name="placeOfTraining"
-                            value="home"
-                            {...register('placeOfTraining')}
-                        />
-                        Home
-                    </label>
-
-                    <label className={style.radio}>
-                        <input
-                            type="radio"
-                            name="placeOfTraining"
-                            value="gym"
-                            {...register('placeOfTraining')}
-                        />
-                        Gym
-                    </label>
+                <article>
+                    <select {...register('lifestyle')}>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="passive">Passive</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="high">High</option>
+                    </select>
+                    <select {...register('problems')} multiple>
+                        <option value="">
+                            Problems with the musculoskeletal system
+                        </option>
+                        <option value="back">Back</option>
+                        <option value="elbows">Elbows</option>
+                        <option value="shoulders">Shoulders</option>
+                        <option value="knees">Knees</option>
+                        <option value="hip joint">Hip Joint</option>
+                    </select>
                 </article>
-
-                <button type="submit">Fourth Step</button>
+                <button onClick={nextStep}>Fourth Step</button>
             </section>
         </div>
     )

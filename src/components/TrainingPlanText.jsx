@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { writeTxtPlan } from '../store/generatorTreiningReduser'
+import { writeTxtPlan } from '../store/generatorTrainingReduser'
 import style from './trainingPlanText.module.css'
 
 function TrainingPlanText() {

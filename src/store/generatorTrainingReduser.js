@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const generatorTreiningSlice = createSlice({
-    name: 'generatorTreiningSlice',
+const generatorTrainingSlice = createSlice({
+    name: 'generatorTrainingSlice',
     initialState: {
         arr: [],
         bul: false,
@@ -9,6 +9,7 @@ const generatorTreiningSlice = createSlice({
         formData: {},
         step: 1,
         textPlan: '',
+        startTrainingIndex: 9999,
     },
     reducers: {
         writeArr(state, action) {
@@ -20,10 +21,10 @@ const generatorTreiningSlice = createSlice({
         writeFormData(state, action) {
             state.formData = action.payload
         },
-        chandeCompleted(state, action) {
+        changeCompleted(state, action) {
             state.arr = action.payload
         },
-        chandeStepForm(state, action) {
+        changeStepForm(state, action) {
             state.step = action.payload
         },
         changeBul(state, action) {
@@ -32,6 +33,9 @@ const generatorTreiningSlice = createSlice({
         changeBulTextArea(state, action) {
             state.bulTextArea = action.payload
         },
+        setIndexStartTraining(state, action) {
+            state.startTrainingIndex = action.payload
+        },
     },
 })
 
@@ -39,10 +43,11 @@ export const {
     writeArr,
     writeTxtPlan,
     writeFormData,
-    chandeCompleted,
-    chandeStepForm,
+    changeCompleted,
+    changeStepForm,
     changeBul,
     changeBulTextArea,
-} = generatorTreiningSlice.actions
+    setIndexStartTraining,
+} = generatorTrainingSlice.actions
 
-export default generatorTreiningSlice.reducer
+export default generatorTrainingSlice.reducer

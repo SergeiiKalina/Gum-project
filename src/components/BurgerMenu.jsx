@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import style from './burgerMenu.module.css'
 import MobileMenu from './header/MobileMenu'
+import style from './burgerMenu.module.css'
 
 function BurgerMenu({ showBurgerMenu }) {
     function pageChange() {

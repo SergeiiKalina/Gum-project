@@ -1,9 +1,9 @@
-import FormGeneratorTraining from './FormGeneratorTrening'
+import FormGeneratorTraining from './FormGeneratorTraining'
 import FinishedTraining from './FinishedTraining'
 import TrainingPlanText from './TrainingPlanText'
 import style from './generatorTraining.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeBulTextArea, writeArr } from '../store/generatorTreiningReduser'
+import { changeBulTextArea, writeArr } from '../store/generatorTrainingReduser'
 import React from 'react'
 
 function GeneratorTraining() {
@@ -15,7 +15,7 @@ function GeneratorTraining() {
         dispatch(writeArr(newArr))
     }
 
-    const heandelShowTextArea = () => {
+    const handlerShowTextArea = () => {
         if (bulTextArea) {
             dispatch(changeBulTextArea(false))
         }
@@ -36,7 +36,7 @@ function GeneratorTraining() {
                     {bul ? (
                         <FinishedTraining
                             onDataChange={handleDataChange}
-                            onShowTextArea={heandelShowTextArea}
+                            onShowTextArea={handlerShowTextArea}
                             bulTextArea={bulTextArea}
                         />
                     ) : (

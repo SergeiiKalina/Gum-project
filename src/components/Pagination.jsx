@@ -1,6 +1,6 @@
-import style from './pagination.module.scss'
-import { FiArrowRight, FiArrowLeft } from 'react-icons/fi'
 import { useSelector } from 'react-redux'
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi'
+import style from './pagination.module.scss'
 export default function Pagination({ paginationList }) {
     const arrTraining = useSelector((state) => state.filterTraining.arrTraining)
     const activeId = useSelector((state) => state.filterTraining.activeId)
