@@ -26,6 +26,7 @@ export default function MenuExercise({
             <section>
                 <img src={`..${img}`} />
             </section>
+
             <label>
                 First approach
                 <input type="text" {...register('firstApproach')} />
