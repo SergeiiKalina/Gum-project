@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SlCheck, SlClose, SlPlus } from 'react-icons/sl'
 import { FcStart } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,6 +20,9 @@ import { useNavigate } from 'react-router-dom'
 function FinishedTraining({ onDataChange, onShowTextArea }) {
     const value = useSelector((state) => state.training.arr)
     const bulTextArea = useSelector((state) => state.training.bulTextArea)
+    const data = useSelector((state) => state.training.formData)
+    const [reps, setReps] = useState(null)
+
     const [showList, setShowList] = useState({
         0: '0',
         10: '10',
@@ -38,7 +41,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     const [showMenuExercise, setShowMenuExercise] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
     function showStartTraining(index) {
         dispatch(setIndexStartTraining(index))
         navigate('/start_training')
@@ -70,6 +72,11 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         dispatch(writeArr(clonedValue))
     }
 
+    useEffect(() => {
+        if (data.bodyType === 'skinny') {
+            setReps(8)
+        }
+    }, [value])
     const deleteExercises = (index, id) => {
         const clonedValue = structuredClone(value)
         clonedValue[index] = clonedValue[index].filter((el) => el.id !== id)
@@ -298,6 +305,8 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                                               17
                                                           )}...`
                                                         : element.title
+                                                }  ${
+                                                    reps ? `4 x ${reps}` : ''
                                                 }`}
                                                 <div
                                                     className={

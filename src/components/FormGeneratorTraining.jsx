@@ -823,5 +823,4 @@ function FormGeneratorTraining({ onDataChange }) {
         </div>
     )
 }
-
 export default FormGeneratorTraining
