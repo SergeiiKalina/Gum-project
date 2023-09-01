@@ -85,6 +85,16 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .section {
+        .blockApproach {
+            form {
+                width: 30%;
+            }
+        }
+    }
+}
+
 @media (max-width: 767px) {
     .section {
         .infoBlock {
