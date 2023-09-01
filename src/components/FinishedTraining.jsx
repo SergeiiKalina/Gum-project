@@ -39,8 +39,26 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     const [currentTarget, setCurrentTarget] = useState(null)
     const [startTraining, setStartTraining] = useState(9999)
     const [showMenuExercise, setShowMenuExercise] = useState('')
+
+    const [shortText, setShortText] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (window.innerWidth < 640) {
+            setShortText(true)
+        } else {
+            setShortText(false)
+        }
+    }, [])
+    window.addEventListener('resize', () => {
+        if (window.innerWidth < 640) {
+            setShortText(true)
+        } else {
+            setShortText(false)
+        }
+    })
+
     function showStartTraining(index) {
         dispatch(setIndexStartTraining(index))
         navigate('/start_training')
@@ -229,7 +247,8 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     )
                                 }
                             >
-                                {el[0].title}
+                                {shortText ? 'Training' : el[0].title}
+
                                 <LuChevronDown
                                     className={style.buttonCheckAll}
                                 />
@@ -241,7 +260,8 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                         toggleDialog(el[0].id, el[0].id, el)
                                     }}
                                 >
-                                    Add Exercise
+                                    {shortText ? 'Add' : 'Add Exercise'}
+
                                     <SlPlus className={style.addExercise} />
                                 </button>
                                 {showDialog[el[0].id] === el[0].id ? (
@@ -254,7 +274,9 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     className={style.startTraining}
                                     onClick={() => showStartTraining(index)}
                                 >
-                                    Start this training
+                                    {shortText
+                                        ? 'Start'
+                                        : 'Start this training'}
                                     <FcStart className={style.startExercise} />
                                 </button>
                             </div>

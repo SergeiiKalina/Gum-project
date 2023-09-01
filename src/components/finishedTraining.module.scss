@@ -9,12 +9,16 @@
     }
     .button {
         display: flex;
+        align-items: center;
         margin: 20px 0 0 10px;
-        font-size: 20px;
+        padding: 6px 12px;
+        @include adaptive-font(17, 11);
         border: none;
         cursor: pointer;
         color: black;
-        transition: background-color 0.3s ease;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 10px;
         .buttonCheckAll {
             margin: 3px 0 0 5px;
         }
@@ -66,6 +70,7 @@
 }
 .titleButton {
     display: flex;
+
     .addExerciseBlock {
         position: relative;
         display: flex;
@@ -75,7 +80,7 @@
             display: flex;
             margin: 20px 0 0 10px;
             padding: 6px 12px;
-            font-size: 20px;
+            @include adaptive-font(20, 11);
             border: none;
             cursor: pointer;
             color: black;
@@ -105,7 +110,7 @@
         display: flex;
         margin: 20px 0 0 10px;
         padding: 6px 12px;
-        font-size: 20px;
+        @include adaptive-font(20, 11);
         border: none;
         cursor: pointer;
         color: black;
@@ -219,6 +224,9 @@
     }
 }
 
+@media (max-width: 800px) {
+}
+
 @media (max-width: 560px) {
     .container {
         .article {
@@ -233,9 +241,10 @@
         .button {
             display: flex;
             align-items: center;
-            width: 150px;
-            height: 30px;
-            @include adaptive-font(18, 11);
+        }
+        .startTraining {
+            display: flex;
+            align-items: center;
         }
 
         .addExerciseButton {
@@ -262,9 +271,11 @@
         flex-direction: column-reverse;
         .addExerciseBlock {
             width: 100%;
+            justify-content: center;
         }
         .button {
-            width: 132px;
+            width: 80px;
+            margin: 20px auto 0 auto;
         }
     }
 }
