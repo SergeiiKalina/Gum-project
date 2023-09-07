@@ -4,12 +4,6 @@ export default function FormGenTrainStepTwo({ register, nextStep }) {
         <div className={style.wrapper}>
             <section>
                 <h2>Second Step</h2>
-                <select {...register('bodyType')}>
-                    <option value="body type">Body Type</option>
-                    <option value="skinny">Skinny</option>
-                    <option value="medium">Medium</option>
-                    <option value="overweight">Overweight</option>
-                </select>
 
                 <select {...register('goal')}>
                     <option value="goal">Goal</option>

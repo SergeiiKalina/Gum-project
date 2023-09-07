@@ -1,6 +1,10 @@
+import { useDispatch } from 'react-redux'
+import { writeSexTraining } from '../store/generatorTrainingReduser'
 import style from './formGenTrainStep.module.scss'
 
 export default function FormGenTrainStepOne({ register, nextStep }) {
+    const dispatch = useDispatch()
+
     return (
         <div className={style.wrapper}>
             <section>
@@ -25,18 +29,26 @@ export default function FormGenTrainStepOne({ register, nextStep }) {
                     name="email"
                     {...register('email')}
                 />
-
+                <input
+                    type="number"
+                    placeholder="Kg..."
+                    name="weight"
+                    {...register('weight')}
+                />
                 <select {...register('age')}>
                     <option value="Age">Age</option>
-                    <option>{`> 18`}</option>
-                    <option>18 - 25</option>
-                    <option>25 - 35</option>
-                    <option>35 - 45</option>
-                    <option>45 - 55</option>
-                    <option>{`55 <`}</option>
+                    <option value="1">{`> 18`}</option>
+                    <option value="1">18 - 24</option>
+                    <option value="1.1">25 - 34</option>
+                    <option value="1.2">35 - 44</option>
+                    <option value="1.3">45 - 54</option>
+                    <option value="1.4">{`55 <`}</option>
                 </select>
                 <article className={style.inlineRadio}>
-                    <label className={style.radio}>
+                    <label
+                        className={style.radio}
+                        onClick={() => dispatch(writeSexTraining('male'))}
+                    >
                         <input
                             type="radio"
                             name="sex"
@@ -46,7 +58,10 @@ export default function FormGenTrainStepOne({ register, nextStep }) {
                         Male
                     </label>
 
-                    <label className={style.radio}>
+                    <label
+                        className={style.radio}
+                        onClick={() => dispatch(writeSexTraining('female'))}
+                    >
                         <input
                             type="radio"
                             name="sex"

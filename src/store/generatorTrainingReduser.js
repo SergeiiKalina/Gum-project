@@ -10,6 +10,8 @@ const generatorTrainingSlice = createSlice({
         step: 1,
         textPlan: '',
         startTrainingIndex: 9999,
+        placeTraining: '',
+        sexTraining: '',
     },
     reducers: {
         writeArr(state, action) {
@@ -36,6 +38,12 @@ const generatorTrainingSlice = createSlice({
         setIndexStartTraining(state, action) {
             state.startTrainingIndex = action.payload
         },
+        writePlaceTraining(state, action) {
+            state.placeTraining = action.payload
+        },
+        writeSexTraining(state, action) {
+            state.sexTraining = action.payload
+        },
     },
 })
 
@@ -48,6 +56,8 @@ export const {
     changeBul,
     changeBulTextArea,
     setIndexStartTraining,
+    writePlaceTraining,
+    writeSexTraining,
 } = generatorTrainingSlice.actions
 
 export default generatorTrainingSlice.reducer

@@ -8,8 +8,43 @@
         @include adaptive-font(30, 20);
         margin: 0 0 32px 0;
     }
-    h3 {
+    .selectBlock {
+        display: flex;
+        flex-direction: column;
+        label {
+            justify-content: center;
+            flex-direction: row;
+            color: darkcyan;
+            @include adaptive-font(18, 12);
+            span {
+                @include adaptive-font(16, 12);
+            }
+        }
+    }
+    .selectContainer {
+        display: flex;
+        label {
+            width: 30%;
+            justify-content: left;
+            flex-direction: row;
+            margin-right: 0;
+            @include adaptive-font(18, 12);
+        }
+        select {
+            margin-left: 0;
+        }
+    }
+
+    .blockInventory {
+        width: 50%;
         margin: 0 auto;
+        h3 {
+            margin: 0 auto;
+        }
+        label {
+            width: 80%;
+            @include adaptive-font(18, 12);
+        }
     }
     section {
         width: 100%;
