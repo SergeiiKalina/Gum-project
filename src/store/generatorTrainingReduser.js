@@ -7,7 +7,7 @@ const generatorTrainingSlice = createSlice({
         bul: false,
         bulTextArea: false,
         formData: {},
-        step: 5,
+        step: 1,
         textPlan: "",
         startTrainingIndex: 9999,
         placeTraining: "",

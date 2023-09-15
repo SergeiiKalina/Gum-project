@@ -172,27 +172,7 @@ function FormGeneratorTraining({ onDataChange }) {
             })
     }
 
-    const generateTraining = () => {
-        let data = {
-            age: "1.1",
-            benchPressWeight: "50",
-            deadLiftWeight: "50",
-            email: "",
-            firstName: "",
-            focus: "press",
-            goal: "goal",
-            lastName: "",
-            lifestyle: "lifestyle",
-            placeOfTraining: "home",
-            problems: ["back"],
-            pullUp: "8",
-            pushUpQuantity: "1",
-            sex: "female",
-            sitUp: "1",
-            squatWeight: "50",
-            weight: "92",
-            squatQuantity: "1",
-        }
+    const generateTraining = (data) => {
         if (data.placeOfTraining === "home") {
             const {
                 pushUpQuantity,
