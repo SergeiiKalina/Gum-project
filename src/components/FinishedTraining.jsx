@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { SlCheck, SlClose, SlPlus } from 'react-icons/sl'
-import { FcStart } from 'react-icons/fc'
-import { useDispatch, useSelector } from 'react-redux'
-import { LuChevronDown } from 'react-icons/lu'
+import React, { useEffect, useState } from "react"
+import { SlCheck, SlClose, SlPlus } from "react-icons/sl"
+import { FcStart } from "react-icons/fc"
+import { useDispatch, useSelector } from "react-redux"
+import { LuChevronDown } from "react-icons/lu"
 import {
     changeCompleted,
     changeStepForm,
@@ -10,23 +10,24 @@ import {
     changeBulTextArea,
     writeArr,
     setIndexStartTraining,
-} from '../store/generatorTrainingReduser'
-import DownloadButton from './DownloadButton'
-import AddExercise from './AddExercise'
-import style from './finishedTraining.module.scss'
-import MenuExercise from './MenuExercise'
-import { useNavigate } from 'react-router-dom'
+} from "../store/generatorTrainingReduser"
+import DownloadButton from "./DownloadButton"
+import AddExercise from "./AddExercise"
+import style from "./finishedTraining.module.scss"
+import MenuExercise from "./MenuExercise"
+import { useNavigate } from "react-router-dom"
 
 function FinishedTraining({ onDataChange, onShowTextArea }) {
+    const step = useSelector((state) => state.training.step)
     const value = useSelector((state) => state.training.arr)
     const bulTextArea = useSelector((state) => state.training.bulTextArea)
     const data = useSelector((state) => state.training.formData)
     const [reps, setReps] = useState(null)
 
     const [showList, setShowList] = useState({
-        0: '0',
-        10: '10',
-        20: '20',
+        0: "0",
+        10: "10",
+        20: "20",
     })
     const [showDialog, setShowDialog] = useState({
         0: false,
@@ -38,7 +39,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     const [checked, setChecked] = useState(0)
     const [currentTarget, setCurrentTarget] = useState(null)
     const [startTraining, setStartTraining] = useState(9999)
-    const [showMenuExercise, setShowMenuExercise] = useState('')
+    const [showMenuExercise, setShowMenuExercise] = useState("")
 
     const [shortText, setShortText] = useState(false)
     const navigate = useNavigate()
@@ -51,7 +52,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
             setShortText(false)
         }
     }, [])
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
         if (window.innerWidth < 640) {
             setShortText(true)
         } else {
@@ -61,7 +62,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
 
     function showStartTraining(index) {
         dispatch(setIndexStartTraining(index))
-        navigate('/start_training')
+        navigate("/start_training")
     }
     const toggleTodo = (index, id) => {
         const clonedValue = structuredClone(value)
@@ -91,7 +92,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     }
 
     useEffect(() => {
-        if (data.bodyType === 'skinny') {
+        if (data.bodyType === "skinny") {
             setReps(8)
         }
     }, [value])
@@ -111,7 +112,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     }
 
     function toggleDialog(key, id, element) {
-        setShowMenuExercise('')
+        setShowMenuExercise("")
         const newShowDialog = {}
         let set = new Set()
         for (let el of element) {
@@ -136,13 +137,13 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     const drag = (e) => {
         const target = e.currentTarget.style
 
-        target.opacity = '1'
-        target.transition = 'all 1s ease'
+        target.opacity = "1"
+        target.transition = "all 1s ease"
     }
 
     const dragEnter = (e) => {
         const target = e.currentTarget.style
-        target.paddingTop = '0'
+        target.paddingTop = "0"
     }
 
     const dragOver = (e) => {
@@ -152,23 +153,23 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         }
         const target = e.currentTarget.style
 
-        target.transition = 'all 0.5s ease'
-        target.paddingTop = '60px'
+        target.transition = "all 0.5s ease"
+        target.paddingTop = "60px"
     }
 
     const dragLeave = (e) => {
         const target = e.currentTarget.style
 
-        target.paddingTop = '0'
-        target.transition = 'all 1s ease'
+        target.paddingTop = "0"
+        target.transition = "all 1s ease"
     }
 
     const dragDrop = (e, currentElementIndex, arrayIndex) => {
         e.preventDefault()
         const target = e.currentTarget.style
 
-        target.paddingTop = '0'
-        target.transition = 'padding-top 0.3s ease, transform 0.3s ease'
+        target.paddingTop = "0"
+        target.transition = "padding-top 0.3s ease, transform 0.3s ease"
         const clonedValue = structuredClone(value)
 
         clonedValue[arrayIndex] = clonedValue[arrayIndex].filter(
@@ -183,7 +184,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
             paddingValue -= 5
             if (paddingValue <= 0) {
                 paddingValue = 0
-                target.transition = 'all 0.3s ease'
+                target.transition = "all 0.3s ease"
                 cancelAnimationFrame(animationFrameId)
             } else {
                 animationFrameId = requestAnimationFrame(animateDrop)
@@ -198,9 +199,9 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         e.preventDefault()
         const target = e.currentTarget.style
 
-        target.transform = 'scale(1)'
-        target.paddingTop = '0'
-        target.transition = 'all 1s ease'
+        target.transform = "scale(1)"
+        target.paddingTop = "0"
+        target.transition = "all 1s ease"
     }
 
     function openInfoExercise(e) {
@@ -209,7 +210,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         }
         console.log(showDialog)
         if (e.currentTarget.id === showMenuExercise) {
-            setShowMenuExercise('')
+            setShowMenuExercise("")
         } else {
             setShowMenuExercise(e.currentTarget.id)
         }
@@ -247,7 +248,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     )
                                 }
                             >
-                                {shortText ? 'Training' : el[0].title}
+                                {shortText ? "Training" : el[0].title}
 
                                 <LuChevronDown
                                     className={style.buttonCheckAll}
@@ -260,7 +261,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                         toggleDialog(el[0].id, el[0].id, el)
                                     }}
                                 >
-                                    {shortText ? 'Add' : 'Add Exercise'}
+                                    {shortText ? "Add" : "Add Exercise"}
 
                                     <SlPlus className={style.addExercise} />
                                 </button>
@@ -275,8 +276,8 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                     onClick={() => showStartTraining(index)}
                                 >
                                     {shortText
-                                        ? 'Start'
-                                        : 'Start this training'}
+                                        ? "Start"
+                                        : "Start this training"}
                                     <FcStart className={style.startExercise} />
                                 </button>
                             </div>
@@ -309,10 +310,10 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                         <li>
                                             <div
                                                 style={{
-                                                    position: 'relative',
-                                                    width: '90%',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
+                                                    position: "relative",
+                                                    width: "90%",
+                                                    display: "flex",
+                                                    alignItems: "center",
                                                 }}
                                                 id={element.id}
                                                 onClick={(e) =>
@@ -328,7 +329,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                                           )}...`
                                                         : element.title
                                                 }  ${
-                                                    reps ? `4 x ${reps}` : ''
+                                                    reps ? `4 x ${reps}` : ""
                                                 }`}
                                                 <div
                                                     className={
@@ -355,20 +356,20 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                             </div>
                                             <div
                                                 style={{
-                                                    display: 'flex',
-                                                    flexWrap: 'nowrap',
+                                                    display: "flex",
+                                                    flexWrap: "nowrap",
                                                 }}
                                             >
                                                 <SlCheck
                                                     style={
                                                         element.isComplited
                                                             ? {
-                                                                  color: '#B5B8B1',
-                                                                  cursor: 'pointer',
+                                                                  color: "#B5B8B1",
+                                                                  cursor: "pointer",
                                                               }
                                                             : {
-                                                                  color: ' #00ff00',
-                                                                  cursor: 'pointer',
+                                                                  color: " #00ff00",
+                                                                  cursor: "pointer",
                                                               }
                                                     }
                                                     className={style.buttonTodo}
@@ -387,9 +388,9 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                                         )
                                                     }
                                                     style={{
-                                                        color: 'red',
-                                                        cursor: 'pointer',
-                                                        padding: '0 0 0 10px',
+                                                        color: "red",
+                                                        cursor: "pointer",
+                                                        padding: "0 0 0 10px",
                                                     }}
                                                     className={style.buttonTodo}
                                                 />
@@ -406,7 +407,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
             <section className={style.blockButton}>
                 <div>
                     <button onClick={onShowTextArea} className={style.button}>
-                        {bulTextArea ? 'Hide Text' : 'Show Text'}
+                        {bulTextArea ? "Hide Text" : "Show Text"}
                     </button>
                     <button
                         className={`${style.btnBackToForm} ${style.button}`}

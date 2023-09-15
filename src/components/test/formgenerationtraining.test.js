@@ -1,47 +1,95 @@
-const generateTraining = require('./formgenerationtraining')
+const generateTraining = require("./formgenerationtraining")
 
-const training = require('../data/data')
+const training = require("../../data/data")
 
-const testData = {
-    age: 'Age',
-    bodyType: 'body type',
-    email: '',
-    firstName: '',
-    fitnessLevel: '2',
-    focus: 'focus',
-    goal: 'goal',
-    lastName: '',
-    lifestyle: 'lifestyle',
-    placeOfTraining: 'gym',
-    problems: ['back'],
-    sex: 'male',
+const data = {
+    age: "1.1",
+    bodyType: "body type",
+    bodyMassIndex: 33,
+    fitnessLevel: 2,
+    focus: "fullBody",
+    goal: "goal",
+    lifestyle: "lifestyle",
+    placeOfTraining: "home",
+    problems: ["back"],
+    sex: "male",
 }
 
-describe('generateTraining function', () => {
-    it('generates training data correctly', () => {
-        const expectedTrainingData = [
+test("generateTraining function", () => {
+    expect(generateTraining(data)).toEqual(
+        expect.arrayContaining([
             [
-                { id: 1, basicExercise: true },
-                { id: 2, basicExercise: true },
-                { id: 3, basicExercise: false },
-                { id: 4, basicExercise: false },
-            ],
-            [
-                { id: 3, basicExercise: false },
-                { id: 4, basicExercise: false },
-            ],
-            [
-                { id: 5, basicExercise: true },
-                { id: 6, basicExercise: true },
-            ],
-        ]
-        // Вызываем функцию generateTraining
-        const result = generateTraining(testData)
+                {
+                    id: 0,
+                    category: "legs",
+                    title: "First training day",
+                    style: true,
+                },
+                {
+                    category: "legs",
+                    fitnessLevel: 2,
 
-        result.forEach((innerArray) => {
-            innerArray.forEach((object) => {
-                expect(object).toHaveProperty('basicExercise')
-            })
-        })
-    })
+                    basicExercise: true,
+                },
+                {
+                    category: "legs",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "back",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "back",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "back",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "back",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "pectoral",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "pectoral",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "shoulders",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "shoulders",
+                    fitnessLevel: 2,
+
+                    basicExercise: true,
+                },
+                {
+                    category: "pres",
+                    fitnessLevel: 2,
+                },
+            ],
+        ])
+    )
 })

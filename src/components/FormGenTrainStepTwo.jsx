@@ -1,19 +1,11 @@
-import style from './formGenTrainStep.module.scss'
+import style from "./formGenTrainStep.module.scss"
 export default function FormGenTrainStepTwo({ register, nextStep }) {
     return (
         <div className={style.wrapper}>
             <section>
                 <h2>Second Step</h2>
 
-                <select {...register('goal')}>
-                    <option value="goal">Goal</option>
-                    <option value="weightMaintenance">
-                        Weight Maintenance
-                    </option>
-                    <option value="weightGain">Weight Gain</option>
-                    <option value="weightLoss">Weight Loss</option>
-                </select>
-                <select {...register('focus')}>
+                <select {...register("focus")}>
                     <option value="focus">Focus</option>
                     <option value="fullBody">Full Body</option>
                     <option value="upperBody">Upper Body</option>
@@ -21,7 +13,7 @@ export default function FormGenTrainStepTwo({ register, nextStep }) {
                     <option value="hand">Hand</option>
                     <option value="press">Press</option>
                 </select>
-                <select {...register('fitnessLevel')}>
+                <select {...register("fitnessLevel")}>
                     <option value="fitnessLevel">Fitness Level</option>
                     <option value="1">Low</option>
                     <option value="2">Average</option>

@@ -1,17 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit"
 
 const generatorTrainingSlice = createSlice({
-    name: 'generatorTrainingSlice',
+    name: "generatorTrainingSlice",
     initialState: {
         arr: [],
         bul: false,
         bulTextArea: false,
         formData: {},
-        step: 1,
-        textPlan: '',
+        step: 5,
+        textPlan: "",
         startTrainingIndex: 9999,
-        placeTraining: '',
-        sexTraining: '',
+        placeTraining: "",
+        sexTraining: "",
     },
     reducers: {
         writeArr(state, action) {

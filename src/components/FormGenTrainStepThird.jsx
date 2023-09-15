@@ -1,6 +1,5 @@
-import { type } from '@testing-library/user-event/dist/type'
-import { useSelector } from 'react-redux'
-import style from './formGenTrainStep.module.scss'
+import { useSelector } from "react-redux"
+import style from "./formGenTrainStep.module.scss"
 
 export default function FormGenTrainStepThird({ register, nextStep }) {
     const step = useSelector((state) => state.training.step)
@@ -12,19 +11,31 @@ export default function FormGenTrainStepThird({ register, nextStep }) {
                     <label htmlFor="lifestyle">
                         Select your lifestyle<span>↓</span>
                     </label>
-                    <select id="lifestyle" {...register('lifestyle')}>
+                    <select id="lifestyle" {...register("lifestyle")}>
                         <option value="lifestyle">Lifestyle</option>
                         <option value="passive">Passive</option>
                         <option value="moderate">Moderate</option>
                         <option value="high">High</option>
                     </select>
                 </div>
-
+                <div className={style.selectBlock}>
+                    <label htmlFor="goal">
+                        Select your goal<span>↓</span>
+                    </label>
+                    <select id="goal" {...register("goal")}>
+                        <option value="goal">Goal</option>
+                        <option value="weightMaintenance">
+                            Weight Maintenance
+                        </option>
+                        <option value="weightGain">Weight Gain</option>
+                        <option value="weightLoss">Weight Loss</option>
+                    </select>
+                </div>
                 <div className={style.selectBlock}>
                     <label htmlFor="problems">
                         Select any health problems<span>↓</span>
                     </label>
-                    <select id="problems" {...register('problems')} multiple>
+                    <select id="problems" {...register("problems")} multiple>
                         <option value="">
                             Problems with the musculoskeletal system
                         </option>
@@ -38,7 +49,7 @@ export default function FormGenTrainStepThird({ register, nextStep }) {
 
                 <div className={style.selectBlock}>
                     <label htmlFor="focus">Training Focus</label>
-                    <select id="focus" {...register('focus')}>
+                    <select id="focus" {...register("focus")}>
                         <option value="focus">Focus</option>
                         <option value="fullBody">Full Body</option>
                         <option value="upperBody">Upper Body</option>
