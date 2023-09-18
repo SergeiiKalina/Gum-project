@@ -1,17 +1,22 @@
-import React, { useState, useContext } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Mylayouts from './components/layouts/Mylayouts'
-import Training from './components/Training'
-import RegistrationForTraining from './components/RegistrationForTraining'
-import AboutMe from './components/AboutMe'
-import Contacts from './components/Contacts'
-import GeneratorTraining from './components/GeneratorTraining'
-import { dataFormExercise } from './components/layouts/Context'
-import Login from './components/header/Login'
-import Logout from './components/header/Logout'
-import AdminForm from './components/AdminForm'
-import './App.scss'
-import StartTraining from './components/StartTraining'
+import React, { useState, useContext } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Mylayouts from "./components/layouts/Mylayouts"
+import Training from "./components/Training"
+import RegistrationForTraining from "./components/RegistrationForTraining"
+import AboutMe from "./components/AboutMe.tsx"
+import Contacts from "./components/Contacts"
+import GeneratorTraining from "./components/GeneratorTraining"
+import { dataFormExercise } from "./components/layouts/Context"
+import Login from "./components/header/Login"
+import Logout from "./components/header/Logout"
+import AdminForm from "./components/AdminForm"
+import "./App.scss"
+import StartTraining from "./components/StartTraining"
+import HomeTestForm from "./components/HomeTestForm"
+import AvailabilityOfInventory from "./components/AvailabilityOfInventory"
+import FormGenTrainStepThird from "./components/FormGenTrainStepThird"
+import FinishedTraining from "./components/FinishedTraining"
+import FormGenTrainStepTwo from "./components/FormGenTrainStepTwo"
 
 function App() {
     const [user, setUser] = useState(true)
@@ -31,6 +36,26 @@ function App() {
                         <Route
                             path="gentraining"
                             element={<GeneratorTraining />}
+                        />
+                        <Route
+                            path="/finished-training"
+                            element={<FinishedTraining />}
+                        />
+                        <Route
+                            path="/gentraining/step-2"
+                            element={<FormGenTrainStepTwo />}
+                        />
+                        <Route
+                            path="/gentraining/step-3/home"
+                            element={<HomeTestForm />}
+                        />
+                        <Route
+                            path="/gentraining/step-4/home"
+                            element={<AvailabilityOfInventory />}
+                        />
+                        <Route
+                            path="/gentraining/step-5/home"
+                            element={<FormGenTrainStepThird />}
                         />
                         <Route
                             path="registrationfortraining"

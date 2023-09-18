@@ -1,12 +1,29 @@
-import { useSelector } from "react-redux"
+import { useForm } from "react-hook-form"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { writeFormData } from "../store/generatorTrainingReduser"
 import style from "./formGenTrainStep.module.scss"
 
-export default function FormGenTrainStepThird({ register, nextStep }) {
+export default function FormGenTrainStepThird() {
     const step = useSelector((state) => state.training.step)
+    const formData = useSelector((state) => state.training.formData)
+    const navigate = useNavigate()
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors },
+        mode,
+    } = useForm({ mode: "onBlur" })
+    const dispatch = useDispatch()
+    const onSubmit = (data) => {
+        dispatch(writeFormData({ ...formData, ...data }))
+        navigate("/finished-training")
+    }
     return (
-        <div className={style.wrapper}>
+        <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
+            <h2>Third Step</h2>
             <section>
-                <h2>Third Step</h2>
                 <div className={style.selectBlock}>
                     <label htmlFor="lifestyle">
                         Select your lifestyle<span>↓</span>
@@ -65,6 +82,6 @@ export default function FormGenTrainStepThird({ register, nextStep }) {
 
                 <button type="submit">Fourth Step</button>
             </section>
-        </div>
+        </form>
     )
 }

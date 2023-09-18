@@ -1120,7 +1120,7 @@ const training = [
         isComplited: false,
         img: "/images/mini/FB_IMG_1567430209194.jpg",
         category: "legs",
-        fitnessLevel: 1,
+        fitnessLevel: 2,
         sex: "unsex",
         basicExercise: true,
         title: "Bulgarian Split Squats smith machine",

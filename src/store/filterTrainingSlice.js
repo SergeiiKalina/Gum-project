@@ -1,13 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit"
 
 const trainingSlice = createSlice({
-    name: 'trainingSlice',
+    name: "trainingSlice",
     initialState: {
-        data: ['legs'],
+        data: ["legs"],
         arrTraining: [],
         activeId: 1,
         isChecked: {
-            legs: 'legs',
+            legs: "legs",
             cardio: false,
             functional: false,
             press: false,
