@@ -1,23 +1,16 @@
 import style from "./formGenTrainStep.module.scss"
 import training from "../data/data"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { writeFormData } from "../store/generatorTrainingReduser"
 import { useNavigate } from "react-router-dom"
+import { Button } from "@mui/material"
 
 export default function AvailabilityOfInventory() {
-    const [inventory, setInventory] = useState(null)
-
     const formData = useSelector((state) => state.training.formData)
     const navigate = useNavigate()
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-        mode,
-    } = useForm({ mode: "onBlur" })
+    const { register, handleSubmit } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch()
     const onSubmit = (data) => {
         dispatch(writeFormData({ ...formData, ...data }))
@@ -94,7 +87,9 @@ export default function AvailabilityOfInventory() {
                         Fitball
                     </label>
                 </article>
-                <button type="submit">Submit</button>
+                <Button variant="contained" type="submit">
+                    Submit
+                </Button>
             </section>
         </form>
     )

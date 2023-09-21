@@ -1,11 +1,21 @@
-import { useSelector } from "react-redux"
+import { Button } from "@mui/material"
+import { useForm } from "react-hook-form"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { writeFormData } from "../store/generatorTrainingReduser"
 import style from "./formGenTrainStep.module.scss"
 
-export default function GymTestForm({ register, nextStep }) {
-    const sex = useSelector((state) => state.training.sexTraining)
-
+export default function GymTestForm() {
+    const formData = useSelector((state) => state.training.formData)
+    const navigate = useNavigate()
+    const { register, handleSubmit } = useForm({ mode: "onBlur" })
+    const dispatch = useDispatch()
+    const onSubmit = (data) => {
+        dispatch(writeFormData({ ...formData, ...data }))
+        navigate("/gentraining/step-4/gym")
+    }
     return (
-        <div className={style.wrapper}>
+        <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
             <section>
                 <h2>Weight ~ 1PM</h2>
                 <div className={style.selectContainer}>
@@ -67,11 +77,10 @@ export default function GymTestForm({ register, nextStep }) {
                         {...register("sitUp")}
                     />
                 </div>
-
-                <button onClick={(e) => nextStep(e)}>
+                <Button variant="contained" type="submit">
                     Availability Of Inventory
-                </button>
+                </Button>
             </section>
-        </div>
+        </form>
     )
 }

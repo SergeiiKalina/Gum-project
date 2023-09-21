@@ -19,7 +19,6 @@ import { useNavigate } from "react-router-dom"
 import training from "../data/data"
 
 function FinishedTraining({ onDataChange, onShowTextArea }) {
-    const step = useSelector((state) => state.training.step)
     const value = useSelector((state) => state.training.arr)
     const bulTextArea = useSelector((state) => state.training.bulTextArea)
     const data = useSelector((state) => state.training.formData)
@@ -39,13 +38,11 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
     const [thisDragElement, setThisDragElement] = useState(null)
     const [checked, setChecked] = useState(0)
     const [currentTarget, setCurrentTarget] = useState(null)
-    const [startTraining, setStartTraining] = useState(9999)
     const [showMenuExercise, setShowMenuExercise] = useState("")
 
     const [shortText, setShortText] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
     useEffect(() => {
         if (window.innerWidth < 640) {
             setShortText(true)

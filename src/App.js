@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Mylayouts from "./components/layouts/Mylayouts"
 import Training from "./components/Training"
@@ -6,7 +6,6 @@ import RegistrationForTraining from "./components/RegistrationForTraining"
 import AboutMe from "./components/AboutMe.tsx"
 import Contacts from "./components/Contacts"
 import GeneratorTraining from "./components/GeneratorTraining"
-import { dataFormExercise } from "./components/layouts/Context"
 import Login from "./components/header/Login"
 import Logout from "./components/header/Logout"
 import AdminForm from "./components/AdminForm"
@@ -17,10 +16,10 @@ import AvailabilityOfInventory from "./components/AvailabilityOfInventory"
 import FormGenTrainStepThird from "./components/FormGenTrainStepThird"
 import FinishedTraining from "./components/FinishedTraining"
 import FormGenTrainStepTwo from "./components/FormGenTrainStepTwo"
+import GymTestForm from "./components/GymTestForm"
 
 function App() {
     const [user, setUser] = useState(true)
-    const dataForm = useContext(dataFormExercise)
 
     const funkUser = (user) => {
         setUser(user)
@@ -44,6 +43,14 @@ function App() {
                         <Route
                             path="/gentraining/step-2"
                             element={<FormGenTrainStepTwo />}
+                        />
+                        <Route
+                            path="/gentraining/step-3/gym"
+                            element={<GymTestForm />}
+                        />
+                        <Route
+                            path="/gentraining/step-4/gym"
+                            element={<FormGenTrainStepThird />}
                         />
                         <Route
                             path="/gentraining/step-3/home"

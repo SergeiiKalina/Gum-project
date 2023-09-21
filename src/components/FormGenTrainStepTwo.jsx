@@ -1,3 +1,4 @@
+import { Button } from "@mui/material"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -9,14 +10,9 @@ import style from "./formGenTrainStep.module.scss"
 
 export default function FormGenTrainStepTwo() {
     const formData = useSelector((state) => state.training.formData)
+
     const navigate = useNavigate()
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-        mode,
-    } = useForm({ mode: "onBlur" })
+    const { register, handleSubmit } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch()
     const onSubmit = (data) => {
         dispatch(writeFormData({ ...formData, ...data }))
@@ -55,8 +51,9 @@ export default function FormGenTrainStepTwo() {
                         Gym
                     </label>
                 </article>
-
-                <button type="submit">Fourth Step</button>
+                <Button variant="contained" type="submit">
+                    Next Step
+                </Button>
             </section>
         </form>
     )

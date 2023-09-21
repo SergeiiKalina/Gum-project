@@ -6,14 +6,48 @@ import {
 } from "../store/generatorTrainingReduser"
 import style from "./formGenTrainStep.module.scss"
 import { useForm } from "react-hook-form"
+import {
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+} from "@mui/material"
+
+import styled from "@emotion/styled"
+
+const StyledTextField = styled(TextField)({
+    width: "40%",
+    margin: "20px auto 0 auto",
+    border: "none",
+    "& .MuiOutlinedInput-root": {
+        "&:hover .MuiInputBase-input ": {
+            borderBottom: "1px solid #42a5f5",
+        },
+        "&.Mui-focused": {},
+        "& .MuiInputBase-input": {
+            color: "white",
+            borderBottom: "1px solid #fefefe",
+        },
+    },
+    "& .MuiInputLabel-root": {
+        color: "white",
+    },
+    "&:hover .MuiInputLabel-root": {
+        color: "#42a5f5",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+        border: "none",
+    },
+})
 
 export default function FormGenTrainStepOne() {
     const {
         register,
         handleSubmit,
-        control,
+
         formState: { errors },
-        mode,
     } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -24,48 +58,92 @@ export default function FormGenTrainStepOne() {
     }
 
     return (
-        <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
+        <form
+            autoComplete="off"
+            className={style.wrapper}
+            onSubmit={handleSubmit(onSubmit)}
+        >
             <section>
                 <h2>First Step</h2>
-                <input
-                    style={errors.lastName && { outlineColor: "red" }}
-                    type="text"
-                    placeholder="First Name..."
+                <StyledTextField
+                    id="input-with-sx"
+                    label="First Name"
+                    variant="outlined"
                     name="firstName"
-                    {...register("firstName", { required: "Enter your name" })}
-                />
-                {errors.firstName && <p>{errors.firstName.message}</p>}
-                <input
-                    style={errors.lastName && { outlineColor: "red" }}
                     type="text"
-                    placeholder="Last Name..."
+                    {...register("firstName", {
+                        required: "First Name is Error",
+                    })}
+                    InputProps={{
+                        type: "text",
+                    }}
+                />
+
+                <StyledTextField
+                    id="input-with-sx"
+                    label="Last Name"
+                    variant="outlined"
                     name="lastName"
                     {...register("lastName", {
                         required: "Last Name is Error",
                     })}
+                    InputProps={{
+                        type: "text",
+                    }}
                 />
 
-                <input
-                    type="text"
-                    placeholder="Email..."
+                <StyledTextField
+                    id="input-with-sx"
+                    label="Email"
+                    variant="outlined"
                     name="email"
                     {...register("email")}
+                    InputProps={{
+                        type: "email",
+                    }}
                 />
-                <input
-                    type="number"
-                    placeholder="Kg..."
+                <StyledTextField
+                    id="input-with-sx"
+                    label="Weight"
+                    variant="outlined"
                     name="weight"
-                    {...register("weight")}
+                    type="number"
+                    {...register("weight", {
+                        required: "First Name is Error",
+                    })}
+                    InputProps={{
+                        type: "number",
+                    }}
                 />
-                <select {...register("age")}>
-                    <option value="Age">Age</option>
-                    <option value="1">{`> 18`}</option>
-                    <option value="1">18 - 24</option>
-                    <option value="1.1">25 - 34</option>
-                    <option value="1.2">35 - 44</option>
-                    <option value="1.3">45 - 54</option>
-                    <option value="1.4">{`55 <`}</option>
-                </select>
+
+                <FormControl
+                    fullWidth
+                    sx={{
+                        width: "40%",
+                        margin: "20px auto 0 auto",
+                        color: "white",
+                    }}
+                >
+                    <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label="Age"
+                        variant="outlined"
+                        {...register("age")}
+                        sx={{
+                            color: "white",
+                        }}
+                    >
+                        <MenuItem value={1}>{`> 18`}</MenuItem>
+                        <MenuItem value={1}>18 - 24</MenuItem>
+                        <MenuItem value={1.1}>25 - 34</MenuItem>
+                        <MenuItem value={1.2}>35 - 44</MenuItem>
+                        <MenuItem value={1.3}>45 - 54</MenuItem>
+                        <MenuItem value={1.4}>{`55 <`}</MenuItem>
+                    </Select>
+                </FormControl>
+
                 <article className={style.inlineRadio}>
                     <label
                         className={style.radio}
@@ -94,7 +172,9 @@ export default function FormGenTrainStepOne() {
                     </label>
                 </article>
 
-                <button type="submit">Second Step</button>
+                <Button variant="contained" type="submit">
+                    Next Step
+                </Button>
             </section>
         </form>
     )
