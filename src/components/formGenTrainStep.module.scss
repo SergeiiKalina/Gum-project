@@ -98,7 +98,7 @@
         }
 
         article {
-            margin: 24px 0 24px 0;
+            margin: 24px auto 24px auto;
         }
     }
 
@@ -119,8 +119,10 @@
 }
 
 .inlineRadio {
+    width: 20%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
 
     .radio {
         width: 35%;

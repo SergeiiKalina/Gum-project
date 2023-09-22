@@ -9,8 +9,12 @@ import { useForm } from "react-hook-form"
 import {
     Button,
     FormControl,
+    FormControlLabel,
+    FormLabel,
     InputLabel,
     MenuItem,
+    Radio,
+    RadioGroup,
     Select,
     TextField,
 } from "@mui/material"
@@ -18,7 +22,7 @@ import {
 import styled from "@emotion/styled"
 
 const StyledTextField = styled(TextField)({
-    width: "40%",
+    width: "80%",
     margin: "20px auto 0 auto",
     border: "none",
     "& .MuiOutlinedInput-root": {
@@ -76,6 +80,7 @@ export default function FormGenTrainStepOne() {
                     })}
                     InputProps={{
                         type: "text",
+                        autoComplete: "firstName",
                     }}
                 />
 
@@ -121,10 +126,14 @@ export default function FormGenTrainStepOne() {
                     sx={{
                         width: "40%",
                         margin: "20px auto 0 auto",
-                        color: "white",
                     }}
                 >
-                    <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                    <InputLabel
+                        id="demo-simple-select-label"
+                        sx={{ color: "white", border: "none" }}
+                    >
+                        Age
+                    </InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -132,7 +141,20 @@ export default function FormGenTrainStepOne() {
                         variant="outlined"
                         {...register("age")}
                         sx={{
+                            boxShadow: "none",
                             color: "white",
+                            ".MuiOutlinedInput-notchedOutline": {
+                                border: "none",
+                                borderBottom: "1px solid #fefefe",
+                                borderRadius: "0px",
+                            },
+                            "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                                {
+                                    borderBottom: "1px solid #42a5f5",
+                                },
+                            ".MuiSvgIcon-root": {
+                                color: "white",
+                            },
                         }}
                     >
                         <MenuItem value={1}>{`> 18`}</MenuItem>
@@ -145,31 +167,39 @@ export default function FormGenTrainStepOne() {
                 </FormControl>
 
                 <article className={style.inlineRadio}>
-                    <label
-                        className={style.radio}
-                        onClick={() => dispatch(writeSexTraining("male"))}
+                    <FormLabel
+                        id="demo-row-radio-buttons-group-label"
+                        sx={{ color: "white" }}
                     >
-                        <input
-                            type="radio"
-                            name="sex"
-                            value="male"
-                            {...register("sex")}
-                        />
-                        Male
-                    </label>
-
-                    <label
-                        className={style.radio}
-                        onClick={() => dispatch(writeSexTraining("female"))}
+                        Gender
+                    </FormLabel>
+                    <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                        sx={{
+                            display: "flex",
+                            width: "100%",
+                            justifyContent: "space-between",
+                        }}
                     >
-                        <input
-                            type="radio"
-                            name="sex"
+                        <FormControlLabel
                             value="female"
+                            control={<Radio />}
+                            label="Female"
+                            sx={{ color: "white" }}
                             {...register("sex")}
+                            onClick={() => dispatch(writeSexTraining("female"))}
                         />
-                        Female
-                    </label>
+                        <FormControlLabel
+                            value="male"
+                            control={<Radio />}
+                            label="Male"
+                            sx={{ color: "white" }}
+                            {...register("sex")}
+                            onClick={() => dispatch(writeSexTraining("male"))}
+                        />
+                    </RadioGroup>
                 </article>
 
                 <Button variant="contained" type="submit">
