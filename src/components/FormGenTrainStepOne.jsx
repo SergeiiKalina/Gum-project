@@ -36,7 +36,9 @@ const StyledTextField = styled(TextField)({
     width: "60%",
     margin: "20px auto 0 auto",
     border: "none",
-
+    [theme.breakpoints.down("md")]: {
+        width: "100%",
+    },
     "& .MuiOutlinedInput-root": {
         "&:hover .MuiInputBase-input ": {
             borderBottom: "1px solid #42a5f5",
@@ -74,32 +76,29 @@ export default function FormGenTrainStepOne() {
     }
 
     return (
-        <form
-            autoComplete="off"
-            className={style.wrapper}
-            onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
             <h2>First Step</h2>
             <StyledTextField
-                id="input-with-sx"
+                id="firstName"
                 label="First Name"
                 variant="outlined"
                 name="firstName"
                 type="text"
+                autoComplete="given-name"
                 {...register("firstName", {
                     required: "First Name is Error",
                 })}
                 InputProps={{
                     type: "text",
-                    autoComplete: "firstName",
                 }}
             />
 
             <StyledTextField
-                id="input-with-sx"
+                id="lastName"
                 label="Last Name"
                 variant="outlined"
                 name="lastName"
+                autoComplete="family-name"
                 {...register("lastName", {
                     required: "Last Name is Error",
                 })}
@@ -109,10 +108,11 @@ export default function FormGenTrainStepOne() {
             />
 
             <StyledTextField
-                id="input-with-sx"
+                id="email"
                 label="Email"
                 variant="outlined"
                 name="email"
+                autoComplete="email"
                 {...register("email")}
                 InputProps={{
                     type: "email",
@@ -137,6 +137,9 @@ export default function FormGenTrainStepOne() {
                 sx={{
                     width: "60%",
                     margin: "20px auto 0 auto",
+                    [theme.breakpoints.down("md")]: {
+                        width: "100%",
+                    },
                 }}
             >
                 <InputLabel
@@ -180,7 +183,7 @@ export default function FormGenTrainStepOne() {
             <article className={style.inlineRadio}>
                 <FormLabel
                     id="demo-row-radio-buttons-group-label"
-                    sx={{ color: "white" }}
+                    sx={{ margin: "20px auto 0 auto", color: "white" }}
                 >
                     Gender
                 </FormLabel>
@@ -190,12 +193,18 @@ export default function FormGenTrainStepOne() {
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
                     sx={{
-                        width: "300%",
+                        width: "30%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        margin: "20px auto 0 auto",
+                        [theme.breakpoints.down("md")]: {
+                            width: "80%",
+                        },
                     }}
                 >
                     <FormControlLabel
                         value="female"
-                        control={<Radio />}
+                        control={<Radio sx={{ color: "white" }} />}
                         label="Female"
                         sx={{ color: "white" }}
                         {...register("sex")}
@@ -203,7 +212,7 @@ export default function FormGenTrainStepOne() {
                     />
                     <FormControlLabel
                         value="male"
-                        control={<Radio />}
+                        control={<Radio sx={{ color: "white" }} />}
                         label="Male"
                         sx={{ color: "white" }}
                         {...register("sex")}
@@ -215,7 +224,9 @@ export default function FormGenTrainStepOne() {
             <Button
                 variant="contained"
                 type="submit"
-                sx={{ width: "50%", margin: "0 auto" }}
+                sx={{
+                    margin: "20px auto 0 auto",
+                }}
             >
                 Next Step
             </Button>

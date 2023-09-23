@@ -1,9 +1,46 @@
-import { Button } from "@mui/material"
+import styled from "@emotion/styled"
+import { Button, createTheme, TextField } from "@mui/material"
+import { lime, purple } from "@mui/material/colors"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { writeFormData } from "../store/generatorTrainingReduser"
 import style from "./formGenTrainStep.module.scss"
+
+const theme = createTheme({
+    palette: {
+        primary: lime,
+        secondary: purple,
+    },
+})
+
+const StyledTextField = styled(TextField)({
+    width: "60%",
+    margin: "20px auto 0 auto",
+    border: "none",
+    [theme.breakpoints.down("md")]: {
+        width: "100%",
+    },
+    "& .MuiOutlinedInput-root": {
+        "&:hover .MuiInputBase-input ": {
+            borderBottom: "1px solid #42a5f5",
+        },
+        "&.Mui-focused": {},
+        "& .MuiInputBase-input": {
+            color: "white",
+            borderBottom: "1px solid #fefefe",
+        },
+    },
+    "& .MuiInputLabel-root": {
+        color: "white",
+    },
+    "&:hover .MuiInputLabel-root": {
+        color: "#42a5f5",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+        border: "none",
+    },
+})
 
 export default function GymTestForm() {
     const formData = useSelector((state) => state.training.formData)
@@ -19,66 +56,106 @@ export default function GymTestForm() {
             <section>
                 <h2>Weight ~ 1PM</h2>
                 <div className={style.selectContainer}>
-                    <label htmlFor="squatWeight">Squat Weight:</label>
-                    <input
-                        type="number"
+                    <StyledTextField
                         id="squatWeight"
                         name="squatWeight"
-                        {...register("squatWeight")}
+                        label="Squat Weight"
+                        variant="outlined"
+                        autoComplete="given-name"
+                        {...register("squatWeight", {
+                            required: "squatWeight is Error",
+                        })}
+                        InputProps={{
+                            type: "number",
+                        }}
                     />
                 </div>
 
                 <div className={style.selectContainer}>
-                    <label htmlFor="benchPressWeight">
-                        Bench Press Weight:
-                    </label>
-                    <input
-                        type="number"
+                    <StyledTextField
                         id="benchPressWeight"
-                        name="benchPressWeight"
-                        {...register("benchPressWeight")}
+                        name="squatWeight"
+                        label="Bench Press Weight"
+                        variant="outlined"
+                        autoComplete="given-name"
+                        {...register("benchPressWeight", {
+                            required: "benchPressWeight is Error",
+                        })}
+                        InputProps={{
+                            type: "number",
+                        }}
                     />
                 </div>
 
                 <div className={style.selectContainer}>
-                    <label htmlFor="deadLiftWeight">Dead Lift Weight:</label>
-                    <input
-                        type="number"
-                        id="deadLiftWeight"
+                    <StyledTextField
+                        id="benchPressWeight"
                         name="deadLiftWeight"
-                        {...register("deadLiftWeight")}
+                        label="Dead Lift Weight"
+                        variant="outlined"
+                        autoComplete="given-name"
+                        {...register("deadLiftWeight", {
+                            required: "deadLiftWeight is Error",
+                        })}
+                        InputProps={{
+                            type: "number",
+                        }}
                     />
                 </div>
                 <h2 className={style.secondHeader}>Number Of Repetitions</h2>
                 <div className={style.selectContainer}>
-                    <label htmlFor="pullUp">Pull-up:</label>
-                    <input
-                        type="number"
+                    <StyledTextField
                         id="pullUp"
                         name="pullUp"
-                        {...register("pullUp")}
+                        label="Pull-up"
+                        variant="outlined"
+                        autoComplete="given-name"
+                        {...register("pullUp", {
+                            required: "pullUp is Error",
+                        })}
+                        InputProps={{
+                            type: "number",
+                        }}
                     />
                 </div>
                 <div className={style.selectContainer}>
-                    <label htmlFor="pushUpQuantity">Push-up:</label>
-                    <input
-                        type="number"
+                    <StyledTextField
                         id="pushUpQuantity"
                         name="pushUpQuantity"
-                        {...register("pushUpQuantity")}
+                        label="Push-up"
+                        variant="outlined"
+                        autoComplete="given-name"
+                        {...register("pushUpQuantity", {
+                            required: "pushUpQuantity is Error",
+                        })}
+                        InputProps={{
+                            type: "number",
+                        }}
                     />
                 </div>
                 <div className={style.selectContainer}>
-                    <label htmlFor="sitUp">Sit-up:</label>
-                    <input
-                        type="number"
+                    <StyledTextField
                         id="sitUp"
                         name="sitUp"
-                        {...register("sitUp")}
+                        label="Sit-up"
+                        variant="outlined"
+                        autoComplete="given-name"
+                        {...register("sitUp", {
+                            required: "sitUp is Error",
+                        })}
+                        InputProps={{
+                            type: "number",
+                        }}
                     />
                 </div>
-                <Button variant="contained" type="submit">
-                    Availability Of Inventory
+                <Button
+                    sx={{
+                        margin: "50px auto 0 auto",
+                    }}
+                    variant="contained"
+                    type="submit"
+                >
+                    Next Step
                 </Button>
             </section>
         </form>

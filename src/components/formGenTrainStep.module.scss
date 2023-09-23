@@ -1,11 +1,13 @@
 @import "./adaptive-fontMixin.scss";
 
 .wrapper {
-    width: 100%;
+    width: 80%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     background-color: #1a2131;
+
     h2 {
         @include adaptive-font(30, 20);
         margin: 0 0 32px 0;
@@ -119,11 +121,10 @@
 }
 
 .inlineRadio {
-    width: 20%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 20px auto 0 auto;
-
+    justify-content: center;
     .radio {
         width: 35%;
         display: flex;

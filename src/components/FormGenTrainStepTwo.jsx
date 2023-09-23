@@ -1,4 +1,12 @@
-import { Button } from "@mui/material"
+import {
+    Button,
+    createTheme,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup,
+} from "@mui/material"
+import { lime, purple } from "@mui/material/colors"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -22,35 +30,60 @@ export default function FormGenTrainStepTwo() {
             navigate("/gentraining/step-3/gym")
         }
     }
+    const theme = createTheme({
+        palette: {
+            primary: lime,
+            secondary: purple,
+        },
+    })
 
     return (
         <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
             <h2>Second Step</h2>
             <section>
-                <h2>Place Of Training</h2>
                 <article className={style.inlineRadio}>
-                    <label className={style.radio}>
-                        <input
+                    <FormLabel
+                        id="demo-row-radio-buttons-group-label"
+                        sx={{ margin: "20px auto 0 auto", color: "white" }}
+                    >
+                        Place Of Training
+                    </FormLabel>
+
+                    <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                        sx={{
+                            width: "30%",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            margin: "20px auto 0 auto",
+                            [theme.breakpoints.down("md")]: {
+                                width: "80%",
+                            },
+                        }}
+                    >
+                        <FormControlLabel
+                            control={<Radio sx={{ color: "white" }} />}
+                            sx={{ color: "white" }}
                             onClick={() => dispatch(writePlaceTraining("home"))}
-                            type="radio"
                             name="placeOfTraining"
                             value="home"
+                            label="Home"
                             {...register("placeOfTraining")}
                         />
-                        Home
-                    </label>
-
-                    <label className={style.radio}>
-                        <input
+                        <FormControlLabel
+                            control={<Radio sx={{ color: "white" }} />}
+                            sx={{ color: "white" }}
                             onClick={() => dispatch(writePlaceTraining("gym"))}
-                            type="radio"
                             name="placeOfTraining"
                             value="gym"
+                            label="Gym"
                             {...register("placeOfTraining")}
                         />
-                        Gym
-                    </label>
+                    </RadioGroup>
                 </article>
+
                 <Button variant="contained" type="submit">
                     Next Step
                 </Button>
