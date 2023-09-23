@@ -21,7 +21,7 @@ function GeneratorTraining() {
     }
 
     return (
-        <div>
+        <div style={{ width: "50%", margin: "0 auto" }}>
             <h2 className={style.header}>Generator Form</h2>
             <div className={style.block}>
                 {!bul && <FormGeneratorTraining />}

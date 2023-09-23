@@ -1,7 +1,7 @@
-@import './adaptive-fontMixin.scss';
+@import "./adaptive-fontMixin.scss";
 
 .wrapper {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     h3 {
         @include adaptive-font(24, 16);
