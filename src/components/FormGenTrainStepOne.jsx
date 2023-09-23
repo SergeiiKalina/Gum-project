@@ -135,7 +135,7 @@ export default function FormGenTrainStepOne() {
             <FormControl
                 fullWidth
                 sx={{
-                    width: "40%",
+                    width: "60%",
                     margin: "20px auto 0 auto",
                 }}
             >
