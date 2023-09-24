@@ -44,14 +44,12 @@
     }
 
     .blockInventory {
-        width: 50%;
+        width: 60%;
         margin: 0 auto;
         h3 {
-            margin: 0 auto;
-        }
-        label {
-            width: 80%;
-            @include adaptive-font(18, 12);
+            color: #fefefe;
+            margin: 20px auto 20px auto;
+            @include adaptive-font(26, 16);
         }
     }
     section {

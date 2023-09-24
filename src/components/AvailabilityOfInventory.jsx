@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { writeFormData } from "../store/generatorTrainingReduser"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@mui/material"
+import { Button, Checkbox, FormControlLabel, FormGroup } from "@mui/material"
 
 export default function AvailabilityOfInventory() {
     const formData = useSelector((state) => state.training.formData)
@@ -26,71 +26,112 @@ export default function AvailabilityOfInventory() {
 
     return (
         <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
-            <h2>Availability Of Inventory</h2>
+            <h2 style={{ margin: "30px 0 0 0" }}>Availability Of Inventory</h2>
             <section>
                 <article className={style.blockInventory}>
                     <h3 className={style.header}>Choose Inventory</h3>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="dumbbell"
+                    <FormGroup>
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={
+                                <Checkbox
+                                    sx={{ color: "white" }}
+                                    defaultChecked
+                                />
+                            }
+                            label="dumbbell"
                         />
-                        Dumbbell
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="kettlebell"
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={<Checkbox sx={{ color: "white" }} />}
+                            label="kettlebell"
                         />
-                        Kettlebell
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="band"
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={<Checkbox sx={{ color: "white" }} />}
+                            label="band"
                         />
-                        Band
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="mini-band"
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={<Checkbox sx={{ color: "white" }} />}
+                            label="mini-band"
                         />
-                        Mini-Band
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="bar"
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={<Checkbox sx={{ color: "white" }} />}
+                            label="bar"
                         />
-                        Bar or Bodybar
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="TRX"
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={<Checkbox sx={{ color: "white" }} />}
+                            label="TRX"
                         />
-                        TRX
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="fitball"
+                        <FormControlLabel
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                justifyContent: "space-between",
+                                color: "white",
+                            }}
                             {...register("inventory")}
+                            control={<Checkbox sx={{ color: "white" }} />}
+                            label="fitball"
                         />
-                        Fitball
-                    </label>
+                    </FormGroup>
                 </article>
-                <Button variant="contained" type="submit">
-                    Submit
-                </Button>
             </section>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    position: "absolute",
+                    bottom: "150px",
+                }}
+            >
+                <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{ width: "90%", margin: "0 auto" }}
+                >
+                    Next Step
+                </Button>
+            </div>
         </form>
     )
 }

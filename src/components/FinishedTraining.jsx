@@ -1520,16 +1520,8 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                                 }
                                                 title={element.title}
                                             >
-                                                {`${i}. ${
-                                                    element.title.length > 17
-                                                        ? `${element.title.slice(
-                                                              0,
-                                                              17
-                                                          )}...`
-                                                        : element.title
-                                                }  ${
-                                                    reps ? `4 x ${reps}` : ""
-                                                }`}
+                                                {element.title}
+                                                {reps ? `4 x ${reps}` : ""}
                                                 <div
                                                     className={
                                                         style.blockStartExercise
@@ -1552,47 +1544,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                                         />
                                                     ) : null}
                                                 </div>
-                                            </div>
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    flexWrap: "nowrap",
-                                                }}
-                                            >
-                                                <SlCheck
-                                                    style={
-                                                        element.isComplited
-                                                            ? {
-                                                                  color: "#B5B8B1",
-                                                                  cursor: "pointer",
-                                                              }
-                                                            : {
-                                                                  color: " #00ff00",
-                                                                  cursor: "pointer",
-                                                              }
-                                                    }
-                                                    className={style.buttonTodo}
-                                                    onClick={() =>
-                                                        toggleTodo(
-                                                            index,
-                                                            element.id
-                                                        )
-                                                    }
-                                                />
-                                                <SlClose
-                                                    onClick={() =>
-                                                        deleteExercises(
-                                                            index,
-                                                            element.id
-                                                        )
-                                                    }
-                                                    style={{
-                                                        color: "red",
-                                                        cursor: "pointer",
-                                                        padding: "0 0 0 10px",
-                                                    }}
-                                                    className={style.buttonTodo}
-                                                />
                                             </div>
                                         </li>
                                     </div>
