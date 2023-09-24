@@ -289,11 +289,23 @@ export default function FormGenTrainStepThird() {
                         </Select>
                     </FormControl>
                 </div>
-
-                <Button variant="contained" type="submit">
+            </section>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    position: "absolute",
+                    bottom: "150px",
+                }}
+            >
+                <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{ width: "90%", margin: "0 auto" }}
+                >
                     Next Step
                 </Button>
-            </section>
+            </div>
         </form>
     )
 }

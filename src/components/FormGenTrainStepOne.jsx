@@ -230,16 +230,22 @@ export default function FormGenTrainStepOne() {
                     />
                 </RadioGroup>
             </article>
-
-            <Button
-                variant="contained"
-                type="submit"
-                sx={{
-                    margin: "20px auto 0 auto",
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    position: "absolute",
+                    bottom: "150px",
                 }}
             >
-                Next Step
-            </Button>
+                <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{ width: "90%", margin: "0 auto" }}
+                >
+                    Next Step
+                </Button>
+            </div>
         </form>
     )
 }

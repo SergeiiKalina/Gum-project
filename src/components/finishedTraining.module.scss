@@ -1,10 +1,12 @@
 @import "./adaptive-fontMixin.scss";
 
 .container {
+    position: relative;
     width: 90%;
     height: 100vh;
     margin: 0 auto;
     padding: 0 15px;
+    overflow: hidden;
     .article {
         margin: 50px 0 0 0;
     }
@@ -173,10 +175,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: #8e824a;
+    background-color: #1a2131;
     @include adaptive-font(20, 12);
-    margin: 10px 0 0 0;
+    margin: 25px 0 0 0;
     padding: 12px 12px 12px 12px;
+    border: 2px solid #fefefe;
     border-radius: 20px;
     cursor: grab;
 }
@@ -186,7 +189,7 @@
 
 .head {
     @include adaptive-font(30, 20);
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
 }
 .head span {
     padding: 0 0 0 10px;
@@ -231,11 +234,11 @@
 @media (max-width: 560px) {
     .container {
         .article {
-            margin: 20px 0 0 0;
+            margin: 60px 0 0 0;
         }
     }
     .titleButton {
-        width: 90%;
+        width: 100%;
         .addExcerciseBlock {
             width: 50%;
         }
@@ -269,7 +272,8 @@
     }
     .titleButton {
         display: flex;
-        flex-direction: column-reverse;
+        justify-content: right;
+        margin: 30px 0 0 0;
         .addExerciseBlock {
             width: 100%;
             justify-content: center;

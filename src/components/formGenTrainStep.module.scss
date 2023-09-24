@@ -1,6 +1,7 @@
 @import "./adaptive-fontMixin.scss";
 
 .wrapper {
+    position: relative;
     width: 80%;
     height: 100vh;
     display: flex;
@@ -123,7 +124,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     .radio {
         width: 35%;
         display: flex;

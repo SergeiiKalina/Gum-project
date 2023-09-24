@@ -143,16 +143,23 @@ export default function GymTestForm() {
                         }}
                     />
                 </div>
+            </section>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    position: "absolute",
+                    bottom: "150px",
+                }}
+            >
                 <Button
-                    sx={{
-                        margin: "50px auto 0 auto",
-                    }}
                     variant="contained"
                     type="submit"
+                    sx={{ width: "90%", margin: "0 auto" }}
                 >
                     Next Step
                 </Button>
-            </section>
+            </div>
         </form>
     )
 }

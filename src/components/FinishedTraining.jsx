@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react"
-import { SlCheck, SlClose, SlPlus } from "react-icons/sl"
-import { FcStart } from "react-icons/fc"
+import { SlCheck, SlClose } from "react-icons/sl"
 import { useDispatch, useSelector } from "react-redux"
-import { LuChevronDown } from "react-icons/lu"
 import {
     changeCompleted,
-    changeStepForm,
     changeBul,
-    changeBulTextArea,
     writeArr,
     setIndexStartTraining,
 } from "../store/generatorTrainingReduser"
-import DownloadButton from "./DownloadButton"
 import AddExercise from "./AddExercise"
 import style from "./finishedTraining.module.scss"
 import MenuExercise from "./MenuExercise"
 import { useNavigate } from "react-router-dom"
 import training from "../data/data"
+import { Box, createTheme } from "@mui/system"
+import { Button, Fab } from "@mui/material"
+import AddIcon from "@mui/icons-material/Add"
+import PlayArrowIcon from "@mui/icons-material/PlayArrow"
+import { lime, purple } from "@mui/material/colors"
+
+const theme = createTheme({
+    palette: {
+        primary: lime,
+        secondary: purple,
+    },
+})
 
 function FinishedTraining({ onDataChange, onShowTextArea }) {
     const value = useSelector((state) => state.training.arr)
@@ -223,9 +230,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         currentArr = [],
         setSubCategories = new Set()
     ) {
-        console.log(filteredBasicArr)
-        console.log(filteredNoBasicArr)
-        console.log(setSubCategories)
         if (currentArr.length === basicQuantity + noBasicQuantity) {
             return currentArr
         }
@@ -1477,55 +1481,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                 : null
                         }`}
                     >
-                        <div className={style.titleButton}>
-                            <button
-                                className={`${style.button} ${
-                                    value[index].length === 1
-                                        ? style.hiddenButton
-                                        : null
-                                }`}
-                                id={el[0].id}
-                                onClick={(e) =>
-                                    toggleList(
-                                        e.currentTarget.id,
-                                        e.currentTarget.id
-                                    )
-                                }
-                            >
-                                {shortText ? "Training" : el[0].title}
-
-                                <LuChevronDown
-                                    className={style.buttonCheckAll}
-                                />
-                            </button>
-                            <div className={style.addExerciseBlock}>
-                                <button
-                                    className={style.addExerciseButton}
-                                    onClick={() => {
-                                        toggleDialog(el[0].id, el[0].id, el)
-                                    }}
-                                >
-                                    {shortText ? "Add" : "Add Exercise"}
-
-                                    <SlPlus className={style.addExercise} />
-                                </button>
-                                {showDialog[el[0].id] === el[0].id ? (
-                                    <AddExercise
-                                        thisCategories={thisCategories}
-                                        currentArrIndex={index}
-                                    />
-                                ) : null}
-                                <button
-                                    className={style.startTraining}
-                                    onClick={() => showStartTraining(index)}
-                                >
-                                    {shortText
-                                        ? "Start"
-                                        : "Start this training"}
-                                    <FcStart className={style.startExercise} />
-                                </button>
-                            </div>
-                        </div>
                         <ul className={style.list}>
                             {el.map((element, i) => {
                                 if (
@@ -1644,30 +1599,54 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                                 )
                             })}
                         </ul>
+
+                        <div className={style.titleButton}>
+                            <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                                <Fab
+                                    size="small"
+                                    color="primary"
+                                    aria-label="add"
+                                >
+                                    <AddIcon
+                                        onClick={() => {
+                                            toggleDialog(el[0].id, el[0].id, el)
+                                        }}
+                                    />
+                                </Fab>
+                            </Box>
+
+                            {showDialog[el[0].id] === el[0].id ? (
+                                <AddExercise
+                                    thisCategories={thisCategories}
+                                    currentArrIndex={index}
+                                />
+                            ) : null}
+                        </div>
                     </article>
                 )
             })}
-
-            <section className={style.blockButton}>
-                <div>
-                    <button onClick={onShowTextArea} className={style.button}>
-                        {bulTextArea ? "Hide Text" : "Show Text"}
-                    </button>
-                    <button
-                        className={`${style.btnBackToForm} ${style.button}`}
-                        onClick={() =>
-                            dispatch(
-                                changeBul(false),
-                                dispatch(changeBulTextArea(false)),
-                                dispatch(changeStepForm(1))
-                            )
-                        }
-                    >
-                        Back to form
-                    </button>
-                </div>
-                {bulTextArea ? <DownloadButton /> : null}
-            </section>
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: "100px",
+                    display: "flex",
+                    margin: "0 auto",
+                    width: "100%",
+                }}
+            >
+                <Button
+                    sx={{
+                        width: "90%",
+                        padding: "8px 0",
+                        borderRadius: "15px",
+                    }}
+                    variant="outlined"
+                    onClick={() => showStartTraining(0)}
+                >
+                    Let's Go Training
+                    <PlayArrowIcon sx={{ margin: " 0 0 0 5px" }} />
+                </Button>
+            </div>
         </div>
     )
 }
