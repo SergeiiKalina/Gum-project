@@ -52,7 +52,11 @@ export default function GymTestForm() {
         navigate("/gentraining/step-4/gym")
     }
     return (
-        <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
+        <form
+            className={style.wrapper}
+            onSubmit={handleSubmit(onSubmit)}
+            autoComplete="off"
+        >
             <section>
                 <h2>Weight ~ 1PM</h2>
                 <div className={style.selectContainer}>
@@ -67,6 +71,7 @@ export default function GymTestForm() {
                         })}
                         InputProps={{
                             type: "number",
+                            autoComplete: "off",
                         }}
                     />
                 </div>
@@ -74,7 +79,7 @@ export default function GymTestForm() {
                 <div className={style.selectContainer}>
                     <StyledTextField
                         id="benchPressWeight"
-                        name="squatWeight"
+                        name="benchPressWeight"
                         label="Bench Press Weight"
                         variant="outlined"
                         autoComplete="given-name"
@@ -83,13 +88,14 @@ export default function GymTestForm() {
                         })}
                         InputProps={{
                             type: "number",
+                            autoComplete: "off",
                         }}
                     />
                 </div>
 
                 <div className={style.selectContainer}>
                     <StyledTextField
-                        id="benchPressWeight"
+                        id="deadLiftWeight"
                         name="deadLiftWeight"
                         label="Dead Lift Weight"
                         variant="outlined"
@@ -99,6 +105,7 @@ export default function GymTestForm() {
                         })}
                         InputProps={{
                             type: "number",
+                            autoComplete: "off",
                         }}
                     />
                 </div>
@@ -115,24 +122,11 @@ export default function GymTestForm() {
                         })}
                         InputProps={{
                             type: "number",
+                            autoComplete: "off",
                         }}
                     />
                 </div>
-                <div className={style.selectContainer}>
-                    <StyledTextField
-                        id="pushUpQuantity"
-                        name="pushUpQuantity"
-                        label="Push-up"
-                        variant="outlined"
-                        autoComplete="given-name"
-                        {...register("pushUpQuantity", {
-                            required: "pushUpQuantity is Error",
-                        })}
-                        InputProps={{
-                            type: "number",
-                        }}
-                    />
-                </div>
+
                 <div className={style.selectContainer}>
                     <StyledTextField
                         id="sitUp"
@@ -145,6 +139,7 @@ export default function GymTestForm() {
                         })}
                         InputProps={{
                             type: "number",
+                            autoComplete: "off",
                         }}
                     />
                 </div>

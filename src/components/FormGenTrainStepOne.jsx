@@ -24,6 +24,7 @@ import {
 } from "@mui/material"
 
 import styled from "@emotion/styled"
+import React, { useState } from "react"
 
 const theme = createTheme({
     palette: {
@@ -61,6 +62,13 @@ const StyledTextField = styled(TextField)({
 })
 
 export default function FormGenTrainStepOne() {
+    const [age, setAge] = React.useState("")
+
+    const handleChangeAge = (event) => {
+        console.log(event)
+        setAge(event.target.value)
+    }
+
     const {
         register,
         handleSubmit,
@@ -151,6 +159,7 @@ export default function FormGenTrainStepOne() {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
+                    value={age}
                     label="Age"
                     variant="outlined"
                     {...register("age")}
@@ -170,6 +179,7 @@ export default function FormGenTrainStepOne() {
                             color: "white",
                         },
                     }}
+                    onChange={handleChangeAge}
                 >
                     <MenuItem value={1}>{`> 18`}</MenuItem>
                     <MenuItem value={1}>18 - 24</MenuItem>

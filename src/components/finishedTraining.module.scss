@@ -1,7 +1,8 @@
-@import './adaptive-fontMixin.scss';
+@import "./adaptive-fontMixin.scss";
 
 .container {
     width: 90%;
+    height: 100vh;
     margin: 0 auto;
     padding: 0 15px;
     .article {
@@ -158,7 +159,7 @@
             display: flex;
         }
     }
-    div[draggable='true'] {
+    div[draggable="true"] {
         -webkit-opacity: 1;
         -webkit-box-shadow: none;
         -moz-user-select: none;

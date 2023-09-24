@@ -22,7 +22,6 @@
         label {
             justify-content: center;
             flex-direction: row;
-            color: darkcyan;
             @include adaptive-font(18, 12);
             span {
                 @include adaptive-font(16, 12);

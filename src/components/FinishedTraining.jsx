@@ -223,6 +223,9 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         currentArr = [],
         setSubCategories = new Set()
     ) {
+        console.log(filteredBasicArr)
+        console.log(filteredNoBasicArr)
+        console.log(setSubCategories)
         if (currentArr.length === basicQuantity + noBasicQuantity) {
             return currentArr
         }
@@ -304,7 +307,19 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                 let filteringPattern =
                     el.fitnessLevel === Number(fitnessLevel) ||
                     el.fitnessLevel === Number(fitnessLevel) - 1
-
+                if (
+                    category === "back" ||
+                    (category === "pectoral" &&
+                        fitnessLevel === 3 &&
+                        placeOfTraining === "home" &&
+                        sex === "female" &&
+                        basic === false)
+                ) {
+                    filteringPattern =
+                        el.fitnessLevel === Number(fitnessLevel) ||
+                        el.fitnessLevel === Number(fitnessLevel) - 1 ||
+                        el.fitnessLevel === Number(fitnessLevel) - 2
+                }
                 if (
                     (category === "back" && fitnessLevel === 2) ||
                     (category === "pectoral" && fitnessLevel === 2) ||
@@ -378,7 +393,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         }
         if (data.placeOfTraining === "gym") {
             const {
-                pushUpQuantity,
                 benchPressWeight,
                 deadLiftWeight,
                 pullUp,
@@ -391,21 +405,17 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
             let cofBenchPress = Number(benchPressWeight) / Number(weight)
             let cofSquat = Number(squatWeight) / Number(weight)
             let cofDeadLift = Number(deadLiftWeight) / Number(weight)
-            let cofPushUp = 0
+
             let cofSitUp = 0
             let cofPullUp = 0
-            if (pushUpQuantity > Number(15)) {
-                pushUpQuantity > Number(40) ? (cofPushUp = 3) : (cofPushUp = 2)
-            } else {
-                cofPushUp = 1
-            }
+
             if (sitUp < Number(20)) {
                 sitUp > Number(40) ? (cofSitUp = 3) : (cofSitUp = 2)
             } else {
                 cofSitUp = 1
             }
-            if (pushUpQuantity > Number(3)) {
-                pushUpQuantity > Number(10) ? (cofPullUp = 3) : (cofPullUp = 2)
+            if (pullUp > Number(3)) {
+                pullUp > Number(10) ? (cofPullUp = 3) : (cofPullUp = 2)
             } else {
                 cofPullUp = 1
             }
@@ -429,7 +439,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                 (Number(cofBenchPress) +
                     Number(cofSquat) +
                     Number(cofDeadLift) +
-                    Number(cofPushUp) +
                     Number(cofSitUp) +
                     Number(cofPullUp)) /
                     6
@@ -945,7 +954,6 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
         } else {
             if (data.sex === "female" && data.placeOfTraining === "home") {
                 if (data.focus === "fullBody") {
-                    console.log("fullbody")
                     let training = []
                     training = generateRandomExerciseWorkout(
                         data,
