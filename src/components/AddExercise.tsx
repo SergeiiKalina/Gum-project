@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { writeArr } from '../store/generatorTrainingReduser'
-import training from '../data/data'
-import style from './addExercise.module.scss'
+import React from "react"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { writeArr } from "../store/generatorTrainingReduser"
+import training from "../data/data"
+import style from "./addExercise.module.scss"
 
-export default function AddExercise({ thisCategories, currentArrIndex }) {
+export default function AddExercise({
+    thisCategories,
+    currentArrIndex,
+}): React.JSX.Element {
     const dispatch = useDispatch()
+
     const planTrainingArr = useSelector((state) => state.training.arr)
     const [radio, setRadio] = useState({
         categories: thisCategories[0],
-        text: '',
+        text: "",
     })
     const [arrTr, setArrTr] = useState([])
     const [currentCategories, setCurrentCategories] = useState([])
@@ -64,16 +69,16 @@ export default function AddExercise({ thisCategories, currentArrIndex }) {
         if (
             clonedValue[currentArrIndex].some((el) => el.id === element[0].id)
         ) {
-            alert('This exercise already exists.')
+            alert("This exercise already exists.")
             return
         } else {
             clonedValue[currentArrIndex].push(element[0])
             if (clonedValue[currentArrIndex].length === 13) {
-                alert('Max exercise 11')
+                alert("Max exercise 11")
                 return
             }
             dispatch(writeArr(clonedValue))
-            alert('You add exercise')
+            alert("You add exercise")
         }
     }
     return (

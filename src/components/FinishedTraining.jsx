@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { SlCheck, SlClose } from "react-icons/sl"
 import { useDispatch, useSelector } from "react-redux"
 import {
     changeCompleted,
@@ -7,7 +6,7 @@ import {
     writeArr,
     setIndexStartTraining,
 } from "../store/generatorTrainingReduser"
-import AddExercise from "./AddExercise"
+import AddExercise from "./AddExercise.tsx"
 import style from "./finishedTraining.module.scss"
 import MenuExercise from "./MenuExercise"
 import { useNavigate } from "react-router-dom"
@@ -1579,10 +1578,10 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
             <div
                 style={{
                     position: "absolute",
-                    bottom: "100px",
+                    bottom: "150px",
+                    width: "90%",
+
                     display: "flex",
-                    margin: "0 auto",
-                    width: "100%",
                 }}
             >
                 <Button
@@ -1590,6 +1589,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                         width: "90%",
                         padding: "8px 0",
                         borderRadius: "15px",
+                        margin: "30px auto 0 auto",
                     }}
                     variant="outlined"
                     onClick={() => showStartTraining(0)}

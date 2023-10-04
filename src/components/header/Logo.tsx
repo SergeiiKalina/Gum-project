@@ -5,10 +5,14 @@ import { FaDumbbell } from "react-icons/fa"
 
 export default function Logo(): React.JSX.Element {
     return (
-        <div style={{ display: "flex" }}>
+        <div>
             <NavLink to="gentraining" className={styles.link}>
-                <FaDumbbell className={styles.dumbbell} />
-                <h1 className={styles.logo}>Your Training Every Day</h1>
+                <div>
+                    <FaDumbbell className={styles.dumbbell} />
+                </div>
+                <div>
+                    <h1 className={styles.logo}>Your Training Every Day</h1>
+                </div>
             </NavLink>
         </div>
     )

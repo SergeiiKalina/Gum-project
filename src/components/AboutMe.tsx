@@ -1,7 +1,8 @@
+import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Pagination } from "swiper"
 import SlideForSlider from "./SlideForSlider"
-import React from "react"
+
 import "swiper/swiper.min.css"
 import "./../../node_modules/swiper/modules/pagination/pagination.min.css"
 

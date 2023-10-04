@@ -301,7 +301,7 @@ export default function FormGenTrainStepThird() {
                 <Button
                     variant="contained"
                     type="submit"
-                    sx={{ width: "90%", margin: "0 auto" }}
+                    sx={{ width: "40%", margin: "0 auto" }}
                 >
                     Next Step
                 </Button>

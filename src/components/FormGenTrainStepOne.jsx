@@ -31,6 +31,15 @@ const theme = createTheme({
         primary: lime,
         secondary: purple,
     },
+    breakpoints: {
+        values: {
+            xs: 400,
+            sm: 560,
+            md: 767,
+            lg: 1248,
+            xl: 1536,
+        },
+    },
 })
 
 const StyledTextField = styled(TextField)({
@@ -38,7 +47,7 @@ const StyledTextField = styled(TextField)({
     margin: "20px auto 0 auto",
     border: "none",
     [theme.breakpoints.down("md")]: {
-        width: "100%",
+        width: "70%",
     },
     "& .MuiOutlinedInput-root": {
         "&:hover .MuiInputBase-input ": {
@@ -146,7 +155,7 @@ export default function FormGenTrainStepOne() {
                     width: "60%",
                     margin: "20px auto 0 auto",
                     [theme.breakpoints.down("md")]: {
-                        width: "100%",
+                        width: "70%",
                     },
                 }}
             >
@@ -203,12 +212,25 @@ export default function FormGenTrainStepOne() {
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
                     sx={{
-                        width: "30%",
+                        width: "15%",
                         display: "flex",
                         justifyContent: "space-between",
                         margin: "20px auto 0 auto",
+
+                        [theme.breakpoints.down("xl")]: {
+                            width: "20%",
+                        },
+                        [theme.breakpoints.down("lg")]: {
+                            width: "30%",
+                        },
                         [theme.breakpoints.down("md")]: {
-                            width: "80%",
+                            width: "40%",
+                        },
+                        [theme.breakpoints.down("sm")]: {
+                            width: "50%",
+                        },
+                        [theme.breakpoints.down("xs")]: {
+                            width: "60%",
                         },
                     }}
                 >
@@ -241,7 +263,7 @@ export default function FormGenTrainStepOne() {
                 <Button
                     variant="contained"
                     type="submit"
-                    sx={{ width: "90%", margin: "0 auto" }}
+                    sx={{ width: "40%", margin: "0 auto" }}
                 >
                     Next Step
                 </Button>

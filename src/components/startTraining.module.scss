@@ -1,9 +1,11 @@
-@import './adaptive-fontMixin.scss';
+@import "./adaptive-fontMixin.scss";
 .section {
     width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: #1a2131;
     .infoBlock {
         width: 50%;
         display: flex;

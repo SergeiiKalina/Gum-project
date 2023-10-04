@@ -30,7 +30,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Mylayouts value={user} />}>
-                        <Route index element={<AboutMe />} />
+                        <Route index element={<GeneratorTraining />} />
                         <Route path="workout" element={<Training />} />
                         <Route
                             path="gentraining"
