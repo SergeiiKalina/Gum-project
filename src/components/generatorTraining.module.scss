@@ -1,5 +1,5 @@
 @import "./adaptive-fontMixin.scss";
-.header {
+.generatorTrainingHeader {
     @include adaptive-font(30, 20);
 }
 .block {
