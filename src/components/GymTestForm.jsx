@@ -148,8 +148,8 @@ export default function GymTestForm() {
                 style={{
                     width: "100%",
                     display: "flex",
-                    position: "absolute",
-                    bottom: "150px",
+                    paddingTop: "20px",
+                    margin: "auto auto 200px auto",
                 }}
             >
                 <Button

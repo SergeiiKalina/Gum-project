@@ -1575,13 +1575,12 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                     </article>
                 )
             })}
+
             <div
                 style={{
-                    position: "absolute",
-                    bottom: "150px",
                     width: "90%",
-
                     display: "flex",
+                    paddingTop: "20px",
                 }}
             >
                 <Button
@@ -1589,6 +1588,7 @@ function FinishedTraining({ onDataChange, onShowTextArea }) {
                         width: "90%",
                         padding: "8px 0",
                         borderRadius: "15px",
+
                         margin: "30px auto 0 auto",
                     }}
                     variant="outlined"

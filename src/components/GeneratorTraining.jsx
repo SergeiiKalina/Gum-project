@@ -3,7 +3,7 @@ import FinishedTraining from "./FinishedTraining"
 import TrainingPlanText from "./TrainingPlanText"
 import style from "./generatorTraining.module.scss"
 import { useDispatch, useSelector } from "react-redux"
-import { changeBulTextArea, writeArr } from "../store/generatorTrainingReduser"
+import { changeBulTextArea } from "../store/generatorTrainingReduser"
 import React from "react"
 
 function GeneratorTraining() {
@@ -21,7 +21,7 @@ function GeneratorTraining() {
     }
 
     return (
-        <div style={{ height: "100vh", margin: "0 auto" }}>
+        <div>
             <h2 className={style.generatorTrainingHeader}>Generator Form</h2>
             <div className={style.block}>
                 {!bul && <FormGeneratorTraining />}

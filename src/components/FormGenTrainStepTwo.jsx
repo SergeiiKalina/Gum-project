@@ -88,8 +88,7 @@ export default function FormGenTrainStepTwo() {
                 style={{
                     width: "100%",
                     display: "flex",
-                    position: "absolute",
-                    bottom: "150px",
+                    margin: "auto auto 200px auto",
                 }}
             >
                 <Button

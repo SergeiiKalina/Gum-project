@@ -14,13 +14,11 @@ import {
     FormControlLabel,
     FormLabel,
     InputLabel,
-    makeStyles,
     MenuItem,
     Radio,
     RadioGroup,
     Select,
     TextField,
-    ThemeProvider,
 } from "@mui/material"
 
 import styled from "@emotion/styled"
@@ -95,6 +93,7 @@ export default function FormGenTrainStepOne() {
     return (
         <form className={style.wrapper} onSubmit={handleSubmit(onSubmit)}>
             <h2>First Step</h2>
+
             <StyledTextField
                 id="firstName"
                 label="First Name"
@@ -252,12 +251,12 @@ export default function FormGenTrainStepOne() {
                     />
                 </RadioGroup>
             </article>
+
             <div
                 style={{
                     width: "100%",
                     display: "flex",
-                    position: "absolute",
-                    bottom: "150px",
+                    margin: "auto auto 200px auto",
                 }}
             >
                 <Button
