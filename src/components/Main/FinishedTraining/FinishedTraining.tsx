@@ -11,11 +11,10 @@ import "./finishedTraining.scss"
 import MenuExercise from "../MenuExercise/MenuExercise.tsx"
 import { useNavigate } from "react-router-dom"
 import training, { ITraining } from "../../../data/data"
-import { Box, createTheme } from "@mui/system"
+import { Box } from "@mui/system"
 import { Button, Fab } from "@mui/material"
 import AddIcon from "@mui/icons-material/Add"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
-import { lime, purple } from "@mui/material/colors"
 
 export interface ITrainingReducer {
     training: {
@@ -76,7 +75,7 @@ function FinishedTraining() {
         if (data.bodyType === "skinny") {
             setReps(8)
         }
-    }, [value])
+    }, [value, data.bodyType])
 
     function toggleDialog(key: number, id: number, element: ITraining[]) {
         setShowMenuExercise("")
@@ -1727,115 +1726,106 @@ function FinishedTraining() {
 
     return (
         <div className="finish_training_container">
-            {value.map((el, index) => {
-                return (
-                    <article
-                        key={el[0].id}
-                        className="finish_training_article finish_training_open"
-                    >
-                        <ul className="finish_training_list">
-                            {el.map((element, i) => {
-                                if (
-                                    element.id === 0 ||
-                                    element.id === 10 ||
-                                    element.id === 20
-                                ) {
-                                    return
-                                }
+            {value.map((el, index) => (
+                <article
+                    key={el[0].id}
+                    className="finish_training_article finish_training_open"
+                >
+                    <ul className="finish_training_list">
+                        {el.map((element, i) => {
+                            if (
+                                element.id === 0 ||
+                                element.id === 10 ||
+                                element.id === 20
+                            ) {
+                                return
+                            }
 
-                                return (
-                                    <div
-                                        className="finish_training_containerTodo"
-                                        draggable
-                                        key={element.id}
-                                        id={element.id.toString()}
-                                        onDragStart={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ): void => dragStart(e, i, index)}
-                                        onDragEnter={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ) => dragEnter(e)}
-                                        onDragOver={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ) => dragOver(e)}
-                                        onDragLeave={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ) => dragLeave(e)}
-                                        onDrop={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ) => dragDrop(e, i, index)}
-                                        onDragEnd={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ) => dragEnd(e)}
-                                        onDrag={(
-                                            e: React.DragEvent<HTMLDivElement>
-                                        ) => drag(e)}
-                                    >
-                                        <li>
-                                            <div
-                                                style={{
-                                                    position: "relative",
-                                                    width: "90%",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                }}
-                                                id={element.id.toString()}
-                                                onClick={(e) =>
-                                                    openInfoExercise(e)
-                                                }
-                                                title={element.title}
-                                            >
-                                                {element.title}
-                                                {reps ? `4 x ${reps}` : ""}
-                                                <div className="finish_training_blockStartExercise">
-                                                    <aside className="finish_training_aside">
-                                                        Start the exercise
-                                                    </aside>
-                                                    {Number(
-                                                        showMenuExercise
-                                                    ) === element.id ? (
-                                                        <MenuExercise
-                                                            showMenuExercise={
-                                                                showMenuExercise
-                                                            }
-                                                            setShowMenuExercise={
-                                                                setShowMenuExercise
-                                                            }
-                                                        />
-                                                    ) : null}
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </div>
-                                )
-                            })}
-                        </ul>
-
-                        <div className="finish_training_titleButton">
-                            <Box sx={{ "& > :not(style)": { m: 1 } }}>
-                                <Fab
-                                    size="small"
-                                    color="primary"
-                                    aria-label="add"
+                            return (
+                                <div
+                                    className="finish_training_containerTodo"
+                                    draggable
+                                    key={element.id}
+                                    id={element.id.toString()}
+                                    onDragStart={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ): void => dragStart(e, i, index)}
+                                    onDragEnter={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ) => dragEnter(e)}
+                                    onDragOver={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ) => dragOver(e)}
+                                    onDragLeave={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ) => dragLeave(e)}
+                                    onDrop={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ) => dragDrop(e, i, index)}
+                                    onDragEnd={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ) => dragEnd(e)}
+                                    onDrag={(
+                                        e: React.DragEvent<HTMLDivElement>
+                                    ) => drag(e)}
                                 >
-                                    <AddIcon
-                                        onClick={() => {
-                                            toggleDialog(el[0].id, el[0].id, el)
-                                        }}
-                                    />
-                                </Fab>
-                            </Box>
+                                    <li>
+                                        <div
+                                            style={{
+                                                position: "relative",
+                                                width: "90%",
+                                                display: "flex",
+                                                alignItems: "center",
+                                            }}
+                                            id={element.id.toString()}
+                                            onClick={(e) => openInfoExercise(e)}
+                                            title={element.title}
+                                        >
+                                            {element.title}
+                                            {reps ? `4 x ${reps}` : ""}
+                                            <div className="finish_training_blockStartExercise">
+                                                <aside className="finish_training_aside">
+                                                    Start the exercise
+                                                </aside>
+                                                {Number(showMenuExercise) ===
+                                                element.id ? (
+                                                    <MenuExercise
+                                                        showMenuExercise={
+                                                            showMenuExercise
+                                                        }
+                                                        setShowMenuExercise={
+                                                            setShowMenuExercise
+                                                        }
+                                                    />
+                                                ) : null}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                            )
+                        })}
+                    </ul>
 
-                            {showDialog[el[0].id] === el[0].id ? (
-                                <AddExercise
-                                    thisCategories={thisCategories}
-                                    currentArrIndex={index}
+                    <div className="finish_training_titleButton">
+                        <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                            <Fab size="small" color="primary" aria-label="add">
+                                <AddIcon
+                                    onClick={() => {
+                                        toggleDialog(el[0].id, el[0].id, el)
+                                    }}
                                 />
-                            ) : null}
-                        </div>
-                    </article>
-                )
-            })}
+                            </Fab>
+                        </Box>
+
+                        {showDialog[el[0].id] === el[0].id ? (
+                            <AddExercise
+                                thisCategories={thisCategories}
+                                currentArrIndex={index}
+                            />
+                        ) : null}
+                    </div>
+                </article>
+            ))}
 
             <div
                 style={{
