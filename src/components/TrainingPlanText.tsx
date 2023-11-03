@@ -1,17 +1,25 @@
-import { useEffect, useMemo } from "react"
+import React, { useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { writeTxtPlan } from "../store/generatorTrainingReducer"
-import style from "./trainingPlanText.module.css"
+import "./trainingPlanText.css"
+import { ITraining } from "../data/data"
 
-function TrainingPlanText() {
-    const plan = useSelector((state) => state.training.arr)
+interface IStatePlanText {
+    training: {
+        arr: ITraining[][]
+        textPlan: string
+    }
+}
+
+function TrainingPlanText(): React.JSX.Element {
+    const plan = useSelector((state: IStatePlanText) => state.training.arr)
     let title = "\xA0\xA0 Training plan \n"
     let newPlan = useMemo(() => plan, [plan])
     const dispatch = useDispatch()
-    let str = useSelector((state) => state.training.textPlan)
+    let str = useSelector((state: IStatePlanText) => state.training.textPlan)
     useEffect(() => {
         str = ""
-        newPlan.forEach((element, i) => {
+        newPlan.forEach((element) => {
             if (element.length === 1) {
                 return
             }
@@ -48,7 +56,7 @@ function TrainingPlanText() {
         >
             <textarea
                 value={str ? title + str : "\xA0\xA0 No Training plan"}
-                className={style.textarea}
+                className="training_plan_text_textarea"
                 readOnly
             ></textarea>
         </div>

@@ -7,7 +7,7 @@ import {
     RadioGroup,
 } from "@mui/material"
 import { lime, purple } from "@mui/material/colors"
-import { SubmitHandler, useForm, FieldValues } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import {

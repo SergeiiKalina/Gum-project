@@ -14,15 +14,10 @@ interface ITextArea {
 }
 
 function GeneratorTraining() {
-    const dispatch = useDispatch()
     const bul: boolean = useSelector((state: ITextArea) => state.training.bul)
     const bulTextArea: boolean = useSelector(
         (state: ITextArea) => state.training.bulTextArea
     )
-
-    const handlerShowTextArea = (): void => {
-        dispatch(changeBulTextArea(!bulTextArea))
-    }
 
     return (
         <div>

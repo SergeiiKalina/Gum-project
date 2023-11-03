@@ -18,12 +18,8 @@ export default function MenuExercise({
     showMenuExercise,
     setShowMenuExercise,
 }: IMenuExercise): React.JSX.Element {
-    const [weight, setWeight] = useState<IDataForm | null>()
     const [img, setImg] = useState<null | string>(null)
-    const { register, handleSubmit } = useForm<IDataForm>()
-    function onSubmit(data: IDataForm) {
-        setWeight(data)
-    }
+    const { register } = useForm<IDataForm>()
 
     useEffect(() => {
         let obj = training.filter(
@@ -33,9 +29,9 @@ export default function MenuExercise({
     }, [showMenuExercise])
 
     return (
-        <form className="menu_exercise_block" onChange={handleSubmit(onSubmit)}>
+        <form className="menu_exercise_block">
             <section>
-                <img src={`..${img}`} />
+                <img src={`..${img}`} alt="exercise" />
             </section>
 
             <label>

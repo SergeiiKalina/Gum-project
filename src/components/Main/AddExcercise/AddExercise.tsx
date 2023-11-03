@@ -88,7 +88,9 @@ export default function AddExercise({
     function addExercise(e: React.MouseEvent<HTMLDivElement>) {
         let target = e.target as HTMLDivElement
         let id: string = target.id
-        let element: ITraining[] = training.filter((el) => el.id == Number(id))
+        let element: ITraining[] = training.filter(
+            (el) => Number(el.id) === Number(id)
+        )
         const clonedValue: ITraining[] | any = structuredClone(planTrainingArr)
         let elementId: number = element[0].id
         let currentArrayTraining: ITraining[] | any =

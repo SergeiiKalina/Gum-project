@@ -11,16 +11,11 @@ interface IFormRegistration {
 }
 
 function RegistrationForTraining(): React.JSX.Element {
-    const { register, handleSubmit } = useForm<IFormRegistration>()
-    const [data, setData] = useState({})
-
-    const onSubmit = (data: IFormRegistration) => {
-        setData(data)
-    }
+    const { register } = useForm<IFormRegistration>()
 
     return (
         <div className="registration_for_training_wrapper">
-            <form onChange={handleSubmit(onSubmit)}>
+            <form>
                 <h2>Registration Form</h2>
                 <input
                     type="text"

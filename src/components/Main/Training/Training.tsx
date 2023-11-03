@@ -40,7 +40,7 @@ function Training(): React.JSX.Element {
                 training.filter((item) => data.includes(item.category))
             )
         )
-    }, [data])
+    }, [data, dispatch])
 
     useEffect(() => {
         let set: Set<string> = new Set()
@@ -48,7 +48,7 @@ function Training(): React.JSX.Element {
             set.add(el.category)
         }
         dispatch(writeCategories(Array.from(set)))
-    }, [])
+    }, [dispatch])
 
     const paginationList = (
         e:

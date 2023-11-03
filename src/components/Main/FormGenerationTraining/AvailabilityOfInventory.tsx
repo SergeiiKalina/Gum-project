@@ -28,7 +28,7 @@ export default function AvailabilityOfInventory(): React.JSX.Element {
         training.forEach((element) => {
             element.inventory.forEach((el) => set.add(el))
         })
-    }, [training])
+    }, [])
 
     return (
         <form

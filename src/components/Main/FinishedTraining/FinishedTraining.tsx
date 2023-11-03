@@ -17,13 +17,6 @@ import AddIcon from "@mui/icons-material/Add"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import { lime, purple } from "@mui/material/colors"
 
-const theme = createTheme({
-    palette: {
-        primary: lime,
-        secondary: purple,
-    },
-})
-
 export interface ITrainingReducer {
     training: {
         arr: ITraining[][]
@@ -46,20 +39,12 @@ function FinishedTraining() {
     const value: ITraining[][] = useSelector(
         (state: ITrainingReducer) => state.training.arr
     )
-    const bulTextArea = useSelector(
-        (state: ITrainingReducer) => state.training.bulTextArea
-    )
     const data = useSelector(
         (state: ITrainingReducer) => state.training.formData
     )
 
     const [reps, setReps] = useState<number>()
 
-    const [showList, setShowList] = useState({
-        0: "0",
-        10: "10",
-        20: "20",
-    })
     const [showDialog, setShowDialog] = useState<IShowDialog>({
         0: false,
         10: false,
@@ -71,8 +56,6 @@ function FinishedTraining() {
         null
     )
 
-    const [checked, setChecked] = useState<number>(0)
-
     const [currentTarget, setCurrentTarget] = useState<HTMLDivElement | null>(
         null
     )
@@ -81,24 +64,8 @@ function FinishedTraining() {
         ""
     )
 
-    const [shortText, setShortText] = useState<boolean>(false)
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    useEffect(() => {
-        if (window.innerWidth < 640) {
-            setShortText(true)
-        } else {
-            setShortText(false)
-        }
-    }, [])
-    window.addEventListener("resize", () => {
-        if (window.innerWidth < 640) {
-            setShortText(true)
-        } else {
-            setShortText(false)
-        }
-    })
 
     function showStartTraining(index: number) {
         dispatch(setIndexStartTraining(index))
@@ -1756,15 +1723,10 @@ function FinishedTraining() {
 
     useEffect(() => {
         generateTraining(data)
-    }, [])
+    }, [data, generateTraining])
 
     return (
         <div className="finish_training_container">
-            <h2 className="finish_training_head">
-                Exercises completed:
-                <span>{checked}</span>
-            </h2>
-
             {value.map((el, index) => {
                 return (
                     <article
@@ -1781,11 +1743,6 @@ function FinishedTraining() {
                                     return
                                 }
 
-                                interface IPropsDragStart {
-                                    e: React.DragEvent<HTMLDivElement>
-                                    i: number
-                                    index: number
-                                }
                                 return (
                                     <div
                                         className="finish_training_containerTodo"
@@ -1834,8 +1791,9 @@ function FinishedTraining() {
                                                     <aside className="finish_training_aside">
                                                         Start the exercise
                                                     </aside>
-                                                    {showMenuExercise ==
-                                                    element.id ? (
+                                                    {Number(
+                                                        showMenuExercise
+                                                    ) === element.id ? (
                                                         <MenuExercise
                                                             showMenuExercise={
                                                                 showMenuExercise

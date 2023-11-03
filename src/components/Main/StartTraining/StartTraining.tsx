@@ -120,7 +120,7 @@ export default function StartTraining(): React.JSX.Element {
             setShowTimer(false)
             setButtonValue("Go")
         }
-    }, [workTime])
+    }, [workTime, buttonValue])
 
     useEffect(() => {
         let interval: NodeJS.Timeout | undefined
@@ -155,7 +155,7 @@ export default function StartTraining(): React.JSX.Element {
             ) : (
                 <section className="start_training_section">
                     <article className="start_training_infoBlock">
-                        <img src={exercise.img} />
+                        <img src={exercise.img} alt="exercise" />
                         <output>{`${numExercise}/${
                             value[index].length - 1
                         }`}</output>

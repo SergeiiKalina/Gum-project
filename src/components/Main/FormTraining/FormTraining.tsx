@@ -23,14 +23,12 @@ export default function FormTraining({
         (state: IState) => state.filterTraining.categories
     )
     const [rev, setRev] = useState(false)
-    const [close, setClose] = useState(false)
 
     const reverseArrow = () => {
         setRev((prev) => !prev)
     }
     const closeCategories = () => {
         setRev(false)
-        setClose(true)
     }
     return (
         <article

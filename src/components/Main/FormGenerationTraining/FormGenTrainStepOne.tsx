@@ -78,12 +78,7 @@ export default function FormGenTrainStepOne() {
         setAge(value)
     }
 
-    const {
-        register,
-        handleSubmit,
-
-        formState: { errors },
-    } = useForm<IFormData>({ mode: "onBlur" })
+    const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {

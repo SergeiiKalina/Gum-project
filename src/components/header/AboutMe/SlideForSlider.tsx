@@ -8,7 +8,7 @@ function SlideForSlider(): React.JSX.Element {
                 <img
                     src="./images/myphoto01.png"
                     className="slide_for_slidermainPhoto"
-                    alt="my photo"
+                    alt="exercise"
                 />
             </div>
             <div className="slide_for_sliderblock_paragraph">

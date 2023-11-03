@@ -13,7 +13,6 @@ export interface iDateForm {
 }
 
 interface DataFormExerciseContextProps {
-    onWriteData: (data: iDateForm) => void
     changeRadio: (e: string) => void
     bul: string
 }
@@ -27,20 +26,13 @@ interface ContextProps {
 }
 
 function Context({ children }: ContextProps): JSX.Element {
-    const [data, setData] = useState<iDateForm>()
-
     const [bul, setBul] = useState("")
 
     const changeRadio = (e: string) => {
         setBul(e)
     }
 
-    const onWriteData = (data: iDateForm) => {
-        setData(data)
-    }
-
     const value: DataFormExerciseContextProps = {
-        onWriteData,
         changeRadio,
         bul,
     }
