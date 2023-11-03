@@ -2,8 +2,7 @@ import FormGeneratorTraining from "../FormGenerationTraining/FormGeneratorTraini
 import FinishedTraining from "../FinishedTraining/FinishedTraining"
 import TrainingPlanText from "../../TrainingPlanText.tsx"
 import "./generatorTraining.scss"
-import { useDispatch, useSelector } from "react-redux"
-import { changeBulTextArea } from "../../../store/generatorTrainingReducer"
+import { useSelector } from "react-redux"
 import React from "react"
 
 interface ITextArea {

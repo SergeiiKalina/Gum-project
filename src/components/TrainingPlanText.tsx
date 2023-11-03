@@ -17,33 +17,29 @@ function TrainingPlanText(): React.JSX.Element {
     let newPlan = useMemo(() => plan, [plan])
     const dispatch = useDispatch()
     let str = useSelector((state: IStatePlanText) => state.training.textPlan)
+
     useEffect(() => {
-        str = ""
+        let str2 = ""
         newPlan.forEach((element) => {
             if (element.length === 1) {
                 return
             }
             element.forEach((el, index) => {
                 if (el.id === 0 || el.id === 10 || el.id === 20) {
-                    str += "\n" + "\xA0\xA0" + el.title + "\n"
+                    str2 += "\n\xA0\xA0" + el.title + "\n"
 
                     return
                 }
-                str +=
+                str2 +=
                     "\xA0\xA0" +
                     Number(index) +
-                    "." +
-                    "\xA0" +
+                    ".\xA0" +
                     el.title +
-                    " " +
-                    "-" +
-                    " " +
-                    "4x15" +
-                    "\n"
+                    " - 4x15 \n"
             })
         })
-        dispatch(writeTxtPlan(str))
-    }, [newPlan])
+        dispatch(writeTxtPlan(str2))
+    }, [newPlan, dispatch])
 
     return (
         <div
