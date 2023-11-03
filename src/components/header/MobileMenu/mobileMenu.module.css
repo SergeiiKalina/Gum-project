@@ -1,0 +1,11 @@
+.mobile_menu_linkActive:active {
+    background-color: #68829e;
+    width: 200px;
+    height: 100%;
+}
+
+.mobile_menu_shadow {
+    -webkit-box-shadow: -6px -15px 28px -3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -6px -15px 28px -3px rgba(0, 0, 0, 0.5);
+    box-shadow: -6px -15px 28px -3px rgba(0, 0, 0, 0.5);
+}

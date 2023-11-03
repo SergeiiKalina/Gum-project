@@ -1,0 +1,22 @@
+@import "./../../adaptive-fontMixin.scss";
+.generator_training_generatorTrainingHeader {
+    @include adaptive-font(30, 20);
+}
+.generator_training_block {
+    width: 100%;
+    margin: 16px 0 0 0;
+}
+.generator_training_section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+@media (max-width: 767px) {
+    .generator_training_section {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+}

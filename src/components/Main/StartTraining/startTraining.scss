@@ -1,0 +1,124 @@
+@import "./../../adaptive-fontMixin.scss";
+.start_training_section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1a2131;
+    .start_training_infoBlock {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        div {
+            @include adaptive-font(18, 14);
+            margin: 10px auto 0 auto;
+            font-weight: 600;
+            text-align: center;
+        }
+        output {
+            margin: 10px auto 0 auto;
+            @include adaptive-font(20, 14);
+        }
+    }
+    .start_training_blockButton {
+        width: 50%;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px auto 0 auto;
+        .start_training_buttonDirection {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .start_training_buttonDirection:hover {
+            background-color: #0056b3;
+        }
+
+        .start_training_buttonDirection:active {
+            transform: scale(0.95);
+        }
+        .start_training_buttonGo {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .start_training_buttonGo:hover {
+            background-color: #218838;
+        }
+
+        .start_training_buttonGo:active {
+            transform: scale(0.95);
+        }
+    }
+    .start_training_blockApproach {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+        form {
+            width: 20%;
+            @include adaptive-font(18, 14);
+            margin-top: 24px;
+            margin-bottom: 24px;
+            label {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 12px;
+                input {
+                    width: 40px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .start_training_section {
+        .start_training_blockApproach {
+            form {
+                width: 30%;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .start_training_section {
+        .start_training_infoBlock {
+            width: 100%;
+        }
+        .start_training_blockButton {
+            width: 100%;
+        }
+        .start_training_blockApproach {
+            form {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .start_training_section {
+        .start_training_blockApproach {
+            form {
+                width: 80%;
+            }
+        }
+    }
+}

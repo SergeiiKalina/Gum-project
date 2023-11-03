@@ -1,0 +1,16 @@
+.download_button_block {
+    margin-top: 12px;
+}
+.download_button_btn {
+    display: flex;
+    margin: 0 auto;
+    width: 50%;
+    justify-content: center;
+    color: aliceblue;
+    background-color: royalblue;
+    padding: 12px 32px;
+    font-size: 20px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+}

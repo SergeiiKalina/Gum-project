@@ -1,0 +1,171 @@
+@import "./../../adaptive-fontMixin.scss";
+
+.form_gen_train_step_wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: #1a2131;
+
+    h2 {
+        @include adaptive-font(30, 20);
+        margin: 0 0 32px 0;
+    }
+    .form_gen_train_step_secondHeader {
+        @include adaptive-font(30, 20);
+        margin: 32px 0 32px 0;
+    }
+    .form_gen_train_step_selectBlock {
+        display: flex;
+        flex-direction: column;
+        label {
+            justify-content: center;
+            flex-direction: row;
+            @include adaptive-font(18, 12);
+            span {
+                @include adaptive-font(16, 12);
+            }
+        }
+    }
+    .form_gen_train_step_selectContainer {
+        display: flex;
+        label {
+            width: 30%;
+            justify-content: left;
+            flex-direction: row;
+            margin-right: 0;
+            @include adaptive-font(18, 12);
+        }
+        select {
+            margin-left: 0;
+        }
+    }
+
+    .form_gen_train_step_blockInventory {
+        width: 60%;
+        margin: 0 auto;
+        h3 {
+            color: #fefefe;
+            margin: 20px auto 20px auto;
+            @include adaptive-font(26, 16);
+        }
+    }
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        .textField {
+            width: 50%;
+            margin: 0 auto;
+            input {
+                color: white;
+            }
+        }
+
+        select {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            @include adaptive-font(16, 12);
+            padding: 6px 0 6px 4px;
+            margin: 20px auto 0 auto;
+            border-bottom: 2px solid lightblue;
+            color: #fefefe;
+        }
+        button {
+            width: 30%;
+            margin: 15px auto 20px auto;
+            padding: 8px 0 8px 0;
+            border-radius: 10px;
+            @include adaptive-font(16, 12);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .button:active {
+            background-color: #003b80;
+            transform: scale(0.9);
+            box-shadow: none;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        article {
+            margin: 24px auto 24px auto;
+        }
+    }
+
+    .textarea {
+        width: 50%;
+        height: 150px;
+        @include adaptive-font(16, 12);
+        padding: 6px 4px;
+        resize: none;
+        margin: 20px auto 0 auto;
+        border: 2px solid lightblue;
+        border-radius: 8px;
+    }
+    .textarea:focus {
+        border: 2px solid white;
+        outline: 2px solid lightseagreen;
+    }
+}
+
+.form_gen_train_step_inlineRadio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .radio {
+        width: 35%;
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 0;
+        text-align: center;
+        color: #fefefe;
+        input {
+            margin: 15px auto 0 auto;
+        }
+    }
+    .radio :not(:first-child) {
+        margin: 0 0 0 20px;
+    }
+}
+@media (max-width: 1024px) {
+    .form_gen_train_step_wrapper {
+        section {
+            width: 70%;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .form_gen_train_step_wrapper {
+        section {
+            width: 80%;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .form_gen_train_step_wrapper {
+        section {
+            input {
+                width: 80%;
+            }
+            .textarea {
+                width: 80%;
+            }
+            select {
+                width: 80%;
+            }
+            button {
+                width: 50%;
+            }
+        }
+    }
+}

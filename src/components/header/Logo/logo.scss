@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import "./../../adaptive-fontMixin.scss";
+.logo_link {
+    display: flex;
+    font-family: "Bebas Neue", sans-serif;
+    text-decoration: none;
+    margin: 0 auto;
+    @include adaptive-font(30, 15);
+    color: #fefefe;
+    .logo_dumbbell {
+        margin: 0.31em 0.3em 0 0;
+        @include adaptive-font(45, 25);
+        transform: rotate(45deg);
+        color: #fefefe;
+    }
+}

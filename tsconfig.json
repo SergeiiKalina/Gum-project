@@ -1,16 +1,18 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "es2021",
+        "module": "esnext",
         "strict": true,
         "moduleResolution": "node",
         "jsx": "react",
         "esModuleInterop": true,
         "skipLibCheck": true,
+        "allowImportingTsExtensions": true,
+        "lib": ["dom", "esnext"],
         "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
+        "resolveJsonModule": true,
         "isolatedModules": true,
-        "allowImportingTsExtensions": true
+        "noEmit": true
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
     "exclude": ["node_modules"]
