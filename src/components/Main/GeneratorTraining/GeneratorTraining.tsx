@@ -19,7 +19,7 @@ function GeneratorTraining() {
     )
 
     return (
-        <div>
+        <div className="generator_training_wrapper">
             <h2 className="generator_training_generatorTrainingHeader">
                 Generator Form
             </h2>

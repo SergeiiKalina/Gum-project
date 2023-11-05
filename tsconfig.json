@@ -12,7 +12,10 @@
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "noEmit": true
+        "noEmit": true,
+        "allowUnreachableCode": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
     },
     "include": ["src/**/*.ts", "src/**/*.tsx"],
     "exclude": ["node_modules"]
