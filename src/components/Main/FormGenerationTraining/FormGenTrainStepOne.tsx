@@ -252,7 +252,7 @@ export default function FormGenTrainStepOne() {
                 style={{
                     width: "100%",
                     display: "flex",
-                    margin: "auto auto 200px auto",
+                    margin: "auto auto 20% auto",
                 }}
             >
                 <Button

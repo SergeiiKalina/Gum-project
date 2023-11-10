@@ -95,7 +95,7 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                         fullWidth
                         sx={{
                             width: "60%",
-                            margin: "20px auto 0 auto",
+                            margin: "30% auto 0 auto",
                             [theme.breakpoints.down("md")]: {
                                 width: "100%",
                             },
@@ -302,7 +302,7 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                 style={{
                     width: "100%",
                     display: "flex",
-                    margin: "auto auto 200px auto",
+                    margin: "auto auto 20% auto",
                 }}
             >
                 <Button

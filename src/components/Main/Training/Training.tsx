@@ -5,50 +5,69 @@ import {
     IIsChecked,
     changeActiveId,
     changeIsChecked,
-    writeArrTraining,
-    writeCategories,
+    fetchCategories,
+    fetchFilter,
+    fetchTraining,
     writeData,
 } from "../../../store/filterTrainingSlice.ts"
 import FormTraining from "../FormTraining/FormTraining.tsx"
-import training from "../../../data/data.ts"
 import NotTraining from "../../NotTraining.tsx"
-
-import "./training.scss"
 import { IFilterTrainingSlice } from "../FormTraining/Pagination.tsx"
+import "./training.scss"
 
 const Pagination = React.lazy(() => import("../FormTraining/Pagination.tsx"))
 
 function Training(): React.JSX.Element {
-    const dispatch = useDispatch()
+    const training = useSelector(
+        (state: IFilterTrainingSlice) => state.filterTraining.training
+    )
+    const { register, handleSubmit } = useForm({})
     const data = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.data
     )
-    const { register, handleSubmit } = useForm({})
     const arrTraining = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.arrTraining
     )
     const [arr, setArr] = useState(arrTraining.slice(0, 18))
     const [count, setCount] = useState(1)
-
-    const onSubmit = (data: IIsChecked) => {
-        dispatch(writeData(Object.values(data)))
-        dispatch(changeIsChecked(data))
-    }
+    const dispatch = useDispatch<any>()
     useEffect(() => {
-        dispatch(
-            writeArrTraining(
-                training.filter((item) => data.includes(item.category))
-            )
-        )
+        dispatch(fetchTraining())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(fetchCategories())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(fetchFilter(data))
     }, [data, dispatch])
 
     useEffect(() => {
-        let set: Set<string> = new Set()
-        for (let el of training) {
-            set.add(el.category)
+        let notePage: number = 18
+        let start: number = (count - 1) * notePage
+        let end: number = start + notePage
+
+        try {
+            fetch("https://urchin-app-j6t9a.ondigitalocean.app/current-page", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ start, end, arrTraining }),
+            })
+                .then((res) => res.json())
+                .then((res) => setArr(res))
+        } catch (error) {
+            console.log(error)
         }
-        dispatch(writeCategories(Array.from(set)))
-    }, [dispatch])
+    }, [count, arrTraining, training])
+
+    const onSubmit = (data: IIsChecked) => {
+        console.log(data)
+        dispatch(writeData(Object.values(data)))
+        dispatch(changeIsChecked(data))
+    }
 
     const paginationList = (
         e:
@@ -84,12 +103,6 @@ function Training(): React.JSX.Element {
             }
         }
     }
-    useEffect(() => {
-        let notePage = 18
-        let start = (count - 1) * notePage
-        let end = start + notePage
-        setArr(arrTraining.slice(start, end))
-    }, [count, arrTraining])
 
     return (
         <section className="training_section">

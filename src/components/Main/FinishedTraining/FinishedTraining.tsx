@@ -38,6 +38,7 @@ function FinishedTraining() {
     const value: ITraining[][] = useSelector(
         (state: ITrainingReducer) => state.training.arr
     )
+
     const data = useSelector(
         (state: ITrainingReducer) => state.training.formData
     )
@@ -1840,6 +1841,7 @@ function FinishedTraining() {
                     width: "90%",
                     display: "flex",
                     paddingTop: "20px",
+                    justifyContent: "center",
                 }}
             >
                 <Button
@@ -1847,8 +1849,7 @@ function FinishedTraining() {
                         width: "90%",
                         padding: "8px 0",
                         borderRadius: "15px",
-
-                        margin: "30px auto 0 auto",
+                        margin: "30% 0 0 30px",
                     }}
                     variant="outlined"
                     onClick={() => showStartTraining(0)}

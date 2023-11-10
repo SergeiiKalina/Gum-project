@@ -153,7 +153,7 @@ export default function GymTestForm(): React.JSX.Element {
                     width: "100%",
                     display: "flex",
                     paddingTop: "20px",
-                    margin: "auto auto 200px auto",
+                    margin: "auto auto 20% auto",
                 }}
             >
                 <Button

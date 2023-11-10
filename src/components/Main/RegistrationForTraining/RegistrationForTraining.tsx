@@ -13,6 +13,41 @@ interface IFormRegistration {
 function RegistrationForTraining(): React.JSX.Element {
     const { register } = useForm<IFormRegistration>()
 
+    async function addExerciseToServer() {
+        const url = "http://localhost:4000/add-exercise"
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id: 444,
+                    isComplited: false,
+                    img: "/images/mini/FB_IMG_1567430209194.jpg",
+                    category: "shoulders",
+                    fitnessLevel: 1,
+                    sex: "unsex",
+                    basicExercise: true,
+                    title: "Дрочить от плеча",
+                    workingOut: ["gym", "home"],
+                    inventory: ["dumbbell"],
+                    LFC: ["nothing"],
+                    subCatigories: "adD",
+                }),
+            })
+
+            if (!response.ok) {
+                throw new Error("Ебать ти не шариш!")
+            }
+
+            const result = await response.json()
+            console.log(result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className="registration_for_training_wrapper">
             <form>
@@ -47,7 +82,14 @@ function RegistrationForTraining(): React.JSX.Element {
                     {...register("aboutSelf")}
                 ></textarea>
 
-                <button>Send</button>
+                <button
+                    onClick={(e) => {
+                        e.preventDefault()
+                        addExerciseToServer()
+                    }}
+                >
+                    Send
+                </button>
             </form>
         </div>
     )

@@ -52,7 +52,7 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                 <article className="form_gen_train_step_inlineRadio">
                     <FormLabel
                         id="demo-row-radio-buttons-group-label"
-                        sx={{ margin: "20px auto 0 auto", color: "white" }}
+                        sx={{ margin: "70% auto 0 auto", color: "white" }}
                     >
                         Place Of Training
                     </FormLabel>
@@ -94,7 +94,7 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                 style={{
                     width: "100%",
                     display: "flex",
-                    margin: "auto auto 200px auto",
+                    margin: "auto auto 20% auto",
                 }}
             >
                 <Button
