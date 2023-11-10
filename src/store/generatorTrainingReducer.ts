@@ -70,24 +70,6 @@ const initialState: IGeneratorTrainingSliceData = {
     sexTraining: "",
 }
 
-let urlApi: string = "https://walrus-app-ijotx.ondigitalocean.app/exercise"
-
-async function trainingApi(urlApi: string) {
-    try {
-        const response = await fetch(urlApi)
-
-        if (!response.ok) {
-            throw new Error(
-                `Network response was not ok: ${response.statusText}`
-            )
-        }
-
-        const exercise = await response.json()
-    } catch (error) {
-        console.error("Error fetching training data:", error.message)
-    }
-}
-
 const generatorTrainingSlice = createSlice({
     name: "generatorTrainingSlice",
     initialState,
