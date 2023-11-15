@@ -64,7 +64,6 @@ function Training(): React.JSX.Element {
     }, [count, arrTraining, training])
 
     const onSubmit = (data: IIsChecked) => {
-        console.log(data)
         dispatch(writeData(Object.values(data)))
         dispatch(changeIsChecked(data))
     }

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import MyLayouts from "./components/layouts/MyLayouts.tsx"
 import Training from "./components/Main/Training/Training.tsx"
@@ -15,8 +15,12 @@ import FinishedTraining from "./components/Main/FinishedTraining/FinishedTrainin
 import FormGenTrainStepTwo from "./components/Main/FormGenerationTraining/FormGenTrainStepTwo.tsx"
 import GymTestForm from "./components/Main/FormGenerationTraining/GymTestForm.tsx"
 import AboutMe from "./components/header/AboutMe/AboutMe.tsx"
+import Login from "./components/header/Login/Login.tsx"
+import Logout from "./components/header/Logout/Logout.tsx"
 
 function App(): React.JSX.Element {
+    const [user, toggleUser] = useState<boolean>(true)
+
     return (
         <BrowserRouter>
             <div className="App">
@@ -24,6 +28,7 @@ function App(): React.JSX.Element {
                     <Route path="/" element={<MyLayouts />}>
                         <Route index element={<GeneratorTraining />} />
                         <Route path="workout" element={<Training />} />
+
                         <Route
                             path="gentraining"
                             element={<GeneratorTraining />}
@@ -66,6 +71,16 @@ function App(): React.JSX.Element {
                         <Route
                             path="start_training"
                             element={<StartTraining />}
+                        />
+                        <Route
+                            path="login"
+                            element={
+                                user ? (
+                                    <Login toggleUser={toggleUser} />
+                                ) : (
+                                    <Logout />
+                                )
+                            }
                         />
                     </Route>
                 </Routes>
