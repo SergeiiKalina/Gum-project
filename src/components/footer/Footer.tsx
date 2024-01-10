@@ -2,8 +2,8 @@ import React from "react"
 import { BsPerson } from "react-icons/bs"
 import { TbTriangleInverted } from "react-icons/tb"
 import { AiOutlineSetting } from "react-icons/ai"
-import "./footer.scss"
 import { NavLink } from "react-router-dom"
+import "./footer.scss"
 export default function Footer(): React.JSX.Element {
     return (
         <div className="footerWrapper">
