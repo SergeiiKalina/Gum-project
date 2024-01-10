@@ -8,23 +8,21 @@ import {
 } from "../../../store/generatorTrainingReducer"
 import {
     Button,
-    createTheme,
     FormControl,
     InputLabel,
     MenuItem,
     Select,
     SelectChangeEvent,
 } from "@mui/material"
-import { lime, purple } from "@mui/material/colors"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import "./formGenTrainStep.scss"
-
-const theme = createTheme({
-    palette: {
-        primary: lime,
-        secondary: purple,
-    },
-})
+import {
+    stylesButtonWrapper,
+    stylesField,
+    stylesFormButton,
+    stylesInputLabelSelect,
+    stylesSelect,
+} from "./styles/stylesFormGeneration"
 
 export default function HomeTestForm(): React.JSX.Element {
     const sex = useSelector(
@@ -62,183 +60,95 @@ export default function HomeTestForm(): React.JSX.Element {
         >
             <h2>Number Of Repetitions</h2>
             <section>
-                <div className="form_gen_train_step_selectContainer">
-                    <FormControl
-                        fullWidth
-                        sx={{
-                            width: "60%",
-                            margin: "20px auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
+                <FormControl fullWidth sx={stylesField}>
+                    <InputLabel
+                        id="demo-simple-select-label"
+                        sx={stylesInputLabelSelect}
                     >
-                        <InputLabel
-                            id="demo-simple-select-label"
-                            sx={{ color: "white", border: "none" }}
-                        >
-                            Squat Quantity
-                        </InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={squatQuantity}
-                            label="squatQuantity"
-                            variant="outlined"
-                            {...register("squatQuantity")}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
-                            onChange={handleChangeSquatQuantity}
-                        >
-                            <MenuItem value={"1"}>
-                                {sex === "male" ? "> 30" : "> 20"}
-                            </MenuItem>
-                            <MenuItem value={"2"}>
-                                {sex === "male" ? "50 - 100" : "20 - 50"}
-                            </MenuItem>
-                            <MenuItem value={"3"}>
-                                {sex === "male" ? `100 <` : "50 <"}
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
-                </div>
+                        Squat Quantity
+                    </InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={squatQuantity}
+                        label="squatQuantity"
+                        variant="outlined"
+                        {...register("squatQuantity")}
+                        sx={stylesSelect}
+                        onChange={handleChangeSquatQuantity}
+                    >
+                        <MenuItem value={"1"}>
+                            {sex === "male" ? "> 30" : "> 20"}
+                        </MenuItem>
+                        <MenuItem value={"2"}>
+                            {sex === "male" ? "50 - 100" : "20 - 50"}
+                        </MenuItem>
+                        <MenuItem value={"3"}>
+                            {sex === "male" ? `100 <` : "50 <"}
+                        </MenuItem>
+                    </Select>
+                </FormControl>
 
-                <div className="form_gen_train_step_selectContainer">
-                    <FormControl
-                        fullWidth
-                        sx={{
-                            width: "60%",
-                            margin: "20px auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
+                <FormControl fullWidth sx={stylesField}>
+                    <InputLabel
+                        id="demo-simple-select-label"
+                        sx={stylesInputLabelSelect}
                     >
-                        <InputLabel
-                            id="demo-simple-select-label"
-                            sx={{ color: "white", border: "none" }}
-                        >
-                            Push-Up Quantity
-                        </InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={pushUpQuantity}
-                            label="pushUpQuantity"
-                            variant="outlined"
-                            {...register("pushUpQuantity")}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
-                            onChange={handleChangePushUpQuantity}
-                        >
-                            <MenuItem value={"1"}>
-                                {sex === "male" ? "> 15" : "> 10"}
-                            </MenuItem>
-                            <MenuItem value={"2"}>
-                                {sex === "male" ? "15 - 40" : "10 - 25"}
-                            </MenuItem>
-                            <MenuItem value={"3"}>
-                                {sex === "male" ? `50 <` : "30 <"}
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
-                </div>
+                        Push-Up Quantity
+                    </InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={pushUpQuantity}
+                        label="pushUpQuantity"
+                        variant="outlined"
+                        {...register("pushUpQuantity")}
+                        sx={stylesSelect}
+                        onChange={handleChangePushUpQuantity}
+                    >
+                        <MenuItem value={"1"}>
+                            {sex === "male" ? "> 15" : "> 10"}
+                        </MenuItem>
+                        <MenuItem value={"2"}>
+                            {sex === "male" ? "15 - 40" : "10 - 25"}
+                        </MenuItem>
+                        <MenuItem value={"3"}>
+                            {sex === "male" ? `50 <` : "30 <"}
+                        </MenuItem>
+                    </Select>
+                </FormControl>
 
-                <div className="form_gen_train_step_selectContainer">
-                    <FormControl
-                        fullWidth
-                        sx={{
-                            width: "60%",
-                            margin: "20px auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
+                <FormControl fullWidth sx={stylesField}>
+                    <InputLabel
+                        id="demo-simple-select-label"
+                        sx={stylesInputLabelSelect}
                     >
-                        <InputLabel
-                            id="demo-simple-select-label"
-                            sx={{ color: "white", border: "none" }}
-                        >
-                            Sit-Up Quantity
-                        </InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={sitUp}
-                            label="sitUp"
-                            variant="outlined"
-                            {...register("sitUp")}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
-                            onChange={handleChangeSitUp}
-                        >
-                            <MenuItem value={"1"}>
-                                {sex === "male" ? "> 20" : "> 10"}
-                            </MenuItem>
-                            <MenuItem value={"2"}>
-                                {sex === "male" ? "20 - 40" : "10 - 25"}
-                            </MenuItem>
-                            <MenuItem value={"3"}>
-                                {sex === "male" ? `50 <` : "30 <"}
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
-                </div>
+                        Sit-Up Quantity
+                    </InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={sitUp}
+                        label="sitUp"
+                        variant="outlined"
+                        {...register("sitUp")}
+                        sx={stylesSelect}
+                        onChange={handleChangeSitUp}
+                    >
+                        <MenuItem value={"1"}>
+                            {sex === "male" ? "> 20" : "> 10"}
+                        </MenuItem>
+                        <MenuItem value={"2"}>
+                            {sex === "male" ? "20 - 40" : "10 - 25"}
+                        </MenuItem>
+                        <MenuItem value={"3"}>
+                            {sex === "male" ? `50 <` : "30 <"}
+                        </MenuItem>
+                    </Select>
+                </FormControl>
             </section>
-            <div
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    margin: "auto auto 200px auto",
-                }}
-            >
-                <Button
-                    variant="contained"
-                    type="submit"
-                    sx={{ width: "40%", margin: "0 auto" }}
-                >
+            <div style={stylesButtonWrapper}>
+                <Button variant="contained" type="submit" sx={stylesFormButton}>
                     Next Step
                 </Button>
             </div>

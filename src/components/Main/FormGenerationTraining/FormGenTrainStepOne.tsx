@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import {
@@ -5,12 +6,9 @@ import {
     writeFormData,
     writeSexTraining,
 } from "../../../store/generatorTrainingReducer"
-import "./formGenTrainStep.scss"
-import { lime, purple } from "@mui/material/colors"
 import { SubmitHandler, useForm } from "react-hook-form"
 import {
     Button,
-    createTheme,
     FormControl,
     FormControlLabel,
     FormLabel,
@@ -20,59 +18,23 @@ import {
     RadioGroup,
     Select,
     SelectChangeEvent,
-    TextField,
 } from "@mui/material"
-
-import styled from "@emotion/styled"
-import React, { useState } from "react"
-
-const theme = createTheme({
-    palette: {
-        primary: lime,
-        secondary: purple,
-    },
-    breakpoints: {
-        values: {
-            xs: 400,
-            sm: 560,
-            md: 767,
-            lg: 1248,
-            xl: 1536,
-        },
-    },
-})
-
-const StyledTextField = styled(TextField)({
-    width: "60%",
-    margin: "20px auto 0 auto",
-    border: "none",
-    [theme.breakpoints.down("md")]: {
-        width: "70%",
-    },
-    "& .MuiOutlinedInput-root": {
-        "&:hover .MuiInputBase-input ": {
-            borderBottom: "1px solid #42a5f5",
-        },
-        "&.Mui-focused": {},
-        "& .MuiInputBase-input": {
-            color: "white",
-            borderBottom: "1px solid #fefefe",
-        },
-    },
-    "& .MuiInputLabel-root": {
-        color: "white",
-    },
-    "&:hover .MuiInputLabel-root": {
-        color: "#42a5f5",
-    },
-    "& .MuiOutlinedInput-notchedOutline": {
-        border: "none",
-    },
-})
+import { StyledTextField } from "../../Styled-components/Styled"
+import "./formGenTrainStep.scss"
+import {
+    styledRadioGroup,
+    stylesButtonWrapper,
+    stylesField,
+    stylesFormButton,
+    stylesFormLabelRadioGroup,
+    stylesInputLabelSelect,
+    stylesLabelRadio,
+    stylesRadio,
+    stylesSelect,
+} from "./styles/stylesFormGeneration"
 
 export default function FormGenTrainStepOne() {
     const [age, setAge] = useState<string>("")
-
     const handleChangeAge = (event: SelectChangeEvent<string>) => {
         let value: string = event.target.value
         setAge(value)
@@ -92,14 +54,19 @@ export default function FormGenTrainStepOne() {
             className="form_gen_train_step_wrapper"
             onSubmit={handleSubmit(onSubmit)}
         >
+            <h2>Generator Form</h2>
             <h2>First Step</h2>
-
             <StyledTextField
                 id="firstName"
                 label="First Name"
                 variant="outlined"
                 type="text"
                 autoComplete="given-name"
+                defaultValue={
+                    localStorage.getItem("firstName")
+                        ? localStorage.getItem("firstName")
+                        : ""
+                }
                 {...register("firstName", {
                     required: "First Name is Error",
                 })}
@@ -113,6 +80,11 @@ export default function FormGenTrainStepOne() {
                 label="Last Name"
                 variant="outlined"
                 autoComplete="family-name"
+                defaultValue={
+                    localStorage.getItem("lastName")
+                        ? localStorage.getItem("lastName")
+                        : ""
+                }
                 {...register("lastName", {
                     required: "Last Name is Error",
                 })}
@@ -126,6 +98,11 @@ export default function FormGenTrainStepOne() {
                 label="Email"
                 variant="outlined"
                 autoComplete="email"
+                defaultValue={
+                    localStorage.getItem("email")
+                        ? localStorage.getItem("email")
+                        : ""
+                }
                 {...register("email")}
                 InputProps={{
                     type: "email",
@@ -142,21 +119,13 @@ export default function FormGenTrainStepOne() {
                 InputProps={{
                     type: "number",
                 }}
+                sx={stylesField}
             />
 
-            <FormControl
-                fullWidth
-                sx={{
-                    width: "60%",
-                    margin: "20px auto 0 auto",
-                    [theme.breakpoints.down("md")]: {
-                        width: "70%",
-                    },
-                }}
-            >
+            <FormControl fullWidth sx={stylesField}>
                 <InputLabel
                     id="demo-simple-select-label"
-                    sx={{ color: "white", border: "none" }}
+                    sx={stylesInputLabelSelect}
                 >
                     Age
                 </InputLabel>
@@ -167,22 +136,7 @@ export default function FormGenTrainStepOne() {
                     label="Age"
                     variant="outlined"
                     {...register("age")}
-                    sx={{
-                        boxShadow: "none",
-                        color: "white",
-                        ".MuiOutlinedInput-notchedOutline": {
-                            border: "none",
-                            borderBottom: "1px solid #fefefe",
-                            borderRadius: "0px",
-                        },
-                        "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                            {
-                                borderBottom: "1px solid #42a5f5",
-                            },
-                        ".MuiSvgIcon-root": {
-                            color: "white",
-                        },
-                    }}
+                    sx={stylesSelect}
                     onChange={handleChangeAge}
                 >
                     <MenuItem value={1}>{`> 18`}</MenuItem>
@@ -197,7 +151,7 @@ export default function FormGenTrainStepOne() {
             <article className="form_gen_train_step_inlineRadio">
                 <FormLabel
                     id="demo-row-radio-buttons-group-label"
-                    sx={{ margin: "20px auto 0 auto", color: "white" }}
+                    sx={stylesFormLabelRadioGroup}
                 >
                     Gender
                 </FormLabel>
@@ -206,60 +160,29 @@ export default function FormGenTrainStepOne() {
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
-                    sx={{
-                        width: "15%",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        margin: "20px auto 0 auto",
-
-                        [theme.breakpoints.down("xl")]: {
-                            width: "20%",
-                        },
-                        [theme.breakpoints.down("lg")]: {
-                            width: "30%",
-                        },
-                        [theme.breakpoints.down("md")]: {
-                            width: "40%",
-                        },
-                        [theme.breakpoints.down("sm")]: {
-                            width: "50%",
-                        },
-                        [theme.breakpoints.down("xs")]: {
-                            width: "60%",
-                        },
-                    }}
+                    sx={styledRadioGroup}
                 >
                     <FormControlLabel
                         value="female"
-                        control={<Radio sx={{ color: "white" }} />}
+                        control={<Radio sx={stylesRadio} />}
                         label="Female"
-                        sx={{ color: "white" }}
+                        sx={stylesLabelRadio}
                         {...register("sex")}
                         onClick={() => dispatch(writeSexTraining("female"))}
                     />
                     <FormControlLabel
                         value="male"
-                        control={<Radio sx={{ color: "white" }} />}
+                        control={<Radio sx={stylesRadio} />}
                         label="Male"
-                        sx={{ color: "white" }}
+                        sx={stylesLabelRadio}
                         {...register("sex")}
                         onClick={() => dispatch(writeSexTraining("male"))}
                     />
                 </RadioGroup>
             </article>
 
-            <div
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    margin: "auto auto 20% auto",
-                }}
-            >
-                <Button
-                    variant="contained"
-                    type="submit"
-                    sx={{ width: "40%", margin: "0 auto" }}
-                >
+            <div style={stylesButtonWrapper}>
+                <Button variant="contained" type="submit" sx={stylesFormButton}>
                     Next Step
                 </Button>
             </div>

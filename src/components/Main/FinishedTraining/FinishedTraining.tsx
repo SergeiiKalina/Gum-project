@@ -8,7 +8,7 @@ import {
 } from "../../../store/generatorTrainingReducer"
 import AddExercise from "../AddExcercise/AddExercise"
 import "./finishedTraining.scss"
-import MenuExercise from "../MenuExercise/MenuExercise.tsx"
+import MenuExercise from "../MenuExercise/MenuExercise"
 import { useNavigate } from "react-router-dom"
 import training, { ITraining } from "../../../data/data"
 import { Box } from "@mui/system"
@@ -32,6 +32,84 @@ export interface ITrainingReducer {
 
 interface IShowDialog {
     [key: number]: boolean | number
+}
+
+const generateRandomExerciseWorkout: any = (
+    data: IFormData,
+    basicQuantity: number,
+    noBasicQuantity: number,
+    filteredBasicArr: ITraining[],
+    filteredNoBasicArr: ITraining[],
+    currentArr: ITraining[] = [],
+    setSubCategories = new Set()
+) => {
+    if (currentArr.length === basicQuantity + noBasicQuantity) {
+        return currentArr
+    }
+
+    if (filteredBasicArr.length >= basicQuantity) {
+        if (currentArr.length < basicQuantity) {
+            let randomIndex = Math.floor(
+                Math.random() * filteredBasicArr.length
+            )
+            let randomElement = filteredBasicArr[randomIndex]
+            if (!setSubCategories.has(randomElement.subCatigories)) {
+                currentArr = [...currentArr, randomElement]
+                setSubCategories.add(randomElement.subCatigories)
+            }
+            return generateRandomExerciseWorkout(
+                data,
+                basicQuantity,
+                noBasicQuantity,
+                filteredBasicArr,
+                filteredNoBasicArr,
+                currentArr,
+                setSubCategories
+            )
+        }
+    } else {
+        return generateRandomExerciseWorkout(
+            data,
+            basicQuantity,
+            noBasicQuantity,
+            filteredBasicArr.concat(filteredNoBasicArr),
+            filteredNoBasicArr,
+            currentArr,
+            setSubCategories
+        )
+    }
+    if (filteredNoBasicArr.length >= noBasicQuantity) {
+        if (currentArr.length < basicQuantity + noBasicQuantity) {
+            let randomIndex = Math.floor(
+                Math.random() * filteredNoBasicArr.length
+            )
+            let randomElement = filteredNoBasicArr[randomIndex]
+            if (!setSubCategories.has(randomElement.subCatigories)) {
+                currentArr = [...currentArr, randomElement]
+                setSubCategories.add(randomElement.subCatigories)
+            }
+
+            return generateRandomExerciseWorkout(
+                data,
+                basicQuantity,
+                noBasicQuantity,
+                filteredBasicArr,
+                filteredNoBasicArr,
+                currentArr,
+                setSubCategories
+            )
+        }
+    } else {
+        return generateRandomExerciseWorkout(
+            data,
+            basicQuantity,
+            noBasicQuantity,
+            filteredNoBasicArr.concat(filteredBasicArr),
+            filteredBasicArr,
+            currentArr,
+            setSubCategories
+        )
+    }
 }
 
 function FinishedTraining() {
@@ -140,8 +218,8 @@ function FinishedTraining() {
 
     const dragDrop = (
         e: React.DragEvent<HTMLDivElement>,
-        currentElementIndex: string | number | any,
-        arrayIndex: string | number | any
+        currentElementIndex: number,
+        arrayIndex: number
     ) => {
         e.preventDefault()
         const target = e.currentTarget.style
@@ -151,7 +229,7 @@ function FinishedTraining() {
         const clonedValue = structuredClone(value)
 
         clonedValue[arrayIndex] = clonedValue[arrayIndex].filter(
-            (el) => el.id !== thisDragElement!.id
+            (el: ITraining) => el.id !== thisDragElement!.id
         )
         clonedValue[arrayIndex].splice(currentElementIndex, 0, thisDragElement!)
         dispatch(writeArr(clonedValue))
@@ -193,87 +271,6 @@ function FinishedTraining() {
             setShowMenuExercise(e.currentTarget.id)
         }
     }
-
-    const generateRandomExerciseWorkout = useCallback(
-        (
-            data: IFormData,
-            basicQuantity: number,
-            noBasicQuantity: number,
-            filteredBasicArr: ITraining[],
-            filteredNoBasicArr: ITraining[],
-            currentArr: ITraining[] = [],
-            setSubCategories = new Set()
-        ) => {
-            if (currentArr.length === basicQuantity + noBasicQuantity) {
-                return currentArr
-            }
-
-            if (filteredBasicArr.length >= basicQuantity) {
-                if (currentArr.length < basicQuantity) {
-                    let randomIndex = Math.floor(
-                        Math.random() * filteredBasicArr.length
-                    )
-                    let randomElement = filteredBasicArr[randomIndex]
-                    if (!setSubCategories.has(randomElement.subCatigories)) {
-                        currentArr = [...currentArr, randomElement]
-                        setSubCategories.add(randomElement.subCatigories)
-                    }
-                    return generateRandomExerciseWorkout(
-                        data,
-                        basicQuantity,
-                        noBasicQuantity,
-                        filteredBasicArr,
-                        filteredNoBasicArr,
-                        currentArr,
-                        setSubCategories
-                    )
-                }
-            } else {
-                return generateRandomExerciseWorkout(
-                    data,
-                    basicQuantity,
-                    noBasicQuantity,
-                    filteredBasicArr.concat(filteredNoBasicArr),
-                    filteredNoBasicArr,
-                    currentArr,
-                    setSubCategories
-                )
-            }
-            if (filteredNoBasicArr.length >= noBasicQuantity) {
-                if (currentArr.length < basicQuantity + noBasicQuantity) {
-                    let randomIndex = Math.floor(
-                        Math.random() * filteredNoBasicArr.length
-                    )
-                    let randomElement = filteredNoBasicArr[randomIndex]
-                    if (!setSubCategories.has(randomElement.subCatigories)) {
-                        currentArr = [...currentArr, randomElement]
-                        setSubCategories.add(randomElement.subCatigories)
-                    }
-
-                    return generateRandomExerciseWorkout(
-                        data,
-                        basicQuantity,
-                        noBasicQuantity,
-                        filteredBasicArr,
-                        filteredNoBasicArr,
-                        currentArr,
-                        setSubCategories
-                    )
-                }
-            } else {
-                return generateRandomExerciseWorkout(
-                    data,
-                    basicQuantity,
-                    noBasicQuantity,
-                    filteredNoBasicArr.concat(filteredBasicArr),
-                    filteredBasicArr,
-                    currentArr,
-                    setSubCategories
-                )
-            }
-        },
-        []
-    )
 
     function filterArrayByCategory(
         data: IFormData,
@@ -1726,7 +1723,7 @@ function FinishedTraining() {
             dispatch(writeArr(allEx))
             dispatch(changeBul(true))
         },
-        [dispatch, generateRandomExerciseWorkout]
+        [dispatch]
     )
 
     useEffect(() => {

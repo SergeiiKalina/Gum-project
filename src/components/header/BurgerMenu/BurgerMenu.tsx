@@ -1,15 +1,17 @@
-import React, { JSX } from "react"
+import { JSX } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import MobileMenu from "../MobileMenu/MobileMenu.tsx"
-import { MenuState } from "../Menu/Menu.tsx"
+import MobileMenu from "../MobileMenu/MobileMenu"
+import { MenuState } from "../Menu/Menu"
 import "./burgerMenu.module.css"
 
-export interface IBurgerMenu {
+export interface IBurgerMenuProps {
     showBurgerMenu: (status: boolean) => void
 }
 
-function BurgerMenu({ showBurgerMenu }: IBurgerMenu): JSX.Element {
+export type BurgerMenuType = typeof BurgerMenu
+
+function BurgerMenu({ showBurgerMenu }: IBurgerMenuProps): JSX.Element {
     function pageChange(): string {
         let currentUrl = window.location.href
         return currentUrl.replace("http://localhost:3000", "")
@@ -20,6 +22,7 @@ function BurgerMenu({ showBurgerMenu }: IBurgerMenu): JSX.Element {
 
     return (
         <div className="burger_menu_btnBurger">
+            good idea
             <NavLink
                 to={pageChange()}
                 onClick={() => showBurgerMenu}

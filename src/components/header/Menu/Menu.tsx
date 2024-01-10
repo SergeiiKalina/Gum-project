@@ -1,13 +1,9 @@
 import { NavLink } from "react-router-dom"
 import React, { JSX, useEffect, useRef } from "react"
 import { RxCaretRight, RxCaretLeft } from "react-icons/rx"
-import BurgerMenu from "../BurgerMenu/BurgerMenu.tsx"
+import BurgerMenu from "../BurgerMenu/BurgerMenu"
 import { useDispatch, useSelector } from "react-redux"
-import {
-    arrowLHidden,
-    arrowRHidden,
-    showMenu,
-} from "../../../store/menuSlice.ts"
+import { arrowLHidden, arrowRHidden, showMenu } from "../../../store/menuSlice"
 import "./menu.css"
 
 export interface MenuState {

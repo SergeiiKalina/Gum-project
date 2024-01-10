@@ -1,37 +1,35 @@
-import React, { useState } from "react"
+import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import MyLayouts from "./components/layouts/MyLayouts.tsx"
-import Training from "./components/Main/Training/Training.tsx"
-import RegistrationForTraining from "./components/Main/RegistrationForTraining/RegistrationForTraining.tsx"
-import Contacts from "./components/header/Contacts/Contacts.tsx"
-import GeneratorTraining from "./components/Main/GeneratorTraining/GeneratorTraining.tsx"
-import AdminForm from "./components/Other/AdminForm/AdminForm.tsx"
+import MyLayouts from "./components/layouts/MyLayouts"
+import Training from "./components/Main/Training/Training"
+import RegistrationForTraining from "./components/Main/RegistrationForTraining/RegistrationForTraining"
+import Contacts from "./components/header/Contacts/Contacts"
+import AdminForm from "./components/Other/AdminForm/AdminForm"
 import "./App.scss"
-import StartTraining from "./components/Main/StartTraining/StartTraining.tsx"
-import HomeTestForm from "./components/Main/FormGenerationTraining/HomeTestForm.tsx"
-import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory.tsx"
-import FormGenTrainStepThird from "./components/Main/FormGenerationTraining/FormGenTrainStepThird.tsx"
-import FinishedTraining from "./components/Main/FinishedTraining/FinishedTraining.tsx"
-import FormGenTrainStepTwo from "./components/Main/FormGenerationTraining/FormGenTrainStepTwo.tsx"
-import GymTestForm from "./components/Main/FormGenerationTraining/GymTestForm.tsx"
-import AboutMe from "./components/header/AboutMe/AboutMe.tsx"
-import Login from "./components/header/Login/Login.tsx"
-import Logout from "./components/header/Logout/Logout.tsx"
+import StartTraining from "./components/Main/StartTraining/StartTraining"
+import HomeTestForm from "./components/Main/FormGenerationTraining/HomeTestForm"
+import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory"
+import FormGenTrainStepThird from "./components/Main/FormGenerationTraining/FormGenTrainStepThird"
+import FinishedTraining from "./components/Main/FinishedTraining/FinishedTraining"
+import FormGenTrainStepTwo from "./components/Main/FormGenerationTraining/FormGenTrainStepTwo"
+import GymTestForm from "./components/Main/FormGenerationTraining/GymTestForm"
+import AboutMe from "./components/header/AboutMe/AboutMe"
+import Login from "./components/header/Login/Login"
+import Registration from "./components/header/Registration/Registration"
+import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGenTrainStepOne"
 
 function App(): React.JSX.Element {
-    const [user, toggleUser] = useState<boolean>(true)
-
     return (
         <BrowserRouter>
             <div className="App">
                 <Routes>
                     <Route path="/" element={<MyLayouts />}>
-                        <Route index element={<GeneratorTraining />} />
+                        <Route element={<FormGenTrainStepOne />} />
                         <Route path="workout" element={<Training />} />
 
                         <Route
                             path="gentraining"
-                            element={<GeneratorTraining />}
+                            element={<FormGenTrainStepOne />}
                         />
                         <Route
                             path="/finished-training"
@@ -72,16 +70,9 @@ function App(): React.JSX.Element {
                             path="start_training"
                             element={<StartTraining />}
                         />
-                        <Route
-                            path="login"
-                            element={
-                                user ? (
-                                    <Login toggleUser={toggleUser} />
-                                ) : (
-                                    <Logout />
-                                )
-                            }
-                        />
+                        <Route path="login" element={<Login />} />
+                        <Route index element={<Login />} />
+                        <Route path="registration" element={<Registration />} />
                     </Route>
                 </Routes>
             </div>

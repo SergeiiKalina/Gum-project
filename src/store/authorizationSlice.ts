@@ -6,28 +6,45 @@ import { AuthResponse } from "../models/response/AuthResponse"
 import { API_URL } from "../http"
 
 const initialState: IInitialStateAuthorizationSlice = {
-    user: { email: "", id: "", isActivated: false },
+    user: {
+        email: "",
+        id: "",
+        isActivated: false,
+        firstName: "",
+        lastName: "",
+    },
     isAuth: false,
     isLoading: false,
+    error: "",
 }
 
 export interface IInitialStateAuthorizationSlice {
     user: IUserAPI | undefined
     isAuth: boolean
     isLoading: boolean
+    error: string | undefined
 }
 
-export interface IPropertyAuth {
+export interface IPropertyRegistration {
+    email: string
+    password: string
+    firstName: string
+    lastName: string
+}
+export interface IPropertyLogin {
     email: string
     password: string
 }
 
 export const login = createAsyncThunk(
     "authorizationSlice/login",
-    async ({ email, password }: IPropertyAuth) => {
+    async ({ email, password }: IPropertyLogin) => {
         try {
             const response = await AuthService.login(email, password)
             localStorage.setItem("token", response.data.accessToken)
+            localStorage.setItem("firstName", response.data.user.firstName)
+            localStorage.setItem("lastName", response.data.user.lastName)
+            localStorage.setItem("email", response.data.user.email)
             return response.data.user
         } catch (error: any) {
             console.log(error.response?.data?.message)
@@ -37,13 +54,25 @@ export const login = createAsyncThunk(
 
 export const registration = createAsyncThunk(
     "authorizationSlice/registration",
-    async ({ email, password }: IPropertyAuth) => {
+    async ({ email, password, firstName, lastName }: IPropertyRegistration) => {
         try {
-            const response = await AuthService.registration(email, password)
+            const defaultFirstName = firstName || "user"
+            const defaultLastName = lastName || "user"
+
+            const response = await AuthService.registration(
+                email,
+                password,
+                defaultFirstName,
+                defaultLastName
+            )
+
             localStorage.setItem("token", response.data.accessToken)
+            localStorage.setItem("firstName", response.data.user.firstName)
+            localStorage.setItem("lastName", response.data.user.lastName)
+            localStorage.setItem("email", response.data.user.email)
             return response.data.user
-        } catch (error: any) {
-            console.log(error.response?.data?.message)
+        } catch (error) {
+            throw error
         }
     }
 )
@@ -53,6 +82,9 @@ export const logout = createAsyncThunk(
         try {
             await AuthService.logout()
             localStorage.removeItem("token")
+            localStorage.removeItem("firstName")
+            localStorage.removeItem("lastName")
+            localStorage.removeItem("email")
             return undefined
         } catch (error: any) {
             console.log(error.response?.data?.message)
@@ -107,6 +139,7 @@ const authorizationSlice = createSlice({
             })
             .addCase(registration.rejected, (state, action) => {
                 console.error("Registration failed:", action.error)
+                state.error = action.error.message
                 state.user = undefined
                 state.isAuth = false
                 state.isLoading = false

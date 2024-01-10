@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom"
 import { Button, Checkbox, FormControlLabel, FormGroup } from "@mui/material"
 import "./formGenTrainStep.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
+import {
+    stylesButtonWrapper,
+    stylesCheckBox,
+    stylesFormButton,
+    stylesFormControlLabel,
+} from "./styles/stylesFormGeneration"
 
 export default function AvailabilityOfInventory(): React.JSX.Element {
     const formData = useSelector(
@@ -43,103 +49,54 @@ export default function AvailabilityOfInventory(): React.JSX.Element {
                     </h3>
                     <FormGroup>
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
                             control={
-                                <Checkbox
-                                    sx={{ color: "white" }}
-                                    defaultChecked
-                                />
+                                <Checkbox sx={stylesCheckBox} defaultChecked />
                             }
                             label="dumbbell"
                         />
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
-                            control={<Checkbox sx={{ color: "white" }} />}
+                            control={<Checkbox sx={stylesCheckBox} />}
                             label="kettlebell"
                         />
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
-                            control={<Checkbox sx={{ color: "white" }} />}
+                            control={<Checkbox sx={stylesCheckBox} />}
                             label="band"
                         />
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
-                            control={<Checkbox sx={{ color: "white" }} />}
+                            control={<Checkbox sx={stylesCheckBox} />}
                             label="mini-band"
                         />
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
-                            control={<Checkbox sx={{ color: "white" }} />}
+                            control={<Checkbox sx={stylesCheckBox} />}
                             label="bar"
                         />
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
-                            control={<Checkbox sx={{ color: "white" }} />}
+                            control={<Checkbox sx={stylesCheckBox} />}
                             label="TRX"
                         />
                         <FormControlLabel
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row-reverse",
-                                justifyContent: "space-between",
-                                color: "white",
-                            }}
+                            sx={stylesFormControlLabel}
                             {...register("inventory")}
-                            control={<Checkbox sx={{ color: "white" }} />}
+                            control={<Checkbox sx={stylesCheckBox} />}
                             label="fitball"
                         />
                     </FormGroup>
                 </article>
             </section>
-            <div
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    position: "absolute",
-                    bottom: "150px",
-                }}
-            >
-                <Button
-                    variant="contained"
-                    type="submit"
-                    sx={{ width: "90%", margin: "0 auto" }}
-                >
+            <div style={stylesButtonWrapper}>
+                <Button variant="contained" type="submit" sx={stylesFormButton}>
                     Next Step
                 </Button>
             </div>

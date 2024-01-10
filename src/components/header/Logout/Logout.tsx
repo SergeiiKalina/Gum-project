@@ -1,22 +1,27 @@
-import React, { JSX, useEffect } from "react"
 import "./../Login/login.scss"
+import { IUser } from "../Login/Login"
+import { Button } from "@mui/material"
 
-function Logout({ value }): JSX.Element {
+interface LogoutProps {
+    value: IUser
+}
+
+function Logout({ value }: LogoutProps): JSX.Element {
     const logout = (): void => {
         localStorage.clear()
         window.location.reload()
     }
 
-    useEffect(() => {}, [value])
     return (
         <div className="login_block">
             <div className="photo_login_block">
-                <img src={value.photo} alt="user" />
+                {value && value.photo !== null && (
+                    <img src={value.photo} alt="user" />
+                )}
             </div>
-            <h2>{value.userName}</h2>
-            <button className="login_button" onClick={logout}>
+            <Button variant="outlined" onClick={logout}>
                 Вийти з аккаунту
-            </button>
+            </Button>
         </div>
     )
 }

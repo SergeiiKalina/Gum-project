@@ -1,15 +1,12 @@
 import {
     Button,
-    createTheme,
     FormControl,
     InputLabel,
     MenuItem,
     OutlinedInput,
     Select,
     SelectChangeEvent,
-    Theme,
 } from "@mui/material"
-import { lime, purple } from "@mui/material/colors"
 import React, { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
@@ -20,6 +17,13 @@ import {
 } from "../../../store/generatorTrainingReducer"
 import "./formGenTrainStep.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
+import {
+    stylesButtonWrapper,
+    stylesField,
+    stylesFormButton,
+    stylesInputLabelSelect,
+    stylesSelect,
+} from "./styles/stylesFormGeneration"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -30,22 +34,6 @@ const MenuProps = {
             width: 250,
         },
     },
-}
-
-const theme = createTheme({
-    palette: {
-        primary: lime,
-        secondary: purple,
-    },
-})
-
-function getStyles(name: string, personName: any, theme: Theme) {
-    return {
-        fontWeight:
-            personName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    }
 }
 
 const multiSelect = ["back", "elbows", "shoulders", "knees", "hip joint"]
@@ -91,20 +79,8 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
             <h2>Third Step</h2>
             <section>
                 <div className="form_gen_train_step_selectBlock">
-                    <FormControl
-                        fullWidth
-                        sx={{
-                            width: "60%",
-                            margin: "30% auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
-                    >
-                        <InputLabel
-                            id="lifestyle"
-                            sx={{ color: "white", border: "none" }}
-                        >
+                    <FormControl fullWidth sx={stylesField}>
+                        <InputLabel id="lifestyle" sx={stylesInputLabelSelect}>
                             Select your lifestyle
                         </InputLabel>
                         <Select
@@ -114,22 +90,7 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             variant="outlined"
                             value={lifestyle}
                             {...register("lifestyle")}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
+                            sx={stylesSelect}
                             onChange={handleLifeStyle}
                         >
                             <MenuItem value="passive">Passive</MenuItem>
@@ -139,20 +100,8 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                     </FormControl>
                 </div>
                 <div className="form_gen_train_step_selectBlock">
-                    <FormControl
-                        fullWidth
-                        sx={{
-                            width: "60%",
-                            margin: "30px auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
-                    >
-                        <InputLabel
-                            id="goal"
-                            sx={{ color: "white", border: "none" }}
-                        >
+                    <FormControl fullWidth sx={stylesField}>
+                        <InputLabel id="goal" sx={stylesInputLabelSelect}>
                             Select your goal
                         </InputLabel>
                         <Select
@@ -162,22 +111,7 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             variant="outlined"
                             value={goal}
                             {...register("goal")}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
+                            sx={stylesSelect}
                             onChange={handleGoal}
                         >
                             <MenuItem value="weightMaintenance">
@@ -189,18 +123,10 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                     </FormControl>
                 </div>
                 <div className="form_gen_train_step_selectBlock">
-                    <FormControl
-                        sx={{
-                            width: "60%",
-                            margin: "30px auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
-                    >
+                    <FormControl sx={stylesField}>
                         <InputLabel
                             id="demo-multiple-name-label"
-                            sx={{ color: "white", border: "none" }}
+                            sx={stylesInputLabelSelect}
                         >
                             Select your problems
                         </InputLabel>
@@ -211,31 +137,12 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             value={personName}
                             input={<OutlinedInput label="Name" />}
                             MenuProps={MenuProps}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
+                            sx={stylesSelect}
                             {...register("problems")}
                             onChange={handleChange}
                         >
                             {multiSelect.map((el) => (
-                                <MenuItem
-                                    key={el}
-                                    value={el}
-                                    style={getStyles(el, personName, theme)}
-                                >
+                                <MenuItem key={el} value={el}>
                                     {el.charAt(0).toUpperCase() + el.slice(1)}
                                 </MenuItem>
                             ))}
@@ -244,20 +151,8 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                 </div>
 
                 <div className="form_gen_train_step_selectBlock">
-                    <FormControl
-                        fullWidth
-                        sx={{
-                            width: "60%",
-                            margin: "30px auto 10px auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "100%",
-                            },
-                        }}
-                    >
-                        <InputLabel
-                            id="focus"
-                            sx={{ color: "white", border: "none" }}
-                        >
+                    <FormControl fullWidth sx={stylesField}>
+                        <InputLabel id="focus" sx={stylesInputLabelSelect}>
                             Training Focus
                         </InputLabel>
                         <Select
@@ -267,22 +162,7 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             variant="outlined"
                             value={focus}
                             {...register("focus")}
-                            sx={{
-                                boxShadow: "none",
-                                color: "white",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                    borderBottom: "1px solid #fefefe",
-                                    borderRadius: "0px",
-                                },
-                                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-                                    {
-                                        borderBottom: "1px solid #42a5f5",
-                                    },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                            }}
+                            sx={stylesSelect}
                             onChange={handleFocus}
                         >
                             <MenuItem value="fullBody">Full Body</MenuItem>
@@ -298,18 +178,8 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                     </FormControl>
                 </div>
             </section>
-            <div
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    margin: "auto auto 20% auto",
-                }}
-            >
-                <Button
-                    variant="contained"
-                    type="submit"
-                    sx={{ width: "40%", margin: "0 auto" }}
-                >
+            <div style={stylesButtonWrapper}>
+                <Button variant="contained" type="submit" sx={stylesFormButton}>
                     Next Step
                 </Button>
             </div>

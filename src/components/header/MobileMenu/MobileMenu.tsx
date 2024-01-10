@@ -1,11 +1,11 @@
-import React, { JSX } from "react"
+import { JSX } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { IBurgerMenu } from "../BurgerMenu/BurgerMenu"
+import { IBurgerMenuProps } from "../BurgerMenu/BurgerMenu"
 import "./mobileMenu.module.css"
 import { MenuState } from "../Menu/Menu"
 
-function MobileMenu({ showBurgerMenu }: IBurgerMenu): JSX.Element {
+function MobileMenu({ showBurgerMenu }: IBurgerMenuProps): JSX.Element {
     const burgerMenu: boolean = useSelector(
         (state: MenuState) => state.showMenu.showMenu
     )

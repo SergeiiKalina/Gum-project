@@ -35,7 +35,6 @@ export default function FormTraining({
             className={`form_training_aside ${
                 rev ? "form_training_mobile" : ""
             }`}
-            open={rev}
         >
             <button onClick={reverseArrow} className="form_training_buttonList">
                 Categories

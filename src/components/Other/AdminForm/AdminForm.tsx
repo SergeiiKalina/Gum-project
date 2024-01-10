@@ -1,4 +1,4 @@
-import React, { JSX } from "react"
+import { JSX } from "react"
 import { useContext } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { DataFormExerciseContext, iDateForm } from "../../layouts/Context"

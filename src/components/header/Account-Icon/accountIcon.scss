@@ -1,0 +1,32 @@
+@import "./../../adaptive-fontMixin.scss";
+.account_icon_wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 auto;
+    padding: 0 15px 0 0;
+    transform: translate(-50px, 0);
+    cursor: pointer;
+    a {
+        text-decoration: none;
+        color: black;
+        @include adaptive-font(18, 16);
+        margin: 0 10px 0 0;
+    }
+    span {
+        margin: 0 10px 0 0;
+    }
+}
+@media (max-width: 767px) {
+    .account_icon_wrapper {
+        transform: translate(-20px, 0);
+    }
+}
+@media (max-width: 460px) {
+    .account_icon_wrapper {
+        span {
+            display: none;
+        }
+    }
+}

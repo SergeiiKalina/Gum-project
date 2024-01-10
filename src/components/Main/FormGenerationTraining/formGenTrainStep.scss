@@ -2,7 +2,6 @@
 
 .form_gen_train_step_wrapper {
     width: 100%;
-    height: 80vh;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -10,7 +9,7 @@
 
     h2 {
         @include adaptive-font(30, 20);
-        margin: 0 0 32px 0;
+        margin: 16px 0;
     }
     .form_gen_train_step_secondHeader {
         @include adaptive-font(30, 20);
@@ -26,19 +25,6 @@
             span {
                 @include adaptive-font(16, 12);
             }
-        }
-    }
-    .form_gen_train_step_selectContainer {
-        display: flex;
-        label {
-            width: 30%;
-            justify-content: left;
-            flex-direction: row;
-            margin-right: 0;
-            @include adaptive-font(18, 12);
-        }
-        select {
-            margin-left: 0;
         }
     }
 
@@ -147,21 +133,21 @@
 @media (max-width: 767px) {
     .form_gen_train_step_wrapper {
         section {
-            width: 80%;
+            width: 100%;
         }
     }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 460px) {
     .form_gen_train_step_wrapper {
         section {
             input {
-                width: 80%;
+                width: 90%;
             }
             .textarea {
                 width: 80%;
             }
             select {
-                width: 80%;
+                width: 90%;
             }
             button {
                 width: 50%;

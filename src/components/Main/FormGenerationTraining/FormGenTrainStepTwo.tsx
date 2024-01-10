@@ -1,23 +1,29 @@
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { SubmitHandler, useForm } from "react-hook-form"
 import {
     Button,
-    createTheme,
     FormControlLabel,
     FormLabel,
     Radio,
     RadioGroup,
 } from "@mui/material"
-import { lime, purple } from "@mui/material/colors"
-import { SubmitHandler, useForm } from "react-hook-form"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import {
     IFormData,
     writeFormData,
     writePlaceTraining,
 } from "../../../store/generatorTrainingReducer"
-import "./formGenTrainStep.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
-import React from "react"
+import {
+    styledRadioGroup,
+    stylesButtonWrapper,
+    stylesFormButton,
+    stylesFormLabelRadioGroup,
+    stylesLabelRadio,
+    stylesRadio,
+} from "./styles/stylesFormGeneration"
+import "./formGenTrainStep.scss"
 
 export default function FormGenTrainStepTwo(): React.JSX.Element {
     const formData = useSelector(
@@ -35,73 +41,49 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
             navigate("/gentraining/step-3/gym")
         }
     }
-    const theme = createTheme({
-        palette: {
-            primary: lime,
-            secondary: purple,
-        },
-    })
 
     return (
         <form
             className="form_gen_train_step_wrapper"
             onSubmit={handleSubmit(onSubmit)}
         >
+            <h2>Generator Form</h2>
             <h2>Second Step</h2>
-            <section>
-                <article className="form_gen_train_step_inlineRadio">
-                    <FormLabel
-                        id="demo-row-radio-buttons-group-label"
-                        sx={{ margin: "70% auto 0 auto", color: "white" }}
-                    >
-                        Place Of Training
-                    </FormLabel>
 
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                        sx={{
-                            width: "30%",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            margin: "20px auto 0 auto",
-                            [theme.breakpoints.down("md")]: {
-                                width: "80%",
-                            },
-                        }}
-                    >
-                        <FormControlLabel
-                            control={<Radio sx={{ color: "white" }} />}
-                            sx={{ color: "white" }}
-                            onClick={() => dispatch(writePlaceTraining("home"))}
-                            value="home"
-                            label="Home"
-                            {...register("placeOfTraining")}
-                        />
-                        <FormControlLabel
-                            control={<Radio sx={{ color: "white" }} />}
-                            sx={{ color: "white" }}
-                            onClick={() => dispatch(writePlaceTraining("gym"))}
-                            value="gym"
-                            label="Gym"
-                            {...register("placeOfTraining")}
-                        />
-                    </RadioGroup>
-                </article>
-            </section>
-            <div
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    margin: "auto auto 20% auto",
-                }}
-            >
-                <Button
-                    variant="contained"
-                    type="submit"
-                    sx={{ width: "40%", margin: "0 auto" }}
+            <article className="form_gen_train_step_inlineRadio">
+                <FormLabel
+                    id="demo-row-radio-buttons-group-label"
+                    sx={stylesFormLabelRadioGroup}
                 >
+                    Place Of Training
+                </FormLabel>
+
+                <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    sx={styledRadioGroup}
+                >
+                    <FormControlLabel
+                        control={<Radio sx={stylesRadio} />}
+                        sx={stylesLabelRadio}
+                        onClick={() => dispatch(writePlaceTraining("home"))}
+                        value="home"
+                        label="Home"
+                        {...register("placeOfTraining")}
+                    />
+                    <FormControlLabel
+                        control={<Radio sx={stylesRadio} />}
+                        sx={stylesLabelRadio}
+                        onClick={() => dispatch(writePlaceTraining("gym"))}
+                        value="gym"
+                        label="Gym"
+                        {...register("placeOfTraining")}
+                    />
+                </RadioGroup>
+            </article>
+            <div style={stylesButtonWrapper}>
+                <Button variant="contained" type="submit" sx={stylesFormButton}>
                     Next Step
                 </Button>
             </div>

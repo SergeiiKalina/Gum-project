@@ -1,70 +1,60 @@
 {
-    "name": "gym-project",
-    "version": "0.1.0",
-    "private": true,
-    "main": "src/index.tsx",
-    "dependencies": {
-        "@emotion/react": "^11.11.1",
-        "@emotion/styled": "^11.11.0",
-        "@fullcalendar/core": "^6.1.8",
-        "@fullcalendar/daygrid": "^6.1.8",
-        "@fullcalendar/interaction": "^6.1.8",
-        "@fullcalendar/react": "^6.1.8",
-        "@fullcalendar/timegrid": "^6.1.8",
-        "@mui/icons-material": "^5.14.9",
-        "@mui/material": "^5.14.10",
-        "@mui/system": "^5.14.10",
-        "@reduxjs/toolkit": "^1.9.5",
-        "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^13.5.0",
-        "@types/axios": "^0.14.0",
-        "@types/swiper": "^6.0.0",
-        "axios": "^1.6.1",
-        "date-fns": "^2.30.0",
-        "firebase": "^9.22.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-firebase-hooks": "^5.1.1",
-        "react-hook-form": "^7.44.3",
-        "react-icons": "^4.9.0",
-        "react-redux": "^8.1.1",
-        "react-router-dom": "^6.11.2",
-        "react-scripts": "5.0.1",
-        "react-select": "^5.7.4",
-        "redux": "^4.2.1",
-        "sass": "^1.63.4",
-        "swiper": "^9.4.1",
-        "web-vitals": "^2.1.4"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "jest",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@babel/preset-env": "^7.22.10",
-        "@babel/preset-react": "^7.22.5",
-        "babel-jest": "^29.6.4",
-        "jest": "^27.5.1"
-    }
+  "name": "training-project",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/material": "^5.15.3",
+    "@mui/system": "^5.15.3",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.70",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "axios": "^1.6.5",
+    "firebase": "^10.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.3",
+    "react-icons": "^4.12.0",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "5.0.1",
+    "sass": "^1.69.7",
+    "swiper": "^7.4.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/swiper": "^6.0.0"
+  }
 }

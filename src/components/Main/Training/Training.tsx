@@ -9,13 +9,13 @@ import {
     fetchFilter,
     fetchTraining,
     writeData,
-} from "../../../store/filterTrainingSlice.ts"
-import FormTraining from "../FormTraining/FormTraining.tsx"
-import NotTraining from "../../NotTraining.tsx"
-import { IFilterTrainingSlice } from "../FormTraining/Pagination.tsx"
+} from "../../../store/filterTrainingSlice"
+import FormTraining from "../FormTraining/FormTraining"
+import NotTraining from "../../NotTraining"
+import { IFilterTrainingSlice } from "../FormTraining/Pagination"
 import "./training.scss"
 
-const Pagination = React.lazy(() => import("../FormTraining/Pagination.tsx"))
+const Pagination = React.lazy(() => import("../FormTraining/Pagination"))
 
 function Training(): React.JSX.Element {
     const training = useSelector(

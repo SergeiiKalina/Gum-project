@@ -1,23 +1,22 @@
-import { auth, provider } from "../../layouts/config.ts"
+import { auth, provider } from "../../layouts/config"
 import { signInWithPopup, UserCredential } from "firebase/auth"
 import React, { useEffect, useState } from "react"
-import Logout from "../Logout/Logout.tsx"
-import "./login.scss"
+import Logout from "../Logout/Logout"
 import { useDispatch, useSelector } from "react-redux"
+import { FcGoogle } from "react-icons/fc"
 import {
     IInitialStateAuthorizationSlice,
     checkAuth,
     login,
     logout,
-    registration,
     toggleIsLoading,
-} from "../../../store/authorizationSlice.ts"
-import UserService from "../../../services/UserService.ts"
-import { IUserAPI } from "../../../models/response/IUser.ts"
-
-interface LoginProps {
-    toggleUser: (status: boolean) => void
-}
+} from "../../../store/authorizationSlice"
+import UserService from "../../../services/UserService"
+import { IUserAPI } from "../../../models/response/IUser"
+import FormAuthorization from "./FormAuthorization"
+import "./login.scss"
+import { Button, CircularProgress } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 export interface IUser {
     userName: string | null
@@ -28,7 +27,7 @@ interface IAuthSliceState {
     authSlice: IInitialStateAuthorizationSlice
 }
 
-function Login({ toggleUser }: LoginProps): React.JSX.Element {
+function Login(): React.JSX.Element {
     const dispatch = useDispatch<any>()
     const [value, setValue] = useState<IUser>({
         userName: "",
@@ -38,25 +37,34 @@ function Login({ toggleUser }: LoginProps): React.JSX.Element {
     const [password, setPassword] = useState<string>("")
     const [listUsers, setListUsers] = useState<IUserAPI[]>()
     const [storageEmail, setStorageEmail] = useState<string | null>("")
+    const [toggleInflameAuthorization, setToggleInflameAuthorization] =
+        useState(false)
     const authSliceState = useSelector(
         (state: IAuthSliceState) => state.authSlice
     )
-    const { isLoading, isAuth, user } = authSliceState
+    const navigate = useNavigate()
+    const { isLoading, isAuth } = authSliceState
 
     const handlerClick = () => {
         signInWithPopup(auth, provider).then((data: UserCredential) => {
             localStorage.setItem("email", data.user?.email || "")
             localStorage.setItem("userName", data.user?.displayName || "")
             localStorage.setItem("photo", data.user?.photoURL || "")
-
-            toggleUser(false)
+            window.location.reload()
         })
     }
     useEffect(() => {
+        fetch("http://localhost:4000/exercise")
+            .then((res) => res.json())
+            .then((res) => console.log(res))
         if (localStorage.getItem("token")) {
+            setToggleInflameAuthorization(false)
             dispatch(checkAuth())
+            navigate("/gentraining")
+        } else {
+            setToggleInflameAuthorization(true)
         }
-    }, [dispatch])
+    }, [dispatch, navigate])
     useEffect(() => {
         let userName: string | null = localStorage.getItem("userName")
         let photo: string | null = localStorage.getItem("photo")
@@ -64,17 +72,17 @@ function Login({ toggleUser }: LoginProps): React.JSX.Element {
         setValue({ userName, photo })
     }, [])
 
-    const buttonLogin = (email: string, password: string) => {
-        dispatch(toggleIsLoading(true))
-        dispatch(login({ email, password }))
+    const buttonLogin = async (email: string, password: string) => {
+        await dispatch(toggleIsLoading(true))
+        await dispatch(login({ email, password }))
+        await setToggleInflameAuthorization(false)
+        await navigate("/gentraining")
     }
-    const buttonRegistration = (email: string, password: string) => {
-        dispatch(toggleIsLoading(true))
-        dispatch(registration({ email, password }))
-    }
+
     const buttonLogout = () => {
         dispatch(toggleIsLoading(true))
         dispatch(logout())
+        setToggleInflameAuthorization(true)
     }
 
     const getListUsers = async () => {
@@ -87,52 +95,51 @@ function Login({ toggleUser }: LoginProps): React.JSX.Element {
     }
 
     return (
-        <div className="login_block">
+        <section className="login_block">
             {isLoading ? (
-                <div>Loading ...</div>
+                <CircularProgress
+                    sx={{
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate( -50%, -50%)",
+                    }}
+                />
             ) : (
-                <div>
-                    <h2>
-                        {isAuth
-                            ? `User authorization ${user?.email}`
-                            : "User NOT authorization"}
-                    </h2>
+                <>
                     {listUsers &&
                         listUsers.map((user: IUserAPI) => (
                             <div key={user.email}>{user.email}</div>
                         ))}
-                    <input
-                        type="text"
-                        value={email}
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button onClick={() => buttonLogin(email, password)}>
-                        Login
-                    </button>
-                    <button onClick={() => buttonLogout()}>Logout</button>
-                    <button onClick={() => buttonRegistration(email, password)}>
-                        Registration
-                    </button>
-                    <button onClick={() => getListUsers()}>
-                        Get List Users
-                    </button>
                     {storageEmail ? (
-                        <Logout value={value} />
+                        ""
                     ) : (
-                        <button className="login_button" onClick={handlerClick}>
-                            Війти за допомогою Google
-                        </button>
+                        <FormAuthorization
+                            email={email}
+                            password={password}
+                            setPassword={setPassword}
+                            buttonLogin={buttonLogin}
+                            buttonLogout={buttonLogout}
+                            getListUsers={getListUsers}
+                            setEmail={setEmail}
+                            toggleInflameAuthorization={
+                                toggleInflameAuthorization
+                            }
+                        />
                     )}
-                </div>
+                    {storageEmail && !isAuth ? (
+                        <Logout value={value} />
+                    ) : isAuth ? (
+                        ""
+                    ) : (
+                        <Button variant="outlined" onClick={handlerClick}>
+                            <FcGoogle style={{ marginRight: "5px" }} /> Війти за
+                            допомогою Google
+                        </Button>
+                    )}
+                </>
             )}
-        </div>
+        </section>
     )
 }
 
