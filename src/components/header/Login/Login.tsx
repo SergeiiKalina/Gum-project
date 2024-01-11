@@ -54,7 +54,7 @@ function Login(): React.JSX.Element {
         })
     }
     useEffect(() => {
-        fetch("http://localhost:4000/exercise")
+        fetch("https://seal-app-33pl9.ondigitalocean.app/exercise")
             .then((res) => res.json())
             .then((res) => console.log(res))
         if (localStorage.getItem("token")) {
