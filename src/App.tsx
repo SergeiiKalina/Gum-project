@@ -24,7 +24,6 @@ function App(): React.JSX.Element {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<MyLayouts />}>
-                        <Route element={<FormGenTrainStepOne />} />
                         <Route path="workout" element={<Training />} />
 
                         <Route

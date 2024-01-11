@@ -26,7 +26,7 @@ function Header(): React.JSX.Element {
         } else {
             navigate("/login")
         }
-    }, [dispatch, isAuth, navigate])
+    }, [dispatch, isAuth])
 
     function handlerMenuUser(): void {
         setToggleMenuUser((prev) => !prev)

@@ -54,7 +54,7 @@ function Login(): React.JSX.Element {
         })
     }
     useEffect(() => {
-        fetch("https://seal-app-33pl9.ondigitalocean.app/exercise")
+        fetch("https://urchin-app-j6t9a.ondigitalocean.app/exercise")
             .then((res) => res.json())
             .then((res) => console.log(res))
         if (localStorage.getItem("token")) {

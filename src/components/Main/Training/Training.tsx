@@ -49,13 +49,16 @@ function Training(): React.JSX.Element {
         let end: number = start + notePage
 
         try {
-            fetch("https://urchin-app-j6t9a.ondigitalocean.app/current-page", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ start, end, arrTraining }),
-            })
+            fetch(
+                "https://urchin-app-j6t9a.ondigitalocean.app/api/current-page",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ start, end, arrTraining }),
+                }
+            )
                 .then((res) => res.json())
                 .then((res) => setArr(res))
         } catch (error) {

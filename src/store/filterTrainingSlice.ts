@@ -18,7 +18,7 @@ export const fetchTraining = createAsyncThunk(
     "trainingSlice/fetchTraining",
     async () => {
         const response = await fetch(
-            "https://urchin-app-j6t9a.ondigitalocean.app/exercise"
+            "https://urchin-app-j6t9a.ondigitalocean.app/api/exercise"
         )
         let res = await response.json()
 
@@ -30,7 +30,7 @@ export const fetchCategories = createAsyncThunk(
     "trainingSlice/fetchCategories",
     async () => {
         const response = await fetch(
-            "https://urchin-app-j6t9a.ondigitalocean.app/category"
+            "https://urchin-app-j6t9a.ondigitalocean.app/api/category"
         )
         let res = await response.json()
         return res
@@ -42,7 +42,7 @@ export const fetchFilter = createAsyncThunk(
     async (data: (string | boolean)[]) => {
         try {
             const response = await fetch(
-                "https://urchin-app-j6t9a.ondigitalocean.app/filter",
+                "https://urchin-app-j6t9a.ondigitalocean.app/api/filter",
                 {
                     method: "POST",
                     headers: {
