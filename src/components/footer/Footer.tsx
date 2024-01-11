@@ -8,17 +8,17 @@ export default function Footer(): React.JSX.Element {
     return (
         <div className="footerWrapper">
             <div className="footerItem">
-                <NavLink to="login">
+                <NavLink to="/login">
                     <BsPerson className="footerIcon_icon" />
                 </NavLink>
             </div>
             <div className="footerItem">
-                <NavLink to="gentraining">
+                <NavLink to="/gentraining">
                     <TbTriangleInverted className="footerIcon_icon rotate" />
                 </NavLink>
             </div>
             <div className="footerItem">
-                <NavLink to="contacts">
+                <NavLink to="/contacts">
                     <AiOutlineSetting className="footerIcon_icon" />
                 </NavLink>
             </div>
