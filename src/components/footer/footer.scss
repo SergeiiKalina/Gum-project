@@ -6,7 +6,8 @@
     position: fixed;
     bottom: 0;
     color: white;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     .footerItem {
         width: 33.33%;
         height: 100%;
