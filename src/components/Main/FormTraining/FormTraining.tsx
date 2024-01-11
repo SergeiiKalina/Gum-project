@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import { GrFormDown } from "react-icons/gr"
-import "./formTraining.scss"
 import { IIsChecked } from "../../../store/filterTrainingSlice"
+import "./formTraining.scss"
 
 interface IState {
     filterTraining: {

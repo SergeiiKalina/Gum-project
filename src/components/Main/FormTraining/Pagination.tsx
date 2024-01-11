@@ -1,8 +1,8 @@
+import React from "react"
 import { useSelector } from "react-redux"
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi"
-import "./pagination.scss"
-import React from "react"
 import { IInitialState } from "../../../store/filterTrainingSlice"
+import "./pagination.scss"
 
 export interface IFilterTrainingSlice {
     filterTraining: IInitialState

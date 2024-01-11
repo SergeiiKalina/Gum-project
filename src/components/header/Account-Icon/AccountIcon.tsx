@@ -1,4 +1,4 @@
-import { FC } from "react"
+import React, { FC } from "react"
 import { BsPersonCircle } from "react-icons/bs"
 import "./accountIcon.scss"
 import { NavLink } from "react-router-dom"

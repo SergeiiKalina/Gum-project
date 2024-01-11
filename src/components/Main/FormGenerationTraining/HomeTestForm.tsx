@@ -15,7 +15,6 @@ import {
     SelectChangeEvent,
 } from "@mui/material"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
-import "./formGenTrainStep.scss"
 import {
     stylesButtonWrapper,
     stylesField,
@@ -23,6 +22,7 @@ import {
     stylesInputLabelSelect,
     stylesSelect,
 } from "./styles/stylesFormGeneration"
+import "./formGenTrainStep.scss"
 
 export default function HomeTestForm(): React.JSX.Element {
     const sex = useSelector(

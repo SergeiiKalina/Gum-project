@@ -1,10 +1,9 @@
-import { JSX } from "react"
-import { useContext } from "react"
+import React, { useContext } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { DataFormExerciseContext, iDateForm } from "../../layouts/Context"
 import "./adminForm.module.scss"
 
-export default function AdminForm(): JSX.Element {
+export default function AdminForm(): React.JSX.Element {
     const { register, handleSubmit } = useForm<iDateForm>()
     const { onWriteData }: any = useContext(DataFormExerciseContext)
     const onSubmit: SubmitHandler<iDateForm> = (data: iDateForm) => {

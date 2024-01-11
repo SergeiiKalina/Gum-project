@@ -1,12 +1,12 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import { SubmitHandler, useForm } from "react-hook-form"
 import {
     IFormData,
     writeFormData,
     writeSexTraining,
 } from "../../../store/generatorTrainingReducer"
-import { SubmitHandler, useForm } from "react-hook-form"
 import {
     Button,
     FormControl,
@@ -20,7 +20,6 @@ import {
     SelectChangeEvent,
 } from "@mui/material"
 import { StyledTextField } from "../../Styled-components/Styled"
-import "./formGenTrainStep.scss"
 import {
     styledRadioGroup,
     stylesButtonWrapper,
@@ -32,8 +31,9 @@ import {
     stylesRadio,
     stylesSelect,
 } from "./styles/stylesFormGeneration"
+import "./formGenTrainStep.scss"
 
-export default function FormGenTrainStepOne() {
+export default function FormGenTrainStepOne(): React.JSX.Element {
     const [age, setAge] = useState<string>("")
     const handleChangeAge = (event: SelectChangeEvent<string>) => {
         let value: string = event.target.value

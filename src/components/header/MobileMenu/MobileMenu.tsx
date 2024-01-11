@@ -1,4 +1,4 @@
-import { JSX } from "react"
+import React, { JSX } from "react"
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { IBurgerMenuProps } from "../BurgerMenu/BurgerMenu"

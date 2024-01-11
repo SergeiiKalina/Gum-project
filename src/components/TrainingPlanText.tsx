@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { writeTxtPlan } from "../store/generatorTrainingReducer"
-import "./trainingPlanText.css"
 import { ITraining } from "../data/data"
+import "./trainingPlanText.css"
 
 interface IStatePlanText {
     training: {

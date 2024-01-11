@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useSelector } from "react-redux"
 import EndTraining from "../EndTraining/EndTraining"
-import "./startTraining.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import { ITraining } from "../../../data/data"
+import "./startTraining.scss"
 
 interface IInfoApproach {
     [key: string]: string[]

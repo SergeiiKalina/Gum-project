@@ -7,13 +7,13 @@ import {
     IFormData,
     writeFormData,
 } from "../../../store/generatorTrainingReducer"
-import "./formGenTrainStep.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import { StyledTextField } from "../../Styled-components/Styled"
 import {
     stylesButtonWrapper,
     stylesFormButton,
 } from "./styles/stylesFormGeneration"
+import "./formGenTrainStep.scss"
 
 export default function GymTestForm(): React.JSX.Element {
     const formData = useSelector(

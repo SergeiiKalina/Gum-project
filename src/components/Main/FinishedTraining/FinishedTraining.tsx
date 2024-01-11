@@ -112,7 +112,7 @@ const generateRandomExerciseWorkout: any = (
     }
 }
 
-function FinishedTraining() {
+function FinishedTraining(): React.JSX.Element {
     const value: ITraining[][] = useSelector(
         (state: ITrainingReducer) => state.training.arr
     )

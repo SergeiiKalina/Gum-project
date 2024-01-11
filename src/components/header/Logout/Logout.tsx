@@ -1,3 +1,4 @@
+import React from "react"
 import "./../Login/login.scss"
 import { IUser } from "../Login/Login"
 import { Button } from "@mui/material"
@@ -6,7 +7,7 @@ interface LogoutProps {
     value: IUser
 }
 
-function Logout({ value }: LogoutProps): JSX.Element {
+function Logout({ value }: LogoutProps): React.JSX.Element {
     const logout = (): void => {
         localStorage.clear()
         window.location.reload()

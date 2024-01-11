@@ -1,3 +1,7 @@
+import React, { useState } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import {
     Button,
     FormControl,
@@ -7,15 +11,10 @@ import {
     Select,
     SelectChangeEvent,
 } from "@mui/material"
-import React, { useState } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import {
     IFormData,
     writeFormData,
 } from "../../../store/generatorTrainingReducer"
-import "./formGenTrainStep.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import {
     stylesButtonWrapper,
@@ -24,6 +23,7 @@ import {
     stylesInputLabelSelect,
     stylesSelect,
 } from "./styles/stylesFormGeneration"
+import "./formGenTrainStep.scss"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8

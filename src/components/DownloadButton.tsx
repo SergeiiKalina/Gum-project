@@ -1,14 +1,14 @@
+import React from "react"
 import { useSelector } from "react-redux"
-import "./downloadButton.css"
 import { ITraining } from "../data/data"
-
+import "./downloadButton.css"
 interface IStateDownloadButton {
     training: {
         arr: ITraining[]
     }
 }
 
-function DownloadButton() {
+function DownloadButton(): React.JSX.Element {
     const plan = useSelector(
         (state: IStateDownloadButton) => state.training.arr
     )

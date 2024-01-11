@@ -1,3 +1,4 @@
+import React from "react"
 import {
     FaInstagram,
     FaFacebook,
@@ -8,7 +9,6 @@ import {
 } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
 import "./contacts.scss"
-import React from "react"
 
 function Contacts(): React.JSX.Element {
     return (

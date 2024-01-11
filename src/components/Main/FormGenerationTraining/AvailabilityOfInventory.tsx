@@ -1,14 +1,13 @@
-import training from "../../../data/data"
 import React, { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import training from "../../../data/data"
 import {
     IFormData,
     writeFormData,
 } from "../../../store/generatorTrainingReducer"
-import { useNavigate } from "react-router-dom"
 import { Button, Checkbox, FormControlLabel, FormGroup } from "@mui/material"
-import "./formGenTrainStep.scss"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import {
     stylesButtonWrapper,
@@ -16,6 +15,7 @@ import {
     stylesFormButton,
     stylesFormControlLabel,
 } from "./styles/stylesFormGeneration"
+import "./formGenTrainStep.scss"
 
 export default function AvailabilityOfInventory(): React.JSX.Element {
     const formData = useSelector(
