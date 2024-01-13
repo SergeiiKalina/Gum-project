@@ -54,7 +54,7 @@ function Login(): React.JSX.Element {
         })
     }
     useEffect(() => {
-        fetch("http://localhost:8080/exercise")
+        fetch("https://gym-project-api.onrender.com/exercise")
             .then((res) => res.json())
             .then((res) => console.log(res))
         if (localStorage.getItem("token")) {
