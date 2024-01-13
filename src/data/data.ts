@@ -12,6 +12,7 @@ export interface ITraining {
     LFC: string[]
     subCatigories?: string
     style?: boolean
+    youtubeLink: string
 }
 
 const training: ITraining[] = [
@@ -28,6 +29,7 @@ const training: ITraining[] = [
         inventory: ["sandbag"],
         LFC: ["hip joint", "knees", "back"],
         subCatigories: "fSq",
+        youtubeLink: "https://www.youtube.com/watch?v=1Nl6CYG5zgc",
     },
     {
         id: 102,
@@ -41,6 +43,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["nothing"],
         LFC: ["hip joint", "knees", "back"],
+        youtubeLink: "https://www.youtube.com/watch?v=k5N3BqLHMKI",
     },
     {
         id: 103,
@@ -54,6 +57,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["Ring"],
         LFC: ["shoulders", "elbows"],
+        youtubeLink: "https://www.youtube.com/watch?v=mxp_t7RpH08",
     },
     {
         id: 104,
@@ -68,6 +72,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["back"],
         subCatigories: "104",
+        youtubeLink: "https://www.youtube.com/watch?v=A7Y2-G4zOUA",
     },
     {
         id: 105,
@@ -82,6 +87,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back"],
         subCatigories: "dl",
+        youtubeLink: "https://www.youtube.com/watch?v=vfKwjT5-86k",
     },
     {
         id: 106,
@@ -95,6 +101,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["kettlebell"],
         LFC: ["back"],
+        youtubeLink: "https://www.youtube.com/watch?v=Pm-b2XFeABA",
     },
     {
         id: 107,
@@ -109,6 +116,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=NGttLyYktTw",
     },
     {
         id: 108,
@@ -123,6 +131,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=MxfTNXSFiYI",
     },
     {
         id: 109,
@@ -136,6 +145,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["barbell"],
         LFC: ["back", "knees"],
+        youtubeLink: "https://www.youtube.com/watch?v=TXcsp12zSwo",
     },
     {
         id: 110,
@@ -150,6 +160,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "110",
+        youtubeLink: "https://www.youtube.com/watch?v=Ma4VBBaBvac",
     },
     {
         id: 111,
@@ -164,6 +175,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["knees"],
         subCatigories: "fSq",
+        youtubeLink: "https://www.youtube.com/watch?v=bOSuODsyd6g",
     },
     {
         id: 112,
@@ -178,6 +190,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "aBr",
+        youtubeLink: "https://www.youtube.com/watch?v=Q_Bpj91Yiis",
     },
     {
         id: 113,
@@ -192,6 +205,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=jWxvty2KROs",
     },
     {
         id: 114,
@@ -206,6 +220,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=Jf5_PJCFs-g",
     },
     {
         id: 115,
@@ -220,6 +235,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["elbows", "shoulders"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=0cXAp6WhSj4",
     },
     {
         id: 116,
@@ -234,6 +250,7 @@ const training: ITraining[] = [
         inventory: ["dips"],
         LFC: ["elbows", "shoulders"],
         subCatigories: "du",
+        youtubeLink: "https://www.youtube.com/watch?v=ci5tcFgIntI",
     },
     {
         id: 117,
@@ -248,6 +265,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["elbows", "shoulders"],
         subCatigories: "117",
+        youtubeLink: "https://www.youtube.com/watch?v=Goy5WkxbAi0",
     },
     {
         id: 118,
@@ -262,6 +280,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["nothing"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=KTypY__TdSI",
     },
     {
         id: 119,
@@ -276,6 +295,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=M-TgHpAIvQg",
     },
     {
         id: 120,
@@ -290,6 +310,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=mdcDVCGvveU",
     },
     {
         id: 121,
@@ -304,6 +325,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=m5DXgpMP26A",
     },
     {
         id: 122,
@@ -318,6 +340,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["shoulders"],
         subCatigories: "ad",
+        youtubeLink: "https://www.youtube.com/watch?v=qEwKCR5JCog",
     },
     {
         id: 123,
@@ -332,6 +355,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=JIhbYYA1Q90",
     },
     {
         id: 124,
@@ -346,6 +370,7 @@ const training: ITraining[] = [
         inventory: ["hothing"],
         LFC: ["back"],
         subCatigories: "124",
+        youtubeLink: "https://www.youtube.com/watch?v=iP2fjvG0g3w",
     },
     {
         id: 125,
@@ -360,6 +385,7 @@ const training: ITraining[] = [
         inventory: ["hothing"],
         LFC: ["nothing"],
         subCatigories: "125",
+        youtubeLink: "https://www.youtube.com/watch?v=AdNpljl8tOI",
     },
     {
         id: 126,
@@ -374,6 +400,7 @@ const training: ITraining[] = [
         inventory: ["hothing"],
         LFC: ["nothing"],
         subCatigories: "126",
+        youtubeLink: "https://www.youtube.com/watch?v=k8_a4wFtG1I",
     },
     {
         id: 127,
@@ -388,6 +415,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=svvYvZF7jq0",
     },
     {
         id: 128,
@@ -402,6 +430,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "adD",
+        youtubeLink: "https://www.youtube.com/watch?v=qEwKCR5JCog",
     },
     {
         id: 129,
@@ -416,6 +445,7 @@ const training: ITraining[] = [
         inventory: ["hothing"],
         LFC: ["nothing"],
         subCatigories: "129",
+        youtubeLink: "https://www.youtube.com/watch?v=sDD9f6JbmZw",
     },
     {
         id: 130,
@@ -430,6 +460,7 @@ const training: ITraining[] = [
         inventory: ["hothing"],
         LFC: ["nothing"],
         subCatigories: "130",
+        youtubeLink: "https://www.youtube.com/watch?v=WrmlHIjry9M",
     },
     {
         id: 131,
@@ -444,6 +475,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=nZrHwP9JKlc",
     },
     {
         id: 132,
@@ -458,6 +490,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=-t7fuZ0KhDA",
     },
     {
         id: 133,
@@ -472,6 +505,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=NoqdjZCgqZo",
     },
     {
         id: 134,
@@ -486,6 +520,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=OPqe0kCxmR8",
     },
     {
         id: 135,
@@ -500,6 +535,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "kb",
+        youtubeLink: "https://www.youtube.com/watch?v=F0hRXsCylig",
     },
     {
         id: 136,
@@ -514,6 +550,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=tdJunCgoyWA",
     },
     {
         id: 137,
@@ -528,6 +565,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "137",
+        youtubeLink: "https://www.youtube.com/watch?v=cIoUZOnypS8",
     },
     {
         id: 138,
@@ -542,6 +580,7 @@ const training: ITraining[] = [
         inventory: ["box"],
         LFC: ["knees"],
         subCatigories: "bs",
+        youtubeLink: "https://www.youtube.com/watch?v=ffyBZrrIbw8",
     },
     {
         id: 139,
@@ -556,6 +595,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "139",
+        youtubeLink: "https://www.youtube.com/watch?v=s9BDdkOjnW4",
     },
     {
         id: 140,
@@ -570,6 +610,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "140",
+        youtubeLink: "https://www.youtube.com/watch?v=ZHlBSI6JPsA",
     },
     {
         id: 141,
@@ -584,6 +625,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=5_EI7a1LsS4",
     },
     {
         id: 142,
@@ -598,6 +640,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "142",
+        youtubeLink: "https://www.youtube.com/watch?v=GmD77fBsLHw",
     },
     {
         id: 143,
@@ -612,6 +655,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "143",
+        youtubeLink: "https://www.youtube.com/watch?v=BLQESHENRLg",
     },
     {
         id: 144,
@@ -626,6 +670,7 @@ const training: ITraining[] = [
         inventory: ["TRX"],
         LFC: ["nothing"],
         subCatigories: "ap",
+        youtubeLink: "https://www.youtube.com/watch?v=fW_jdwZT804",
     },
     {
         id: 145,
@@ -640,6 +685,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "145",
+        youtubeLink: "https://www.youtube.com/watch?v=tY7sk8ZH6_g",
     },
     {
         id: 146,
@@ -654,6 +700,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=Qp0kFogluvw",
     },
     {
         id: 147,
@@ -668,6 +715,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["elbows", "shoulders"],
         subCatigories: "du",
+        youtubeLink: "https://www.youtube.com/watch?v=rj6EE7ybnlE",
     },
     {
         id: 148,
@@ -682,6 +730,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["hothing"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=sqDGkIBYPAk",
     },
     {
         id: 149,
@@ -696,6 +745,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["knees"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=kRTf4TbbLbI",
     },
     {
         id: 150,
@@ -710,6 +760,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=p9TzKpvPhkY",
     },
     {
         id: 151,
@@ -724,6 +775,7 @@ const training: ITraining[] = [
         inventory: ["PVS"],
         LFC: ["back"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=u0Q8KAwOE1Y",
     },
     {
         id: 152,
@@ -738,6 +790,7 @@ const training: ITraining[] = [
         inventory: ["fitball"],
         LFC: ["nothing"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=J7noNM_xCyY",
     },
     {
         id: 153,
@@ -752,6 +805,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["back", "kness"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=ZiCxehLje9g",
     },
     {
         id: 154,
@@ -766,6 +820,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "bSq",
+        youtubeLink: "https://www.youtube.com/watch?v=eLX_dyvooKQ",
     },
     {
         id: 155,
@@ -780,6 +835,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "bSq",
+        youtubeLink: "https://www.youtube.com/watch?v=gslEzVggur8",
     },
     {
         id: 156,
@@ -794,6 +850,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "fSq",
+        youtubeLink: "https://www.youtube.com/watch?v=nmUof3vszxM",
     },
     {
         id: 157,
@@ -808,6 +865,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "bSq",
+        youtubeLink: "https://www.youtube.com/watch?v=R8UR0NTIcAw",
     },
     {
         id: 158,
@@ -822,6 +880,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "bSq",
+        youtubeLink: "https://www.youtube.com/watch?v=3PpzYOubZ5A",
     },
     {
         id: 159,
@@ -836,6 +895,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "bSq",
+        youtubeLink: "https://www.youtube.com/watch?v=3PpzYOubZ5A",
     },
     {
         id: 160,
@@ -850,6 +910,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "fSq",
+        youtubeLink: "https://www.youtube.com/watch?v=votBKh5FJK4",
     },
     {
         id: 161,
@@ -864,6 +925,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "161",
+        youtubeLink: "https://www.youtube.com/watch?v=RjmYBmMBmOM",
     },
     {
         id: 162,
@@ -878,6 +940,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "162",
+        youtubeLink: "https://www.youtube.com/watch?v=LG2L25PkeYU",
     },
     {
         id: 163,
@@ -892,6 +955,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "163",
+        youtubeLink: "https://www.youtube.com/watch?v=ZYDTJaAM-gE",
     },
     {
         id: 164,
@@ -906,6 +970,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "164",
+        youtubeLink: "https://www.youtube.com/watch?v=4PYXEYqgCqk",
     },
     {
         id: 165,
@@ -920,6 +985,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "165",
+        youtubeLink: "https://www.youtube.com/watch?v=0tn5K9NlCfo",
     },
     {
         id: 166,
@@ -934,6 +1000,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "166",
+        youtubeLink: "https://www.youtube.com/watch?v=Q-rg7wZqxUU",
     },
     {
         id: 167,
@@ -948,6 +1015,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "hip joint"],
         subCatigories: "167",
+        youtubeLink: "https://www.youtube.com/watch?v=yptPTetoxik",
     },
     {
         id: 168,
@@ -962,6 +1030,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["knees"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=9gglI77Kzq8",
     },
     {
         id: 169,
@@ -976,6 +1045,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["knees"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=3ygYqMMoxbU",
     },
     {
         id: 170,
@@ -990,6 +1060,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=C_P3Q-PssvY",
     },
     {
         id: 171,
@@ -1004,6 +1075,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["knees"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=3frV3RnPfOY",
     },
     {
         id: 172,
@@ -1018,6 +1090,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["knees"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=y2jz7ot6r2I",
     },
     {
         id: 173,
@@ -1032,6 +1105,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["knees", "back", "hip joint"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=Ry-wqegeKlE",
     },
     {
         id: 174,
@@ -1046,6 +1120,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["knees", "back", "hip joint"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=MxfTNXSFiYI",
     },
     {
         id: 175,
@@ -1060,6 +1135,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["knees", "back", "hip joint"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=Ry-wqegeKlE",
     },
     {
         id: 176,
@@ -1074,6 +1150,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["knees", "back", "hip joint"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=MxfTNXSFiYI",
     },
     {
         id: 177,
@@ -1088,6 +1165,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["knees", "back", "hip joint", "shoulders"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=rsSNPWK2bPE",
     },
     {
         id: 178,
@@ -1102,6 +1180,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["knees", "back", "hip joint", "shoulders"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=BrE0BWhiRJA",
     },
     {
         id: 179,
@@ -1116,6 +1195,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=DRPrZEP32fc",
     },
     {
         id: 180,
@@ -1130,6 +1210,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["knees"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=vLuhN_glFZ8",
     },
     {
         id: 181,
@@ -1144,6 +1225,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees", "back"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=wmfPdzqwbIY",
     },
     {
         id: 182,
@@ -1158,6 +1240,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "agm",
+        youtubeLink: "https://www.youtube.com/watch?v=Inn8JO2NVuc",
     },
     {
         id: 183,
@@ -1172,6 +1255,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "gm",
+        youtubeLink: "https://www.youtube.com/watch?v=CTRaCzE8pWU",
     },
     {
         id: 184,
@@ -1186,6 +1270,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=duP-UZsfOaQ",
     },
     {
         id: 185,
@@ -1200,6 +1285,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back"],
         subCatigories: "gm",
+        youtubeLink: "https://www.youtube.com/watch?v=4BOTvaRaDjI",
     },
     {
         id: 186,
@@ -1214,6 +1300,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "gm",
+        youtubeLink: "https://www.youtube.com/watch?v=MgZ5Nm2fKLA",
     },
     {
         id: 187,
@@ -1228,6 +1315,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["knees"],
         subCatigories: "ln",
+        youtubeLink: "https://www.youtube.com/watch?v=-cOY6jnccbs",
     },
     {
         id: 188,
@@ -1242,6 +1330,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "dl",
+        youtubeLink: "https://www.youtube.com/watch?v=tSMgar8KC3Q",
     },
     {
         id: 189,
@@ -1256,6 +1345,7 @@ const training: ITraining[] = [
         inventory: ["PVS"],
         LFC: ["nothing"],
         subCatigories: "dl",
+        youtubeLink: "https://www.youtube.com/watch?v=OmDJ7ClHxD8",
     },
     {
         id: 190,
@@ -1270,6 +1360,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["back"],
         subCatigories: "dl",
+        youtubeLink: "https://www.youtube.com/watch?v=lJ3QwaXNJfw",
     },
     {
         id: 191,
@@ -1284,6 +1375,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["back"],
         subCatigories: "dl",
+        youtubeLink: "https://www.youtube.com/watch?v=hinonqqzatk",
     },
     {
         id: 192,
@@ -1298,6 +1390,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back", "kness"],
         subCatigories: "sDl",
+        youtubeLink: "https://www.youtube.com/watch?v=e7oLkRlT2CQ",
     },
     {
         id: 193,
@@ -1312,6 +1405,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "dl",
+        youtubeLink: "https://www.youtube.com/watch?v=rtYH-SKh0to",
     },
     {
         id: 194,
@@ -1326,6 +1420,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "sDl",
+        youtubeLink: "https://www.youtube.com/watch?v=P7eL51_d6MM",
     },
     {
         id: 195,
@@ -1340,6 +1435,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["hip joint", "back"],
         subCatigories: "sDl",
+        youtubeLink: "https://www.youtube.com/watch?v=De9OUZz5W_I",
     },
     {
         id: 196,
@@ -1354,6 +1450,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["hip joint", "back"],
         subCatigories: "sDl",
+        youtubeLink: "https://www.youtube.com/watch?v=sGNMEtZCkRY",
     },
     {
         id: 197,
@@ -1368,6 +1465,7 @@ const training: ITraining[] = [
         inventory: ["band", "bar"],
         LFC: ["nothing"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=YVg-RU1Z_hU",
     },
     {
         id: 198,
@@ -1382,6 +1480,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "gb",
+        youtubeLink: "https://www.youtube.com/watch?v=FSiUH5jn3Cs",
     },
     {
         id: 199,
@@ -1396,6 +1495,7 @@ const training: ITraining[] = [
         inventory: ["kettleBell"],
         LFC: ["nothing"],
         subCatigories: "gb",
+        youtubeLink: "https://www.youtube.com/watch?v=orZcjc0XJMI",
     },
     {
         id: 200,
@@ -1410,6 +1510,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "aGb",
+        youtubeLink: "https://www.youtube.com/watch?v=iHBZiO5rDQ8",
     },
     {
         id: 201,
@@ -1424,6 +1525,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["nothing"],
         subCatigories: "gb",
+        youtubeLink: "https://www.youtube.com/watch?v=W86oVlnLqY4",
     },
     {
         id: 202,
@@ -1438,6 +1540,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "gb",
+        youtubeLink: "https://www.youtube.com/watch?v=n0mRPz3t5y4",
     },
     {
         id: 203,
@@ -1452,6 +1555,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "gb",
+        youtubeLink: "https://www.youtube.com/watch?v=qE1pCWzzsyY",
     },
     {
         id: 204,
@@ -1466,6 +1570,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "aGb",
+        youtubeLink: "https://www.youtube.com/watch?v=91EUeiZsSNc",
     },
     {
         id: 205,
@@ -1480,6 +1585,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "aGb",
+        youtubeLink: "https://www.youtube.com/watch?v=91EUeiZsSNc",
     },
     {
         id: 206,
@@ -1494,6 +1600,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "bs",
+        youtubeLink: "https://www.youtube.com/watch?v=tSNybMUpMKk",
     },
     {
         id: 207,
@@ -1508,6 +1615,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["knees", "back"],
         subCatigories: "bs",
+        youtubeLink: "https://www.youtube.com/watch?v=860722r7v2E",
     },
     {
         id: 208,
@@ -1522,6 +1630,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["knees"],
         subCatigories: "bs",
+        youtubeLink: "https://www.youtube.com/watch?v=OozEhxvL0_E",
     },
     {
         id: 209,
@@ -1536,6 +1645,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["knees"],
         subCatigories: "bs",
+        youtubeLink: "https://www.youtube.com/watch?v=v2GfVnjmY7c",
     },
     {
         id: 210,
@@ -1550,6 +1660,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "210",
+        youtubeLink: "https://www.youtube.com/watch?v=7PE3MlvGAts",
     },
     {
         id: 211,
@@ -1564,6 +1675,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "211",
+        youtubeLink: "https://www.youtube.com/watch?v=tIZppe-RB0g",
     },
     {
         id: 212,
@@ -1578,6 +1690,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "212",
+        youtubeLink: "https://www.youtube.com/watch?v=jkCqqNYiLuw",
     },
     {
         id: 213,
@@ -1592,6 +1705,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "213",
+        youtubeLink: "https://www.youtube.com/watch?v=6tJjQFK_Q9U",
     },
     {
         id: 214,
@@ -1606,6 +1720,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "214",
+        youtubeLink: "https://www.youtube.com/watch?v=eKR209nWCdE",
     },
     {
         id: 215,
@@ -1620,6 +1735,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "215",
+        youtubeLink: "https://www.youtube.com/watch?v=_vuwBnday18",
     },
     {
         id: 216,
@@ -1634,6 +1750,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "216",
+        youtubeLink: "https://www.youtube.com/watch?v=2XlhJlPOcPU",
     },
     {
         id: 217,
@@ -1648,6 +1765,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "217",
+        youtubeLink: "https://www.youtube.com/watch?v=rZupASyO_R0",
     },
     {
         id: 218,
@@ -1662,6 +1780,7 @@ const training: ITraining[] = [
         inventory: ["hothing"],
         LFC: ["nothing"],
         subCatigories: "218",
+        youtubeLink: "https://www.youtube.com/watch?v=jgh6sGwtTwk",
     },
     {
         id: 219,
@@ -1676,6 +1795,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "219",
+        youtubeLink: "https://www.youtube.com/watch?v=_NCkq_kMZws",
     },
     {
         id: 220,
@@ -1690,6 +1810,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "220",
+        youtubeLink: "https://www.youtube.com/watch?v=3w0cmENyeAw",
     },
     {
         id: 221,
@@ -1704,6 +1825,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "221",
+        youtubeLink: "https://www.youtube.com/watch?v=JRmu-BJw698",
     },
     {
         id: 222,
@@ -1718,6 +1840,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "222",
+        youtubeLink: "https://www.youtube.com/watch?v=g9FtnmsIYgI",
     },
     {
         id: 223,
@@ -1732,6 +1855,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "aSq",
+        youtubeLink: "https://www.youtube.com/watch?v=6OJsxCXDFpg",
     },
     {
         id: 224,
@@ -1746,6 +1870,7 @@ const training: ITraining[] = [
         inventory: ["band", "barbell"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "bSq",
+        youtubeLink: "https://www.youtube.com/watch?v=jz47v0Uj1cY",
     },
     {
         id: 225,
@@ -1760,6 +1885,7 @@ const training: ITraining[] = [
         inventory: ["barbell", "band"],
         LFC: ["back", "knees", "hip joint"],
         subCatigories: "fSq",
+        youtubeLink: "https://www.youtube.com/watch?v=yb83ONKJ2UE",
     },
     {
         id: 226,
@@ -1774,6 +1900,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "226",
+        youtubeLink: "https://www.youtube.com/watch?v=1GrIAiPZMPE",
     },
     {
         id: 227,
@@ -1788,6 +1915,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["nothing"],
         subCatigories: "ad",
+        youtubeLink: "https://www.youtube.com/watch?v=6fUrgob01UQ",
     },
     {
         id: 228,
@@ -1802,6 +1930,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "adB",
+        youtubeLink: "https://www.youtube.com/watch?v=DWw4e2o9gto",
     },
     {
         id: 229,
@@ -1816,6 +1945,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "adD",
+        youtubeLink: "https://www.youtube.com/watch?v=6Z15_WdXmVw",
     },
     {
         id: 230,
@@ -1830,6 +1960,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "adM",
+        youtubeLink: "https://www.youtube.com/watch?v=a4ZUOE6Arfk",
     },
     {
         id: 231,
@@ -1844,6 +1975,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "adD",
+        youtubeLink: "https://www.youtube.com/watch?v=wW7rWh41EZI",
     },
     {
         id: 232,
@@ -1858,6 +1990,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back", "shoulders"],
         subCatigories: "ad",
+        youtubeLink: "https://www.youtube.com/watch?v=9-sGJjjMOpI",
     },
     {
         id: 233,
@@ -1872,6 +2005,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["back", "shoulders"],
         subCatigories: "adD",
+        youtubeLink: "https://www.youtube.com/watch?v=4tCaD42ghlc",
     },
     {
         id: 234,
@@ -1886,6 +2020,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["shoulders"],
         subCatigories: "ud",
+        youtubeLink: "https://www.youtube.com/watch?v=AWsGWt-VMl8",
     },
     {
         id: 235,
@@ -1900,6 +2035,7 @@ const training: ITraining[] = [
         inventory: ["plate"],
         LFC: ["shoulders"],
         subCatigories: "ud",
+        youtubeLink: "https://www.youtube.com/watch?v=IYfLFuGKFLI",
     },
     {
         id: 236,
@@ -1914,6 +2050,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "ud",
+        youtubeLink: "https://www.youtube.com/watch?v=IhZLB48kluc",
     },
     {
         id: 237,
@@ -1928,6 +2065,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["shoulders"],
         subCatigories: "ud",
+        youtubeLink: "https://www.youtube.com/watch?v=DIm1jhMgYMI",
     },
     {
         id: 238,
@@ -1942,6 +2080,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "ud",
+        youtubeLink: "https://www.youtube.com/watch?v=_Lye_1p8NUI",
     },
     {
         id: 239,
@@ -1956,6 +2095,7 @@ const training: ITraining[] = [
         inventory: ["plate"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=hikbChhbeLI",
     },
     {
         id: 240,
@@ -1970,6 +2110,7 @@ const training: ITraining[] = [
         inventory: ["plate"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=MfbcBIBc-cA",
     },
     {
         id: 241,
@@ -1984,6 +2125,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back", "shoulders"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=PqAUOn-RmFA",
     },
     {
         id: 242,
@@ -1998,6 +2140,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["hothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=84q9sQoxwYI",
     },
     {
         id: 243,
@@ -2012,6 +2155,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=svvYvZF7jq0",
     },
     {
         id: 244,
@@ -2026,6 +2170,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=pGBRo5K-jLk",
     },
     {
         id: 245,
@@ -2040,6 +2185,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=FmT4hayWoJA",
     },
     {
         id: 246,
@@ -2054,6 +2200,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=8gUnEDhVR9I",
     },
     {
         id: 247,
@@ -2068,6 +2215,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=-t7fuZ0KhDA",
     },
     {
         id: 248,
@@ -2082,6 +2230,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=FmT4hayWoJA",
     },
     {
         id: 249,
@@ -2096,6 +2245,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=yHF2hyftSeo",
     },
     {
         id: 250,
@@ -2110,6 +2260,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=PmXz2Ik-On4",
     },
     {
         id: 251,
@@ -2124,6 +2275,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=sOcYlBI85hc",
     },
     {
         id: 252,
@@ -2138,6 +2290,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=vtH93qBItdk",
     },
     {
         id: 253,
@@ -2152,6 +2305,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=yIoAcMD3jcE",
     },
     {
         id: 254,
@@ -2166,6 +2320,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=WOJIrYjS5c4",
     },
     {
         id: 255,
@@ -2180,6 +2335,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=u9RpJ5Kv_tk",
     },
     {
         id: 256,
@@ -2194,6 +2350,7 @@ const training: ITraining[] = [
         inventory: ["bodybar"],
         LFC: ["shoulders"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=yhyyWwiixiY",
     },
     {
         id: 257,
@@ -2208,6 +2365,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "fd",
+        youtubeLink: "https://www.youtube.com/watch?v=-t7fuZ0KhDA",
     },
     {
         id: 258,
@@ -2222,6 +2380,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=JIhbYYA1Q90",
     },
     {
         id: 259,
@@ -2236,6 +2395,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=JIhbYYA1Q90",
     },
     {
         id: 260,
@@ -2250,6 +2410,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=g_7iXXBrCkY",
     },
     {
         id: 261,
@@ -2264,6 +2425,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=gFBAk-VZksc",
     },
     {
         id: 262,
@@ -2278,6 +2440,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=1AmmsXlf8MU",
     },
     {
         id: 263,
@@ -2292,6 +2455,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=v7WRsQDjsEc",
     },
     {
         id: 264,
@@ -2306,6 +2470,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["back"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=l8zw-U7c4wk",
     },
     {
         id: 265,
@@ -2320,6 +2485,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=KoRDmXocJII",
     },
     {
         id: 266,
@@ -2334,6 +2500,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=mSMJ3rwYMu0",
     },
     {
         id: 267,
@@ -2348,6 +2515,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=TxoDSfcObdU",
     },
     {
         id: 268,
@@ -2362,6 +2530,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=SL-2xNfEBog",
     },
     {
         id: 269,
@@ -2376,6 +2545,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=SL-2xNfEBog",
     },
     {
         id: 270,
@@ -2390,6 +2560,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=S3066EPh3n0",
     },
     {
         id: 271,
@@ -2404,6 +2575,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=S3066EPh3n0",
     },
     {
         id: 272,
@@ -2418,6 +2590,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=dKluhLck1Zs",
     },
     {
         id: 273,
@@ -2432,6 +2605,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "rm",
+        youtubeLink: "https://www.youtube.com/watch?v=8zJtj0Bw6D0",
     },
     {
         id: 274,
@@ -2446,6 +2620,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "rm",
+        youtubeLink: "https://www.youtube.com/watch?v=zz5XH-hFIaM",
     },
     {
         id: 275,
@@ -2460,6 +2635,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "rm",
+        youtubeLink: "https://www.youtube.com/watch?v=PWWn3z8Ft5s",
     },
     {
         id: 276,
@@ -2474,6 +2650,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "rm",
+        youtubeLink: "https://www.youtube.com/watch?v=mbdDt0c9bZY",
     },
     {
         id: 277,
@@ -2488,6 +2665,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "rd",
+        youtubeLink: "https://www.youtube.com/watch?v=G-piLwLu0d4",
     },
     {
         id: 278,
@@ -2502,6 +2680,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "md",
+        youtubeLink: "https://www.youtube.com/watch?v=v7WRsQDjsEc",
     },
     {
         id: 279,
@@ -2516,6 +2695,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=5_EI7a1LsS4",
     },
     {
         id: 280,
@@ -2530,6 +2710,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=LVX3oyKmsEc",
     },
     {
         id: 281,
@@ -2544,6 +2725,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["nothing"],
         subCatigories: "ap",
+        youtubeLink: "https://www.youtube.com/watch?v=VjPqy__9t9I",
     },
     {
         id: 282,
@@ -2558,6 +2740,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "282",
+        youtubeLink: "https://www.youtube.com/watch?v=K59OGC4aeQ4",
     },
     {
         id: 283,
@@ -2572,6 +2755,7 @@ const training: ITraining[] = [
         inventory: ["ring"],
         LFC: ["nothing"],
         subCatigories: "ap",
+        youtubeLink: "https://www.youtube.com/watch?v=4_KkFdljXYU",
     },
     {
         id: 284,
@@ -2586,6 +2770,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=77bPLrsMwiQ",
     },
     {
         id: 285,
@@ -2600,6 +2785,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=e3S820r53uk",
     },
     {
         id: 286,
@@ -2614,6 +2800,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=uy0YkGtY7A8",
     },
     {
         id: 287,
@@ -2628,6 +2815,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=yGVxPIqSHQE",
     },
     {
         id: 288,
@@ -2642,6 +2830,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=a9lLSxyxodw",
     },
     {
         id: 289,
@@ -2656,6 +2845,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=CLcekN2CHJM",
     },
     {
         id: 290,
@@ -2670,6 +2860,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "290",
+        youtubeLink: "https://www.youtube.com/watch?v=32auHIqgEoM",
     },
     {
         id: 291,
@@ -2684,6 +2875,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=NAIEnMjN-6w",
     },
     {
         id: 292,
@@ -2698,6 +2890,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=z7C7PxVDAD0",
     },
     {
         id: 293,
@@ -2712,6 +2905,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=G18ysBYu5Mw",
     },
     {
         id: 294,
@@ -2726,6 +2920,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=XneFsdUQhp8",
     },
     {
         id: 295,
@@ -2740,6 +2935,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=wYy32uk4Bu8",
     },
     {
         id: 296,
@@ -2754,6 +2950,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=roCP6wCXPqo",
     },
     {
         id: 297,
@@ -2768,6 +2965,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["back"],
         subCatigories: "bo",
+        youtubeLink: "https://www.youtube.com/watch?v=Nqh7q3zDCoQ",
     },
     {
         id: 298,
@@ -2782,6 +2980,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["back"],
         subCatigories: "bo",
+        youtubeLink: "https://www.youtube.com/watch?v=IOOLhrkN_NI",
     },
     {
         id: 299,
@@ -2796,6 +2995,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "299",
+        youtubeLink: "https://www.youtube.com/watch?v=GgcWEv-cA_Y",
     },
     {
         id: 300,
@@ -2810,6 +3010,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "300",
+        youtubeLink: "https://www.youtube.com/watch?v=G18ysBYu5Mw",
     },
     {
         id: 301,
@@ -2824,6 +3025,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=G18ysBYu5Mw",
     },
     {
         id: 302,
@@ -2838,6 +3040,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=5vnLFXJfQLc",
     },
     {
         id: 303,
@@ -2852,6 +3055,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "303",
+        youtubeLink: "https://www.youtube.com/watch?v=JoCRRZ3zRtI",
     },
     {
         id: 304,
@@ -2866,6 +3070,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "304",
+        youtubeLink: "https://www.youtube.com/watch?v=KaCcBqhiXtc",
     },
     {
         id: 305,
@@ -2880,6 +3085,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=vR9KcvzLqVo",
     },
     {
         id: 306,
@@ -2894,6 +3100,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=8zv8Pray4-w",
     },
     {
         id: 307,
@@ -2908,6 +3115,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=LSkyinhmA8k",
     },
     {
         id: 308,
@@ -2922,6 +3130,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "vp",
+        youtubeLink: "https://www.youtube.com/watch?v=8zv8Pray4-w",
     },
     {
         id: 309,
@@ -2936,6 +3145,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "hp",
+        youtubeLink: "https://www.youtube.com/watch?v=3boCpAqFLUE",
     },
     {
         id: 310,
@@ -2950,6 +3160,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "310",
+        youtubeLink: "https://www.youtube.com/watch?v=DI5PCKdDtLQ",
     },
     {
         id: 311,
@@ -2964,6 +3175,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "311",
+        youtubeLink: "https://www.youtube.com/watch?v=6i9JmQtLuPo",
     },
     {
         id: 312,
@@ -2978,6 +3190,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=A-uiFTIsgRg",
     },
     {
         id: 313,
@@ -2992,6 +3205,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=WLzut1ZxxTY",
     },
     {
         id: 314,
@@ -3006,6 +3220,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=60_BX5fROkU",
     },
     {
         id: 315,
@@ -3020,6 +3235,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=zO9YGjw3tIs",
     },
     {
         id: 316,
@@ -3034,6 +3250,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=YVg-RU1Z_hU",
     },
     {
         id: 317,
@@ -3048,6 +3265,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=zO9YGjw3tIs",
     },
     {
         id: 318,
@@ -3062,6 +3280,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "pu",
+        youtubeLink: "https://www.youtube.com/watch?v=wvF3fk3RLo8",
     },
     {
         id: 319,
@@ -3076,6 +3295,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "dp",
+        youtubeLink: "https://www.youtube.com/watch?v=1V3vpcaxRYQ",
     },
     {
         id: 320,
@@ -3090,6 +3310,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "dp",
+        youtubeLink: "https://www.youtube.com/watch?v=83I_lYKBu7A",
     },
     {
         id: 321,
@@ -3104,6 +3325,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=jNhYt7iNrZY",
     },
     {
         id: 322,
@@ -3118,6 +3340,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "dp",
+        youtubeLink: "https://www.youtube.com/watch?v=jNhYt7iNrZY",
     },
     {
         id: 323,
@@ -3132,6 +3355,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "kp",
+        youtubeLink: "https://www.youtube.com/watch?v=1_-ECzAoCoY",
     },
     {
         id: 324,
@@ -3146,6 +3370,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=jNhYt7iNrZY",
     },
     {
         id: 325,
@@ -3160,6 +3385,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "30bp",
+        youtubeLink: "https://www.youtube.com/watch?v=1V3vpcaxRYQ",
     },
     {
         id: 326,
@@ -3174,6 +3400,7 @@ const training: ITraining[] = [
         inventory: ["kettlebell"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "30bp",
+        youtubeLink: "https://www.youtube.com/watch?v=__T3XxQB2Ng",
     },
     {
         id: 327,
@@ -3188,6 +3415,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "du",
+        youtubeLink: "https://www.youtube.com/watch?v=rj6EE7ybnlE",
     },
     {
         id: 328,
@@ -3202,6 +3430,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "du",
+        youtubeLink: "https://www.youtube.com/watch?v=8zFcJWD9Y_E",
     },
     {
         id: 329,
@@ -3216,6 +3445,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "mp",
+        youtubeLink: "https://www.youtube.com/watch?v=eHiIYRpZfXY",
     },
     {
         id: 330,
@@ -3230,6 +3460,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "cp",
+        youtubeLink: "https://www.youtube.com/watch?v=tGXIQR89-JE",
     },
     {
         id: 331,
@@ -3244,6 +3475,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "mp",
+        youtubeLink: "https://www.youtube.com/watch?v=p2GYefHfRZ4",
     },
     {
         id: 332,
@@ -3258,6 +3490,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=Jz7oEmzhnfE",
     },
     {
         id: 333,
@@ -3272,6 +3505,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=Jz7oEmzhnfE",
     },
     {
         id: 334,
@@ -3286,6 +3520,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=ajdFwa-qM98",
     },
     {
         id: 335,
@@ -3300,6 +3535,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=g3T7LsEeDWQ",
     },
     {
         id: 336,
@@ -3314,6 +3550,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=CYviQI1Mnwg",
     },
     {
         id: 337,
@@ -3328,6 +3565,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=tGXIQR89-JE",
     },
     {
         id: 338,
@@ -3342,6 +3580,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "338",
+        youtubeLink: "https://www.youtube.com/watch?v=ZWa8v57fCZ8",
     },
     {
         id: 339,
@@ -3356,6 +3595,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "339",
+        youtubeLink: "https://www.youtube.com/watch?v=Iwe6AmxVf7o",
     },
     {
         id: 340,
@@ -3370,6 +3610,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=z_r6hDOYtO0",
     },
     {
         id: 341,
@@ -3384,6 +3625,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=eqiTAZoO8FQ",
     },
     {
         id: 342,
@@ -3398,6 +3640,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders", "elbows"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=8urE8Z8AMQ4",
     },
     {
         id: 343,
@@ -3412,6 +3655,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "aw",
+        youtubeLink: "https://www.youtube.com/watch?v=N4mMVG8S5Kg",
     },
     {
         id: 344,
@@ -3426,6 +3670,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "aw",
+        youtubeLink: "https://www.youtube.com/watch?v=iKFUacy_t3M",
     },
     {
         id: 345,
@@ -3440,6 +3685,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
         subCatigories: "aw",
+        youtubeLink: "https://www.youtube.com/watch?v=IncFw7NQlZg",
     },
     {
         id: 346,
@@ -3454,6 +3700,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "cp",
+        youtubeLink: "https://www.youtube.com/watch?v=5NnhQoF_QMA",
     },
     {
         id: 347,
@@ -3468,6 +3715,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "cp",
+        youtubeLink: "https://www.youtube.com/watch?v=Vz8IDqF-zhM",
     },
     {
         id: 348,
@@ -3482,6 +3730,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "cp",
+        youtubeLink: "https://www.youtube.com/watch?v=Gruq177Psnk",
     },
     {
         id: 349,
@@ -3496,6 +3745,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=tGXIQR89-JE",
     },
     {
         id: 350,
@@ -3510,6 +3760,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=tGXIQR89-JE",
     },
     {
         id: 351,
@@ -3524,6 +3775,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["shoulders"],
         subCatigories: "cf",
+        youtubeLink: "https://www.youtube.com/watch?v=GtHNC-5GtR0",
     },
     {
         id: 352,
@@ -3538,6 +3790,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "bp",
+        youtubeLink: "https://www.youtube.com/watch?v=75tpN6zeR8U",
     },
     {
         id: 353,
@@ -3551,6 +3804,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["dumbbell"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=KaCcBqhiXtc",
     },
     {
         id: 354,
@@ -3564,6 +3818,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=vR9KcvzLqVo",
     },
     {
         id: 355,
@@ -3577,6 +3832,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=8zv8Pray4-w",
     },
     {
         id: 356,
@@ -3590,6 +3846,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=LSkyinhmA8k",
     },
     {
         id: 357,
@@ -3603,6 +3860,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=77bPLrsMwiQ",
     },
     {
         id: 358,
@@ -3616,6 +3874,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=G18ysBYu5Mw",
     },
     {
         id: 359,
@@ -3630,6 +3889,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["elbows"],
         subCatigories: "bb",
+        youtubeLink: "https://www.youtube.com/watch?v=kwG2ipFRgfo",
     },
     {
         id: 360,
@@ -3644,6 +3904,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "bb",
+        youtubeLink: "https://www.youtube.com/watch?v=kjc5-mg59kU",
     },
     {
         id: 361,
@@ -3658,6 +3919,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["nothing"],
         subCatigories: "bb",
+        youtubeLink: "https://www.youtube.com/watch?v=Gydpcouclx8",
     },
     {
         id: 362,
@@ -3672,6 +3934,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "362",
+        youtubeLink: "https://www.youtube.com/watch?v=UXJNuq6zWLs",
     },
     {
         id: 363,
@@ -3686,6 +3949,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=rPIUC0wTsik",
     },
     {
         id: 364,
@@ -3700,6 +3964,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "sb",
+        youtubeLink: "https://www.youtube.com/watch?v=OtFLz4RwYMQ",
     },
     {
         id: 365,
@@ -3714,6 +3979,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "sb",
+        youtubeLink: "https://www.youtube.com/watch?v=803JIAWBj_c",
     },
     {
         id: 366,
@@ -3728,6 +3994,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "362",
+        youtubeLink: "https://www.youtube.com/watch?v=JyV7mUFSpXs",
     },
     {
         id: 367,
@@ -3742,6 +4009,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=sAq_ocpRh_I",
     },
     {
         id: 368,
@@ -3756,6 +4024,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cb",
+        youtubeLink: "https://www.youtube.com/watch?v=Odz1T8WmDBI",
     },
     {
         id: 369,
@@ -3770,6 +4039,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "pb",
+        youtubeLink: "https://www.youtube.com/watch?v=7oSbBVx73_c",
     },
     {
         id: 370,
@@ -3784,6 +4054,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "pb",
+        youtubeLink: "https://www.youtube.com/watch?v=7oSbBVx73_c",
     },
     {
         id: 371,
@@ -3798,6 +4069,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=BsULGO70tcU",
     },
     {
         id: 372,
@@ -3812,6 +4084,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "sb",
+        youtubeLink: "https://www.youtube.com/watch?v=OtFLz4RwYMQ",
     },
     {
         id: 373,
@@ -3826,6 +4099,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=WdssQ4YuUSA",
     },
     {
         id: 374,
@@ -3840,6 +4114,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=cbRSu8Ws_hs",
     },
     {
         id: 375,
@@ -3854,6 +4129,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "hb",
+        youtubeLink: "https://www.youtube.com/watch?v=cbRSu8Ws_hs",
     },
     {
         id: 376,
@@ -3868,6 +4144,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "rb",
+        youtubeLink: "https://www.youtube.com/watch?v=kMlOyX_yYOY",
     },
     {
         id: 377,
@@ -3882,6 +4159,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "rb",
+        youtubeLink: "https://www.youtube.com/watch?v=938E4oigd2k",
     },
     {
         id: 378,
@@ -3896,6 +4174,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["nothing"],
         subCatigories: "378",
+        youtubeLink: "https://www.youtube.com/watch?v=nRgxYX2Ve9w",
     },
     {
         id: 379,
@@ -3910,6 +4189,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cb",
+        youtubeLink: "https://www.youtube.com/watch?v=iO9iXIDirCA",
     },
     {
         id: 380,
@@ -3924,6 +4204,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cb",
+        youtubeLink: "https://www.youtube.com/watch?v=JOib_oyosu0",
     },
     {
         id: 381,
@@ -3938,6 +4219,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "zb",
+        youtubeLink: "https://www.youtube.com/watch?v=ZrpRBgswtHs",
     },
     {
         id: 382,
@@ -3952,6 +4234,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "zb",
+        youtubeLink: "https://www.youtube.com/watch?v=2IBxr91kSI8",
     },
     {
         id: 383,
@@ -3966,6 +4249,7 @@ const training: ITraining[] = [
         inventory: ["machien"],
         LFC: ["nothing"],
         subCatigories: "zb",
+        youtubeLink: "https://www.youtube.com/watch?v=TouYMA3-ua4",
     },
     {
         id: 384,
@@ -3980,6 +4264,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "bb",
+        youtubeLink: "https://www.youtube.com/watch?v=G-rS3GFslts",
     },
     {
         id: 385,
@@ -3994,6 +4279,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "cb",
+        youtubeLink: "https://www.youtube.com/watch?v=n9wrBT05k6Y",
     },
     {
         id: 386,
@@ -4008,6 +4294,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "rb",
+        youtubeLink: "https://www.youtube.com/watch?v=LLrNuMHjBsE",
     },
     {
         id: 387,
@@ -4022,6 +4309,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "kb",
+        youtubeLink: "https://www.youtube.com/watch?v=F0hRXsCylig",
     },
     {
         id: 388,
@@ -4036,6 +4324,7 @@ const training: ITraining[] = [
         inventory: ["dips"],
         LFC: ["elbows"],
         subCatigories: "dt",
+        youtubeLink: "https://www.youtube.com/watch?v=36krJZYK_dU",
     },
     {
         id: 389,
@@ -4050,6 +4339,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["elbows"],
         subCatigories: "dt",
+        youtubeLink: "https://www.youtube.com/watch?v=_olFz_Dzu94",
     },
     {
         id: 390,
@@ -4064,6 +4354,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["elbows"],
         subCatigories: "dt",
+        youtubeLink: "https://www.youtube.com/watch?v=8zFcJWD9Y_E",
     },
     {
         id: 391,
@@ -4078,6 +4369,7 @@ const training: ITraining[] = [
         inventory: ["barbell"],
         LFC: ["elbows"],
         subCatigories: "391",
+        youtubeLink: "https://www.youtube.com/watch?v=wxVRe9pmJdk",
     },
     {
         id: 392,
@@ -4092,6 +4384,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "st",
+        youtubeLink: "https://www.youtube.com/watch?v=8IB1AgeSpa4",
     },
     {
         id: 393,
@@ -4106,6 +4399,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "st",
+        youtubeLink: "https://www.youtube.com/watch?v=8IB1AgeSpa4",
     },
     {
         id: 394,
@@ -4120,6 +4414,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["elbows"],
         subCatigories: "st",
+        youtubeLink: "https://www.youtube.com/watch?v=gTrlbuuMufQ",
     },
     {
         id: 395,
@@ -4134,6 +4429,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["elbows"],
         subCatigories: "st",
+        youtubeLink: "https://www.youtube.com/watch?v=gTrlbuuMufQ",
     },
     {
         id: 396,
@@ -4148,6 +4444,7 @@ const training: ITraining[] = [
         inventory: ["bar"],
         LFC: ["elbows"],
         subCatigories: "st",
+        youtubeLink: "https://www.youtube.com/watch?v=kcvdV0LkhUk",
     },
     {
         id: 397,
@@ -4162,6 +4459,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=T3e390Dl3XU",
     },
     {
         id: 398,
@@ -4176,6 +4474,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=kuBA3SXTNp4",
     },
     {
         id: 399,
@@ -4190,6 +4489,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "kb",
+        youtubeLink: "https://www.youtube.com/watch?v=vzi_BxHuKqA",
     },
     {
         id: 400,
@@ -4204,6 +4504,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=YbX7Wd8jQ-Q",
     },
     {
         id: 401,
@@ -4218,6 +4519,7 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["elbows"],
         subCatigories: "st",
+        youtubeLink: "https://www.youtube.com/watch?v=8IB1AgeSpa4",
     },
     {
         id: 402,
@@ -4232,6 +4534,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["elbows"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=snoE9qAzt08",
     },
     {
         id: 403,
@@ -4246,6 +4549,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "ct",
+        youtubeLink: "https://www.youtube.com/watch?v=4lWSTusBcmw",
     },
     {
         id: 404,
@@ -4259,6 +4563,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["dumbbell"],
         LFC: ["nothing"],
+        youtubeLink: "https://www.youtube.com/watch?v=OtFLz4RwYMQ",
     },
     {
         id: 405,
@@ -4273,6 +4578,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=f59wGKbXZ0w",
     },
     {
         id: 406,
@@ -4287,6 +4593,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=4lWSTusBcmw",
     },
     {
         id: 407,
@@ -4301,6 +4608,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=bSp5GIsxwJU",
     },
     {
         id: 408,
@@ -4315,6 +4623,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=f59wGKbXZ0w",
     },
     {
         id: 409,
@@ -4329,6 +4638,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=snoE9qAzt08",
     },
     {
         id: 410,
@@ -4343,6 +4653,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "410",
+        youtubeLink: "https://www.youtube.com/watch?v=G2mlaEfpEIM",
     },
     {
         id: 411,
@@ -4357,6 +4668,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=8GVCO0oklnI",
     },
     {
         id: 412,
@@ -4371,6 +4683,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "kb",
+        youtubeLink: "https://www.youtube.com/watch?v=qHWv4SdfrBU",
     },
     {
         id: 413,
@@ -4385,6 +4698,7 @@ const training: ITraining[] = [
         inventory: ["bodybar"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=z-5lfbxd5dc",
     },
     {
         id: 414,
@@ -4399,6 +4713,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "et",
+        youtubeLink: "https://www.youtube.com/watch?v=5IscnabWzKg",
     },
     {
         id: 415,
@@ -4413,6 +4728,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "415",
+        youtubeLink: "https://www.youtube.com/watch?v=e5Wq9i13BPE",
     },
     {
         id: 416,
@@ -4427,6 +4743,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "416",
+        youtubeLink: "https://www.youtube.com/watch?v=rA8V4jRP0l4",
     },
     {
         id: 417,
@@ -4441,6 +4758,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["back"],
         subCatigories: "417",
+        youtubeLink: "https://www.youtube.com/watch?v=rNpwcQuF0sQ",
     },
     {
         id: 418,
@@ -4455,6 +4773,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "418",
+        youtubeLink: "https://www.youtube.com/watch?v=IINnwHwexkg",
     },
     {
         id: 419,
@@ -4469,6 +4788,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "419",
+        youtubeLink: "https://www.youtube.com/watch?v=dvLsxfxREg0",
     },
     {
         id: 420,
@@ -4483,6 +4803,7 @@ const training: ITraining[] = [
         inventory: ["roll"],
         LFC: ["back"],
         subCatigories: "420",
+        youtubeLink: "https://www.youtube.com/watch?v=h2c8V0YCD6c",
     },
     {
         id: 421,
@@ -4497,6 +4818,7 @@ const training: ITraining[] = [
         inventory: ["fitball"],
         LFC: ["nothing"],
         subCatigories: "421",
+        youtubeLink: "https://www.youtube.com/watch?v=s_CXq2gEiUk",
     },
     {
         id: 422,
@@ -4511,6 +4833,7 @@ const training: ITraining[] = [
         inventory: ["band"],
         LFC: ["nothing"],
         subCatigories: "422",
+        youtubeLink: "https://www.youtube.com/watch?v=wCwn7-Z-XjE",
     },
     {
         id: 423,
@@ -4525,6 +4848,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "423",
+        youtubeLink: "https://www.youtube.com/watch?v=g_BYB0R-4Ws",
     },
     {
         id: 424,
@@ -4539,6 +4863,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "424",
+        youtubeLink: "https://www.youtube.com/watch?v=dwB9Rp_patE",
     },
     {
         id: 425,
@@ -4553,6 +4878,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["back"],
         subCatigories: "425",
+        youtubeLink: "https://www.youtube.com/watch?v=Jb-19xLdihg",
     },
     {
         id: 426,
@@ -4567,6 +4893,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "426",
+        youtubeLink: "https://www.youtube.com/watch?v=UqmbxvOgnX4",
     },
     {
         id: 427,
@@ -4581,6 +4908,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["back"],
         subCatigories: "427",
+        youtubeLink: "https://www.youtube.com/watch?v=CBL_WRQjvuY",
     },
     {
         id: 428,
@@ -4595,6 +4923,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "428",
+        youtubeLink: "https://www.youtube.com/watch?v=hyv14e2QDq0",
     },
     {
         id: 429,
@@ -4609,6 +4938,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["back"],
         subCatigories: "429",
+        youtubeLink: "https://www.youtube.com/watch?v=0hk3wAMkr5c",
     },
     {
         id: 430,
@@ -4623,6 +4953,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["nothing"],
         subCatigories: "430",
+        youtubeLink: "https://www.youtube.com/watch?v=5ER5Of4MOPI",
     },
     {
         id: 431,
@@ -4637,6 +4968,7 @@ const training: ITraining[] = [
         inventory: ["nothing"],
         LFC: ["back"],
         subCatigories: "431",
+        youtubeLink: "https://www.youtube.com/watch?v=nF7ETJ0esjQ",
     },
     {
         id: 432,
@@ -4651,6 +4983,7 @@ const training: ITraining[] = [
         inventory: ["machine"],
         LFC: ["nothing"],
         subCatigories: "bo",
+        youtubeLink: "https://www.youtube.com/watch?v=GxVenNOYuo0",
     },
     {
         id: 433,
@@ -4665,6 +4998,8 @@ const training: ITraining[] = [
         inventory: ["dumbbell"],
         LFC: ["nothing"],
         subCatigories: "adD",
+        youtubeLink: "https://www.youtube.com/watch?v=LED1bhzkfLU",
     },
 ]
+
 export default training

@@ -23,8 +23,9 @@ function Header(): React.JSX.Element {
     useEffect(() => {
         if (localStorage.getItem("token")) {
             dispatch(checkAuth())
+            navigate("/gentraining")
         } else {
-            navigate("/login")
+            navigate("/")
         }
     }, [dispatch, isAuth])
 

@@ -100,7 +100,6 @@ export const checkAuth = createAsyncThunk(
                 `${API_URL}/user/refresh`,
                 { withCredentials: true }
             )
-            console.log(response)
             localStorage.setItem("token", response.data.accessToken)
             return response.data.user
         } catch (error: any) {

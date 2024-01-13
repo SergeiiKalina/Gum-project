@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined"
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
@@ -12,7 +12,6 @@ import {
 } from "../../../store/authorizationSlice"
 import { IUserAPI } from "../../../models/response/IUser"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
 
 interface IStateAuth {
     authSlice: {
@@ -50,12 +49,7 @@ const Registration = () => {
         (state: IStateAuth) => state.authSlice.isLoading
     )
     const dispatch = useDispatch<any>()
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (localStorage.getItem("email")) {
-            navigate("/gentraining")
-        }
-    }, [navigate, isLoading])
+
     function passValidation(pass: string) {
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/
         if (!regex.test(pass)) {

@@ -155,7 +155,22 @@ export default function StartTraining(): React.JSX.Element {
             ) : (
                 <section className="start_training_section">
                     <article className="start_training_infoBlock">
-                        <img src={exercise.img} alt="exercise" />
+                        <iframe
+                            width="560"
+                            height="315"
+                            src={
+                                "https://www.youtube.com/embed/" +
+                                exercise.youtubeLink.replace(
+                                    "https://www.youtube.com/watch?v=",
+                                    ""
+                                ) +
+                                "?si=cCEVsIa6vxWWgrNf"
+                            }
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
                         <output>{`${numExercise}/${
                             value[index].length - 1
                         }`}</output>

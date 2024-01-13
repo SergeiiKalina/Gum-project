@@ -25,7 +25,7 @@ function App(): React.JSX.Element {
                 <Routes>
                     <Route path="/" element={<MyLayouts />}>
                         <Route path="workout" element={<Training />} />
-
+                        <Route index element={<Login />} />
                         <Route
                             path="gentraining"
                             element={<FormGenTrainStepOne />}
@@ -69,8 +69,6 @@ function App(): React.JSX.Element {
                             path="start_training"
                             element={<StartTraining />}
                         />
-                        <Route path="login" element={<Login />} />
-                        <Route index element={<Login />} />
                         <Route path="registration" element={<Registration />} />
                     </Route>
                 </Routes>

@@ -45,7 +45,6 @@ function Login(): React.JSX.Element {
     )
     const navigate = useNavigate()
     const { isLoading, isAuth } = authSliceState
-    console.log(storageEmail, isAuth)
     const handlerClick = () => {
         signInWithPopup(auth, provider).then((data: UserCredential) => {
             localStorage.setItem("email", data.user?.email || "")
@@ -54,18 +53,17 @@ function Login(): React.JSX.Element {
             window.location.reload()
         })
     }
-    // useEffect(() => {
-    //     fetch("https://urchin-app-j6t9a.ondigitalocean.app/exercise")
-    //         .then((res) => res.json())
-    //         .then((res) => console.log(res))
-    //     if (localStorage.getItem("token")) {
-    //         setToggleInflameAuthorization(false)
-    //         dispatch(checkAuth())
-    //         navigate("/gentraining")
-    //     } else {
-    //         setToggleInflameAuthorization(true)
-    //     }
-    // }, [dispatch, navigate])
+    useEffect(() => {
+        fetch("http://localhost:8080/exercise")
+            .then((res) => res.json())
+            .then((res) => console.log(res))
+        if (localStorage.getItem("token")) {
+            setToggleInflameAuthorization(false)
+            dispatch(checkAuth())
+        } else {
+            setToggleInflameAuthorization(true)
+        }
+    }, [dispatch, navigate])
     useEffect(() => {
         let userName: string | null = localStorage.getItem("userName")
         let photo: string | null = localStorage.getItem("photo")
@@ -77,7 +75,6 @@ function Login(): React.JSX.Element {
         await dispatch(toggleIsLoading(true))
         await dispatch(login({ email, password }))
         await setToggleInflameAuthorization(false)
-        await navigate("/gentraining")
     }
 
     const buttonLogout = () => {

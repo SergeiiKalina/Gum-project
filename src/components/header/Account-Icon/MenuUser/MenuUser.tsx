@@ -1,8 +1,7 @@
 import React, { FC } from "react"
-import { Link } from "react-router-dom"
-import "./menuUser.scss"
 import { useDispatch } from "react-redux"
 import { logout } from "../../../../store/authorizationSlice"
+import "./menuUser.scss"
 
 interface IMenuUserProps {
     handlerMenuUser: () => void
@@ -15,10 +14,14 @@ const MenuUser: FC<IMenuUserProps> = ({ handlerMenuUser }) => {
         <section className="menu_user_wrapper">
             <ul>
                 <li>
-                    <Link to="#">Account</Link>
+                    <span>
+                        {localStorage.getItem("firstName") +
+                            " " +
+                            localStorage.getItem("lastName")}
+                    </span>
                 </li>
 
-                <li>
+                <li className="button_wrapper">
                     <button
                         onClick={() => {
                             handlerMenuUser()

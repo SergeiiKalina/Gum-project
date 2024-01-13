@@ -494,6 +494,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -549,6 +550,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -584,6 +586,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -611,6 +614,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -637,6 +641,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -663,6 +668,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -689,6 +695,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -724,6 +731,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -750,6 +758,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -816,6 +825,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -871,6 +881,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -906,6 +917,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -933,6 +945,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -959,6 +972,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -985,6 +999,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -1011,6 +1026,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -1046,6 +1062,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -1072,6 +1089,7 @@ function FinishedTraining(): React.JSX.Element {
                         workingOut: [""],
                         inventory: [""],
                         LFC: [""],
+                        youtubeLink: " ",
                     })
 
                     allEx.push(training)
@@ -1137,6 +1155,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1192,6 +1211,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1227,6 +1247,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1254,6 +1275,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1280,6 +1302,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1306,6 +1329,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1332,6 +1356,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1367,6 +1392,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1393,6 +1419,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1458,6 +1485,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1513,6 +1541,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1548,6 +1577,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1575,6 +1605,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1601,6 +1632,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1627,6 +1659,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1653,6 +1686,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1688,6 +1722,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)
@@ -1714,6 +1749,7 @@ function FinishedTraining(): React.JSX.Element {
                             workingOut: [""],
                             inventory: [""],
                             LFC: [""],
+                            youtubeLink: " ",
                         })
 
                         allEx.push(training)

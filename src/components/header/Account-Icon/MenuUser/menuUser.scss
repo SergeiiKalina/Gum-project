@@ -1,16 +1,41 @@
+@import "../../../adaptive-fontMixin.scss";
+
 .menu_user_wrapper {
     position: absolute;
     top: 60px;
-    left: 80px;
+    left: 0;
     background-color: white;
     display: flex;
     justify-content: center;
-    width: 100px;
+    width: 100%;
     border-radius: 20px;
     ul {
         padding: 0;
         a {
             margin: 0;
+        }
+        span {
+            @include adaptive-font(16, 12);
+            color: grey;
+        }
+        li {
+            width: 100%;
+            margin: 4px 0;
+        }
+        .button_wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+        button {
+            width: 50%;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: rgb(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
     }
 }
