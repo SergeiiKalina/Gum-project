@@ -156,8 +156,13 @@ export default function StartTraining(): React.JSX.Element {
                 <section className="start_training_section">
                     <article className="start_training_infoBlock">
                         <iframe
-                            width="560"
-                            height="315"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                            }}
                             src={
                                 "https://www.youtube.com/embed/" +
                                 exercise.youtubeLink.replace(
