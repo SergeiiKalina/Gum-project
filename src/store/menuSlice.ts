@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-export interface MenuState {
+export interface IMenuState {
     showMenu: boolean
     arrowLeftHidden: boolean
     arrowRightHidden: boolean
 }
 
-const initialState: MenuState = {
+const initialState: IMenuState = {
     showMenu: false,
     arrowLeftHidden: false,
     arrowRightHidden: false,

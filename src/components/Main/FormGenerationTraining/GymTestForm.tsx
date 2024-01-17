@@ -14,10 +14,15 @@ import {
     stylesFormButton,
 } from "./styles/stylesFormGeneration"
 import "./formGenTrainStep.scss"
+import { IUserData } from "../../../store/userSlice"
+import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 
 export default function GymTestForm(): React.JSX.Element {
     const formData = useSelector(
         (state: ITrainingReducer) => state.training.formData
+    )
+    const userData = useSelector(
+        (state: IUserSlice) => state.usersSlice.dataUser
     )
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
@@ -39,7 +44,8 @@ export default function GymTestForm(): React.JSX.Element {
                     label="Squat Weight"
                     variant="outlined"
                     autoComplete="given-name"
-                    {...register("squatWeight", {
+                    defaultValue={userData.squat || ""}
+                    {...register("squat", {
                         required: "squatWeight is Error",
                     })}
                     InputProps={{
@@ -52,7 +58,8 @@ export default function GymTestForm(): React.JSX.Element {
                     label="Bench Press Weight"
                     variant="outlined"
                     autoComplete="given-name"
-                    {...register("benchPressWeight", {
+                    defaultValue={userData.benchPress || ""}
+                    {...register("benchPress", {
                         required: "benchPressWeight is Error",
                     })}
                     InputProps={{
@@ -65,7 +72,8 @@ export default function GymTestForm(): React.JSX.Element {
                     label="Dead Lift Weight"
                     variant="outlined"
                     autoComplete="given-name"
-                    {...register("deadLiftWeight", {
+                    defaultValue={userData.deadLift || ""}
+                    {...register("deadLift", {
                         required: "deadLiftWeight is Error",
                     })}
                     InputProps={{
@@ -81,6 +89,7 @@ export default function GymTestForm(): React.JSX.Element {
                     label="Pull-up"
                     variant="outlined"
                     autoComplete="given-name"
+                    defaultValue={userData.pullUp || ""}
                     {...register("pullUp", {
                         required: "pullUp is Error",
                     })}
@@ -94,6 +103,7 @@ export default function GymTestForm(): React.JSX.Element {
                     label="Sit-up"
                     variant="outlined"
                     autoComplete="given-name"
+                    defaultValue={userData.sitUp || ""}
                     {...register("sitUp", {
                         required: "sitUp is Error",
                     })}

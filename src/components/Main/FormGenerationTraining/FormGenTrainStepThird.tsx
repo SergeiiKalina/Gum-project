@@ -24,6 +24,9 @@ import {
     stylesSelect,
 } from "./styles/stylesFormGeneration"
 import "./formGenTrainStep.scss"
+import axios from "axios"
+import { API_URL } from "../../../http"
+import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -39,19 +42,39 @@ const MenuProps = {
 const multiSelect = ["back", "elbows", "shoulders", "knees", "hip joint"]
 
 export default function FormGenTrainStepThird(): React.JSX.Element {
-    const [personName, setPersonName] = useState<string[]>([])
-    const [lifestyle, setLifestyle] = useState("")
-    const [goal, setGoal] = useState("")
+    const userData = useSelector(
+        (state: IUserSlice) => state.usersSlice.dataUser
+    )
+    const [flagPopUp, setFlagPopUp] = useState<boolean>(false)
+    const [currentButton, setCurrentButton] = useState<string>("")
+    const [problems, setProblems] = useState<string[]>(userData.problems || [])
+    const [lifestyle, setLifestyle] = useState(userData.lifestyle || "")
+    const [goal, setGoal] = useState(userData.goal || "")
     const [focus, setFocus] = useState("")
     const formData = useSelector(
         (state: ITrainingReducer) => state.training.formData
     )
+
     const navigate = useNavigate()
-    const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
+    const { register, handleSubmit, setValue } = useForm<IFormData>({
+        mode: "onBlur",
+    })
     const dispatch = useDispatch()
-    const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {
-        dispatch(writeFormData({ ...formData, ...data }))
-        navigate("/finished-training")
+    const onSubmit: SubmitHandler<IFormData> = async (data: IFormData) => {
+        if (currentButton === "saveAndGenerate") {
+            await axios.patch(API_URL + "/user/update", {
+                ...formData,
+                ...data,
+            })
+
+            setFlagPopUp(false)
+            dispatch(writeFormData({ ...formData, ...data }))
+            navigate("/finished-training")
+        }
+        if (currentButton === "generateAndNotSave") {
+            dispatch(writeFormData({ ...formData, ...data }))
+            navigate("/finished-training")
+        }
     }
 
     const handleLifeStyle = (e: SelectChangeEvent<string>) => {
@@ -64,11 +87,11 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
         setFocus(e.target.value)
     }
 
-    const handleChange = (event: SelectChangeEvent<string[]>) => {
+    const handleChangeProblemsSelect = (event: SelectChangeEvent<string[]>) => {
         const {
             target: { value },
         } = event
-        setPersonName(typeof value === "string" ? value.split(",") : value)
+        setProblems(typeof value === "string" ? value.split(",") : value)
     }
 
     return (
@@ -134,12 +157,12 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             labelId="demo-multiple-name-label"
                             id="demo-multiple-name"
                             multiple
-                            value={personName}
+                            value={problems}
                             input={<OutlinedInput label="Name" />}
                             MenuProps={MenuProps}
                             sx={stylesSelect}
                             {...register("problems")}
-                            onChange={handleChange}
+                            onChange={handleChangeProblemsSelect}
                         >
                             {multiSelect.map((el) => (
                                 <MenuItem key={el} value={el}>
@@ -178,8 +201,35 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                     </FormControl>
                 </div>
             </section>
+            {flagPopUp ? (
+                <section className="save_and_generation_training_popup">
+                    <article>
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            onClick={() => setCurrentButton("saveAndGenerate")}
+                        >
+                            Save data and Generate
+                        </Button>
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            onClick={() =>
+                                setCurrentButton("generateAndNotSave")
+                            }
+                        >
+                            Generate not Save data
+                        </Button>
+                    </article>
+                </section>
+            ) : null}
             <div style={stylesButtonWrapper}>
-                <Button variant="contained" type="submit" sx={stylesFormButton}>
+                <Button
+                    variant="contained"
+                    type="button"
+                    sx={stylesFormButton}
+                    onClick={() => setFlagPopUp(true)}
+                >
                     Next Step
                 </Button>
             </div>

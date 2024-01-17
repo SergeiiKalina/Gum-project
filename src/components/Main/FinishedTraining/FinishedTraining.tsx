@@ -277,11 +277,11 @@ function FinishedTraining(): React.JSX.Element {
         category: string,
         basic: boolean
     ) {
-        const { fitnessLevel, placeOfTraining, problems, sex } = data
+        const { fitnessLevel, placeToWorkout, problems, sex } = data
         return training
             .filter((el) => !el.LFC.some((item) => problems.includes(item)))
             .filter((item) =>
-                item.workingOut.some((el) => el === placeOfTraining)
+                item.workingOut.some((el) => el === placeToWorkout)
             )
             .filter((el) => el.sex === sex || el.sex === "unsex")
             .filter((el) => {
@@ -292,7 +292,7 @@ function FinishedTraining(): React.JSX.Element {
                     category === "back" ||
                     (category === "pectoral" &&
                         fitnessLevel === 3 &&
-                        placeOfTraining === "home" &&
+                        placeToWorkout === "home" &&
                         sex === "female" &&
                         basic === false)
                 ) {
@@ -311,7 +311,7 @@ function FinishedTraining(): React.JSX.Element {
                     if (
                         (category === "back" || category === "pectoral") &&
                         fitnessLevel === 2 &&
-                        placeOfTraining === "home" &&
+                        placeToWorkout === "home" &&
                         basic === false
                     ) {
                         filteringPattern = filteringPattern =
@@ -350,7 +350,7 @@ function FinishedTraining(): React.JSX.Element {
 
     const generateTraining = useCallback(
         (data: IFormData) => {
-            if (data.placeOfTraining === "home") {
+            if (data.placeToWorkout === "home") {
                 const {
                     pushUpQuantity,
                     sitUp,
@@ -372,20 +372,20 @@ function FinishedTraining(): React.JSX.Element {
 
                 data = { ...rest, fitnessLevel, bodyMassIndex }
             }
-            if (data.placeOfTraining === "gym") {
+            if (data.placeToWorkout === "gym") {
                 const {
-                    benchPressWeight,
-                    deadLiftWeight,
+                    benchPress,
+                    deadLift,
                     pullUp,
-                    squatWeight,
+                    squat,
                     sitUp,
                     age,
                     weight,
                     ...rest
                 } = data
-                let cofBenchPress = Number(benchPressWeight) / Number(weight)
-                let cofSquat = Number(squatWeight) / Number(weight)
-                let cofDeadLift = Number(deadLiftWeight) / Number(weight)
+                let cofBenchPress = Number(benchPress) / Number(weight)
+                let cofSquat = Number(squat) / Number(weight)
+                let cofDeadLift = Number(deadLift) / Number(weight)
 
                 let cofSitUp = 0
                 let cofPullUp = 0
@@ -434,7 +434,7 @@ function FinishedTraining(): React.JSX.Element {
                 data = { ...rest, fitnessLevel, bodyMassIndex }
             }
             let allEx: ITraining[][] = []
-            if (data.sex === "male" && data.placeOfTraining === "home") {
+            if (data.sex === "male" && data.placeToWorkout === "home") {
                 if (data.focus === "fullBody") {
                     let training: ITraining[] = []
                     training = generateRandomExerciseWorkout(
@@ -765,7 +765,7 @@ function FinishedTraining(): React.JSX.Element {
                 }
             }
 
-            if (data.sex === "male" && data.placeOfTraining === "gym") {
+            if (data.sex === "male" && data.placeToWorkout === "gym") {
                 if (data.focus === "fullBody") {
                     let training: ITraining[] = []
                     training = generateRandomExerciseWorkout(
@@ -1095,7 +1095,7 @@ function FinishedTraining(): React.JSX.Element {
                     allEx.push(training)
                 }
             } else {
-                if (data.sex === "female" && data.placeOfTraining === "home") {
+                if (data.sex === "female" && data.placeToWorkout === "home") {
                     if (data.focus === "fullBody") {
                         let training: ITraining[] = []
                         training = generateRandomExerciseWorkout(
@@ -1425,7 +1425,7 @@ function FinishedTraining(): React.JSX.Element {
                         allEx.push(training)
                     }
                 }
-                if (data.sex === "female" && data.placeOfTraining === "gym") {
+                if (data.sex === "female" && data.placeToWorkout === "gym") {
                     if (data.focus === "fullBody") {
                         let training: ITraining[] = []
                         training = generateRandomExerciseWorkout(

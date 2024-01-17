@@ -14,20 +14,20 @@ export interface IGeneratorTrainingSliceData {
 }
 export interface IFormData {
     age?: number
-    benchPressWeight?: string
-    deadLiftWeight?: string
+    benchPress?: string
+    deadLift?: string
     email: string
     firstName: string
     focus: string
     goal: string
     lastName: string
     lifestyle: string
-    placeOfTraining: string
+    placeToWorkout: string
     problems: string[]
     pullUp?: string
     sex: string
     sitUp?: string
-    squatWeight?: string
+    squat?: string
     weight?: string
     bodyType?: string
     pushUpQuantity?: string
@@ -43,20 +43,20 @@ const initialState: IGeneratorTrainingSliceData = {
     bulTextArea: false,
     formData: {
         age: 0,
-        benchPressWeight: "",
-        deadLiftWeight: "",
+        benchPress: "",
+        deadLift: "",
         email: "",
         firstName: "",
         focus: "",
         goal: "",
         lastName: "",
         lifestyle: "",
-        placeOfTraining: "",
+        placeToWorkout: "",
         problems: [""],
         pullUp: "",
         sex: "",
         sitUp: "",
-        squatWeight: "",
+        squat: "",
         weight: "",
         pushUpQuantity: "",
         squatQuantity: "",

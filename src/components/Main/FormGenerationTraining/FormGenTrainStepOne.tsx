@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { SubmitHandler, useForm } from "react-hook-form"
 import {
     IFormData,
@@ -32,21 +32,27 @@ import {
     stylesSelect,
 } from "./styles/stylesFormGeneration"
 import "./formGenTrainStep.scss"
+import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
+    const userData = useSelector(
+        (state: IUserSlice) => state.usersSlice.dataUser
+    )
+    const { register, handleSubmit } = useForm<IFormData>({
+        mode: "onBlur",
+    })
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [age, setAge] = useState<string>("")
+    const [radioSexValue, setRadioSexValue] = useState(userData.sex || "female")
     const handleChangeAge = (event: SelectChangeEvent<string>) => {
         let value: string = event.target.value
         setAge(value)
     }
 
-    const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {
         navigate("/gentraining/step-2")
         dispatch(writeFormData(data))
-        // generateTraining(data)
     }
 
     return (
@@ -113,11 +119,12 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                 label="Weight"
                 variant="outlined"
                 type="number"
+                defaultValue={userData.weight || ""}
                 {...register("weight", {
-                    required: "First Name is Error",
+                    required: "Weight is required",
                 })}
                 InputProps={{
-                    type: "number",
+                    type: "text",
                 }}
                 sx={stylesField}
             />
@@ -161,22 +168,27 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
                     sx={styledRadioGroup}
+                    value={radioSexValue}
+                    onChange={(event) => {
+                        setRadioSexValue(event.target.value)
+                        dispatch(writeSexTraining(event.target.value))
+                    }}
                 >
                     <FormControlLabel
                         value="female"
-                        control={<Radio sx={stylesRadio} />}
+                        control={
+                            <Radio sx={stylesRadio} {...register("sex")} />
+                        }
                         label="Female"
                         sx={stylesLabelRadio}
-                        {...register("sex")}
-                        onClick={() => dispatch(writeSexTraining("female"))}
                     />
                     <FormControlLabel
                         value="male"
-                        control={<Radio sx={stylesRadio} />}
+                        control={
+                            <Radio sx={stylesRadio} {...register("sex")} />
+                        }
                         label="Male"
                         sx={stylesLabelRadio}
-                        {...register("sex")}
-                        onClick={() => dispatch(writeSexTraining("male"))}
                     />
                 </RadioGroup>
             </article>

@@ -41,6 +41,7 @@ export const login = createAsyncThunk(
     async ({ email, password }: IPropertyLogin) => {
         try {
             const response = await AuthService.login(email, password)
+
             localStorage.setItem("token", response.data.accessToken)
             localStorage.setItem("firstName", response.data.user.firstName)
             localStorage.setItem("lastName", response.data.user.lastName)
@@ -81,10 +82,7 @@ export const logout = createAsyncThunk(
     async () => {
         try {
             await AuthService.logout()
-            localStorage.removeItem("token")
-            localStorage.removeItem("firstName")
-            localStorage.removeItem("lastName")
-            localStorage.removeItem("email")
+            localStorage.clear()
             return undefined
         } catch (error: any) {
             console.log(error.response?.data?.message)

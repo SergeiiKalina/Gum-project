@@ -17,6 +17,7 @@ import FormAuthorization from "./FormAuthorization"
 import "./login.scss"
 import { Button, CircularProgress } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import { API_URL } from "../../../http"
 
 export interface IUser {
     userName: string | null
@@ -54,7 +55,7 @@ function Login(): React.JSX.Element {
         })
     }
     useEffect(() => {
-        fetch("https://gym-project-api.onrender.com/exercise")
+        fetch(API_URL + "/exercise")
             .then((res) => res.json())
             .then((res) => console.log(res))
         if (localStorage.getItem("token")) {

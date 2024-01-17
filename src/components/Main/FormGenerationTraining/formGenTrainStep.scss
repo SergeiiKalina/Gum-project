@@ -1,5 +1,24 @@
 @import "./../../adaptive-fontMixin.scss";
 
+.save_and_generation_training_popup {
+    width: 100dvw;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    article {
+        width: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
 .form_gen_train_step_wrapper {
     width: 100%;
     display: flex;

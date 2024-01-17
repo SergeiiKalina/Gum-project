@@ -28,6 +28,7 @@
     "sass": "^1.69.7",
     "swiper": "^7.4.1",
     "typescript": "^4.9.5",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

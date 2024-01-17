@@ -1,4 +1,4 @@
-@import "../../../adaptive-fontMixin.scss";
+@import "../../adaptive-fontMixin.scss";
 
 .menu_user_wrapper {
     position: absolute;
@@ -27,7 +27,8 @@
             justify-content: flex-end;
         }
         button {
-            width: 50%;
+            display: block;
+            width: 100%;
             background: none;
             border: none;
             padding: 8px;
@@ -37,5 +38,18 @@
             background: rgb(0, 0, 0, 0.1);
             border-radius: 10px;
         }
+    }
+}
+
+@media (max-width: 460px) {
+    .menu_user_wrapper {
+        position: absolute;
+        top: 40px;
+        left: -120px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        width: 150px;
+        border-radius: 20px;
     }
 }

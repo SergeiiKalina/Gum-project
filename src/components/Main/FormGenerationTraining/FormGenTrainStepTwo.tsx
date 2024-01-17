@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -23,19 +23,29 @@ import {
     stylesLabelRadio,
     stylesRadio,
 } from "./styles/stylesFormGeneration"
+import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 import "./formGenTrainStep.scss"
 
 export default function FormGenTrainStepTwo(): React.JSX.Element {
     const formData = useSelector(
         (state: ITrainingReducer) => state.training.formData
     )
-
+    const userData = useSelector(
+        (state: IUserSlice) => state.usersSlice.dataUser
+    )
     const navigate = useNavigate()
-    const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
+    const { register, handleSubmit } = useForm<IFormData>({
+        mode: "onBlur",
+    })
     const dispatch = useDispatch()
+
+    const [radioPlaceValue, setRadioPlaceValue] = useState<string>(
+        userData.placeToWorkout || "gym"
+    )
     const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {
+        console.log({ ...formData, ...data })
         dispatch(writeFormData({ ...formData, ...data }))
-        if (data.placeOfTraining === "home") {
+        if (data.placeToWorkout === "home") {
             navigate("/gentraining/step-3/home")
         } else {
             navigate("/gentraining/step-3/gym")
@@ -62,6 +72,8 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
+                    value={radioPlaceValue}
+                    onChange={(e) => setRadioPlaceValue(e.target.value)}
                     sx={styledRadioGroup}
                 >
                     <FormControlLabel
@@ -70,7 +82,7 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                         onClick={() => dispatch(writePlaceTraining("home"))}
                         value="home"
                         label="Home"
-                        {...register("placeOfTraining")}
+                        {...register("placeToWorkout")}
                     />
                     <FormControlLabel
                         control={<Radio sx={stylesRadio} />}
@@ -78,7 +90,7 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                         onClick={() => dispatch(writePlaceTraining("gym"))}
                         value="gym"
                         label="Gym"
-                        {...register("placeOfTraining")}
+                        {...register("placeToWorkout")}
                     />
                 </RadioGroup>
             </article>

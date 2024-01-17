@@ -5,7 +5,6 @@ import Training from "./components/Main/Training/Training"
 import RegistrationForTraining from "./components/Main/RegistrationForTraining/RegistrationForTraining"
 import Contacts from "./components/header/Contacts/Contacts"
 import AdminForm from "./components/Other/AdminForm/AdminForm"
-import "./App.scss"
 import StartTraining from "./components/Main/StartTraining/StartTraining"
 import HomeTestForm from "./components/Main/FormGenerationTraining/HomeTestForm"
 import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory"
@@ -13,10 +12,11 @@ import FormGenTrainStepThird from "./components/Main/FormGenerationTraining/Form
 import FinishedTraining from "./components/Main/FinishedTraining/FinishedTraining"
 import FormGenTrainStepTwo from "./components/Main/FormGenerationTraining/FormGenTrainStepTwo"
 import GymTestForm from "./components/Main/FormGenerationTraining/GymTestForm"
-import AboutMe from "./components/header/AboutMe/AboutMe"
 import Login from "./components/header/Login/Login"
 import Registration from "./components/header/Registration/Registration"
 import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGenTrainStepOne"
+import "./App.scss"
+import PersonalData from "./components/header/MenuUser/PersonalData/PersonalData"
 
 function App(): React.JSX.Element {
     return (
@@ -31,10 +31,13 @@ function App(): React.JSX.Element {
                             element={<FormGenTrainStepOne />}
                         />
                         <Route
+                            path="personal-data"
+                            element={<PersonalData />}
+                        />
+                        <Route
                             path="/finished-training"
                             element={<FinishedTraining />}
                         />
-                        <Route path="/about-me" element={<AboutMe />} />
                         <Route
                             path="/gentraining/step-2"
                             element={<FormGenTrainStepTwo />}

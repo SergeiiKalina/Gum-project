@@ -3,8 +3,8 @@ import { BsPersonCircle } from "react-icons/bs"
 import "./accountIcon.scss"
 import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { IUserAPI } from "../../../models/response/IUser"
-import MenuUser from "./MenuUser/MenuUser"
+import { IUserAPI } from "../../../../models/response/IUser"
+import MenuUser from "../MenuUser"
 
 interface IAuthSlice {
     authSlice: {
@@ -14,7 +14,7 @@ interface IAuthSlice {
 }
 
 interface IAccountIconProps {
-    handlerMenuUser: () => void
+    handlerMenuUser: (e: React.MouseEvent<HTMLSpanElement>) => void
     toggleMenuUser: boolean
 }
 
@@ -27,7 +27,7 @@ const AccountIcon: FC<IAccountIconProps> = ({
     return (
         <section className="account_icon_wrapper">
             {isAuth ? (
-                <span onClick={() => handlerMenuUser()}>
+                <span onClick={(e) => handlerMenuUser(e)}>
                     {localStorage.getItem("firstName") +
                         " " +
                         localStorage.getItem("lastName")}
@@ -36,7 +36,7 @@ const AccountIcon: FC<IAccountIconProps> = ({
                 <NavLink to="/login">Log in</NavLink>
             )}
             <div
-                onClick={() => handlerMenuUser()}
+                onClick={(e) => handlerMenuUser(e)}
                 style={{
                     display: "flex",
                     textAlign: "center",
