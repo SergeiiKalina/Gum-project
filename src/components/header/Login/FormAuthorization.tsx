@@ -3,7 +3,7 @@ import React, { FC, Dispatch, SetStateAction, ChangeEvent } from "react"
 import { StyledTextField } from "../../Styled-components/Styled"
 import { Button } from "@mui/material"
 import "./login.scss"
-import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 interface IFormAuthorizationProps {
     email: string
@@ -28,6 +28,8 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
     toggleInflameAuthorization,
     // getListUsers,
 }) => {
+    const navigate = useNavigate()
+
     return (
         <form>
             {toggleInflameAuthorization ? (
@@ -53,38 +55,21 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                 ""
             )}
             <section>
-                {toggleInflameAuthorization ? (
-                    <article className="form_authorization_button_block">
-                        <Button
-                            onClick={() => buttonLogin(email, password)}
-                            variant="contained"
-                            sx={{ width: "40%", margin: "0 auto" }}
-                        >
-                            Login
-                        </Button>
-                        <NavLink to="/registration">
-                            <Button variant="contained" sx={{ width: "100%" }}>
-                                Registration
-                            </Button>
-                        </NavLink>
-                    </article>
-                ) : (
+                <article className="form_authorization_button_block">
                     <Button
-                        onClick={() => buttonLogout()}
+                        onClick={() => buttonLogin(email, password)}
                         variant="contained"
-                        sx={{ width: "40%", margin: "0 auto" }}
                     >
-                        Logout
+                        Login
                     </Button>
-                )}
 
-                {/* <Button
-                    onClick={() => getListUsers()}
-                    variant="contained"
-                    sx={{ width: "40%", margin: "0 auto" }}
-                >
-                    Get List Users
-                </Button> */}
+                    <Button
+                        variant="contained"
+                        onClick={() => navigate("/registration")}
+                    >
+                        Registration
+                    </Button>
+                </article>
             </section>
         </form>
     )
