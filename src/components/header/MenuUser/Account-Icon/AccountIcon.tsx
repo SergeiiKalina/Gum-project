@@ -14,40 +14,34 @@ interface IAuthSlice {
 }
 
 interface IAccountIconProps {
-    handlerMenuUser: (e: React.MouseEvent<HTMLSpanElement>) => void
     toggleMenuUser: boolean
 }
 
-const AccountIcon: FC<IAccountIconProps> = ({
-    handlerMenuUser,
-    toggleMenuUser,
-}) => {
+const AccountIcon: FC<IAccountIconProps> = ({ toggleMenuUser }) => {
     const isAuth = useSelector((state: IAuthSlice) => state.authSlice.isAuth)
 
     return (
         <section className="account_icon_wrapper">
             {isAuth ? (
-                <span onClick={(e) => handlerMenuUser(e)}>
+                <span id="nameUser">
                     {localStorage.getItem("firstName") +
                         " " +
                         localStorage.getItem("lastName")}
                 </span>
             ) : (
-                <NavLink to="/login">Log in</NavLink>
+                <NavLink to="/">Log in</NavLink>
             )}
             <div
-                onClick={(e) => handlerMenuUser(e)}
+                id="userIconWrapper"
                 style={{
                     display: "flex",
                     textAlign: "center",
                     fontSize: "22px",
                 }}
             >
-                <BsPersonCircle />
+                <BsPersonCircle id="userIcon" />
             </div>
-            {toggleMenuUser && isAuth && (
-                <MenuUser handlerMenuUser={handlerMenuUser} />
-            )}
+            {toggleMenuUser && isAuth && <MenuUser />}
         </section>
     )
 }

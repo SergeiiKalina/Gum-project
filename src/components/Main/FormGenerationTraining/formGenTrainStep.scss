@@ -142,18 +142,33 @@
         margin: 0 0 0 20px;
     }
 }
-@media (max-width: 1024px) {
-    .form_gen_train_step_wrapper {
-        section {
-            width: 70%;
-        }
+
+.wrapper_two_button {
+    width: 50%;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    .button_third_step {
+        margin: 8px 0;
     }
+}
+@media (max-width: 1024px) {
 }
 @media (max-width: 767px) {
     .form_gen_train_step_wrapper {
         section {
             width: 100%;
         }
+    }
+    .wrapper_two_button {
+        width: 75%;
+    }
+}
+@media (max-width: 600px) {
+    .wrapper_two_button {
+        width: 80%;
+        justify-content: space-evenly;
     }
 }
 @media screen and (max-width: 460px) {

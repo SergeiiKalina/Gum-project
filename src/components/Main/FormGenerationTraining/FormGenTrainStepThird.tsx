@@ -201,36 +201,23 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                     </FormControl>
                 </div>
             </section>
-            {flagPopUp ? (
-                <section className="save_and_generation_training_popup">
-                    <article>
-                        <Button
-                            variant="contained"
-                            type="submit"
-                            onClick={() => setCurrentButton("saveAndGenerate")}
-                        >
-                            Save data and Generate
-                        </Button>
-                        <Button
-                            variant="contained"
-                            type="submit"
-                            onClick={() =>
-                                setCurrentButton("generateAndNotSave")
-                            }
-                        >
-                            Generate not Save data
-                        </Button>
-                    </article>
-                </section>
-            ) : null}
-            <div style={stylesButtonWrapper}>
+
+            <div className="wrapper_two_button">
                 <Button
                     variant="contained"
-                    type="button"
-                    sx={stylesFormButton}
-                    onClick={() => setFlagPopUp(true)}
+                    type="submit"
+                    className="button_third_step"
+                    onClick={() => setCurrentButton("saveAndGenerate")}
                 >
-                    Next Step
+                    Save data and Generate
+                </Button>
+                <Button
+                    variant="contained"
+                    type="submit"
+                    className="button_third_step"
+                    onClick={() => setCurrentButton("generateAndNotSave")}
+                >
+                    Generate not Save data
                 </Button>
             </div>
         </form>

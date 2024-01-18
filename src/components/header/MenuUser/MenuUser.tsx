@@ -4,15 +4,11 @@ import { logout } from "../../../store/authorizationSlice"
 import "./menuUser.scss"
 import { useNavigate } from "react-router-dom"
 
-interface IMenuUserProps {
-    handlerMenuUser: (e: React.MouseEvent<HTMLButtonElement>) => void
-}
-
-const MenuUser: FC<IMenuUserProps> = ({ handlerMenuUser }) => {
+const MenuUser: FC = () => {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
     return (
-        <section className="menu_user_wrapper">
+        <section className="menu_user_wrapper" id="userMenu">
             <ul>
                 <li>
                     <span>
@@ -32,8 +28,6 @@ const MenuUser: FC<IMenuUserProps> = ({ handlerMenuUser }) => {
                 <li className="button_wrapper">
                     <button
                         onClick={(e) => {
-                            handlerMenuUser(e)
-
                             dispatch(logout())
                         }}
                     >
