@@ -83,6 +83,7 @@ export const logout = createAsyncThunk(
         try {
             await AuthService.logout()
             localStorage.clear()
+
             return undefined
         } catch (error: any) {
             console.log(error.response?.data?.message)

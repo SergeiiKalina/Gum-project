@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -17,16 +17,15 @@ import {
 } from "../../../store/generatorTrainingReducer"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import {
-    stylesButtonWrapper,
     stylesField,
-    stylesFormButton,
     stylesInputLabelSelect,
     stylesSelect,
 } from "./styles/stylesFormGeneration"
-import "./formGenTrainStep.scss"
 import axios from "axios"
 import { API_URL } from "../../../http"
 import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
+import { writeDataUser } from "../../../store/userSlice"
+import "./formGenTrainStep.scss"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -45,7 +44,6 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
     const userData = useSelector(
         (state: IUserSlice) => state.usersSlice.dataUser
     )
-    const [flagPopUp, setFlagPopUp] = useState<boolean>(false)
     const [currentButton, setCurrentButton] = useState<string>("")
     const [problems, setProblems] = useState<string[]>(userData.problems || [])
     const [lifestyle, setLifestyle] = useState(userData.lifestyle || "")
@@ -56,10 +54,31 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
     )
 
     const navigate = useNavigate()
-    const { register, handleSubmit, setValue } = useForm<IFormData>({
+    const { register, handleSubmit } = useForm<IFormData>({
         mode: "onBlur",
     })
+
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const email = localStorage.getItem("email")
+            if (email) {
+                const url = API_URL + "/user/email"
+                try {
+                    const userRes = await axios.post(url, { email })
+                    const userData = userRes.data
+
+                    dispatch(writeDataUser(userData))
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+        }
+
+        fetchData()
+    }, [dispatch])
+
     const onSubmit: SubmitHandler<IFormData> = async (data: IFormData) => {
         if (currentButton === "saveAndGenerate") {
             await axios.patch(API_URL + "/user/update", {
@@ -67,7 +86,6 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                 ...data,
             })
 
-            setFlagPopUp(false)
             dispatch(writeFormData({ ...formData, ...data }))
             navigate("/finished-training")
         }

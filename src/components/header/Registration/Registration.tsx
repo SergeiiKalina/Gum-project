@@ -12,6 +12,7 @@ import {
 } from "../../../store/authorizationSlice"
 import { IUserAPI } from "../../../models/response/IUser"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 
 interface IStateAuth {
     authSlice: {
@@ -31,6 +32,7 @@ interface IRegisterForm {
 
 const Registration = () => {
     const { register, handleSubmit } = useForm<IRegisterForm>({})
+    const navigate = useNavigate()
     const [lastNameValidationState, setLastNameValidationState] = useState<{
         state: boolean
         message: string
@@ -89,7 +91,6 @@ const Registration = () => {
         })
     }
     const firstNameValidation = (name: string) => {
-        console.log(name.length < 3)
         if (name.length < 3) {
             setFirstNameValidationState({
                 ...firstNameValidationState,
@@ -105,7 +106,7 @@ const Registration = () => {
         })
     }
 
-    const buttonRegistration = (
+    const buttonRegistration = async (
         email: string,
         password: string,
         firstName: string,
@@ -114,8 +115,9 @@ const Registration = () => {
         if (!emailValidation(email) || !passValidation(password)) {
             return
         }
-        dispatch(toggleIsLoading(true))
-        dispatch(registration({ email, password, firstName, lastName }))
+        await dispatch(toggleIsLoading(true))
+        await dispatch(registration({ email, password, firstName, lastName }))
+        await navigate("/gentraining")
     }
 
     const onSubmit: SubmitHandler<IRegisterForm> = (data) => {

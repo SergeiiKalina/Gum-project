@@ -4,10 +4,27 @@ import { useDispatch, useSelector } from "react-redux"
 import { writeArr } from "../../../store/generatorTrainingReducer"
 import training, { ITraining } from "../../../data/data"
 import "./addExercise.scss"
+import {
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    Button,
+    TextField,
+} from "@mui/material"
+import AddIcon from "@mui/icons-material/Add"
+import SearchIcon from "@mui/icons-material/Search"
+import {
+    IShowDialog,
+    initialStateShowDialog,
+} from "../FinishedTraining/FinishedTraining"
 
 interface IAddExercise {
     thisCategories: string[]
     currentArrIndex: number
+    setShowDialog: (obj: IShowDialog) => void
+    showClass: string
 }
 export interface IExerciseData {
     training: {
@@ -17,36 +34,38 @@ export interface IExerciseData {
     }
 }
 
-interface IRadioData {
-    categories: string | boolean
+interface ISearchInfo {
+    categories: string
     text: string
 }
 
 export default function AddExercise({
     thisCategories,
     currentArrIndex,
+    setShowDialog,
+    showClass,
 }: IAddExercise): React.JSX.Element {
     const dispatch = useDispatch()
-
-    const planTrainingArr: ITraining[] = useSelector(
-        (state: IExerciseData) => state.training.arr
-    )
-
-    const [radio, setRadio] = useState<IRadioData>({
+    const [searchText, setSearchText] = useState<string>("")
+    const [searchInfo, setSearchInfo] = useState<ISearchInfo>({
         categories: thisCategories[0],
         text: "",
     })
+    const planTrainingArr: ITraining[] = useSelector(
+        (state: IExerciseData) => state.training.arr
+    )
     const [arrTr, setArrTr] = useState<ITraining[] | []>([])
     const [currentCategories, setCurrentCategories] = useState<
         ITraining[] | []
     >([])
-
     const [count, setCount] = useState(0)
-    const changeRadio = (data: string) => {
-        setRadio({ ...radio, categories: data })
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setSearchInfo({ ...searchInfo, categories: event.target.value })
     }
+
     const changeForm = (txt: string) => {
-        setRadio({ ...radio, text: txt, categories: false })
+        setSearchInfo({ ...searchInfo, text: txt, categories: "" })
     }
     const increment = () => {
         let length = currentCategories.length / 10
@@ -63,29 +82,32 @@ export default function AddExercise({
     }
 
     useEffect(() => {
-        if (radio.text) {
+        if (searchInfo.text) {
             setCount(0)
             setCurrentCategories(
                 training.filter((el) =>
-                    el.title.toLowerCase().includes(radio.text.toLowerCase())
+                    el.title
+                        .toLowerCase()
+                        .includes(searchInfo.text.toLowerCase())
                 )
             )
         }
-        if (radio.categories) {
+        if (searchInfo.categories) {
             setCount(0)
             setCurrentCategories(
-                training.filter((el) => el.category === radio.categories)
+                training.filter((el) => el.category === searchInfo.categories)
             )
         }
-    }, [radio])
+    }, [searchInfo])
+
     useEffect(() => {
-        let notePage = 10
+        let notePage = 12
         let start = count * notePage
         let end = start + notePage
         setArrTr(currentCategories.slice(start, end))
     }, [count, currentCategories])
 
-    function addExercise(e: React.MouseEvent<HTMLDivElement>) {
+    function addExercise(e: React.MouseEvent<SVGSVGElement>) {
         let target = e.target as HTMLDivElement
         let id: string = target.id
         let element: ITraining[] = training.filter(
@@ -95,7 +117,6 @@ export default function AddExercise({
         let elementId: number = element[0].id
         let currentArrayTraining: ITraining[] | any =
             clonedValue[currentArrIndex]
-        console.log(currentArrayTraining)
         let check: boolean = currentArrayTraining.some(
             (el: ITraining) => el.id === elementId
         )
@@ -112,52 +133,89 @@ export default function AddExercise({
             alert("You add exercise")
         }
     }
+
     return (
-        <div className="add_exercise_container">
+        <section className={`add_exercise_container ${showClass}`}>
             <menu>
                 <form>
-                    <ol>
-                        {thisCategories.map((el, i) => (
-                            <li key={i}>
-                                <label>
-                                    {el}
-                                    <input
-                                        type="radio"
-                                        name="categories"
-                                        value={el}
-                                        checked={radio.categories === el}
-                                        onChange={() => changeRadio(el)}
-                                    />
-                                </label>
-                            </li>
-                        ))}
-                    </ol>
-                    <label className="add_exercise_label">
-                        <input
+                    <FormControl
+                        variant="standard"
+                        sx={{ m: "1", width: "250px", marginLeft: "5px" }}
+                    >
+                        <InputLabel id="demo-select-small-label">
+                            Category
+                        </InputLabel>
+                        <Select
+                            labelId="demo-select-small-label"
+                            id="demo-select-small"
+                            value={searchInfo.categories}
+                            label="Age"
+                            onChange={handleChange}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            {thisCategories.map((category) => (
+                                <MenuItem value={category}>
+                                    {category[0].toUpperCase() +
+                                        category.replace(category[0], "")}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <section className="add_exercise_search_block">
+                        <TextField
                             type="text"
-                            placeholder="exercise"
-                            onChange={(e) => changeForm(e.target.value)}
+                            label="Exercise"
+                            variant="standard"
+                            onChange={(e) => setSearchText(e.target.value)}
                         />
-                    </label>
+                        <Button
+                            variant="contained"
+                            sx={{ width: "75px", padding: "12px 0" }}
+                            onClick={() => changeForm(searchText)}
+                        >
+                            <SearchIcon />
+                        </Button>
+                    </section>
                 </form>
             </menu>
             <section className="add_exercise_block">
                 {arrTr.map((el) => {
                     return (
-                        <div
-                            id={el.id.toString()}
-                            key={el.id}
-                            onClick={(e) => addExercise(e)}
-                        >
-                            {el.title}
-                        </div>
+                        <article key={el.id}>
+                            <span className="add_exercise_block_name">
+                                {el.title}
+                            </span>
+                            <div>
+                                <AddIcon
+                                    style={{ cursor: "pointer" }}
+                                    id={el.id.toString()}
+                                    onClick={(e) => addExercise(e)}
+                                />
+                            </div>
+                        </article>
                     )
                 })}
             </section>
             <article className="add_exercise_articlePagination">
-                <button onClick={decrement}>Previous</button>
-                <button onClick={increment}>Next</button>
+                <Button variant="contained" onClick={decrement}>
+                    Previous
+                </Button>
+                <Button variant="contained" onClick={increment}>
+                    Next
+                </Button>
             </article>
-        </div>
+            <article className="add_exercise_close_button_wrapper">
+                <Button
+                    variant="contained"
+                    className="add_exercise_close_button"
+                    type="button"
+                    onClick={() => setShowDialog(initialStateShowDialog)}
+                >
+                    Close
+                </Button>
+            </article>
+        </section>
     )
 }

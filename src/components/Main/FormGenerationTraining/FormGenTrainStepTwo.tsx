@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -25,6 +25,9 @@ import {
 } from "./styles/stylesFormGeneration"
 import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 import "./formGenTrainStep.scss"
+import { API_URL } from "../../../http"
+import axios from "axios"
+import { writeDataUser } from "../../../store/userSlice"
 
 export default function FormGenTrainStepTwo(): React.JSX.Element {
     const formData = useSelector(
@@ -38,6 +41,25 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
         mode: "onBlur",
     })
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const email = localStorage.getItem("email")
+            if (email) {
+                const url = API_URL + "/user/email"
+                try {
+                    const userRes = await axios.post(url, { email })
+                    const userData = userRes.data
+
+                    dispatch(writeDataUser(userData))
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+        }
+
+        fetchData()
+    }, [dispatch])
 
     const [radioPlaceValue, setRadioPlaceValue] = useState<string>(
         userData.placeToWorkout || "gym"

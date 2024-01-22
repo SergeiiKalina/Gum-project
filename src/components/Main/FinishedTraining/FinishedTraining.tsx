@@ -30,8 +30,14 @@ export interface ITrainingReducer {
     }
 }
 
-interface IShowDialog {
+export interface IShowDialog {
     [key: number]: boolean | number
+}
+
+export const initialStateShowDialog = {
+    0: false,
+    10: false,
+    20: false,
 }
 
 const generateRandomExerciseWorkout: any = (
@@ -123,18 +129,16 @@ function FinishedTraining(): React.JSX.Element {
 
     const [reps, setReps] = useState<number>()
 
-    const [showDialog, setShowDialog] = useState<IShowDialog>({
-        0: false,
-        10: false,
-        20: false,
-    })
+    const [showDialog, setShowDialog] = useState<IShowDialog>(
+        initialStateShowDialog
+    )
     const [thisCategories, setThisCategories] = useState<string[]>([])
 
     const [thisDragElement, setThisDragElement] = useState<ITraining | null>(
         null
     )
 
-    const [currentTarget, setCurrentTarget] = useState<HTMLDivElement | null>(
+    const [currentTarget, setCurrentTarget] = useState<HTMLLIElement | null>(
         null
     )
 
@@ -177,7 +181,7 @@ function FinishedTraining(): React.JSX.Element {
     }
 
     const dragStart = (
-        e: React.DragEvent<HTMLDivElement>,
+        e: React.DragEvent<HTMLLIElement>,
         currentElementIndex: string | number | any,
         arrayIndex: string | number | any
     ) => {
@@ -186,30 +190,32 @@ function FinishedTraining(): React.JSX.Element {
         setThisDragElement(currentValueArray[currentElementIndex])
     }
 
-    const drag = (e: React.DragEvent<HTMLDivElement>) => {
+    const drag = (e: React.DragEvent<HTMLLIElement>) => {
         const target = e.currentTarget.style
 
         target.opacity = "1"
         target.transition = "all 1s ease"
     }
 
-    const dragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    const dragEnter = (e: React.DragEvent<HTMLLIElement>) => {
         const target = e.currentTarget.style
         target.paddingTop = "0"
     }
 
-    const dragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    const dragOver = (e: React.DragEvent<HTMLLIElement>) => {
         e.preventDefault()
+
         if (currentTarget === e.currentTarget) {
             return
         }
+
         const target = e.currentTarget.style
 
         target.transition = "all 0.5s ease"
         target.paddingTop = "60px"
     }
 
-    const dragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    const dragLeave = (e: React.DragEvent<HTMLLIElement>) => {
         const target = e.currentTarget.style
 
         target.paddingTop = "0"
@@ -217,7 +223,7 @@ function FinishedTraining(): React.JSX.Element {
     }
 
     const dragDrop = (
-        e: React.DragEvent<HTMLDivElement>,
+        e: React.DragEvent<HTMLLIElement>,
         currentElementIndex: number,
         arrayIndex: number
     ) => {
@@ -251,7 +257,7 @@ function FinishedTraining(): React.JSX.Element {
         animationFrameId = requestAnimationFrame(animateDrop)
     }
 
-    const dragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    const dragEnd = (e: React.DragEvent<HTMLLIElement>) => {
         e.preventDefault()
         const target = e.currentTarget.style
 
@@ -1767,131 +1773,134 @@ function FinishedTraining(): React.JSX.Element {
     }, [data, generateTraining])
 
     return (
-        <div className="finish_training_container">
-            {value.map((el, index) => (
-                <article
-                    key={el[0].id}
-                    className="finish_training_article finish_training_open"
-                >
-                    <ul className="finish_training_list">
-                        {el.map((element, i) => {
-                            if (
-                                element.id === 0 ||
-                                element.id === 10 ||
-                                element.id === 20
-                            ) {
-                                return null
-                            }
-
-                            return (
-                                <div
-                                    className="finish_training_containerTodo"
-                                    draggable
-                                    key={element.id}
-                                    id={element.id.toString()}
-                                    onDragStart={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ): void => dragStart(e, i, index)}
-                                    onDragEnter={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ) => dragEnter(e)}
-                                    onDragOver={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ) => dragOver(e)}
-                                    onDragLeave={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ) => dragLeave(e)}
-                                    onDrop={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ) => dragDrop(e, i, index)}
-                                    onDragEnd={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ) => dragEnd(e)}
-                                    onDrag={(
-                                        e: React.DragEvent<HTMLDivElement>
-                                    ) => drag(e)}
-                                >
-                                    <li>
-                                        <div
-                                            style={{
-                                                position: "relative",
-                                                width: "90%",
-                                                display: "flex",
-                                                alignItems: "center",
+        <>
+            <section className="finish_training_container">
+                {value.map((el, index) => (
+                    <article
+                        key={el[0].id}
+                        className="finish_training_article finish_training_open"
+                    >
+                        <section className="finish_training_header">
+                            <h2>Current Training</h2>
+                            <div className="finish_training_titleButton">
+                                <Box>
+                                    <Fab
+                                        size="small"
+                                        color="primary"
+                                        aria-label="add"
+                                        sx={{ position: "static", zIndex: "1" }}
+                                    >
+                                        <AddIcon
+                                            onClick={() => {
+                                                toggleDialog(
+                                                    el[0].id,
+                                                    el[0].id,
+                                                    el
+                                                )
                                             }}
-                                            id={element.id.toString()}
-                                            onClick={(e) => openInfoExercise(e)}
-                                            title={element.title}
-                                        >
-                                            {element.title}
-                                            {reps ? `4 x ${reps}` : ""}
-                                            <div className="finish_training_blockStartExercise">
-                                                <aside className="finish_training_aside">
-                                                    Start the exercise
-                                                </aside>
-                                                {Number(showMenuExercise) ===
-                                                element.id ? (
-                                                    <MenuExercise
-                                                        showMenuExercise={
-                                                            showMenuExercise
-                                                        }
-                                                        setShowMenuExercise={
-                                                            setShowMenuExercise
-                                                        }
-                                                    />
-                                                ) : null}
+                                        />
+                                    </Fab>
+                                </Box>
+
+                                <AddExercise
+                                    thisCategories={thisCategories}
+                                    currentArrIndex={index}
+                                    setShowDialog={setShowDialog}
+                                    showClass={
+                                        showDialog[el[0].id] === el[0].id
+                                            ? "show"
+                                            : ""
+                                    }
+                                />
+                            </div>
+                        </section>
+                        <ul className="finish_training_list">
+                            {el.map((element, i) => {
+                                if (
+                                    element.id === 0 ||
+                                    element.id === 10 ||
+                                    element.id === 20
+                                ) {
+                                    return null
+                                }
+
+                                return (
+                                    <li
+                                        className="finish_training_containerTodo"
+                                        draggable
+                                        key={element.id}
+                                        id={element.id.toString()}
+                                        onDragStart={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ): void => dragStart(e, i, index)}
+                                        onDragEnter={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ) => dragEnter(e)}
+                                        onDragOver={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ) => dragOver(e)}
+                                        onDragLeave={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ) => dragLeave(e)}
+                                        onDrop={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ) => dragDrop(e, i, index)}
+                                        onDragEnd={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ) => dragEnd(e)}
+                                        onDrag={(
+                                            e: React.DragEvent<HTMLLIElement>
+                                        ) => drag(e)}
+                                    >
+                                        <div className="todo_finish_training">
+                                            <div
+                                                id={element.id.toString()}
+                                                onClick={(e) =>
+                                                    openInfoExercise(e)
+                                                }
+                                                title={element.title}
+                                            >
+                                                {element.title}
+                                                {reps ? `4 x ${reps}` : ""}
+                                                <div className="finish_training_blockStartExercise">
+                                                    <aside className="finish_training_aside">
+                                                        Start the exercise
+                                                    </aside>
+                                                    {Number(
+                                                        showMenuExercise
+                                                    ) === element.id ? (
+                                                        <MenuExercise
+                                                            showMenuExercise={
+                                                                showMenuExercise
+                                                            }
+                                                            setShowMenuExercise={
+                                                                setShowMenuExercise
+                                                            }
+                                                        />
+                                                    ) : null}
+                                                </div>
                                             </div>
                                         </div>
                                     </li>
-                                </div>
-                            )
-                        })}
-                    </ul>
-
-                    <div className="finish_training_titleButton">
-                        <Box sx={{ "& > :not(style)": { m: 1 } }}>
-                            <Fab size="small" color="primary" aria-label="add">
-                                <AddIcon
-                                    onClick={() => {
-                                        toggleDialog(el[0].id, el[0].id, el)
-                                    }}
-                                />
-                            </Fab>
-                        </Box>
-
-                        {showDialog[el[0].id] === el[0].id ? (
-                            <AddExercise
-                                thisCategories={thisCategories}
-                                currentArrIndex={index}
-                            />
-                        ) : null}
-                    </div>
-                </article>
-            ))}
-
-            <div
-                style={{
-                    width: "90%",
-                    display: "flex",
-                    paddingTop: "20px",
-                    justifyContent: "center",
-                }}
-            >
-                <Button
-                    sx={{
-                        width: "90%",
-                        padding: "8px 0",
-                        borderRadius: "15px",
-                        margin: "30% 0 0 30px",
-                    }}
-                    variant="outlined"
-                    onClick={() => showStartTraining(0)}
-                >
-                    Let's Go Training
-                    <PlayArrowIcon sx={{ margin: " 0 0 0 5px" }} />
-                </Button>
-            </div>
-        </div>
+                                )
+                            })}
+                            <div className="finish_training_block_start_button">
+                                <Button
+                                    variant="outlined"
+                                    onClick={() => showStartTraining(0)}
+                                    className="start_training_button"
+                                >
+                                    Let's Go Training
+                                    <PlayArrowIcon
+                                        sx={{ margin: " 0 0 0 5px" }}
+                                    />
+                                </Button>
+                            </div>
+                        </ul>
+                    </article>
+                ))}
+            </section>
+        </>
     )
 }
 

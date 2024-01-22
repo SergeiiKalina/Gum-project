@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -33,10 +33,17 @@ import {
 } from "./styles/stylesFormGeneration"
 import "./formGenTrainStep.scss"
 import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
+import { writeDataUser } from "../../../store/userSlice"
+import axios from "axios"
+import { API_URL } from "../../../http"
+import { IAuthSliceState } from "../../header/Login/Login"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const userData = useSelector(
         (state: IUserSlice) => state.usersSlice.dataUser
+    )
+    const isAuth = useSelector(
+        (state: IAuthSliceState) => state.authSlice.isAuth
     )
     const { register, handleSubmit } = useForm<IFormData>({
         mode: "onBlur",
@@ -54,6 +61,31 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
         navigate("/gentraining/step-2")
         dispatch(writeFormData(data))
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const email = localStorage.getItem("email")
+            if (email) {
+                const url = API_URL + "/user/email"
+                try {
+                    const userRes = await axios.post(url, { email })
+                    const userData = userRes.data
+
+                    dispatch(writeDataUser(userData))
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+        }
+
+        fetchData()
+    }, [dispatch])
+
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/")
+        }
+    }, [isAuth, navigate])
 
     return (
         <form

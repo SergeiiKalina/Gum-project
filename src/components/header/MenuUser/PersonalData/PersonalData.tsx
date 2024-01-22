@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./personalData.scss"
-import { IUserData } from "../../../../store/userSlice"
-import { useSelector } from "react-redux"
+import { IUserData, writeDataUser } from "../../../../store/userSlice"
+import { useDispatch, useSelector } from "react-redux"
 import { GrFormCheckmark } from "react-icons/gr"
 import { v4 as uuidv4 } from "uuid"
+import { API_URL } from "../../../../http"
+import axios from "axios"
 
 export interface IUserSlice {
     usersSlice: {
@@ -31,6 +33,26 @@ const PersonalData: React.FC = () => {
     const [cofSitUp] = useState(
         (Number(userData.sitUp) / (userData.sex === "male" ? 50 : 35)) * 150
     )
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const email = localStorage.getItem("email")
+            if (email) {
+                const url = API_URL + "/user/email"
+                try {
+                    const userRes = await axios.post(url, { email })
+                    const userData = userRes.data
+
+                    dispatch(writeDataUser(userData))
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+        }
+
+        fetchData()
+    }, [dispatch])
 
     return (
         <section className="wrapper_personal_data">

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import EndTraining from "../EndTraining/EndTraining"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import { ITraining } from "../../../data/data"
+import { Box, OutlinedInput, InputAdornment } from "@mui/material"
 import "./startTraining.scss"
 
 interface IInfoApproach {
@@ -176,42 +177,99 @@ export default function StartTraining(): React.JSX.Element {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                         ></iframe>
-                        <output>{`${numExercise}/${
-                            value[index].length - 1
-                        }`}</output>
-                        <div>{exercise.title}</div>
                     </article>
 
                     <article className="start_training_blockApproach">
+                        <output>{`${numExercise}/${
+                            value[index].length - 1
+                        }`}</output>
+                        <div className="start_training_title">
+                            {exercise.title}
+                        </div>
                         <form onChange={handleSubmit(onSubmit)}>
-                            <label>
-                                First approach
-                                <input
-                                    type="text"
+                            <Box>
+                                <OutlinedInput
+                                    id="outlined-adornment-weight"
+                                    label="First approach"
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            kg
+                                        </InputAdornment>
+                                    }
+                                    aria-describedby="outlined-weight-helper-text"
+                                    inputProps={{
+                                        "aria-label": "weight",
+                                    }}
                                     {...register(`${titleExercise}[${0}]`)}
                                 />
-                            </label>
-                            <label>
-                                Second approach
-                                <input
-                                    type="text"
+                                <OutlinedInput
+                                    id="outlined-adornment-weight"
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            kg
+                                        </InputAdornment>
+                                    }
+                                    aria-describedby="outlined-weight-helper-text"
+                                    inputProps={{
+                                        "aria-label": "weight",
+                                    }}
                                     {...register(`${titleExercise}[${1}]`)}
                                 />
-                            </label>
-                            <label>
-                                Third approach
-                                <input
-                                    type="text"
+                                <OutlinedInput
+                                    id="outlined-adornment-weight"
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            kg
+                                        </InputAdornment>
+                                    }
+                                    aria-describedby="outlined-weight-helper-text"
+                                    inputProps={{
+                                        "aria-label": "weight",
+                                    }}
                                     {...register(`${titleExercise}[${2}]`)}
                                 />
-                            </label>
-                            <label>
-                                Fourth approach
-                                <input
-                                    type="text"
+                                <OutlinedInput
+                                    sx={{
+                                        "& .MuiInputBase-input": {
+                                            padding: "8px 0 8px 8px",
+                                            color: "white",
+                                            outline: "none",
+                                            "&:hover": {
+                                                border: "none",
+                                            },
+                                        },
+                                        "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                                            {
+                                                border: "1px solid white",
+                                            },
+                                        "& .MuiInputAdornment-root": {
+                                            margin: "0",
+                                            color: "white",
+                                        },
+                                        "& fieldset": {
+                                            borderColor: "white",
+                                        },
+                                        "& fieldset:hover": {
+                                            borderColor: "white",
+                                        },
+                                        "& p": {
+                                            color: "white",
+                                        },
+                                    }}
+                                    type="number"
+                                    id="outlined-adornment-weight"
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            kg
+                                        </InputAdornment>
+                                    }
+                                    aria-describedby="outlined-weight-helper-text"
+                                    inputProps={{
+                                        "aria-label": "weight",
+                                    }}
                                     {...register(`${titleExercise}[${3}]`)}
                                 />
-                            </label>
+                            </Box>
                         </form>
                     </article>
                     <article className="start_training_blockButton">
