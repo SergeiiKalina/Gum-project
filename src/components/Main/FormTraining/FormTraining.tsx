@@ -30,6 +30,7 @@ export default function FormTraining({
     const closeCategories = () => {
         setRev(false)
     }
+
     return (
         <article
             className={`form_training_aside ${

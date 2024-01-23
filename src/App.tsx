@@ -72,6 +72,7 @@ function App(): React.JSX.Element {
                             path="start_training"
                             element={<StartTraining />}
                         />
+                        <Route path="contact" element={<Contacts />} />
                         <Route path="registration" element={<Registration />} />
                     </Route>
                 </Routes>

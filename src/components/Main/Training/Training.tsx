@@ -13,6 +13,8 @@ import {
 import FormTraining from "../FormTraining/FormTraining"
 import NotTraining from "../../NotTraining"
 import { IFilterTrainingSlice } from "../FormTraining/Pagination"
+import { API_URL } from "../../../http"
+import { v4 as uuidv4 } from "uuid"
 import "./training.scss"
 
 const Pagination = React.lazy(() => import("../FormTraining/Pagination"))
@@ -25,6 +27,7 @@ function Training(): React.JSX.Element {
     const data = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.data
     )
+
     const arrTraining = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.arrTraining
     )
@@ -49,16 +52,13 @@ function Training(): React.JSX.Element {
         let end: number = start + notePage
 
         try {
-            fetch(
-                "https://urchin-app-j6t9a.ondigitalocean.app/api/current-page",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ start, end, arrTraining }),
-                }
-            )
+            fetch(API_URL + "/exercise/current-page", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ start, end, arrTraining }),
+            })
                 .then((res) => res.json())
                 .then((res) => setArr(res))
         } catch (error) {
@@ -120,7 +120,7 @@ function Training(): React.JSX.Element {
                             const { id, img, title } = tr
                             return (
                                 <div
-                                    key={id}
+                                    key={uuidv4()}
                                     className="training_training_item"
                                 >
                                     <img src={img} alt="img" />

@@ -1,0 +1,18 @@
+.footer_wrapper {
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #576fa4;
+    menu {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto 10px;
+        a {
+            color: #fefefe;
+        }
+    }
+}

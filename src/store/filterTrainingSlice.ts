@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { ITraining } from "../data/data"
+import { API_URL } from "../http"
 
 export interface IIsChecked {
     [key: string]: string | boolean
@@ -17,9 +18,7 @@ export interface IInitialState {
 export const fetchTraining = createAsyncThunk(
     "trainingSlice/fetchTraining",
     async () => {
-        const response = await fetch(
-            "https://urchin-app-j6t9a.ondigitalocean.app/api/exercise"
-        )
+        const response = await fetch(API_URL + "/exercise")
         let res = await response.json()
 
         return res
@@ -28,12 +27,16 @@ export const fetchTraining = createAsyncThunk(
 
 export const fetchCategories = createAsyncThunk(
     "trainingSlice/fetchCategories",
+
     async () => {
-        const response = await fetch(
-            "https://urchin-app-j6t9a.ondigitalocean.app/api/category"
-        )
-        let res = await response.json()
-        return res
+        try {
+            const response = await fetch(API_URL + "/exercise/category")
+
+            let res = await response.json()
+            return res
+        } catch (error) {
+            console.error(error)
+        }
     }
 )
 export const fetchFilter = createAsyncThunk(
@@ -41,16 +44,13 @@ export const fetchFilter = createAsyncThunk(
 
     async (data: (string | boolean)[]) => {
         try {
-            const response = await fetch(
-                "https://urchin-app-j6t9a.ondigitalocean.app/api/filter",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                }
-            )
+            const response = await fetch(API_URL + "/exercise/filter", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
 
             let res = await response.json()
 
