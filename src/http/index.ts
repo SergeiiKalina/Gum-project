@@ -1,7 +1,7 @@
 import axios from "axios"
 import { AuthResponse } from "../models/response/AuthResponse"
 
-export const API_URL = "https://gym-project-api.onrender.com"
+export const API_URL = "http://localhost:8080"
 
 const $api = axios.create({
     withCredentials: true,

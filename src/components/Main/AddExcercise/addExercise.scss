@@ -2,7 +2,7 @@
 .add_exercise_container {
     position: absolute;
     top: 0;
-    left: -400px;
+    left: 0;
     min-width: 320px;
     max-width: 400px;
     min-height: 100dvh;
@@ -38,10 +38,6 @@
     }
 }
 
-.add_exercise_container.show {
-    left: 0;
-    transition: left 0.3s ease;
-}
 ol {
     display: flex;
 

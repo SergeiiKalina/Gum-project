@@ -489,7 +489,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pres",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -545,7 +545,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "triceps",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -581,7 +581,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pres",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -609,7 +609,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "back",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -663,7 +663,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pectoral",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -690,7 +690,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "shoulders",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -726,7 +726,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "triceps",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -753,7 +753,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pres",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -820,7 +820,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pres",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -876,7 +876,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "triceps",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -912,7 +912,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pres",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -940,7 +940,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "back",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -994,7 +994,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pectoral",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -1021,7 +1021,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "shoulders",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -1057,7 +1057,7 @@ function FinishedTraining(): React.JSX.Element {
                     )
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "triceps",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -1084,7 +1084,7 @@ function FinishedTraining(): React.JSX.Element {
                     )!
                     training.unshift({
                         id: 0,
-                        category: "legs",
+                        category: "pres",
                         title: "First training day",
                         style: true,
                         isComplited: false,
@@ -1150,7 +1150,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pres",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1206,7 +1206,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "triceps",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1242,7 +1242,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pres",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1270,7 +1270,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "back",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1324,7 +1324,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pectoral",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1351,7 +1351,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "shoulders",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1387,7 +1387,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "triceps",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1414,7 +1414,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pres",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1480,7 +1480,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pres",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1536,7 +1536,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "triceps",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1572,7 +1572,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pres",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1600,7 +1600,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "back",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1654,7 +1654,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pectoral",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1681,7 +1681,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "shoulders",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1717,7 +1717,7 @@ function FinishedTraining(): React.JSX.Element {
                         )
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "triceps",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1744,7 +1744,7 @@ function FinishedTraining(): React.JSX.Element {
                         )!
                         training.unshift({
                             id: 0,
-                            category: "legs",
+                            category: "pres",
                             title: "First training day",
                             style: true,
                             isComplited: false,
@@ -1801,17 +1801,13 @@ function FinishedTraining(): React.JSX.Element {
                                         />
                                     </Fab>
                                 </Box>
-
-                                <AddExercise
-                                    thisCategories={thisCategories}
-                                    currentArrIndex={index}
-                                    setShowDialog={setShowDialog}
-                                    showClass={
-                                        showDialog[el[0].id] === el[0].id
-                                            ? "show"
-                                            : ""
-                                    }
-                                />
+                                {showDialog[el[0].id] === el[0].id ? (
+                                    <AddExercise
+                                        thisCategories={thisCategories}
+                                        currentArrIndex={index}
+                                        setShowDialog={setShowDialog}
+                                    />
+                                ) : null}
                             </div>
                         </section>
                         <ul className="finish_training_list">

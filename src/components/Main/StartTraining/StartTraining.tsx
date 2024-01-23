@@ -6,6 +6,7 @@ import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import { ITraining } from "../../../data/data"
 import { Box, OutlinedInput, InputAdornment } from "@mui/material"
 import "./startTraining.scss"
+import { styleOutlinedInput } from "../FormGenerationTraining/styles/stylesFormGeneration"
 
 interface IInfoApproach {
     [key: string]: string[]
@@ -187,10 +188,19 @@ export default function StartTraining(): React.JSX.Element {
                             {exercise.title}
                         </div>
                         <form onChange={handleSubmit(onSubmit)}>
-                            <Box>
+                            <Box
+                                sx={{
+                                    width: "100%",
+                                    display: "flex",
+
+                                    flexDirection: "column",
+                                }}
+                            >
                                 <OutlinedInput
+                                    sx={styleOutlinedInput}
+                                    type="number"
                                     id="outlined-adornment-weight"
-                                    label="First approach"
+                                    placeholder="First approach"
                                     endAdornment={
                                         <InputAdornment position="end">
                                             kg
@@ -203,7 +213,10 @@ export default function StartTraining(): React.JSX.Element {
                                     {...register(`${titleExercise}[${0}]`)}
                                 />
                                 <OutlinedInput
+                                    sx={styleOutlinedInput}
+                                    type="number"
                                     id="outlined-adornment-weight"
+                                    placeholder="Second approach"
                                     endAdornment={
                                         <InputAdornment position="end">
                                             kg
@@ -216,7 +229,10 @@ export default function StartTraining(): React.JSX.Element {
                                     {...register(`${titleExercise}[${1}]`)}
                                 />
                                 <OutlinedInput
+                                    sx={styleOutlinedInput}
+                                    type="number"
                                     id="outlined-adornment-weight"
+                                    placeholder="Third approach"
                                     endAdornment={
                                         <InputAdornment position="end">
                                             kg
@@ -229,35 +245,10 @@ export default function StartTraining(): React.JSX.Element {
                                     {...register(`${titleExercise}[${2}]`)}
                                 />
                                 <OutlinedInput
-                                    sx={{
-                                        "& .MuiInputBase-input": {
-                                            padding: "8px 0 8px 8px",
-                                            color: "white",
-                                            outline: "none",
-                                            "&:hover": {
-                                                border: "none",
-                                            },
-                                        },
-                                        "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                                            {
-                                                border: "1px solid white",
-                                            },
-                                        "& .MuiInputAdornment-root": {
-                                            margin: "0",
-                                            color: "white",
-                                        },
-                                        "& fieldset": {
-                                            borderColor: "white",
-                                        },
-                                        "& fieldset:hover": {
-                                            borderColor: "white",
-                                        },
-                                        "& p": {
-                                            color: "white",
-                                        },
-                                    }}
+                                    sx={styleOutlinedInput}
                                     type="number"
                                     id="outlined-adornment-weight"
+                                    placeholder="Fourth approach"
                                     endAdornment={
                                         <InputAdornment position="end">
                                             kg

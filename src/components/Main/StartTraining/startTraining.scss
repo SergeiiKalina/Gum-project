@@ -5,7 +5,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: #1a2131;
-    margin-top: 24px;
+
     .start_training_infoBlock {
         position: relative;
         width: 50%;
@@ -18,7 +18,7 @@
         }
     }
     .start_training_blockButton {
-        width: 50%;
+        width: 30%;
         display: flex;
         justify-content: space-evenly;
         margin: 20px auto 0 auto;
@@ -68,14 +68,18 @@
             margin: 10px auto 0 auto;
             font-weight: 600;
             text-align: center;
+            color: white;
         }
         output {
+            color: white;
             margin: 10px auto 0 auto;
             @include adaptive-font(20, 14);
         }
 
         form {
-            width: 20%;
+            display: flex;
+            justify-content: center;
+            width: 30%;
             @include adaptive-font(18, 14);
             margin: 24px auto;
         }
@@ -98,12 +102,13 @@ input[type="number"] {
             width: 70%;
             height: 350px;
         }
-    }
-    .start_training_section {
         .start_training_blockApproach {
             form {
-                width: 30%;
+                width: 40%;
             }
+        }
+        .start_training_blockButton {
+            width: 40%;
         }
     }
 }
@@ -113,13 +118,20 @@ input[type="number"] {
         .start_training_infoBlock {
             width: 90%;
         }
-        .start_training_blockButton {
-            width: 100%;
-        }
         .start_training_blockApproach {
             form {
                 width: 60%;
             }
+        }
+        .start_training_blockButton {
+            width: 60%;
+        }
+    }
+}
+@media (max-width: 600px) {
+    .start_training_section {
+        .start_training_blockButton {
+            width: 60%;
         }
     }
 }
@@ -130,6 +142,14 @@ input[type="number"] {
             width: 100%;
             height: 300px;
         }
+        .start_training_blockButton {
+            width: 70%;
+        }
+        .start_training_blockApproach {
+            form {
+                width: 70%;
+            }
+        }
     }
 }
 
@@ -137,8 +157,11 @@ input[type="number"] {
     .start_training_section {
         .start_training_blockApproach {
             form {
-                width: 80%;
+                width: 90%;
             }
+        }
+        .start_training_blockButton {
+            width: 90%;
         }
     }
 }

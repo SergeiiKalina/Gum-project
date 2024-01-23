@@ -19,12 +19,12 @@ import {
     IShowDialog,
     initialStateShowDialog,
 } from "../FinishedTraining/FinishedTraining"
+import { v4 as uuidv4 } from "uuid"
 
 interface IAddExercise {
     thisCategories: string[]
     currentArrIndex: number
     setShowDialog: (obj: IShowDialog) => void
-    showClass: string
 }
 export interface IExerciseData {
     training: {
@@ -43,7 +43,6 @@ export default function AddExercise({
     thisCategories,
     currentArrIndex,
     setShowDialog,
-    showClass,
 }: IAddExercise): React.JSX.Element {
     const dispatch = useDispatch()
     const [searchText, setSearchText] = useState<string>("")
@@ -61,11 +60,15 @@ export default function AddExercise({
     const [count, setCount] = useState(0)
 
     const handleChange = (event: SelectChangeEvent) => {
-        setSearchInfo({ ...searchInfo, categories: event.target.value })
+        setSearchInfo({ ...searchInfo, categories: "" })
     }
 
     const changeForm = (txt: string) => {
-        setSearchInfo({ ...searchInfo, text: txt, categories: "" })
+        setSearchInfo({
+            ...searchInfo,
+            text: txt,
+            categories: searchInfo.categories,
+        })
     }
     const increment = () => {
         let length = currentCategories.length / 10
@@ -135,7 +138,7 @@ export default function AddExercise({
     }
 
     return (
-        <section className={`add_exercise_container ${showClass}`}>
+        <section className="add_exercise_container">
             <menu>
                 <form>
                     <FormControl
@@ -152,11 +155,11 @@ export default function AddExercise({
                             label="Age"
                             onChange={handleChange}
                         >
-                            <MenuItem value="">
+                            <MenuItem value="none">
                                 <em>None</em>
                             </MenuItem>
                             {thisCategories.map((category) => (
-                                <MenuItem value={category}>
+                                <MenuItem value={category} key={uuidv4()}>
                                     {category[0].toUpperCase() +
                                         category.replace(category[0], "")}
                                 </MenuItem>
@@ -166,13 +169,24 @@ export default function AddExercise({
                     <section className="add_exercise_search_block">
                         <TextField
                             type="text"
-                            label="Exercise"
+                            placeholder="Name exercise..."
                             variant="standard"
+                            sx={{
+                                "& .MuiInputBase-root": {
+                                    margin: "0",
+                                },
+                                "& input": {
+                                    padding: "10px 0 2px 0",
+                                },
+                                "& label": {
+                                    display: "none",
+                                },
+                            }}
                             onChange={(e) => setSearchText(e.target.value)}
                         />
                         <Button
                             variant="contained"
-                            sx={{ width: "75px", padding: "12px 0" }}
+                            sx={{ minWidth: "25px" }}
                             onClick={() => changeForm(searchText)}
                         >
                             <SearchIcon />

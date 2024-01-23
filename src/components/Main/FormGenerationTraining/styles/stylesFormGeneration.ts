@@ -87,3 +87,31 @@ export const stylesFormControlLabel = {
     margin: "0",
 }
 export const stylesCheckBox = { color: "white" }
+
+export const styleOutlinedInput = {
+    width: "100%",
+    margin: "8px auto 0 auto",
+
+    "& .MuiInputBase-input": {
+        padding: "8px 0 8px 8px",
+        color: "white",
+        outline: "none",
+    },
+
+    "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        border: "1px solid white",
+    },
+    "& .MuiInputAdornment-root": {
+        margin: "0",
+        color: "white",
+    },
+    "& fieldset": {
+        borderColor: "white",
+    },
+    "&:hover.MuiInputBase-root fieldset": {
+        borderColor: "white",
+    },
+    "& p": {
+        color: "white",
+    },
+}
