@@ -1,7 +1,7 @@
 @import "../../adaptive-fontMixin.scss";
 
 .menu_user_wrapper {
-    position: absolute;
+    position: fixed;
     top: 60px;
     left: 0;
     background-color: white;
@@ -9,7 +9,7 @@
     justify-content: center;
     width: 100%;
     border-radius: 20px;
-    z-index: 2;
+    z-index: 3;
     ul {
         padding: 0;
         a {

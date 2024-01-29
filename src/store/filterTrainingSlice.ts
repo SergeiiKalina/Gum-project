@@ -2,16 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { ITraining } from "../data/data"
 import { API_URL } from "../http"
 
-export interface IIsChecked {
-    [key: string]: string | boolean
-}
-
 export interface IInitialState {
     data: (string | boolean)[]
     arrTraining: ITraining[]
     training: ITraining[]
     activeId: number
-    isChecked: IIsChecked
+    isChecked: string[]
     categories: string[]
 }
 
@@ -66,17 +62,7 @@ const initialState: IInitialState = {
     arrTraining: [],
     training: [],
     activeId: 1,
-    isChecked: {
-        legs: "legs",
-        cardio: false,
-        functional: false,
-        press: false,
-        back: false,
-        biceps: false,
-        pectoral: false,
-        shoulders: false,
-        triceps: false,
-    },
+    isChecked: ["back"],
     categories: [],
 }
 const trainingSlice = createSlice({
@@ -92,7 +78,7 @@ const trainingSlice = createSlice({
         changeActiveId(state, action: PayloadAction<number>) {
             state.activeId = action.payload
         },
-        changeIsChecked(state, action: PayloadAction<IIsChecked>) {
+        changeIsChecked(state, action: PayloadAction<string[]>) {
             state.isChecked = action.payload
         },
         writeArrTraining(state, action: PayloadAction<ITraining[]>) {
@@ -105,7 +91,7 @@ const trainingSlice = createSlice({
                 state.training.push(...action.payload)
             })
             .addCase(fetchCategories.fulfilled, (state, action) => {
-                state.categories.push(...action.payload)
+                state.categories = action.payload
             })
             .addCase(fetchFilter.fulfilled, (state, action) => {
                 state.arrTraining = action.payload

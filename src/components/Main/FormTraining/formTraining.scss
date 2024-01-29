@@ -1,116 +1,15 @@
 @import "./../../adaptive-fontMixin.scss";
-.form_training_aside {
-    width: 15%;
-    .form_training_closeButton {
-        display: none;
-    }
-    .form_training_buttonList {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        @include adaptive-font(20, 18);
-        justify-content: center;
-        cursor: pointer;
-        transition: transform 0.5s;
-        background-color: white;
-        color: chocolate;
-        border: none;
 
-        .form_training_arrow {
-            padding: 4px 0 0 0;
-            transition: transform 0.5s;
-        }
-        .form_training_rotate {
-            padding: 4px 0 0 0;
-            transform: rotate(-90deg);
-        }
-    }
-    .form_training_buttonList:hover {
-        color: #9b5656;
-    }
-
-    .form_training_buttonList:hover .form_training_arrow,
-    .form_training_buttonList:active .form_training_arrow {
-        color: red; // Изменение цвета стрелки при наведении на summary
-    }
-    .form_training_buttonList:active {
-        transform: scale(0.9);
-    }
-    .form_training_nav {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        label {
-            @include adaptive-font(18, 16);
-            .form_training_button {
-                margin: 12px 10px 12px 0;
-                background-color: cornflowerblue;
-                border: 1px solid #9b5656;
-                border-radius: 10px;
-                color: aliceblue;
-                transition: background-color 0.3s, color 0.3s;
-                width: 16px;
-                height: 16px;
-            }
-        }
-    }
-    .form_training_nav.form_training_toggleNav {
-        display: none;
-    }
-}
-@media (max-width: 1024px) {
-    .form_training_aside {
-        width: 150px;
-        margin-right: 12px;
-    }
+.form_training_wrapper {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 10px 0 10px;
 }
 
-@media (max-width: 560px) {
-    .form_training_aside {
-        flex-direction: column;
-        margin: 0 auto;
-        transition: transform 0.3s ease;
-        transform: translateX(-100%);
-        .form_training_buttonList {
-            transform: translateX(+100%);
-        }
-        .form_training_closeButton {
-            display: none;
-        }
-        .form_training_arrow {
-            display: none;
-        }
-    }
-    .form_training_aside.form_training_mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgb(251, 251, 251);
-        transform: translateX(0);
-        label {
-            width: 40%;
-            margin: 0 auto;
-        }
-        .form_training_closeButton {
-            display: block;
-            padding: 8px 20px;
-            margin: 16px 0 0 0;
-            font-size: 18px;
-            background-color: cornflowerblue;
-            border: 1px solid #9b5656;
-            border-radius: 10px;
-            color: aliceblue;
-        }
-        .form_training_closeButton:active {
-            transform: scale(0.9);
-        }
-        .form_training_buttonList {
-            display: none;
-        }
+@media (max-width: 767px) {
+    .form_training_wrapper {
+        width: 320px;
+        margin: 20px auto 0 auto;
     }
 }

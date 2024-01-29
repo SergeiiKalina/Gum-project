@@ -279,7 +279,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["barbell"],
         LFC: ["nothing"],
-        subCatigories: "bp",
+        subCatigories: "bpu",
         youtubeLink: "https://www.youtube.com/watch?v=KTypY__TdSI",
     },
     {
@@ -294,7 +294,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["bar"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=M-TgHpAIvQg",
     },
     {
@@ -624,7 +624,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["bar"],
         LFC: ["nothing"],
-        subCatigories: "bp",
+        subCatigories: "bpu",
         youtubeLink: "https://www.youtube.com/watch?v=5_EI7a1LsS4",
     },
     {
@@ -1464,7 +1464,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band", "bar"],
         LFC: ["nothing"],
-        subCatigories: "bp",
+        subCatigories: "bpu",
         youtubeLink: "https://www.youtube.com/watch?v=YVg-RU1Z_hU",
     },
     {
@@ -2095,7 +2095,7 @@ const training: ITraining[] = [
         inventory: ["plate"],
         LFC: ["nothing"],
         subCatigories: "fd",
-        youtubeLink: "https://www.youtube.com/watch?v=hikbChhbeLI",
+        youtubeLink: "https://www.youtube.com/shorts/S1YrQyboEOE",
     },
     {
         id: 240,
@@ -2694,7 +2694,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["bar"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=5_EI7a1LsS4",
     },
     {
@@ -2709,7 +2709,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["bar"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=LVX3oyKmsEc",
     },
     {
@@ -3189,7 +3189,7 @@ const training: ITraining[] = [
         workingOut: ["gym", " home"],
         inventory: ["band"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=A-uiFTIsgRg",
     },
     {
@@ -3204,7 +3204,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["machine"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=WLzut1ZxxTY",
     },
     {
@@ -3219,7 +3219,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["machine"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=60_BX5fROkU",
     },
     {
@@ -3234,7 +3234,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=zO9YGjw3tIs",
     },
     {
@@ -3249,7 +3249,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=YVg-RU1Z_hU",
     },
     {
@@ -3264,7 +3264,7 @@ const training: ITraining[] = [
         workingOut: ["gym", "home"],
         inventory: ["band"],
         LFC: ["nothing"],
-        subCatigories: "pu",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=zO9YGjw3tIs",
     },
     {
@@ -3648,9 +3648,9 @@ const training: ITraining[] = [
         img: "/images/mini/FB_IMG_1567430209194.jpg",
         category: "pectoral",
         fitnessLevel: 2,
-        sex: "male",
+        sex: "unsex",
         basicExercise: false,
-        title: "Around the world ",
+        title: "Around the world",
         workingOut: ["gym", "home"],
         inventory: ["dumbbell"],
         LFC: ["shoulders"],
@@ -3781,7 +3781,7 @@ const training: ITraining[] = [
         id: 352,
         isComplited: false,
         img: "/images/mini/FB_IMG_1567430209194.jpg",
-        category: "biceps",
+        category: "back",
         fitnessLevel: 1,
         sex: "unsex",
         basicExercise: true,
@@ -3789,7 +3789,7 @@ const training: ITraining[] = [
         workingOut: ["gym"],
         inventory: ["machine"],
         LFC: ["nothing"],
-        subCatigories: "bp",
+        subCatigories: "pl",
         youtubeLink: "https://www.youtube.com/watch?v=75tpN6zeR8U",
     },
     {

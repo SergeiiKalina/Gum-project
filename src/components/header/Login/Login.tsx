@@ -5,7 +5,6 @@ import { auth, provider } from "../../layouts/config"
 import { signInWithPopup, UserCredential } from "firebase/auth"
 import {
     IInitialStateAuthorizationSlice,
-    checkAuth,
     login,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
@@ -24,7 +23,6 @@ export interface IAuthSliceState {
 
 function Login(): React.JSX.Element {
     const dispatch = useDispatch<any>()
-
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [storageEmail] = useState<string | null>(
@@ -35,11 +33,7 @@ function Login(): React.JSX.Element {
     )
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
-    useEffect(() => {
-        if (localStorage.getItem("email")) {
-            dispatch(checkAuth())
-        }
-    }, [dispatch, navigate, isAuth])
+
     useEffect(() => {
         if (isAuth) {
             navigate("/gentraining")

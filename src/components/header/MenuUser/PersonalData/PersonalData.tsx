@@ -6,6 +6,8 @@ import { GrFormCheckmark } from "react-icons/gr"
 import { v4 as uuidv4 } from "uuid"
 import { API_URL } from "../../../../http"
 import axios from "axios"
+import { IAuthSliceState } from "../../Login/Login"
+import { useNavigate } from "react-router-dom"
 
 export interface IUserSlice {
     usersSlice: {
@@ -34,6 +36,17 @@ const PersonalData: React.FC = () => {
         (Number(userData.sitUp) / (userData.sex === "male" ? 50 : 35)) * 150
     )
     const dispatch = useDispatch()
+
+    const isAuth = useSelector(
+        (state: IAuthSliceState) => state.authSlice.isAuth
+    )
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/")
+        }
+    }, [isAuth, navigate])
 
     useEffect(() => {
         const fetchData = async () => {

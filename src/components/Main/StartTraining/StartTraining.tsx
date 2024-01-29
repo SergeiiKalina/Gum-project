@@ -5,8 +5,9 @@ import EndTraining from "../EndTraining/EndTraining"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import { ITraining } from "../../../data/data"
 import { Box, OutlinedInput, InputAdornment } from "@mui/material"
-import "./startTraining.scss"
 import { styleOutlinedInput } from "../FormGenerationTraining/styles/stylesFormGeneration"
+import YouTube from "react-youtube"
+import "./startTraining.scss"
 
 interface IInfoApproach {
     [key: string]: string[]
@@ -21,11 +22,9 @@ export default function StartTraining(): React.JSX.Element {
 
     const [numExercise, setNumExercise] = useState<number>(1)
     const [showEndButton, setShowEndButton] = useState<boolean>(false)
-    const [exercise, setExercise] = useState<ITraining>(
-        value[index][numExercise]
-    )
+    const [exercise, setExercise] = useState<ITraining>(value[numExercise])
     const [titleExercise, setTitleExercise] = useState<string>(
-        generateProcessedTitle(value[index][1].title)
+        generateProcessedTitle(value[1].title)
     )
     const [showEndTraining, setShowEndTraining] = useState<boolean>(false)
     const [showTimer, setShowTimer] = useState<boolean>(false)
@@ -34,6 +33,15 @@ export default function StartTraining(): React.JSX.Element {
     const [infoApproach, setInfoApproach] = useState<IInfoApproach>({})
     const [buttonValue, setButtonValue] = useState<string>("Go")
     const [totalWeight, setTotalWeight] = useState<number>(0)
+
+    const opts = {
+        height: "100%",
+        width: "100%",
+        playerVars: {
+            autoplay: 1,
+            loop: 1,
+        },
+    }
 
     function generateProcessedTitle(title: string) {
         const newTitle = title.replaceAll(" ", "")
@@ -76,7 +84,7 @@ export default function StartTraining(): React.JSX.Element {
 
     function onTimer(e: React.MouseEvent<HTMLButtonElement>) {
         let value: string = e.currentTarget.value
-        console.log(value)
+
         if (value === "Go") {
             setButtonValue("Work \n")
             setWorkTime(60)
@@ -88,10 +96,10 @@ export default function StartTraining(): React.JSX.Element {
         setShowTimer(true)
     }
     function increment() {
-        if (value[index].length - 2 === numExercise) {
+        if (value.length - 2 === numExercise) {
             setShowEndButton(true)
         }
-        if (value[index].length - 1 === numExercise) {
+        if (value.length - 1 === numExercise) {
             return
         } else {
             setShowTimer(false)
@@ -110,7 +118,7 @@ export default function StartTraining(): React.JSX.Element {
     }
 
     useEffect(() => {
-        setExercise(value[index][numExercise])
+        setExercise(value[numExercise])
     }, [numExercise, value, index])
 
     useEffect(() => {
@@ -157,33 +165,16 @@ export default function StartTraining(): React.JSX.Element {
             ) : (
                 <section className="start_training_section">
                     <article className="start_training_infoBlock">
-                        <iframe
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                position: "absolute",
-                                top: 0,
-                                left: 0,
-                            }}
-                            src={
-                                "https://www.youtube.com/embed/" +
-                                exercise.youtubeLink.replace(
-                                    "https://www.youtube.com/watch?v=",
-                                    ""
-                                ) +
-                                "?si=cCEVsIa6vxWWgrNf"
-                            }
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
+                        <YouTube
+                            videoId={exercise.youtubeLink
+                                .replace("https://www.youtube.com/watch?v=", "")
+                                .replace("https://www.youtube.com/shorts/", "")}
+                            opts={opts}
+                        />
                     </article>
 
                     <article className="start_training_blockApproach">
-                        <output>{`${numExercise}/${
-                            value[index].length - 1
-                        }`}</output>
+                        <output>{`${numExercise}/${value.length - 1}`}</output>
                         <div className="start_training_title">
                             {exercise.title}
                         </div>

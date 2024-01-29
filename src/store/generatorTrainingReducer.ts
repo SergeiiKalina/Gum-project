@@ -2,15 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { ITraining } from "../data/data"
 
 export interface IGeneratorTrainingSliceData {
-    arr: ITraining[]
-    bul: boolean
-    bulTextArea: boolean
+    arr: ITraining[] | null
     formData: IFormData
-    step: number
-    textPlan: string
     startTrainingIndex: number
-    placeTraining: string
-    sexTraining: string
 }
 export interface IFormData {
     age?: number
@@ -38,9 +32,7 @@ export interface IFormData {
 }
 
 const initialState: IGeneratorTrainingSliceData = {
-    arr: [],
-    bul: false,
-    bulTextArea: false,
+    arr: null,
     formData: {
         age: 0,
         benchPress: "",
@@ -63,11 +55,7 @@ const initialState: IGeneratorTrainingSliceData = {
         fitnessLevel: 0,
         bodyMassIndex: 0,
     },
-    step: 1,
-    textPlan: "",
     startTrainingIndex: 9999,
-    placeTraining: "",
-    sexTraining: "",
 }
 
 const generatorTrainingSlice = createSlice({
@@ -77,47 +65,23 @@ const generatorTrainingSlice = createSlice({
         writeArr(state, action: PayloadAction<any[]>) {
             state.arr = action.payload
         },
-        writeTxtPlan(state, action: PayloadAction<string>) {
-            state.textPlan = action.payload
-        },
         writeFormData(state, action: PayloadAction<any>) {
             state.formData = action.payload
         },
         changeCompleted(state, action: PayloadAction<ITraining[]>) {
             state.arr = action.payload
         },
-        changeStepForm(state, action: PayloadAction<number>) {
-            state.step = action.payload
-        },
-        changeBul(state, action: PayloadAction<boolean>) {
-            state.bul = action.payload
-        },
-        changeBulTextArea(state, action: PayloadAction<boolean>) {
-            state.bulTextArea = action.payload
-        },
         setIndexStartTraining(state, action: PayloadAction<number>) {
             state.startTrainingIndex = action.payload
-        },
-        writePlaceTraining(state, action: PayloadAction<string>) {
-            state.placeTraining = action.payload
-        },
-        writeSexTraining(state, action: PayloadAction<string>) {
-            state.sexTraining = action.payload
         },
     },
 })
 
 export const {
     writeArr,
-    writeTxtPlan,
     writeFormData,
     changeCompleted,
-    changeStepForm,
-    changeBul,
-    changeBulTextArea,
     setIndexStartTraining,
-    writePlaceTraining,
-    writeSexTraining,
 } = generatorTrainingSlice.actions
 
 export default generatorTrainingSlice.reducer

@@ -25,18 +25,20 @@ import {
 import "./formGenTrainStep.scss"
 
 export default function HomeTestForm(): React.JSX.Element {
-    const sex = useSelector(
-        (state: ITrainingReducer) => state.training.sexTraining
-    )
-
     const formData = useSelector(
         (state: ITrainingReducer) => state.training.formData
     )
+
     const [sitUp, setSitUp] = useState("")
     const [squatQuantity, setSquatQuantity] = useState("")
     const [pushUpQuantity, setPushUpQuantity] = useState("")
     const navigate = useNavigate()
-    const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormData>({ mode: "onBlur" })
+
     const dispatch = useDispatch()
     const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {
         dispatch(writeFormData({ ...formData, ...data }))
@@ -73,18 +75,20 @@ export default function HomeTestForm(): React.JSX.Element {
                         value={squatQuantity}
                         label="squatQuantity"
                         variant="outlined"
-                        {...register("squatQuantity")}
+                        {...register("squatQuantity", {
+                            required: "Field must be selected",
+                        })}
                         sx={stylesSelect}
                         onChange={handleChangeSquatQuantity}
                     >
                         <MenuItem value={"1"}>
-                            {sex === "male" ? "> 30" : "> 20"}
+                            {formData.sex === "male" ? "> 30" : "> 20"}
                         </MenuItem>
                         <MenuItem value={"2"}>
-                            {sex === "male" ? "50 - 100" : "20 - 50"}
+                            {formData.sex === "male" ? "50 - 100" : "20 - 50"}
                         </MenuItem>
                         <MenuItem value={"3"}>
-                            {sex === "male" ? `100 <` : "50 <"}
+                            {formData.sex === "male" ? `100 <` : "50 <"}
                         </MenuItem>
                     </Select>
                 </FormControl>
@@ -102,18 +106,20 @@ export default function HomeTestForm(): React.JSX.Element {
                         value={pushUpQuantity}
                         label="pushUpQuantity"
                         variant="outlined"
-                        {...register("pushUpQuantity")}
+                        {...register("pushUpQuantity", {
+                            required: "Field must be selected",
+                        })}
                         sx={stylesSelect}
                         onChange={handleChangePushUpQuantity}
                     >
                         <MenuItem value={"1"}>
-                            {sex === "male" ? "> 15" : "> 10"}
+                            {formData.sex === "male" ? "> 15" : "> 10"}
                         </MenuItem>
                         <MenuItem value={"2"}>
-                            {sex === "male" ? "15 - 40" : "10 - 25"}
+                            {formData.sex === "male" ? "15 - 40" : "10 - 25"}
                         </MenuItem>
                         <MenuItem value={"3"}>
-                            {sex === "male" ? `50 <` : "30 <"}
+                            {formData.sex === "male" ? `50 <` : "30 <"}
                         </MenuItem>
                     </Select>
                 </FormControl>
@@ -131,18 +137,20 @@ export default function HomeTestForm(): React.JSX.Element {
                         value={sitUp}
                         label="sitUp"
                         variant="outlined"
-                        {...register("sitUp")}
+                        {...register("sitUp", {
+                            required: "Field must be selected",
+                        })}
                         sx={stylesSelect}
                         onChange={handleChangeSitUp}
                     >
                         <MenuItem value={"1"}>
-                            {sex === "male" ? "> 20" : "> 10"}
+                            {formData.sex === "male" ? "> 20" : "> 10"}
                         </MenuItem>
                         <MenuItem value={"2"}>
-                            {sex === "male" ? "20 - 40" : "10 - 25"}
+                            {formData.sex === "male" ? "20 - 40" : "10 - 25"}
                         </MenuItem>
                         <MenuItem value={"3"}>
-                            {sex === "male" ? `50 <` : "30 <"}
+                            {formData.sex === "male" ? `50 <` : "30 <"}
                         </MenuItem>
                     </Select>
                 </FormControl>

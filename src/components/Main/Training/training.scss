@@ -1,5 +1,12 @@
 @import "./../../adaptive-fontMixin.scss";
 
+.pagination_block {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+}
+
 .training_section {
     padding-bottom: 20px;
 }
@@ -30,37 +37,64 @@
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: auto;
+    gap: 1rem;
+    margin: 20px 10px 0 0;
+    align-items: stretch;
     p {
-        @include adaptive-font(20, 16);
+        @include adaptive-font(18, 12);
         padding: 6px 0 10px 10px;
-        margin-bottom: 24px;
-        color: midnightblue;
+        color: white;
         font-weight: 600;
+
+        -webkit-text-shadow: 1px 1px 29px 20px rgba(44, 52, 64, 0.52);
+        -moz-text-shadow: 1px 1px 29px 20px rgba(44, 52, 64, 0.52);
+        text-shadow: 1px 1px 29px 20px rgba(44, 52, 64, 0.52);
     }
-}
-.training_training_item {
-    width: 31%;
+    .training_training_item {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 31.5%;
+    }
 }
 
 .training_block_training img {
     width: 100%;
     border-radius: 12px;
+    -webkit-box-shadow: 1px 1px 29px 20px rgba(44, 52, 64, 0.52);
+    -moz-box-shadow: 1px 1px 29px 20px rgba(44, 52, 64, 0.52);
+    box-shadow: 1px 1px 29px 20px rgba(44, 52, 64, 0.52);
 }
 
-@media (max-width: 560px) {
+@media (max-width: 1024px) {
+    .training_block_training {
+        grid-template-columns: 1fr 1fr;
+    }
+    .pagination_block {
+        width: 80%;
+        display: flex;
+    }
+}
+
+@media (max-width: 767px) {
     .training_article {
         flex-direction: column;
     }
     .training_block_training {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        width: 95%;
+        margin: 20px auto 0 auto;
+        .training_training_item {
+            width: 31%;
+        }
     }
-    .training_training_item {
-        width: 48%;
-        padding: 16px 0 0 0;
+    .pagination_block {
+        width: 100%;
+    }
+}
+@media (max-width: 500px) {
+    .training_block_training {
+        .training_training_item {
+            width: 47%;
+        }
     }
 }

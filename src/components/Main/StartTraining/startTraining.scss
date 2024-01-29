@@ -5,6 +5,8 @@
     justify-content: center;
     flex-direction: column;
     background-color: #1a2131;
+    padding-bottom: 50px;
+
     .start_training_infoBlock {
         position: relative;
         width: 50%;
@@ -12,6 +14,10 @@
         display: flex;
         flex-direction: column;
         margin: 0 auto;
+        div {
+            width: 100%;
+            height: 100%;
+        }
         iframe {
             margin: 0 auto;
         }

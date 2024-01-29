@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {
     FaInstagram,
     FaFacebook,
@@ -7,10 +7,22 @@ import {
     FaTwitter,
     FaWhatsapp,
 } from "react-icons/fa"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import "./contacts.scss"
+import { useSelector } from "react-redux"
+import { IAuthSliceState } from "../Login/Login"
 
 function Contacts(): React.JSX.Element {
+    const isAuth = useSelector(
+        (state: IAuthSliceState) => state.authSlice.isAuth
+    )
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/")
+        }
+    }, [isAuth, navigate])
     return (
         <div className="contacts_block">
             <NavLink to="https://instagram.com/serjik_92?igshid=MzNlNGNkZWQ4Mg==">

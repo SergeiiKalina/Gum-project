@@ -17,7 +17,7 @@ function Footer(): React.JSX.Element {
                 <NavLink to="/gentraining">
                     <GiCardRandom />
                 </NavLink>
-                <NavLink to="/">
+                <NavLink to="/custom-training">
                     <MdOutlineDashboardCustomize />
                 </NavLink>
                 <NavLink to="/contact">

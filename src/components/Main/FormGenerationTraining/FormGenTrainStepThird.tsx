@@ -13,6 +13,7 @@ import {
 } from "@mui/material"
 import {
     IFormData,
+    writeArr,
     writeFormData,
 } from "../../../store/generatorTrainingReducer"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
@@ -26,6 +27,7 @@ import { API_URL } from "../../../http"
 import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 import { writeDataUser } from "../../../store/userSlice"
 import "./formGenTrainStep.scss"
+import { generateTraining } from "./Function-Generat-Random-Training/Function-Generate-Random-Training"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -37,13 +39,13 @@ const MenuProps = {
         },
     },
 }
-
 const multiSelect = ["back", "elbows", "shoulders", "knees", "hip joint"]
 
 export default function FormGenTrainStepThird(): React.JSX.Element {
     const userData = useSelector(
         (state: IUserSlice) => state.usersSlice.dataUser
     )
+
     const [currentButton, setCurrentButton] = useState<string>("")
     const [problems, setProblems] = useState<string[]>(userData.problems || [])
     const [lifestyle, setLifestyle] = useState(userData.lifestyle || "")
@@ -52,9 +54,12 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
     const formData = useSelector(
         (state: ITrainingReducer) => state.training.formData
     )
-
     const navigate = useNavigate()
-    const { register, handleSubmit } = useForm<IFormData>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormData>({
         mode: "onBlur",
     })
 
@@ -86,12 +91,19 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                 ...data,
             })
 
-            dispatch(writeFormData({ ...formData, ...data }))
-            navigate("/finished-training")
+            await dispatch(writeFormData({ ...formData, ...data }))
+            await dispatch(
+                writeArr(generateTraining({ ...formData, ...data })!)
+            )
+            await navigate("/finished-training")
         }
         if (currentButton === "generateAndNotSave") {
-            dispatch(writeFormData({ ...formData, ...data }))
-            navigate("/finished-training")
+            await dispatch(writeFormData({ ...formData, ...data }))
+
+            await dispatch(
+                writeArr(generateTraining({ ...formData, ...data })!)
+            )
+            await navigate("/finished-training")
         }
     }
 
@@ -202,7 +214,9 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             label="Focus"
                             variant="outlined"
                             value={focus}
-                            {...register("focus")}
+                            {...register("focus", {
+                                required: "Field must be selected",
+                            })}
                             sx={stylesSelect}
                             onChange={handleFocus}
                         >
@@ -217,6 +231,9 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                             <MenuItem value="press">Press</MenuItem>
                         </Select>
                     </FormControl>
+                    <span className="form_error_message">
+                        {errors.focus ? errors.focus.message : ""}
+                    </span>
                 </div>
             </section>
 

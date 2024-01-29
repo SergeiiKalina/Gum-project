@@ -1,94 +1,102 @@
-import React, { useState } from "react"
-import { useSelector } from "react-redux"
-import { GrFormDown } from "react-icons/gr"
-import { IIsChecked } from "../../../store/filterTrainingSlice"
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import OutlinedInput from "@mui/material/OutlinedInput"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import FormControl from "@mui/material/FormControl"
+import ListItemText from "@mui/material/ListItemText"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import Checkbox from "@mui/material/Checkbox"
+import { changeIsChecked, writeData } from "../../../store/filterTrainingSlice"
 import "./formTraining.scss"
+import {
+    formTrainingSelect,
+    formTrainingStyleForm,
+} from "../FormGenerationTraining/styles/stylesFormGeneration"
 
 interface IState {
     filterTraining: {
-        isChecked: IIsChecked
+        isChecked: string[]
         categories: string[]
     }
 }
 
-export default function FormTraining({
-    handleSubmit,
-    onSubmit,
-    register,
-}: any): React.JSX.Element {
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 6 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+}
+
+const FormTraining = React.memo(function FormTraining(): React.JSX.Element {
+    const dispatch = useDispatch()
+    const handleChange = (event: SelectChangeEvent<string[]>) => {
+        const {
+            target: { value },
+        } = event
+
+        onSubmit(typeof value === "string" ? value.split(",") : value)
+    }
     const isChecked = useSelector(
         (state: IState) => state.filterTraining.isChecked
     )
+
     const categories = useSelector(
         (state: IState) => state.filterTraining.categories
     )
-    const [rev, setRev] = useState(false)
 
-    const reverseArrow = () => {
-        setRev((prev) => !prev)
-    }
-    const closeCategories = () => {
-        setRev(false)
-    }
+    const onSubmit = (data: string[]) => {
+        dispatch(writeData(Object.values(data)))
 
+        dispatch(changeIsChecked(data))
+    }
     return (
-        <article
-            className={`form_training_aside ${
-                rev ? "form_training_mobile" : ""
-            }`}
-        >
-            <button onClick={reverseArrow} className="form_training_buttonList">
-                Categories
-                <GrFormDown
-                    className={`form_training_arrow  ${
-                        rev ? `form_training_rotate` : ""
-                    }`}
-                />
-            </button>
-            <form
-                className={`form_training_nav ${
-                    rev ? "" : "form_training_toggleNav"
-                }`}
-                onChange={handleSubmit(onSubmit)}
-            >
-                {categories.length > 0 &&
-                    categories.map((el) => {
-                        let str = ""
-                        for (let i = 0; i < el.length; i++) {
-                            if (i === 0) {
-                                str += el[i].toUpperCase()
-                            } else {
-                                str += el[i]
-                            }
-                        }
-
-                        return (
-                            <label
-                                key={el}
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                }}
-                            >
-                                {str}
-                                <input
-                                    type="checkbox"
-                                    className="form_training_button"
-                                    value={el}
-                                    checked={isChecked[el] || false}
-                                    {...register(el)}
+        <article className="form_training_wrapper">
+            <FormControl sx={formTrainingStyleForm}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                    Categories
+                </InputLabel>
+                <Select
+                    sx={formTrainingSelect}
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    value={isChecked}
+                    onChange={handleChange}
+                    input={<OutlinedInput label="Categories" />}
+                    renderValue={(selected) =>
+                        selected
+                            .map(
+                                (el: string) =>
+                                    el[0].toUpperCase() + el.slice(1)
+                            )
+                            .join(", ")
+                    }
+                    MenuProps={MenuProps}
+                >
+                    {categories
+                        .slice()
+                        .sort((a, b) => a.localeCompare(b))
+                        .map((category) => (
+                            <MenuItem key={category} value={category}>
+                                <Checkbox
+                                    checked={isChecked.indexOf(category) > -1}
                                 />
-                            </label>
-                        )
-                    })}
-            </form>
-            <button
-                className="form_training_closeButton"
-                onClick={closeCategories}
-            >
-                Close
-            </button>
+                                <ListItemText
+                                    primary={
+                                        category[0].toUpperCase() +
+                                        category.slice(1)
+                                    }
+                                />
+                            </MenuItem>
+                        ))}
+                </Select>
+            </FormControl>
         </article>
     )
-}
+})
+export default FormTraining

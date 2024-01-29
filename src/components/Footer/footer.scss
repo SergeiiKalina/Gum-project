@@ -6,13 +6,28 @@
     left: 0;
     background-color: #576fa4;
     menu {
+        width: 50%;
         height: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: auto 10px;
+        margin: auto auto;
         a {
             color: #fefefe;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .footer_wrapper {
+        menu {
+            width: 60%;
+        }
+    }
+}
+@media (max-width: 460px) {
+    .footer_wrapper {
+        menu {
+            width: 90%;
         }
     }
 }

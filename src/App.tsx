@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import MyLayouts from "./components/layouts/MyLayouts"
 import Training from "./components/Main/Training/Training"
@@ -15,10 +15,18 @@ import GymTestForm from "./components/Main/FormGenerationTraining/GymTestForm"
 import Login from "./components/header/Login/Login"
 import Registration from "./components/header/Registration/Registration"
 import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGenTrainStepOne"
-import "./App.scss"
 import PersonalData from "./components/header/MenuUser/PersonalData/PersonalData"
+import { useDispatch } from "react-redux"
+import { checkAuth } from "./store/authorizationSlice"
+import "./App.scss"
+import CustomTraining from "./components/Main/CustomTraining/CustomTraining"
 
 function App(): React.JSX.Element {
+    const dispatch = useDispatch<any>()
+
+    useEffect(() => {
+        dispatch(checkAuth())
+    }, [dispatch])
     return (
         <BrowserRouter>
             <div className="App">
@@ -29,6 +37,10 @@ function App(): React.JSX.Element {
                         <Route
                             path="gentraining"
                             element={<FormGenTrainStepOne />}
+                        />
+                        <Route
+                            path="custom-training"
+                            element={<CustomTraining />}
                         />
                         <Route
                             path="personal-data"

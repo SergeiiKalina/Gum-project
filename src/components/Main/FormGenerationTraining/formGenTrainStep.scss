@@ -26,6 +26,12 @@
     margin: 0 auto;
     background-color: #1a2131;
     padding-bottom: 50px;
+    .form_error_message {
+        width: 60%;
+        color: red;
+        margin: 4px auto 0 auto;
+        @include adaptive-font(12, 10);
+    }
     h2 {
         @include adaptive-font(30, 20);
         margin: 16px 0;

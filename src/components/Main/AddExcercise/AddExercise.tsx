@@ -15,16 +15,11 @@ import {
 } from "@mui/material"
 import AddIcon from "@mui/icons-material/Add"
 import SearchIcon from "@mui/icons-material/Search"
-import {
-    IShowDialog,
-    initialStateShowDialog,
-} from "../FinishedTraining/FinishedTraining"
 import { v4 as uuidv4 } from "uuid"
 
 interface IAddExercise {
     thisCategories: string[]
-    currentArrIndex: number
-    setShowDialog: (obj: IShowDialog) => void
+    setShowDialog: (boolean: boolean) => void
 }
 export interface IExerciseData {
     training: {
@@ -41,7 +36,6 @@ interface ISearchInfo {
 
 export default function AddExercise({
     thisCategories,
-    currentArrIndex,
     setShowDialog,
 }: IAddExercise): React.JSX.Element {
     const dispatch = useDispatch()
@@ -53,25 +47,24 @@ export default function AddExercise({
     const planTrainingArr: ITraining[] = useSelector(
         (state: IExerciseData) => state.training.arr
     )
-    const [arrTr, setArrTr] = useState<ITraining[] | []>([])
-    const [currentCategories, setCurrentCategories] = useState<
-        ITraining[] | []
-    >([])
+    const [arrTr, setArrTr] = useState<ITraining[]>([])
+    const [currentCategories, setCurrentCategories] = useState<ITraining[]>([])
     const [count, setCount] = useState(0)
 
     const handleChange = (event: SelectChangeEvent) => {
-        setSearchInfo({ ...searchInfo, categories: "" })
+        let category = event.target.value
+        setSearchInfo({ ...searchInfo, categories: category })
     }
 
     const changeForm = (txt: string) => {
         setSearchInfo({
             ...searchInfo,
             text: txt,
-            categories: searchInfo.categories,
+            categories: "",
         })
     }
     const increment = () => {
-        let length = currentCategories.length / 10
+        let length = currentCategories.length / 12
         if (count > length - 1) {
             return
         }
@@ -110,25 +103,21 @@ export default function AddExercise({
         setArrTr(currentCategories.slice(start, end))
     }, [count, currentCategories])
 
-    function addExercise(e: React.MouseEvent<SVGSVGElement>) {
-        let target = e.target as HTMLDivElement
-        let id: string = target.id
-        let element: ITraining[] = training.filter(
+    function addExercise(id: number) {
+        let element: ITraining = training.filter(
             (el) => Number(el.id) === Number(id)
-        )
-        const clonedValue: ITraining[] | any = structuredClone(planTrainingArr)
-        let elementId: number = element[0].id
-        let currentArrayTraining: ITraining[] | any =
-            clonedValue[currentArrIndex]
-        let check: boolean = currentArrayTraining.some(
+        )[0]
+        let elementId: number = element.id
+        const clonedValue: ITraining[] = structuredClone(planTrainingArr)
+        let check: boolean = clonedValue.some(
             (el: ITraining) => el.id === elementId
         )
         if (check) {
             alert("This exercise already exists.")
             return
         } else {
-            clonedValue[currentArrIndex].push(element[0])
-            if (clonedValue[currentArrIndex].length === 13) {
+            clonedValue.push(element)
+            if (clonedValue.length === 13) {
                 alert("Max exercise 11")
                 return
             }
@@ -201,12 +190,13 @@ export default function AddExercise({
                             <span className="add_exercise_block_name">
                                 {el.title}
                             </span>
-                            <div>
-                                <AddIcon
-                                    style={{ cursor: "pointer" }}
-                                    id={el.id.toString()}
-                                    onClick={(e) => addExercise(e)}
-                                />
+                            <div
+                                style={{ cursor: "pointer" }}
+                                className="add_icon_wrapper"
+                                id={el.id.toString()}
+                                onClick={(e) => addExercise(el.id)}
+                            >
+                                <AddIcon />
                             </div>
                         </article>
                     )
@@ -225,7 +215,7 @@ export default function AddExercise({
                     variant="contained"
                     className="add_exercise_close_button"
                     type="button"
-                    onClick={() => setShowDialog(initialStateShowDialog)}
+                    onClick={() => setShowDialog(false)}
                 >
                     Close
                 </Button>

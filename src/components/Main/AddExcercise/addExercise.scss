@@ -8,8 +8,9 @@
     min-height: 100dvh;
     background-color: white;
     border: 1px black solid;
-    z-index: 1;
+    z-index: 4;
     transition: left 0.3s ease;
+    padding-bottom: 15px;
     .add_exercise_close_button_wrapper {
         width: 100%;
         display: flex;

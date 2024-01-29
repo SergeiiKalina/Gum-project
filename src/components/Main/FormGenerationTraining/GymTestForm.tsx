@@ -14,7 +14,6 @@ import {
     stylesFormButton,
 } from "./styles/stylesFormGeneration"
 import "./formGenTrainStep.scss"
-import { IUserData } from "../../../store/userSlice"
 import { IUserSlice } from "../../header/MenuUser/PersonalData/PersonalData"
 
 export default function GymTestForm(): React.JSX.Element {
@@ -25,12 +24,17 @@ export default function GymTestForm(): React.JSX.Element {
         (state: IUserSlice) => state.usersSlice.dataUser
     )
     const navigate = useNavigate()
-    const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormData>({ mode: "onBlur" })
     const dispatch = useDispatch()
     const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {
         dispatch(writeFormData({ ...formData, ...data }))
         navigate("/gentraining/step-4/gym")
     }
+
     return (
         <form
             className="form_gen_train_step_wrapper"
@@ -46,13 +50,16 @@ export default function GymTestForm(): React.JSX.Element {
                     autoComplete="given-name"
                     defaultValue={userData.squat || ""}
                     {...register("squat", {
-                        required: "squatWeight is Error",
+                        required: "Field must be filled in",
                     })}
                     InputProps={{
                         type: "number",
                         autoComplete: "off",
                     }}
                 />
+                <span className="form_error_message">
+                    {errors.squat ? errors.squat.message : ""}
+                </span>
                 <StyledTextField
                     id="benchPressWeight"
                     label="Bench Press Weight"
@@ -60,13 +67,16 @@ export default function GymTestForm(): React.JSX.Element {
                     autoComplete="given-name"
                     defaultValue={userData.benchPress || ""}
                     {...register("benchPress", {
-                        required: "benchPressWeight is Error",
+                        required: "Field must be filled in",
                     })}
                     InputProps={{
                         type: "number",
                         autoComplete: "off",
                     }}
                 />
+                <span className="form_error_message">
+                    {errors.benchPress ? errors.benchPress.message : ""}
+                </span>
                 <StyledTextField
                     id="deadLiftWeight"
                     label="Dead Lift Weight"
@@ -74,13 +84,16 @@ export default function GymTestForm(): React.JSX.Element {
                     autoComplete="given-name"
                     defaultValue={userData.deadLift || ""}
                     {...register("deadLift", {
-                        required: "deadLiftWeight is Error",
+                        required: "Field must be filled in",
                     })}
                     InputProps={{
                         type: "number",
                         autoComplete: "off",
                     }}
                 />
+                <span className="form_error_message">
+                    {errors.deadLift ? errors.deadLift.message : ""}
+                </span>
                 <h2 className="form_gen_train_step_secondHeader">
                     Number Of Repetitions
                 </h2>
@@ -91,13 +104,16 @@ export default function GymTestForm(): React.JSX.Element {
                     autoComplete="given-name"
                     defaultValue={userData.pullUp || ""}
                     {...register("pullUp", {
-                        required: "pullUp is Error",
+                        required: "Field must be filled in",
                     })}
                     InputProps={{
                         type: "number",
                         autoComplete: "off",
                     }}
                 />
+                <span className="form_error_message">
+                    {errors.pullUp ? errors.pullUp.message : ""}
+                </span>
                 <StyledTextField
                     id="sitUp"
                     label="Sit-up"
@@ -105,13 +121,16 @@ export default function GymTestForm(): React.JSX.Element {
                     autoComplete="given-name"
                     defaultValue={userData.sitUp || ""}
                     {...register("sitUp", {
-                        required: "sitUp is Error",
+                        required: "Field must be filled in",
                     })}
                     InputProps={{
                         type: "number",
                         autoComplete: "off",
                     }}
                 />
+                <span className="form_error_message">
+                    {errors.sitUp ? errors.sitUp.message : ""}
+                </span>
             </section>
             <div style={stylesButtonWrapper}>
                 <Button variant="contained" type="submit" sx={stylesFormButton}>

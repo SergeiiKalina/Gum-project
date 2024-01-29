@@ -21,6 +21,7 @@ export interface IUserData {
     lifestyle: string
     goal: string
     problems: string[]
+    age: number
 }
 
 export interface IUsersSlice {
@@ -49,6 +50,7 @@ const initialState: IUsersSlice = {
         lifestyle: "",
         goal: "",
         problems: [],
+        age: 1.1,
     },
 }
 

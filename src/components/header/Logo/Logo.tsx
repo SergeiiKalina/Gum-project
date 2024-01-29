@@ -11,7 +11,7 @@ export default function Logo(): React.JSX.Element {
                     <FaDumbbell />
                 </div>
                 <div>
-                    <h1>Gym Genie</h1>
+                    <h1>Gym Hub</h1>
                 </div>
             </NavLink>
         </section>

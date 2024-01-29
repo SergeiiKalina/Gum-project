@@ -5,7 +5,6 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import {
     IFormData,
     writeFormData,
-    writeSexTraining,
 } from "../../../store/generatorTrainingReducer"
 import {
     Button,
@@ -45,12 +44,16 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
     const isAuth = useSelector(
         (state: IAuthSliceState) => state.authSlice.isAuth
     )
-    const { register, handleSubmit } = useForm<IFormData>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormData>({
         mode: "onBlur",
     })
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [age, setAge] = useState<string>("")
+    const [age, setAge] = useState<string>(userData.age.toString())
     const [radioSexValue, setRadioSexValue] = useState(userData.sex || "female")
     const handleChangeAge = (event: SelectChangeEvent<string>) => {
         let value: string = event.target.value
@@ -106,13 +109,15 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                         : ""
                 }
                 {...register("firstName", {
-                    required: "First Name is Error",
+                    required: "Field must be filled in",
                 })}
                 InputProps={{
                     type: "text",
                 }}
             />
-
+            <span className="form_error_message">
+                {errors.firstName ? errors.firstName.message : ""}
+            </span>
             <StyledTextField
                 id="lastName"
                 label="Last Name"
@@ -124,13 +129,15 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                         : ""
                 }
                 {...register("lastName", {
-                    required: "Last Name is Error",
+                    required: "Field must be filled in",
                 })}
                 InputProps={{
                     type: "text",
                 }}
             />
-
+            <span className="form_error_message">
+                {errors.lastName ? errors.lastName.message : ""}
+            </span>
             <StyledTextField
                 id="email"
                 label="Email"
@@ -141,11 +148,16 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                         ? localStorage.getItem("email")
                         : ""
                 }
-                {...register("email")}
+                {...register("email", {
+                    required: "Field must be filled in",
+                })}
                 InputProps={{
                     type: "email",
                 }}
             />
+            <span className="form_error_message">
+                {errors.email ? errors.email.message : ""}
+            </span>
             <StyledTextField
                 id="input-with-sx"
                 label="Weight"
@@ -160,7 +172,9 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                 }}
                 sx={stylesField}
             />
-
+            <span className="form_error_message">
+                {errors.weight ? errors.weight.message : ""}
+            </span>
             <FormControl fullWidth sx={stylesField}>
                 <InputLabel
                     id="demo-simple-select-label"
@@ -174,7 +188,7 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     value={age}
                     label="Age"
                     variant="outlined"
-                    {...register("age")}
+                    {...register("age", { required: "Field must be selected" })}
                     sx={stylesSelect}
                     onChange={handleChangeAge}
                 >
@@ -186,7 +200,9 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     <MenuItem value={1.4}>{`55 <`}</MenuItem>
                 </Select>
             </FormControl>
-
+            <span className="form_error_message">
+                {errors.age ? errors.age.message : ""}
+            </span>
             <article className="form_gen_train_step_inlineRadio">
                 <FormLabel
                     id="demo-row-radio-buttons-group-label"
@@ -203,7 +219,6 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     value={radioSexValue}
                     onChange={(event) => {
                         setRadioSexValue(event.target.value)
-                        dispatch(writeSexTraining(event.target.value))
                     }}
                 >
                     <FormControlLabel

@@ -62,6 +62,21 @@ export const stylesSelect = {
         color: "white",
     },
 }
+export const stylesSelectError = {
+    boxShadow: "none",
+    color: "white",
+    ".MuiOutlinedInput-notchedOutline": {
+        border: "none",
+        borderBottom: "1px solid red",
+        borderRadius: "0px",
+    },
+    "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+        borderBottom: "1px solid #42a5f5",
+    },
+    ".MuiSvgIcon-root": {
+        color: "white",
+    },
+}
 
 export const stylesInputLabelSelect = { color: "white", border: "none" }
 
@@ -113,5 +128,53 @@ export const styleOutlinedInput = {
     },
     "& p": {
         color: "white",
+    },
+}
+
+export const formTrainingStyleForm = {
+    width: "300px",
+    zIndex: 1,
+    "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        border: "1px solid white",
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+        color: "white",
+    },
+    "& .MuiFormLabel-root": {
+        color: "white",
+    },
+    "& .MuiInputBase-input": {
+        color: "white",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        border: "1px solid white",
+    },
+
+    "& fieldset": {
+        borderColor: "white",
+    },
+
+    "& .MuiSvgIcon-root": {
+        color: "white",
+    },
+}
+
+export const formTrainingSelect = {
+    zIndex: 2,
+    "&:hover.MuiInputBase-root fieldset": {
+        borderColor: "white",
+    },
+}
+
+export const paginationStyle = {
+    "&.MuiPagination-root li button": {
+        color: "white",
+        borderColor: "white",
+        minWidth: "28px",
+    },
+    "&.MuiPagination-root li button.Mui-selected": {
+        color: "#1976d2",
+        border: "1px solid rgba(25, 118, 210, 0.5)",
+        backgroundColor: "rgba(25, 118, 210, 0.12)",
     },
 }

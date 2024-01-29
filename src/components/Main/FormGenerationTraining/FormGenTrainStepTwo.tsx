@@ -12,7 +12,6 @@ import {
 import {
     IFormData,
     writeFormData,
-    writePlaceTraining,
 } from "../../../store/generatorTrainingReducer"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import {
@@ -65,7 +64,6 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
         userData.placeToWorkout || "gym"
     )
     const onSubmit: SubmitHandler<IFormData> = (data: IFormData) => {
-        console.log({ ...formData, ...data })
         dispatch(writeFormData({ ...formData, ...data }))
         if (data.placeToWorkout === "home") {
             navigate("/gentraining/step-3/home")
@@ -101,7 +99,6 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                     <FormControlLabel
                         control={<Radio sx={stylesRadio} />}
                         sx={stylesLabelRadio}
-                        onClick={() => dispatch(writePlaceTraining("home"))}
                         value="home"
                         label="Home"
                         {...register("placeToWorkout")}
@@ -109,7 +106,6 @@ export default function FormGenTrainStepTwo(): React.JSX.Element {
                     <FormControlLabel
                         control={<Radio sx={stylesRadio} />}
                         sx={stylesLabelRadio}
-                        onClick={() => dispatch(writePlaceTraining("gym"))}
                         value="gym"
                         label="Gym"
                         {...register("placeToWorkout")}
