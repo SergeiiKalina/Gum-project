@@ -1,11 +1,9 @@
 import React, { FC, Dispatch, SetStateAction, ChangeEvent } from "react"
-
 import { StyledTextField } from "../../Styled-components/Styled"
 import { Button } from "@mui/material"
 import "./login.scss"
 import { useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc"
-
 interface IFormAuthorizationProps {
     email: string
     password: string
@@ -14,7 +12,6 @@ interface IFormAuthorizationProps {
     buttonLogin: (email: string, password: string) => void
     handlerGoogleLogin: () => void
 }
-
 const FormAuthorization: FC<IFormAuthorizationProps> = ({
     email,
     password,
@@ -24,7 +21,6 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
     handlerGoogleLogin,
 }) => {
     const navigate = useNavigate()
-
     return (
         <>
             <form>
@@ -54,7 +50,6 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                         >
                             Login
                         </Button>
-
                         <Button
                             variant="contained"
                             onClick={() => navigate("/registration")}
@@ -71,5 +66,4 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
         </>
     )
 }
-
 export default FormAuthorization

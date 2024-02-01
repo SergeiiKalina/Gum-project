@@ -11,16 +11,13 @@ import {
 import FormAuthorization from "./FormAuthorization"
 import "./login.scss"
 import { CircularProgress } from "@mui/material"
-
 export interface IUser {
     userName: string | null
     photo: string | null
 }
-
 export interface IAuthSliceState {
     authSlice: IInitialStateAuthorizationSlice
 }
-
 function Login(): React.JSX.Element {
     const dispatch = useDispatch<any>()
     const [email, setEmail] = useState<string>("")
@@ -33,13 +30,11 @@ function Login(): React.JSX.Element {
     )
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
-
     useEffect(() => {
         if (isAuth) {
             navigate("/gentraining")
         }
     }, [navigate, isAuth])
-
     const handlerGoogleLogin = () => {
         signInWithPopup(auth, provider).then((data: UserCredential) => {
             localStorage.setItem("email", data.user?.email || "")
@@ -48,14 +43,13 @@ function Login(): React.JSX.Element {
             window.location.reload()
         })
     }
-
     const buttonLogin = async (email: string, password: string) => {
         await dispatch(toggleIsLoading(true))
         await dispatch(login({ email, password }))
     }
-
     return (
         <section className="login_block">
+            {" "}
             {isLoading ? (
                 <CircularProgress
                     sx={{
@@ -78,5 +72,4 @@ function Login(): React.JSX.Element {
         </section>
     )
 }
-
 export default Login

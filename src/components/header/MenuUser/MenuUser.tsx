@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { logout } from "../../../store/authorizationSlice"
 import "./menuUser.scss"
-
 const MenuUser: FC = () => {
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
@@ -39,5 +38,4 @@ const MenuUser: FC = () => {
         </section>
     )
 }
-
 export default MenuUser

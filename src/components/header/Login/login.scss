@@ -1,10 +1,8 @@
 @import "./../../adaptive-fontMixin.scss";
-
 .login_block {
     position: relative;
     display: flex;
     width: 100%;
-
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -27,7 +25,6 @@
     section {
         display: flex;
         justify-content: center;
-
         .form_authorization_button_block {
             width: 50%;
             display: flex;
@@ -45,7 +42,6 @@
         justify-content: center;
     }
 }
-
 @media (max-width: 1024px) {
     .login_block {
         form {
@@ -72,7 +68,6 @@
         }
     }
 }
-
 @media (max-width: 460px) {
     .login_block {
         section {

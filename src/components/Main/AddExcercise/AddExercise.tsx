@@ -1,7 +1,7 @@
-import React from "react"
+import React, { ChangeEvent } from "react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { writeArr } from "../../../store/generatorTrainingReducer"
+import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 import training, { ITraining } from "../../../data/data"
 import "./addExercise.scss"
 import {
@@ -97,6 +97,17 @@ export default function AddExercise({
     }, [searchInfo])
 
     useEffect(() => {
+        if (planTrainingArr.length >= 7) {
+            const wrapper = document.querySelector(
+                ".custom_training_wrapper"
+            ) as HTMLElement
+            if (wrapper) {
+                wrapper.style.paddingBottom = "50px"
+            }
+        }
+    }, [])
+
+    useEffect(() => {
         let notePage = 12
         let start = count * notePage
         let end = start + notePage
@@ -107,21 +118,25 @@ export default function AddExercise({
         let element: ITraining = training.filter(
             (el) => Number(el.id) === Number(id)
         )[0]
+
         let elementId: number = element.id
+
         const clonedValue: ITraining[] = structuredClone(planTrainingArr)
+        console.log(clonedValue)
         let check: boolean = clonedValue.some(
             (el: ITraining) => el.id === elementId
         )
+
         if (check) {
             alert("This exercise already exists.")
             return
         } else {
             clonedValue.push(element)
             if (clonedValue.length === 13) {
-                alert("Max exercise 11")
+                alert("Max exercise 12")
                 return
             }
-            dispatch(writeArr(clonedValue))
+            dispatch(writeCurrentTraining(clonedValue))
             alert("You add exercise")
         }
     }
@@ -171,7 +186,9 @@ export default function AddExercise({
                                     display: "none",
                                 },
                             }}
-                            onChange={(e) => setSearchText(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                setSearchText(e.target.value)
+                            }
                         />
                         <Button
                             variant="contained"

@@ -5,21 +5,14 @@ import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { IUserAPI } from "../../../../models/response/IUser"
 import MenuUser from "../MenuUser"
-
 interface IAuthSlice {
-    authSlice: {
-        user: IUserAPI | undefined
-        isAuth: boolean
-    }
+    authSlice: { user: IUserAPI | undefined; isAuth: boolean }
 }
-
 interface IAccountIconProps {
     toggleMenuUser: boolean
 }
-
 const AccountIcon: FC<IAccountIconProps> = ({ toggleMenuUser }) => {
     const isAuth = useSelector((state: IAuthSlice) => state.authSlice.isAuth)
-
     return (
         <section className="account_icon_wrapper">
             {isAuth ? (
@@ -45,5 +38,4 @@ const AccountIcon: FC<IAccountIconProps> = ({ toggleMenuUser }) => {
         </section>
     )
 }
-
 export default AccountIcon

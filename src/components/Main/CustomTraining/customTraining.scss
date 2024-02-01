@@ -3,6 +3,7 @@
 .custom_training_wrapper {
     width: 70%;
     margin: 0 auto;
+
     h2 {
         @include adaptive-font(30, 20);
         margin: 0 auto;
@@ -12,5 +13,24 @@
         align-items: center;
         width: 90%;
         margin: 20px auto 0 auto;
+    }
+}
+
+.custom_training_list {
+    color: #fff;
+    padding: 0;
+}
+
+@media (max-width: 767px) {
+    .custom_training_wrapper {
+        width: 85%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 460px) {
+    .custom_training_wrapper {
+        width: 95%;
+        margin: 0 auto;
     }
 }

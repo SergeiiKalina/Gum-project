@@ -5,6 +5,7 @@ export interface IGeneratorTrainingSliceData {
     arr: ITraining[] | null
     formData: IFormData
     startTrainingIndex: number
+    thisDragElement: ITraining | null
 }
 export interface IFormData {
     age?: number
@@ -32,7 +33,7 @@ export interface IFormData {
 }
 
 const initialState: IGeneratorTrainingSliceData = {
-    arr: null,
+    arr: [],
     formData: {
         age: 0,
         benchPress: "",
@@ -56,13 +57,14 @@ const initialState: IGeneratorTrainingSliceData = {
         bodyMassIndex: 0,
     },
     startTrainingIndex: 9999,
+    thisDragElement: null,
 }
 
 const generatorTrainingSlice = createSlice({
     name: "generatorTrainingSlice",
     initialState,
     reducers: {
-        writeArr(state, action: PayloadAction<any[]>) {
+        writeCurrentTraining(state, action: PayloadAction<any[]>) {
             state.arr = action.payload
         },
         writeFormData(state, action: PayloadAction<any>) {
@@ -74,14 +76,18 @@ const generatorTrainingSlice = createSlice({
         setIndexStartTraining(state, action: PayloadAction<number>) {
             state.startTrainingIndex = action.payload
         },
+        writeDragElement(state, action: PayloadAction<ITraining | null>) {
+            state.thisDragElement = action.payload
+        },
     },
 })
 
 export const {
-    writeArr,
+    writeCurrentTraining,
     writeFormData,
     changeCompleted,
     setIndexStartTraining,
+    writeDragElement,
 } = generatorTrainingSlice.actions
 
 export default generatorTrainingSlice.reducer

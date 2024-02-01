@@ -13,7 +13,7 @@ import {
 } from "@mui/material"
 import {
     IFormData,
-    writeArr,
+    writeCurrentTraining,
     writeFormData,
 } from "../../../store/generatorTrainingReducer"
 import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
@@ -93,7 +93,9 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
 
             await dispatch(writeFormData({ ...formData, ...data }))
             await dispatch(
-                writeArr(generateTraining({ ...formData, ...data })!)
+                writeCurrentTraining(
+                    generateTraining({ ...formData, ...data })!
+                )
             )
             await navigate("/finished-training")
         }
@@ -101,7 +103,9 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
             await dispatch(writeFormData({ ...formData, ...data }))
 
             await dispatch(
-                writeArr(generateTraining({ ...formData, ...data })!)
+                writeCurrentTraining(
+                    generateTraining({ ...formData, ...data })!
+                )
             )
             await navigate("/finished-training")
         }

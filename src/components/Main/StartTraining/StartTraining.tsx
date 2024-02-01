@@ -20,7 +20,7 @@ export default function StartTraining(): React.JSX.Element {
 
     const value = useSelector((state: ITrainingReducer) => state.training.arr)
 
-    const [numExercise, setNumExercise] = useState<number>(1)
+    const [numExercise, setNumExercise] = useState<number>(0)
     const [showEndButton, setShowEndButton] = useState<boolean>(false)
     const [exercise, setExercise] = useState<ITraining>(value[numExercise])
     const [titleExercise, setTitleExercise] = useState<string>(
@@ -96,7 +96,7 @@ export default function StartTraining(): React.JSX.Element {
         setShowTimer(true)
     }
     function increment() {
-        if (value.length - 2 === numExercise) {
+        if (value.length - 1 === numExercise) {
             setShowEndButton(true)
         }
         if (value.length - 1 === numExercise) {
@@ -108,6 +108,10 @@ export default function StartTraining(): React.JSX.Element {
         }
     }
     function decrement() {
+        console.log(value)
+        if (value.length > numExercise) {
+            setShowEndButton(false)
+        }
         if (numExercise === 1) {
             return
         } else {
@@ -174,7 +178,7 @@ export default function StartTraining(): React.JSX.Element {
                     </article>
 
                     <article className="start_training_blockApproach">
-                        <output>{`${numExercise}/${value.length - 1}`}</output>
+                        <output>{`${numExercise + 1}/${value.length}`}</output>
                         <div className="start_training_title">
                             {exercise.title}
                         </div>

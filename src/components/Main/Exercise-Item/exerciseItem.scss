@@ -1,0 +1,56 @@
+@import "../../adaptive-fontMixin.scss";
+.custom_training_list {
+    margin: 15px auto 0 auto;
+    cursor: grab;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.exercise_item_block {
+    width: 90%;
+    display: flex;
+    background-color: #0c305a;
+    margin: 0 auto 0 auto;
+    padding: 10px 8px 10px 2px;
+    border: 2px solid #bbdefb;
+    border-radius: 20px;
+    justify-content: space-between;
+    cursor: grab;
+    .exercise_item_block_img {
+        width: 10%;
+    }
+
+    .exercise_item_block_left_part {
+        @include adaptive-font(16, 12);
+        display: flex;
+        padding-left: 10px;
+        .exercise_item_block_left_part_info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 8px;
+        }
+        .exercise_item_block_chips {
+            margin-top: 4px;
+            span {
+                background-color: #1a2131;
+                padding: 1px 8px;
+                border-radius: 16px;
+                text-align: center;
+            }
+        }
+    }
+    .exercise_item_block_right_part {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .exercise_item_block {
+        .exercise_item_block_img {
+            width: 20%;
+        }
+    }
+}

@@ -6,8 +6,11 @@ import { FaHistory } from "react-icons/fa"
 import { GiCardRandom } from "react-icons/gi"
 import { MdOutlineDashboardCustomize } from "react-icons/md"
 import "./footer.scss"
+import { useDispatch } from "react-redux"
+import { writeCurrentTraining } from "../../store/generatorTrainingReducer"
 
 function Footer(): React.JSX.Element {
+    const dispatch = useDispatch()
     return (
         <footer className="footer_wrapper">
             <menu>
@@ -17,7 +20,10 @@ function Footer(): React.JSX.Element {
                 <NavLink to="/gentraining">
                     <GiCardRandom />
                 </NavLink>
-                <NavLink to="/custom-training">
+                <NavLink
+                    to="/custom-training"
+                    onClick={() => dispatch(writeCurrentTraining([]))}
+                >
                     <MdOutlineDashboardCustomize />
                 </NavLink>
                 <NavLink to="/contact">

@@ -14,7 +14,7 @@ import {
     formTrainingStyleForm,
 } from "../FormGenerationTraining/styles/stylesFormGeneration"
 
-interface IState {
+export interface IState {
     filterTraining: {
         isChecked: string[]
         categories: string[]

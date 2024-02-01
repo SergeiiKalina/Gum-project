@@ -1,5 +1,4 @@
 @import "../../adaptive-fontMixin.scss";
-
 .registration_loader {
     color: white;
 }
@@ -33,42 +32,31 @@
         margin-top: 50px;
         @include adaptive-font(30, 24);
     }
-}
-
-/* Смартфони (переважно портретна орієнтація) */
+} /* Смартфони (переважно портретна орієнтація) */
 @media only screen and (max-width: 480px) {
     .registration_form {
         .registration_input_block {
             width: 100%;
         }
     }
-}
-
-/* Смартфони (переважно ландшафтна орієнтація) */
+} /* Смартфони (переважно ландшафтна орієнтація) */
 @media only screen and (min-width: 481px) and (max-width: 767px) {
     .registration_form {
         width: 100%;
     }
-}
-
-/* Планшети */
+} /* Планшети */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .registration_form {
         width: 90%;
     }
-}
-
-/* Невеликі настільні комп'ютери та ноутбуки */
+} /* Невеликі настільні комп'ютери та ноутбуки */
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
     .registration_form {
         width: 80%;
-
         .registration_input_block {
             width: 60%;
         }
     }
-}
-
-/* Середні настільні комп'ютери */
+} /* Середні настільні комп'ютери */
 @media only screen and (min-width: 1281px) and (max-width: 1440px) {
 }
