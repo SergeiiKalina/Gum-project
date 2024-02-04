@@ -1,5 +1,39 @@
 @import "./../../adaptive-fontMixin.scss";
 
+.place_training_wrapper {
+    width: 70%;
+    height: calc(100dvh - 87px - 40px - 50px - 46px);
+    margin: 0 auto;
+    h2 {
+        @include adaptive-font(30, 20);
+        padding: 16px 0;
+    }
+    article {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .place_training__button {
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+        @include adaptive-font(100, 70);
+        height: 300px;
+
+        span {
+            padding-top: 8px;
+            @include adaptive-font(18, 16);
+        }
+    }
+    .place_training__button:hover {
+        background-color: black;
+    }
+}
+
 .save_and_generation_training_popup {
     width: 100dvw;
     height: 100dvh;
@@ -160,8 +194,14 @@
     }
 }
 @media (max-width: 1024px) {
+    .place_training_wrapper {
+        width: 90%;
+    }
 }
 @media (max-width: 767px) {
+    .place_training_wrapper {
+        width: 100%;
+    }
     .form_gen_train_step_wrapper {
         section {
             width: 100%;
@@ -172,10 +212,6 @@
     }
 }
 @media (max-width: 600px) {
-    .wrapper_two_button {
-        width: 80%;
-        justify-content: space-evenly;
-    }
 }
 @media screen and (max-width: 460px) {
     .form_gen_train_step_wrapper {
@@ -194,4 +230,7 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 360px) {
 }

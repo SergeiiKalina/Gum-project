@@ -10,6 +10,16 @@ export const stylesField = {
         width: "90%",
     },
 }
+export const stylesFieldRegistrationForm = {
+    width: "100%",
+    margin: "20px auto 0 auto",
+    [theme.breakpoints.down("md")]: {
+        width: "100%",
+    },
+    [theme.breakpoints.down("xs")]: {
+        width: "100%",
+    },
+}
 
 export const styledRadioGroup = {
     width: "15%",
@@ -35,13 +45,20 @@ export const styledRadioGroup = {
 }
 
 export const stylesFormButton = {
-    width: "20%",
+    width: "30%",
+    padding: "40px 0",
     margin: "0 auto",
+    [theme.breakpoints.down("lg")]: {
+        width: "50%",
+    },
     [theme.breakpoints.down("md")]: {
-        width: "30%",
+        width: "60%",
+    },
+    [theme.breakpoints.down("sm")]: {
+        width: "80%",
     },
     [theme.breakpoints.down("xs")]: {
-        width: "40%",
+        width: "95%",
     },
 }
 
@@ -90,7 +107,7 @@ export const stylesFormLabelRadioGroup = {
 export const stylesButtonWrapper = {
     width: "100%",
     display: "flex",
-    margin: "24px auto 0 auto",
+    margin: "12px auto 0 auto",
     paddingBottom: "20px",
 }
 

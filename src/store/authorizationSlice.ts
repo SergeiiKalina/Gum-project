@@ -4,18 +4,61 @@ import AuthService from "../services/AuthService"
 import axios from "axios"
 import { AuthResponse } from "../models/response/AuthResponse"
 import { API_URL } from "../http"
+export interface IRegistrationData {
+    email: string
+    name?: string
+    password: string
+    sex?: string
+    age?: number
+    benchPress?: number
+    deadLift?: number
+    goal?: string
+    lifestyle?: string
+    problems?: string[]
+    pullUp?: number
+    sitUp?: number
+    squat?: number
+    weight?: string | number
+    bodyType?: string
+    pushUpQuantity?: number
+    squatQuantity?: number
+    fitnessLevel?: number
+    bodyMassIndex?: number
+    inventory?: string[]
+}
 
 const initialState: IInitialStateAuthorizationSlice = {
     user: {
         email: "",
         id: "",
         isActivated: false,
-        firstName: "",
-        lastName: "",
+        name: "",
     },
     isAuth: false,
     isLoading: false,
     error: "",
+    registrationData: {
+        email: "",
+        name: "",
+        password: "",
+        sex: "",
+        age: 0,
+        benchPress: 0,
+        deadLift: 0,
+        goal: "",
+        lifestyle: "",
+        problems: [""],
+        pullUp: 0,
+        sitUp: 0,
+        squat: 0,
+        weight: "",
+        bodyType: "",
+        pushUpQuantity: 0,
+        squatQuantity: 0,
+        fitnessLevel: 1,
+        bodyMassIndex: 2,
+        inventory: [""],
+    },
 }
 
 export interface IInitialStateAuthorizationSlice {
@@ -23,13 +66,13 @@ export interface IInitialStateAuthorizationSlice {
     isAuth: boolean
     isLoading: boolean
     error: string | undefined
+    registrationData: IRegistrationData
 }
 
 export interface IPropertyRegistration {
     email: string
     password: string
-    firstName: string
-    lastName: string
+    name: string
 }
 export interface IPropertyLogin {
     email: string
@@ -43,8 +86,8 @@ export const login = createAsyncThunk(
             const response = await AuthService.login(email, password)
 
             localStorage.setItem("token", response.data.accessToken)
-            localStorage.setItem("firstName", response.data.user.firstName)
-            localStorage.setItem("lastName", response.data.user.lastName)
+            localStorage.setItem("firstName", response.data.user.name)
+
             localStorage.setItem("email", response.data.user.email)
             return response.data.user
         } catch (error: any) {
@@ -55,21 +98,18 @@ export const login = createAsyncThunk(
 
 export const registration = createAsyncThunk(
     "authorizationSlice/registration",
-    async ({ email, password, firstName, lastName }: IPropertyRegistration) => {
+    async ({ email, password, name }: IPropertyRegistration) => {
         try {
-            const defaultFirstName = firstName || "user"
-            const defaultLastName = lastName || "user"
+            const defaultFirstName = name || "user"
 
             const response = await AuthService.registration(
                 email,
                 password,
-                defaultFirstName,
-                defaultLastName
+                defaultFirstName
             )
 
             localStorage.setItem("token", response.data.accessToken)
-            localStorage.setItem("firstName", response.data.user.firstName)
-            localStorage.setItem("lastName", response.data.user.lastName)
+            localStorage.setItem("name", response.data.user.name)
             localStorage.setItem("email", response.data.user.email)
             return response.data.user
         } catch (error) {
@@ -114,6 +154,9 @@ const authorizationSlice = createSlice({
         toggleIsLoading(state, action: PayloadAction<boolean>) {
             state.isLoading = action.payload
         },
+        writeRegistrationData(state, action: PayloadAction<IRegistrationData>) {
+            state.registrationData = action.payload
+        },
     },
     extraReducers: (build) => {
         build
@@ -155,6 +198,7 @@ const authorizationSlice = createSlice({
     },
 })
 
-export const { toggleIsLoading } = authorizationSlice.actions
+export const { toggleIsLoading, writeRegistrationData } =
+    authorizationSlice.actions
 
 export default authorizationSlice.reducer

@@ -115,17 +115,75 @@ function filterArrayByCategory(
 
 function calculateIndicators(data: IFormData): IFormData {
     if (data.placeToWorkout === "home") {
-        const { pushUpQuantity, sitUp, squatQuantity, age, weight, ...rest } =
-            data
+        const {
+            pushUpQuantity,
+            sitUp,
+            squatQuantity,
+            age,
+            weight,
+            pullUp,
+            sex,
+            ...rest
+        } = data
+
+        let cofSitUp = 0
+        let cofPullUp = 0
+        let cofSquat = 0
+        let cofPushUp = 0
+
+        if (sex === "female" && Number(sitUp) > 20) {
+            Number(sitUp) > 50 ? (cofSitUp = 3) : (cofSitUp = 2)
+        } else {
+            cofSitUp = 1
+        }
+        if (sex === "male" && Number(sitUp) > 30) {
+            Number(sitUp) > 60 ? (cofSitUp = 3) : (cofSitUp = 2)
+        } else {
+            cofSitUp = 1
+        }
+        if (sex === "female" && Number(pullUp) > 1) {
+            Number(pullUp) > 7 ? (cofPullUp = 3) : (cofPullUp = 2)
+        } else {
+            cofPullUp = 1
+        }
+        if (sex === "male" && Number(pullUp) > 3) {
+            Number(pullUp) > 10 ? (cofPullUp = 3) : (cofPullUp = 2)
+        } else {
+            cofPullUp = 1
+        }
+        if (sex === "female" && Number(squatQuantity) > 20) {
+            Number(squatQuantity) > 50 ? (cofSquat = 3) : (cofSquat = 2)
+        } else {
+            cofSquat = 1
+        }
+        if (sex === "male" && Number(squatQuantity) > 30) {
+            Number(squatQuantity) > 80 ? (cofSquat = 3) : (cofSquat = 2)
+        } else {
+            cofSquat = 1
+        }
+        if (sex === "female" && Number(pushUpQuantity) > 10) {
+            Number(pushUpQuantity) > 30 ? (cofPushUp = 3) : (cofPushUp = 2)
+        } else {
+            cofPushUp = 1
+        }
+        if (sex === "male" && Number(pushUpQuantity) > 15) {
+            Number(pushUpQuantity) > 50 ? (cofPushUp = 3) : (cofPushUp = 2)
+        } else {
+            cofPushUp = 1
+        }
         const fitnessLevel = Math.round(
-            (Number(pushUpQuantity) + Number(sitUp) + Number(squatQuantity)) / 3
+            (Number(cofPushUp) +
+                Number(cofSitUp) +
+                Number(cofSquat) +
+                Number(cofPullUp)) /
+                4
         )
 
         const bodyMassIndex = Math.round(
             (Number(weight) / (1.75 * 1.75)) * Number(age)
         )
 
-        return { ...rest, fitnessLevel, bodyMassIndex }
+        return { ...rest, fitnessLevel, bodyMassIndex, sex }
     } else if (data.placeToWorkout === "gym") {
         const {
             benchPress,
@@ -542,6 +600,8 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
 }
 export const generateTraining = (data: IFormData) => {
     const updateData = calculateIndicators(data)
+
     const result = generateTrainingForHome(updateData, updateData.focus)
+
     return result
 }

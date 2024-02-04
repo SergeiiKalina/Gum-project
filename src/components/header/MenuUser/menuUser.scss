@@ -2,11 +2,11 @@
 .menu_user_wrapper {
     position: fixed;
     top: 60px;
-    left: 0;
+    left: -100px;
     background-color: white;
     display: flex;
     justify-content: center;
-    width: 100%;
+
     border-radius: 20px;
     z-index: 3;
     ul {
@@ -15,11 +15,13 @@
             margin: 0;
         }
         span {
+            display: flex;
             @include adaptive-font(16, 12);
             color: grey;
+            justify-content: center;
         }
         li {
-            width: 100%;
+            width: 170px;
             margin: 4px 0;
         }
         .button_wrapper {

@@ -10,11 +10,7 @@ const MenuUser: FC = () => {
         <section className="menu_user_wrapper" id="userMenu">
             <ul>
                 <li>
-                    <span>
-                        {localStorage.getItem("firstName") +
-                            " " +
-                            localStorage.getItem("lastName")}
-                    </span>
+                    <span>{localStorage.getItem("name")}</span>
                 </li>
                 <li>
                     <button

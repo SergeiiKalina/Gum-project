@@ -61,6 +61,7 @@ function ExerciseItem({ exercises }: IExerciseItem) {
                                                 <img
                                                     src={element.img}
                                                     className="exercise_item_block_img"
+                                                    alt={element.title}
                                                 />
                                                 <div className="exercise_item_block_left_part_info">
                                                     <span>{element.title}</span>

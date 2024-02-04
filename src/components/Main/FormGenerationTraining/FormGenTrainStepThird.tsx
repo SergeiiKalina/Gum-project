@@ -90,14 +90,6 @@ export default function FormGenTrainStepThird(): React.JSX.Element {
                 ...formData,
                 ...data,
             })
-
-            await dispatch(writeFormData({ ...formData, ...data }))
-            await dispatch(
-                writeCurrentTraining(
-                    generateTraining({ ...formData, ...data })!
-                )
-            )
-            await navigate("/finished-training")
         }
         if (currentButton === "generateAndNotSave") {
             await dispatch(writeFormData({ ...formData, ...data }))

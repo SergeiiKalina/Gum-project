@@ -17,9 +17,9 @@ const AccountIcon: FC<IAccountIconProps> = ({ toggleMenuUser }) => {
         <section className="account_icon_wrapper">
             {isAuth ? (
                 <span id="nameUser">
-                    {localStorage.getItem("firstName") +
-                        " " +
-                        localStorage.getItem("lastName")}
+                    {localStorage.getItem("name")
+                        ? localStorage.getItem("name")
+                        : ""}
                 </span>
             ) : (
                 <NavLink to="/">Log in</NavLink>

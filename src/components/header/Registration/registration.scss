@@ -8,6 +8,7 @@
     flex-direction: column;
     width: 60%;
     margin: 0 auto;
+    padding-bottom: 50px;
     .registration_input_block {
         width: 60%;
         position: relative;
@@ -18,9 +19,8 @@
             left: 0;
             color: white;
         }
-        span {
-            color: red;
-            @include adaptive-font(14, 12);
+        .MuiSlider-markLabel {
+            color: white;
         }
     }
     .registration_input_block:hover {
@@ -35,6 +35,7 @@
 } /* Смартфони (переважно портретна орієнтація) */
 @media only screen and (max-width: 480px) {
     .registration_form {
+        width: 95%;
         .registration_input_block {
             width: 100%;
         }

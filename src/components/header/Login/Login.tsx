@@ -31,8 +31,10 @@ function Login(): React.JSX.Element {
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
     useEffect(() => {
-        if (isAuth) {
-            navigate("/gentraining")
+        if (localStorage.getItem("email")) {
+            if (isAuth) {
+                navigate("/gentraining")
+            }
         }
     }, [navigate, isAuth])
     const handlerGoogleLogin = () => {
@@ -49,7 +51,6 @@ function Login(): React.JSX.Element {
     }
     return (
         <section className="login_block">
-            {" "}
             {isLoading ? (
                 <CircularProgress
                     sx={{

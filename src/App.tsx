@@ -6,12 +6,11 @@ import RegistrationForTraining from "./components/Main/RegistrationForTraining/R
 import Contacts from "./components/header/Contacts/Contacts"
 import AdminForm from "./components/Other/AdminForm/AdminForm"
 import StartTraining from "./components/Main/StartTraining/StartTraining"
-import HomeTestForm from "./components/Main/FormGenerationTraining/HomeTestForm"
+import HomeTestForm from "./components/Main/FormGenerationTraining/HomeSelectSplitTraining"
 import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory"
 import FormGenTrainStepThird from "./components/Main/FormGenerationTraining/FormGenTrainStepThird"
 import FinishedTraining from "./components/Main/FinishedTraining/FinishedTraining"
-import FormGenTrainStepTwo from "./components/Main/FormGenerationTraining/FormGenTrainStepTwo"
-import GymTestForm from "./components/Main/FormGenerationTraining/GymTestForm"
+import GymSelectSpritTraining from "./components/Main/FormGenerationTraining/GymSelectSplitTraining"
 import Login from "./components/header/Login/Login"
 import Registration from "./components/header/Registration/Registration"
 import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGenTrainStepOne"
@@ -50,20 +49,17 @@ function App(): React.JSX.Element {
                             path="/finished-training"
                             element={<FinishedTraining />}
                         />
+
                         <Route
-                            path="/gentraining/step-2"
-                            element={<FormGenTrainStepTwo />}
-                        />
-                        <Route
-                            path="/gentraining/step-3/gym"
-                            element={<GymTestForm />}
+                            path="/gentraining/step-2/gym"
+                            element={<GymSelectSpritTraining />}
                         />
                         <Route
                             path="/gentraining/step-4/gym"
                             element={<FormGenTrainStepThird />}
                         />
                         <Route
-                            path="/gentraining/step-3/home"
+                            path="/gentraining/step-2/home"
                             element={<HomeTestForm />}
                         />
                         <Route
