@@ -57,7 +57,11 @@ function CustomTraining(): React.JSX.Element {
                 </Box>
             </header>
 
-            {planTrainingArr && <ExerciseItem exercises={planTrainingArr} />}
+            {planTrainingArr.length !== 0 ? (
+                <ExerciseItem exercises={planTrainingArr} />
+            ) : (
+                <h2 className="custom_training_not_exercise">Not Exercise</h2>
+            )}
             {planTrainingArr.length !== 0 && <ButtonStartTraining />}
             {toggleAddExerciseMenu && (
                 <AddExercise

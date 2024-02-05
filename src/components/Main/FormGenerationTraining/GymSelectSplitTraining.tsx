@@ -54,9 +54,12 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     variant="contained"
                     type="submit"
                     sx={stylesFormButton}
+                    className="background_image_full_body"
                     onClick={() => startGenerationTraining("fullBody")}
                 >
-                    Full Body
+                    <span className="header_button_generation_training">
+                        Full Body
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -64,9 +67,12 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     variant="contained"
                     type="submit"
                     sx={stylesFormButton}
+                    className="background_image_upper_body"
                     onClick={() => startGenerationTraining("UpperBody")}
                 >
-                    Upper Body
+                    <span className="header_button_generation_training">
+                        Upper Body
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -75,8 +81,11 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     onClick={() => startGenerationTraining("lowerBody")}
+                    className="background_image_lower_body"
                 >
-                    Lower Body
+                    <span className="header_button_generation_training">
+                        Lower Body
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -85,8 +94,11 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     onClick={() => startGenerationTraining("legs")}
+                    className="background_image_legs"
                 >
-                    Legs
+                    <span className="header_button_generation_training">
+                        Legs
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -95,8 +107,11 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     onClick={() => startGenerationTraining("back")}
+                    className="background_image_back"
                 >
-                    Back
+                    <span className="header_button_generation_training">
+                        Back
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -105,8 +120,11 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     onClick={() => startGenerationTraining("chest")}
+                    className="background_image_chest"
                 >
-                    Chest
+                    <span className="header_button_generation_training">
+                        Chest
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -115,8 +133,11 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     onClick={() => startGenerationTraining("shoulders")}
+                    className="background_image_shoulder"
                 >
-                    Shoulders
+                    <span className="header_button_generation_training">
+                        Shoulders
+                    </span>
                 </Button>
             </div>
             <div style={stylesButtonWrapper}>
@@ -125,16 +146,24 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     onClick={() => startGenerationTraining("hand")}
+                    className="background_image_hand"
                 >
-                    Hand
+                    <span className="header_button_generation_training">
+                        Hand
+                    </span>
                 </Button>
             </div>
-            <div
-                style={stylesButtonWrapper}
-                onClick={() => startGenerationTraining("press")}
-            >
-                <Button variant="contained" type="submit" sx={stylesFormButton}>
-                    Press
+            <div style={stylesButtonWrapper}>
+                <Button
+                    variant="contained"
+                    type="submit"
+                    sx={stylesFormButton}
+                    onClick={() => startGenerationTraining("press")}
+                    className="background_image_press"
+                >
+                    <span className="header_button_generation_training">
+                        Press
+                    </span>
                 </Button>
             </div>
         </section>

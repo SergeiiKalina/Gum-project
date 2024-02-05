@@ -37,7 +37,6 @@ function Header(): React.JSX.Element {
     return (
         <header className="header">
             <Logo />
-            <AccountIcon toggleMenuUser={toggleMenuUser} />
         </header>
     )
 }

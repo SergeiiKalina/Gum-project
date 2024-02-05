@@ -45,20 +45,23 @@ export const styledRadioGroup = {
 }
 
 export const stylesFormButton = {
-    width: "30%",
-    padding: "40px 0",
+    width: "1000px",
+    height: "300px",
     margin: "0 auto",
+
     [theme.breakpoints.down("lg")]: {
-        width: "50%",
+        width: "800px",
     },
     [theme.breakpoints.down("md")]: {
-        width: "60%",
+        width: "700px",
     },
     [theme.breakpoints.down("sm")]: {
-        width: "80%",
+        width: "500px",
+        height: "250px",
     },
     [theme.breakpoints.down("xs")]: {
-        width: "95%",
+        width: "99%",
+        height: "200px",
     },
 }
 

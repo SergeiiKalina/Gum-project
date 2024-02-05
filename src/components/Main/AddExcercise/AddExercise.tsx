@@ -120,9 +120,7 @@ export default function AddExercise({
         )[0]
 
         let elementId: number = element.id
-
         const clonedValue: ITraining[] = structuredClone(planTrainingArr)
-        console.log(clonedValue)
         let check: boolean = clonedValue.some(
             (el: ITraining) => el.id === elementId
         )

@@ -1,8 +1,89 @@
 @import "./../../adaptive-fontMixin.scss";
 
+.background_image_full_body {
+    position: relative;
+    background-image: url("./images/fullBody.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_upper_body {
+    position: relative;
+    background-image: url("./images/upperBody.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_lower_body {
+    position: relative;
+    background-image: url("./images/lowerBody.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_legs {
+    position: relative;
+    background-image: url("./images/legs.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_back {
+    position: relative;
+    background-image: url("./images/back.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_chest {
+    position: relative;
+    background-image: url("./images/chest.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_shoulder {
+    position: relative;
+    background-image: url("./images/shoulder.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_hand {
+    position: relative;
+    background-image: url("./images/hand.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_press {
+    position: relative;
+    background-image: url("./images/press.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.header_button_generation_training {
+    display: block;
+    position: absolute;
+    @include adaptive-font(50, 26);
+    font-weight: 700;
+    top: 50%;
+    left: 30px;
+    transform: translate(0%, -50%);
+}
 .place_training_wrapper {
     width: 70%;
-    height: calc(100dvh - 87px - 40px - 50px - 46px);
+    height: calc(100dvh - 92px - 40px - 50px - 46px);
     margin: 0 auto;
     h2 {
         @include adaptive-font(30, 20);
@@ -58,7 +139,6 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    background-color: #1a2131;
     padding-bottom: 50px;
     .form_error_message {
         width: 60%;

@@ -1,13 +1,13 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import { BsPersonCircle } from "react-icons/bs"
 import { FaDumbbell } from "react-icons/fa6"
-import { FaHistory } from "react-icons/fa"
 import { GiCardRandom } from "react-icons/gi"
 import { MdOutlineDashboardCustomize } from "react-icons/md"
-import "./footer.scss"
-import { useDispatch } from "react-redux"
+import { CiSettings } from "react-icons/ci"
 import { writeCurrentTraining } from "../../store/generatorTrainingReducer"
+import "./footer.scss"
 
 function Footer(): React.JSX.Element {
     const dispatch = useDispatch()
@@ -26,11 +26,12 @@ function Footer(): React.JSX.Element {
                 >
                     <MdOutlineDashboardCustomize />
                 </NavLink>
-                <NavLink to="/contact">
-                    <FaHistory />
-                </NavLink>
+
                 <NavLink to="/workout">
                     <FaDumbbell />
+                </NavLink>
+                <NavLink to="/">
+                    <CiSettings />
                 </NavLink>
             </menu>
         </footer>

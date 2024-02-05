@@ -3,12 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import MyLayouts from "./components/layouts/MyLayouts"
 import Training from "./components/Main/Training/Training"
 import RegistrationForTraining from "./components/Main/RegistrationForTraining/RegistrationForTraining"
-import Contacts from "./components/header/Contacts/Contacts"
 import AdminForm from "./components/Other/AdminForm/AdminForm"
 import StartTraining from "./components/Main/StartTraining/StartTraining"
 import HomeTestForm from "./components/Main/FormGenerationTraining/HomeSelectSplitTraining"
 import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory"
-import FormGenTrainStepThird from "./components/Main/FormGenerationTraining/FormGenTrainStepThird"
 import FinishedTraining from "./components/Main/FinishedTraining/FinishedTraining"
 import GymSelectSpritTraining from "./components/Main/FormGenerationTraining/GymSelectSplitTraining"
 import Login from "./components/header/Login/Login"
@@ -54,10 +52,7 @@ function App(): React.JSX.Element {
                             path="/gentraining/step-2/gym"
                             element={<GymSelectSpritTraining />}
                         />
-                        <Route
-                            path="/gentraining/step-4/gym"
-                            element={<FormGenTrainStepThird />}
-                        />
+
                         <Route
                             path="/gentraining/step-2/home"
                             element={<HomeTestForm />}
@@ -67,20 +62,16 @@ function App(): React.JSX.Element {
                             element={<AvailabilityOfInventory />}
                         />
                         <Route
-                            path="/gentraining/step-5/home"
-                            element={<FormGenTrainStepThird />}
-                        />
-                        <Route
                             path="registrationfortraining"
                             element={<RegistrationForTraining />}
                         />
                         <Route path="admin" element={<AdminForm />} />
-                        <Route path="contacts" element={<Contacts />} />
+
                         <Route
                             path="start_training"
                             element={<StartTraining />}
                         />
-                        <Route path="contact" element={<Contacts />} />
+
                         <Route path="registration" element={<Registration />} />
                     </Route>
                 </Routes>
