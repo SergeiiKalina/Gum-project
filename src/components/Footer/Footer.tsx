@@ -30,7 +30,7 @@ function Footer(): React.JSX.Element {
                 <NavLink to="/workout">
                     <FaDumbbell />
                 </NavLink>
-                <NavLink to="/">
+                <NavLink to="/setup">
                     <CiSettings />
                 </NavLink>
             </menu>

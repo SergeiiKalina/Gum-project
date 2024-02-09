@@ -86,7 +86,7 @@ export const login = createAsyncThunk(
             const response = await AuthService.login(email, password)
 
             localStorage.setItem("token", response.data.accessToken)
-            localStorage.setItem("firstName", response.data.user.name)
+            localStorage.setItem("name", response.data.user.name)
 
             localStorage.setItem("email", response.data.user.email)
             return response.data.user
@@ -142,7 +142,7 @@ export const checkAuth = createAsyncThunk(
             localStorage.setItem("token", response.data.accessToken)
             return response.data.user
         } catch (error: any) {
-            console.log(error.response?.data?.message)
+            throw new Error("User not login")
         }
     }
 )
@@ -194,6 +194,12 @@ const authorizationSlice = createSlice({
                 state.user = action.payload
                 state.isAuth = true
                 state.isLoading = false
+            })
+            .addCase(checkAuth.rejected, (state, action: any) => {
+                state.user = action.payload
+                state.isAuth = false
+                state.isLoading = false
+                localStorage.clear()
             })
     },
 })

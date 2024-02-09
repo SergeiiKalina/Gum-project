@@ -70,12 +70,7 @@ const PersonalData: React.FC = () => {
     return (
         <section className="wrapper_personal_data">
             <ul>
-                <li>
-                    Full name:{" "}
-                    {userData?.firstName && userData?.lastName
-                        ? userData?.firstName + " " + userData?.lastName
-                        : ""}
-                </li>
+                <li>Name: {userData?.name ? userData?.name : ""}</li>
                 <li>
                     <span>
                         Email: {userData?.email ? userData.email : ""}

@@ -6,8 +6,7 @@ export interface IDataUserGoogle {
 }
 
 export interface IUserData {
-    firstName: string
-    lastName: string
+    name: string
     email: string
     IsActivated: boolean
     sex: string
@@ -22,6 +21,9 @@ export interface IUserData {
     goal: string
     problems: string[]
     age: number
+    registrationDate?: string
+    pushUpQuantity?: string
+    squatQuantity: string
 }
 
 export interface IUsersSlice {
@@ -35,8 +37,7 @@ const initialState: IUsersSlice = {
         photoURL: "",
     },
     dataUser: {
-        firstName: "",
-        lastName: "",
+        name: "",
         email: "",
         IsActivated: false,
         sex: "",
@@ -51,6 +52,8 @@ const initialState: IUsersSlice = {
         goal: "",
         problems: [],
         age: 1.1,
+        squatQuantity: "0",
+        pushUpQuantity: "0",
     },
 }
 

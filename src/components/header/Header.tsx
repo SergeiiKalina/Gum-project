@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Logo from "./Logo/Logo"
 import "./header.scss"
-import AccountIcon from "./MenuUser/Account-Icon/AccountIcon"
 
 function Header(): React.JSX.Element {
     const [toggleMenuUser, setToggleMenuUser] = useState(false)

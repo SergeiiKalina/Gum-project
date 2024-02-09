@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux"
 import { checkAuth } from "./store/authorizationSlice"
 import "./App.scss"
 import CustomTraining from "./components/Main/CustomTraining/CustomTraining"
+import MenuUser from "./components/header/MenuUser/MenuUser"
 
 function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
@@ -71,7 +72,7 @@ function App(): React.JSX.Element {
                             path="start_training"
                             element={<StartTraining />}
                         />
-
+                        <Route path="setup" element={<MenuUser />} />
                         <Route path="registration" element={<Registration />} />
                     </Route>
                 </Routes>
