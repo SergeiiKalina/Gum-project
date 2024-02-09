@@ -65,7 +65,6 @@ const MenuUser: FC = () => {
             console.log(error)
         }
     }
-    console.log(toggleRewriteData)
     return (
         <>
             <form

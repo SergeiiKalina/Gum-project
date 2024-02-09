@@ -6,6 +6,7 @@ export interface IGeneratorTrainingSliceData {
     formData: IFormData
     startTrainingIndex: number
     thisDragElement: ITraining | null
+    currentExerciseId: string
 }
 export interface IFormData {
     age?: number
@@ -58,12 +59,16 @@ const initialState: IGeneratorTrainingSliceData = {
     },
     startTrainingIndex: 9999,
     thisDragElement: null,
+    currentExerciseId: "",
 }
 
 const generatorTrainingSlice = createSlice({
     name: "generatorTrainingSlice",
     initialState,
     reducers: {
+        writeCurrentVideoId(state, action: PayloadAction<string>) {
+            state.currentExerciseId = action.payload
+        },
         writeCurrentTraining(state, action: PayloadAction<any[]>) {
             state.arr = action.payload
         },
@@ -88,6 +93,7 @@ export const {
     changeCompleted,
     setIndexStartTraining,
     writeDragElement,
+    writeCurrentVideoId,
 } = generatorTrainingSlice.actions
 
 export default generatorTrainingSlice.reducer

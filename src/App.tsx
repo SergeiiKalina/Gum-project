@@ -18,6 +18,7 @@ import { checkAuth } from "./store/authorizationSlice"
 import "./App.scss"
 import CustomTraining from "./components/Main/CustomTraining/CustomTraining"
 import MenuUser from "./components/header/MenuUser/MenuUser"
+import Exercise from "./components/Main/Exercise/Exercise"
 
 function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
@@ -32,6 +33,7 @@ function App(): React.JSX.Element {
                     <Route path="/" element={<MyLayouts />}>
                         <Route path="workout" element={<Training />} />
                         <Route index element={<Login />} />
+                        <Route path="/exercise" element={<Exercise />} />
                         <Route
                             path="gentraining"
                             element={<FormGenTrainStepOne />}

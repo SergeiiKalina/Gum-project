@@ -6,9 +6,13 @@ import {
     DragDropContext,
     DropResult,
 } from "react-beautiful-dnd"
-import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
+import {
+    writeCurrentTraining,
+    writeCurrentVideoId,
+} from "../../../store/generatorTrainingReducer"
 import { MdOutlineKeyboardArrowRight } from "react-icons/md"
 import "./exerciseItem.scss"
+import { useNavigate } from "react-router-dom"
 
 interface IExerciseItem {
     exercises: ITraining[]
@@ -16,7 +20,7 @@ interface IExerciseItem {
 
 function ExerciseItem({ exercises }: IExerciseItem) {
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const handleDragEnd = (result: DropResult): void => {
         const {
             destination,
@@ -73,7 +77,27 @@ function ExerciseItem({ exercises }: IExerciseItem) {
                                                 </div>
                                             </article>
                                             <article className="exercise_item_block_right_part">
-                                                <MdOutlineKeyboardArrowRight />
+                                                <button
+                                                    type="button"
+                                                    onTouchStart={() => {
+                                                        dispatch(
+                                                            writeCurrentVideoId(
+                                                                element.youtubeLink
+                                                                    .replace(
+                                                                        "https://www.youtube.com/watch?v=",
+                                                                        ""
+                                                                    )
+                                                                    .replace(
+                                                                        "https://www.youtube.com/shorts/",
+                                                                        ""
+                                                                    )
+                                                            )
+                                                        )
+                                                        navigate("/exercise")
+                                                    }}
+                                                >
+                                                    <MdOutlineKeyboardArrowRight />
+                                                </button>
                                             </article>
                                         </section>
                                     </li>
