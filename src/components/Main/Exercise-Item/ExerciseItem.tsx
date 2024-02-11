@@ -36,6 +36,10 @@ function ExerciseItem({ exercises }: IExerciseItem) {
 
         dispatch(writeCurrentTraining(cloneExercises))
     }
+    const handleNavigate = (element: ITraining) => {
+        dispatch(writeCurrentVideoId(element))
+        navigate("/exercise")
+    }
 
     return (
         <DragDropContext onDragEnd={handleDragEnd}>
@@ -79,22 +83,12 @@ function ExerciseItem({ exercises }: IExerciseItem) {
                                             <article className="exercise_item_block_right_part">
                                                 <button
                                                     type="button"
-                                                    onTouchStart={() => {
-                                                        dispatch(
-                                                            writeCurrentVideoId(
-                                                                element.youtubeLink
-                                                                    .replace(
-                                                                        "https://www.youtube.com/watch?v=",
-                                                                        ""
-                                                                    )
-                                                                    .replace(
-                                                                        "https://www.youtube.com/shorts/",
-                                                                        ""
-                                                                    )
-                                                            )
-                                                        )
-                                                        navigate("/exercise")
-                                                    }}
+                                                    onTouchStart={() =>
+                                                        handleNavigate(element)
+                                                    }
+                                                    onClick={() =>
+                                                        handleNavigate(element)
+                                                    }
                                                 >
                                                     <MdOutlineKeyboardArrowRight />
                                                 </button>

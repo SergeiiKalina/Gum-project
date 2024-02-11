@@ -9,6 +9,11 @@ h2 {
     text-align: center;
     color: #fefefe;
 }
-.swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background: white;
+.border_logic_block {
+    display: block;
+    width: 25px;
+    height: 5px;
+    background-color: aliceblue;
+    margin: 12px auto 0 auto;
+    border-radius: 10px;
 }

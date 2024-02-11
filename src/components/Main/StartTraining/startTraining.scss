@@ -1,10 +1,11 @@
 @import "./../../adaptive-fontMixin.scss";
 .start_training_section {
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: #1a2131;
+
     padding-bottom: 50px;
 
     .start_training_infoBlock {

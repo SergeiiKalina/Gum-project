@@ -1,18 +1,12 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
-import OutlinedInput from "@mui/material/OutlinedInput"
-import InputLabel from "@mui/material/InputLabel"
-import MenuItem from "@mui/material/MenuItem"
-import FormControl from "@mui/material/FormControl"
-import ListItemText from "@mui/material/ListItemText"
-import Select, { SelectChangeEvent } from "@mui/material/Select"
-import Checkbox from "@mui/material/Checkbox"
+import { useDispatch } from "react-redux"
 import { changeIsChecked, writeData } from "../../../store/filterTrainingSlice"
 import "./formTraining.scss"
-import {
-    formTrainingSelect,
-    formTrainingStyleForm,
-} from "../FormGenerationTraining/styles/stylesFormGeneration"
+import { Button, IconButton, Paper, TextField } from "@mui/material"
+import { PiSlidersHorizontalLight } from "react-icons/pi"
+import SearchIcon from "@mui/icons-material/Search"
+import { theme } from "../../Styled-components/Styled"
+import SelectCategories from "./SelectCategories/SelectCategories"
 
 export interface IState {
     filterTraining: {
@@ -21,81 +15,89 @@ export interface IState {
     }
 }
 
-const ITEM_HEIGHT = 48
-const ITEM_PADDING_TOP = 8
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 6 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-}
-
-const FormTraining = React.memo(function FormTraining(): React.JSX.Element {
+const FormTraining = React.memo(function FormTraining({
+    setToggleMobileFilterForm,
+}: {
+    setToggleMobileFilterForm: (arg: (arg: boolean) => boolean) => void
+}): React.JSX.Element {
     const dispatch = useDispatch()
-    const handleChange = (event: SelectChangeEvent<string[]>) => {
-        const {
-            target: { value },
-        } = event
-
-        onSubmit(typeof value === "string" ? value.split(",") : value)
-    }
-    const isChecked = useSelector(
-        (state: IState) => state.filterTraining.isChecked
-    )
-
-    const categories = useSelector(
-        (state: IState) => state.filterTraining.categories
-    )
 
     const onSubmit = (data: string[]) => {
         dispatch(writeData(Object.values(data)))
-
         dispatch(changeIsChecked(data))
     }
+
     return (
         <article className="form_training_wrapper">
-            <FormControl sx={formTrainingStyleForm}>
-                <InputLabel id="demo-multiple-checkbox-label">
-                    Categories
-                </InputLabel>
-                <Select
-                    sx={formTrainingSelect}
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    value={isChecked}
-                    onChange={handleChange}
-                    input={<OutlinedInput label="Categories" />}
-                    renderValue={(selected) =>
-                        selected
-                            .map(
-                                (el: string) =>
-                                    el[0].toUpperCase() + el.slice(1)
-                            )
-                            .join(", ")
-                    }
-                    MenuProps={MenuProps}
+            <SelectCategories onSubmit={onSubmit} />
+            <section>
+                <Paper
+                    component="form"
+                    sx={{
+                        position: "relative",
+                        display: "flex",
+                        alignItems: "center",
+                        width: "100%",
+                        maxWidth: "400px",
+                        minWidth: "250px",
+                        border: "1px white solid",
+                        borderRadius: "20px",
+                        backgroundColor: "transparent",
+                        [theme.breakpoints.down("xs")]: {
+                            minWidth: "200px",
+                        },
+                    }}
                 >
-                    {categories
-                        .slice()
-                        .sort((a, b) => a.localeCompare(b))
-                        .map((category) => (
-                            <MenuItem key={category} value={category}>
-                                <Checkbox
-                                    checked={isChecked.indexOf(category) > -1}
-                                />
-                                <ListItemText
-                                    primary={
-                                        category[0].toUpperCase() +
-                                        category.slice(1)
-                                    }
-                                />
-                            </MenuItem>
-                        ))}
-                </Select>
-            </FormControl>
+                    <TextField
+                        placeholder="Search..."
+                        variant="outlined"
+                        sx={{
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                border: "none",
+                            },
+                            "& .MuiInputBase-input": {
+                                color: "white",
+                            },
+                        }}
+                    />
+                    <IconButton
+                        type="button"
+                        sx={{
+                            position: "absolute",
+                            right: "10px",
+                            color: "white",
+                        }}
+                        aria-label="search"
+                    >
+                        <SearchIcon />
+                    </IconButton>
+                </Paper>
+                <Button
+                    variant="outlined"
+                    sx={{
+                        display: "none",
+                        fontSize: "35px",
+                        borderRadius: "20px",
+                        color: "white",
+                        border: "1px solid white",
+                        padding: "10px 0",
+                        marginLeft: "10px",
+
+                        "&:hover": {
+                            border: "1px solid white",
+                        },
+                        [theme.breakpoints.down("md")]: {
+                            display: "flex",
+                        },
+                    }}
+                    onClick={() => {
+                        setToggleMobileFilterForm((prev: boolean) => !prev)
+                        document.body.style.overflow = "hidden"
+                    }}
+                >
+                    <PiSlidersHorizontalLight />
+                </Button>
+            </section>
         </article>
     )
 })

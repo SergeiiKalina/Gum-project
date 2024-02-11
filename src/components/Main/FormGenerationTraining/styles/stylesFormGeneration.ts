@@ -152,8 +152,11 @@ export const styleOutlinedInput = {
 }
 
 export const formTrainingStyleForm = {
-    width: "300px",
+    width: "50%",
+    maxWidth: "400px",
+    minWidth: "250px",
     zIndex: 1,
+    borderRadius: "20px",
     "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
         border: "1px solid white",
     },
@@ -172,10 +175,14 @@ export const formTrainingStyleForm = {
 
     "& fieldset": {
         borderColor: "white",
+        borderRadius: "20px",
     },
 
     "& .MuiSvgIcon-root": {
         color: "white",
+    },
+    [theme.breakpoints.down("md")]: {
+        display: "none",
     },
 }
 

@@ -15,12 +15,17 @@ import { paginationStyle } from "../FormGenerationTraining/styles/stylesFormGene
 import "./training.scss"
 import { IAuthSliceState } from "../../header/Login/Login"
 import { useNavigate } from "react-router-dom"
+import { ITraining } from "../../../data/data"
+import { writeCurrentVideoId } from "../../../store/generatorTrainingReducer"
+import MobileFilter from "../FormTraining/MobileFilter/MobileFilter"
 
 export interface IFilterTrainingSlice {
     filterTraining: IInitialState
 }
 
 function Training(): React.JSX.Element {
+    const [toggleMobileFilterForm, setToggleMobileFilterForm] =
+        useState<boolean>(false)
     const training = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.training
     )
@@ -82,11 +87,17 @@ function Training(): React.JSX.Element {
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCount(value)
     }
+    const handleNavigate = (element: ITraining) => {
+        dispatch(writeCurrentVideoId(element))
+        navigate("/exercise")
+    }
 
     return (
         <section className="training_section">
             <article className="training_article">
-                <FormTraining />
+                <FormTraining
+                    setToggleMobileFilterForm={setToggleMobileFilterForm}
+                />
                 <div className="training_block_training">
                     {arr.length ? (
                         arr
@@ -97,6 +108,7 @@ function Training(): React.JSX.Element {
                                     <div
                                         key={uuidv4()}
                                         className="training_training_item"
+                                        onClick={() => handleNavigate(tr)}
                                     >
                                         <img src={img} alt="img" />
                                         <p>{title}</p>
@@ -117,6 +129,10 @@ function Training(): React.JSX.Element {
                     sx={paginationStyle}
                 />
             </article>
+            <MobileFilter
+                toggleClass={toggleMobileFilterForm}
+                setToggleMobileFilterForm={setToggleMobileFilterForm}
+            />
         </section>
     )
 }

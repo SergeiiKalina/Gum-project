@@ -2,9 +2,14 @@ import React from "react"
 import { useSelector } from "react-redux"
 import YouTube from "react-youtube"
 import { IGeneratorTrainingSliceData } from "../../../store/generatorTrainingReducer"
+import { Button } from "@mui/material"
+import PlayArrowIcon from "@mui/icons-material/PlayArrow"
+import { useNavigate } from "react-router-dom"
+import { v4 as uuidv4 } from "uuid"
+import "./exercise.scss"
 
 const opts = {
-    height: "200px",
+    height: "100%",
     width: "100%",
     playerVars: {
         autoplay: 1,
@@ -16,13 +21,40 @@ export interface ITrainingSlice {
 }
 
 function Exercise() {
-    const videoId = useSelector(
-        (state: ITrainingSlice) => state.training.currentExerciseId
+    const navigate = useNavigate()
+    const exercise = useSelector(
+        (state: ITrainingSlice) => state.training.currentExercise
     )
-    console.log(videoId)
     return (
-        <section>
-            <YouTube videoId={videoId} opts={opts} />
+        <section className="exercise_container">
+            <article className="exercise_youtube_wrapper">
+                <YouTube
+                    videoId={exercise.youtubeLink
+                        .replace("https://www.youtube.com/watch?v=", "")
+                        .replace("https://www.youtube.com/shorts/", "")}
+                    opts={opts}
+                />
+            </article>
+            <span className="border_logic_block"></span>
+            <article className="exercise_describe_block">
+                <ul>
+                    {exercise.describe?.map((el) => (
+                        <li key={uuidv4()}>{el}</li>
+                    ))}
+                </ul>
+            </article>
+            <article className="exercise_button_block">
+                <Button
+                    variant="outlined"
+                    className="start_training_button"
+                    onClick={() => navigate(-1)}
+                >
+                    <PlayArrowIcon
+                        sx={{ margin: " 0 5px 0 0", rotate: "180deg" }}
+                    />
+                    Back
+                </Button>
+            </article>
         </section>
     )
 }
