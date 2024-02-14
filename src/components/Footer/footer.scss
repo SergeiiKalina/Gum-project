@@ -6,7 +6,7 @@
     left: 0;
     background-color: #576fa4;
     z-index: 10;
-    menu {
+    .footer_menu {
         width: 50%;
         height: 100%;
         display: flex;
@@ -20,14 +20,14 @@
 }
 @media (max-width: 767px) {
     .footer_wrapper {
-        menu {
+        .footer_menu {
             width: 60%;
         }
     }
 }
 @media (max-width: 460px) {
     .footer_wrapper {
-        menu {
+        .footer_menu {
             width: 90%;
         }
     }

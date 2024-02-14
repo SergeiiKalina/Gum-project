@@ -13,7 +13,7 @@ function Footer(): React.JSX.Element {
     const dispatch = useDispatch()
     return (
         <footer className="footer_wrapper">
-            <menu>
+            <menu className="footer_menu">
                 <NavLink to="/personal-data">
                     <BsPersonCircle />
                 </NavLink>
@@ -21,7 +21,7 @@ function Footer(): React.JSX.Element {
                     <GiCardRandom />
                 </NavLink>
                 <NavLink
-                    to="/custom-training"
+                    to="/plan-training"
                     onClick={() => dispatch(writeCurrentTraining([]))}
                 >
                     <MdOutlineDashboardCustomize />

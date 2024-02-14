@@ -1,5 +1,60 @@
 import { theme } from "../../../Styled-components/Styled"
 
+export const styledToggleButton = {
+    width: "90%",
+    padding: "6px",
+    borderColor: "white",
+    borderRadius: "15px",
+    color: "white",
+    marginTop: "12px",
+    [theme.breakpoints.down("md")]: {
+        width: "60%",
+    },
+    [theme.breakpoints.down("sm")]: {
+        width: "80%",
+    },
+    [theme.breakpoints.down("xs")]: {
+        width: "92%",
+    },
+    "&.Mui-selected": {
+        borderColor: "#42a5f5",
+        color: "#42a5f5",
+    },
+}
+
+export const styledToggleButtonWrapper = {
+    width: "100%",
+    marginTop: "10px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    justifyItems: "center",
+    "& .MuiToggleButtonGroup-grouped:not(:last-of-type)": {
+        borderTopRightRadius: "15px",
+        borderBottomRightRadius: "15px",
+    },
+    "& .MuiToggleButtonGroup-grouped:not(:first-of-type)": {
+        borderTopLeftRadius: "15px",
+        borderBottomLeftRadius: "15px",
+        borderLeft: "1px solid white",
+        color: "white",
+        marginLeft: "0",
+    },
+    "& .Mui-selected.MuiToggleButtonGroup-grouped:not(:first-of-type)": {
+        borderTopLeftRadius: "15px",
+        borderBottomLeftRadius: "15px",
+        borderLeft: "1px solid #42a5f5",
+        color: "#42a5f5",
+        marginLeft: "0",
+    },
+    "& .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected":
+        {
+            borderTopLeftRadius: "15px",
+            borderBottomLeftRadius: "15px",
+            color: "#42a5f5",
+            border: "1px solid #42a5f5",
+        },
+}
+
 export const stylesField = {
     width: "60%",
     margin: "20px auto 0 auto",

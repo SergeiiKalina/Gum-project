@@ -3,23 +3,13 @@ import { ITraining } from "../data/data"
 import { API_URL } from "../http"
 
 export interface IInitialState {
-    data: (string | boolean)[]
-    arrTraining: ITraining[]
-    training: ITraining[]
+    allFilteredExercises: ITraining[]
+
     activeId: number
     isChecked: string[]
     categories: string[]
+    searchData: string
 }
-
-export const fetchTraining = createAsyncThunk(
-    "trainingSlice/fetchTraining",
-    async () => {
-        const response = await fetch(API_URL + "/exercise")
-        let res = await response.json()
-
-        return res
-    }
-)
 
 export const fetchCategories = createAsyncThunk(
     "trainingSlice/fetchCategories",
@@ -38,7 +28,7 @@ export const fetchCategories = createAsyncThunk(
 export const fetchFilter = createAsyncThunk(
     "trainingSlice/fetchFilter",
 
-    async (data: (string | boolean)[]) => {
+    async (data: string[]) => {
         try {
             const response = await fetch(API_URL + "/exercise/filter", {
                 method: "POST",
@@ -56,22 +46,46 @@ export const fetchFilter = createAsyncThunk(
         }
     }
 )
+export const fetchSearch = createAsyncThunk(
+    "trainingSlice/fetchSearch",
+
+    async (data: string) => {
+        try {
+            const response = await fetch(API_URL + "/exercise/search", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ data }),
+            })
+            if (!response.ok) {
+                throw new Error("Network response was not ok")
+            }
+
+            let res = await response.json()
+            return res
+        } catch (error) {
+            console.log(error)
+        }
+    }
+)
 
 const initialState: IInitialState = {
-    data: ["legs"],
-    arrTraining: [],
-    training: [],
+    allFilteredExercises: [],
+
     activeId: 1,
     isChecked: ["back"],
     categories: [],
+    searchData: "",
 }
 const trainingSlice = createSlice({
     name: "trainingSlice",
     initialState,
     reducers: {
-        writeData(state, action: PayloadAction<(string | boolean)[]>) {
-            state.data = action.payload
+        writeSearchData(state, action: PayloadAction<string>) {
+            state.searchData = action.payload
         },
+
         writeCategories(state, action: PayloadAction<string[]>) {
             state.categories = action.payload
         },
@@ -82,29 +96,31 @@ const trainingSlice = createSlice({
             state.isChecked = action.payload
         },
         writeArrTraining(state, action: PayloadAction<ITraining[]>) {
-            state.arrTraining = action.payload
+            state.allFilteredExercises = action.payload
         },
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchTraining.fulfilled, (state, action) => {
-                state.training.push(...action.payload)
-            })
+
             .addCase(fetchCategories.fulfilled, (state, action) => {
                 state.categories = action.payload
             })
             .addCase(fetchFilter.fulfilled, (state, action) => {
-                state.arrTraining = action.payload
+                state.allFilteredExercises = action.payload
+            })
+            .addCase(fetchSearch.fulfilled, (state, action) => {
+                state.allFilteredExercises = action.payload
+                state.isChecked = []
             })
     },
 })
 
 export const {
-    writeData,
     writeCategories,
     changeActiveId,
     changeIsChecked,
     writeArrTraining,
+    writeSearchData,
 } = trainingSlice.actions
 
 export default trainingSlice.reducer

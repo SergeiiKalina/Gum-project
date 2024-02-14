@@ -5,7 +5,6 @@ import {
     IInitialState,
     fetchCategories,
     fetchFilter,
-    fetchTraining,
 } from "../../../store/filterTrainingSlice"
 import FormTraining from "../FormTraining/FormTraining"
 import NotTraining from "./NotTraining"
@@ -17,56 +16,56 @@ import { IAuthSliceState } from "../../header/Login/Login"
 import { useNavigate } from "react-router-dom"
 import { ITraining } from "../../../data/data"
 import { writeCurrentVideoId } from "../../../store/generatorTrainingReducer"
-import MobileFilter from "../FormTraining/MobileFilter/MobileFilter"
+import MobileToggleButtons from "../FormTraining/MobileToggleButtons/MobileToggleButtons"
 
 export interface IFilterTrainingSlice {
     filterTraining: IInitialState
 }
 
 function Training(): React.JSX.Element {
-    const [toggleMobileFilterForm, setToggleMobileFilterForm] =
-        useState<boolean>(false)
-    const training = useSelector(
-        (state: IFilterTrainingSlice) => state.filterTraining.training
-    )
-
-    const data = useSelector(
-        (state: IFilterTrainingSlice) => state.filterTraining.data
-    )
-    const arrTraining = useSelector(
-        (state: IFilterTrainingSlice) => state.filterTraining.arrTraining
-    )
-    const [countPage, setCountPage] = useState<number>(0)
-
-    const [arr, setArr] = useState(arrTraining.slice(0, 18))
-    const [count, setCount] = useState(1)
-    const dispatch = useDispatch<any>()
+    const navigate = useNavigate()
     const isAuth = useSelector(
         (state: IAuthSliceState) => state.authSlice.isAuth
     )
+    const [toggleMobileFilterForm, setToggleMobileFilterForm] =
+        useState<boolean>(false)
+    const isCheckedCategories = useSelector(
+        (state: IFilterTrainingSlice) => state.filterTraining.isChecked
+    )
+    const searchData = useSelector(
+        (state: IFilterTrainingSlice) => state.filterTraining.searchData
+    )
+    const allFilteredExercises = useSelector(
+        (state: IFilterTrainingSlice) =>
+            state.filterTraining.allFilteredExercises
+    )
+    const [countPage, setCountPage] = useState<number>(0)
+    const [currentPageExercises, setCurrentPageExercises] = useState(
+        allFilteredExercises.slice(0, 18)
+    )
+    const [currentNumberPage, setCurrentNumberPage] = useState(1)
+    const dispatch = useDispatch<any>()
 
-    const navigate = useNavigate()
     useEffect(() => {
         if (!isAuth) {
             navigate("/")
         }
     }, [isAuth, navigate])
     useEffect(() => {
-        dispatch(fetchTraining())
-    }, [dispatch])
-    useEffect(() => {
-        setCountPage(Math.ceil(arrTraining.length / 18))
-    }, [arrTraining])
+        setCountPage(Math.ceil(allFilteredExercises.length / 18))
+    }, [allFilteredExercises])
     useEffect(() => {
         dispatch(fetchCategories())
     }, [dispatch])
     useEffect(() => {
-        dispatch(fetchFilter(data))
-    }, [data, dispatch])
+        if (searchData === "") {
+            dispatch(fetchFilter(isCheckedCategories))
+        }
+    }, [isCheckedCategories, dispatch, searchData])
 
     useEffect(() => {
         let notePage: number = 18
-        let start: number = (count - 1) * notePage
+        let start: number = (currentNumberPage - 1) * notePage
         let end: number = start + notePage
 
         try {
@@ -75,17 +74,22 @@ function Training(): React.JSX.Element {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ start, end, arrTraining }),
+                body: JSON.stringify({
+                    start,
+                    end,
+                    categories: isCheckedCategories,
+                    searchData,
+                }),
             })
                 .then((res) => res.json())
-                .then((res) => setArr(res))
+                .then((res) => setCurrentPageExercises(res))
         } catch (error) {
             console.log(error)
         }
-    }, [count, arrTraining, training])
+    }, [currentNumberPage, isCheckedCategories, searchData])
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        setCount(value)
+        setCurrentNumberPage(value)
     }
     const handleNavigate = (element: ITraining) => {
         dispatch(writeCurrentVideoId(element))
@@ -99,8 +103,8 @@ function Training(): React.JSX.Element {
                     setToggleMobileFilterForm={setToggleMobileFilterForm}
                 />
                 <div className="training_block_training">
-                    {arr.length ? (
-                        arr
+                    {currentPageExercises.length ? (
+                        currentPageExercises
                             .sort((a, b) => a.title.localeCompare(b.title))
                             .map((tr) => {
                                 const { img, title } = tr
@@ -111,7 +115,7 @@ function Training(): React.JSX.Element {
                                         onClick={() => handleNavigate(tr)}
                                     >
                                         <img src={img} alt="img" />
-                                        <p>{title}</p>
+                                        <h6>{title}</h6>
                                     </div>
                                 )
                             })
@@ -121,15 +125,17 @@ function Training(): React.JSX.Element {
                 </div>
             </article>
             <article className="pagination_block">
-                <Pagination
-                    count={countPage}
-                    variant="outlined"
-                    shape="rounded"
-                    onChange={handleChange}
-                    sx={paginationStyle}
-                />
+                {currentPageExercises.length !== 0 ? (
+                    <Pagination
+                        count={countPage}
+                        variant="outlined"
+                        shape="rounded"
+                        onChange={handleChange}
+                        sx={paginationStyle}
+                    />
+                ) : null}
             </article>
-            <MobileFilter
+            <MobileToggleButtons
                 toggleClass={toggleMobileFilterForm}
                 setToggleMobileFilterForm={setToggleMobileFilterForm}
             />

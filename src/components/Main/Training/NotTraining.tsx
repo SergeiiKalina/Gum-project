@@ -1,5 +1,6 @@
 import React from "react"
+import "./training.scss"
 
 export default function NotTraining(): React.JSX.Element {
-    return <h1 style={{ margin: "0 auto", height: "700px" }}>Not Exercise</h1>
+    return <h1 className="not_training_header">Not Exercise</h1>
 }

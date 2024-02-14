@@ -101,7 +101,7 @@
     .place_training__button {
         display: flex;
         flex-direction: column;
-        background-color: black;
+        background-color: #182132;
         @include adaptive-font(100, 70);
         height: 300px;
 
@@ -111,7 +111,7 @@
         }
     }
     .place_training__button:hover {
-        background-color: black;
+        background-color: #182132;
     }
 }
 

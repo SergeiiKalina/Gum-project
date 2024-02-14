@@ -8,7 +8,6 @@ import {
     writeFormData,
 } from "../../../store/generatorTrainingReducer"
 import { Button, Checkbox, FormControlLabel, FormGroup } from "@mui/material"
-import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import {
     stylesButtonWrapper,
     stylesCheckBox,
@@ -16,6 +15,7 @@ import {
     stylesFormControlLabel,
 } from "./styles/stylesFormGeneration"
 import "./formGenTrainStep.scss"
+import { ITrainingReducer } from "../TrainingPlan/TrainingPlan"
 
 export default function AvailabilityOfInventory(): React.JSX.Element {
     const formData = useSelector(

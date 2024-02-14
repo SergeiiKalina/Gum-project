@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useSelector } from "react-redux"
 import EndTraining from "../EndTraining/EndTraining"
-import { ITrainingReducer } from "../FinishedTraining/FinishedTraining"
 import { ITraining } from "../../../data/data"
 import { Box, OutlinedInput, InputAdornment } from "@mui/material"
 import { styleOutlinedInput } from "../FormGenerationTraining/styles/stylesFormGeneration"
 import YouTube from "react-youtube"
 import "./startTraining.scss"
+import { ITrainingReducer } from "../TrainingPlan/TrainingPlan"
 
 interface IInfoApproach {
     [key: string]: string[]

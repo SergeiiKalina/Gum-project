@@ -1,12 +1,14 @@
-import React, { useRef, useState } from "react"
-import "./mobileFilter.scss"
+import React, { ReactNode, useRef, useState } from "react"
+import "./mobileMenuFroExerciseWrapper.scss"
 
-function MobileFilter({
+function MobileMenuFroExerciseWrapper({
     toggleClass,
     setToggleMobileFilterForm,
+    children,
 }: {
     toggleClass: boolean
     setToggleMobileFilterForm: (arg: boolean) => void
+    children: ReactNode
 }) {
     const touchYStart = useRef<number>(0)
     const [deltaY, setDeltaY] = useState<number>(0)
@@ -23,7 +25,7 @@ function MobileFilter({
         const newDeltaY = touchYEnd - touchYStart.current
 
         if (newDeltaY > 0) {
-            setDeltaY(newDeltaY) // Заборона перетягування вгору
+            setDeltaY(newDeltaY)
         } else {
             setDeltaY(0)
         }
@@ -47,12 +49,14 @@ function MobileFilter({
             style={{
                 transform: toggleClass
                     ? `translateY( ${deltaY}px)`
-                    : `translateY(calc(89dvh))`,
+                    : `translateY(calc(100dvh))`,
             }}
         >
             <span className="border_logic_block"></span>
+
+            {children}
         </section>
     )
 }
 
-export default MobileFilter
+export default MobileMenuFroExerciseWrapper

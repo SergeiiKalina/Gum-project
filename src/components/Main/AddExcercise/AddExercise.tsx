@@ -1,7 +1,10 @@
 import React, { ChangeEvent } from "react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
+import {
+    writeCurrentTraining,
+    writeCurrentVideoId,
+} from "../../../store/generatorTrainingReducer"
 import training, { ITraining } from "../../../data/data"
 import "./addExercise.scss"
 import {
@@ -16,10 +19,18 @@ import {
 import AddIcon from "@mui/icons-material/Add"
 import SearchIcon from "@mui/icons-material/Search"
 import { v4 as uuidv4 } from "uuid"
+import MobileMenuFroExerciseWrapper from "../MobileMenuFroExerciseWrapper/MobileMenuFroExerciseWrapper"
+import SelectCategories from "../FormTraining/SelectCategories/SelectCategories"
+import { changeIsChecked } from "../../../store/filterTrainingSlice"
+import { IState } from "../FormTraining/FormTraining"
+import SearchExerciseField from "../FormTraining/SearchExerciseField/SearchExerciseField"
+import { MdOutlineKeyboardArrowRight } from "react-icons/md"
+import { useNavigate } from "react-router-dom"
 
 interface IAddExercise {
     thisCategories: string[]
     setShowDialog: (boolean: boolean) => void
+    toggleAddExerciseMenu: boolean
 }
 export interface IExerciseData {
     training: {
@@ -30,18 +41,23 @@ export interface IExerciseData {
 }
 
 interface ISearchInfo {
-    categories: string
+    categories: string[]
     text: string
 }
 
 export default function AddExercise({
     thisCategories,
     setShowDialog,
+    toggleAddExerciseMenu,
 }: IAddExercise): React.JSX.Element {
     const dispatch = useDispatch()
+    const isChecked = useSelector(
+        (state: IState) => state.filterTraining.isChecked
+    )
+    const navigate = useNavigate()
     const [searchText, setSearchText] = useState<string>("")
     const [searchInfo, setSearchInfo] = useState<ISearchInfo>({
-        categories: thisCategories[0],
+        categories: thisCategories,
         text: "",
     })
     const planTrainingArr: ITraining[] = useSelector(
@@ -51,16 +67,15 @@ export default function AddExercise({
     const [currentCategories, setCurrentCategories] = useState<ITraining[]>([])
     const [count, setCount] = useState(0)
 
-    const handleChange = (event: SelectChangeEvent) => {
-        let category = event.target.value
-        setSearchInfo({ ...searchInfo, categories: category })
+    const onSubmit = (event: string[]) => {
+        dispatch(changeIsChecked(event))
     }
 
     const changeForm = (txt: string) => {
         setSearchInfo({
             ...searchInfo,
             text: txt,
-            categories: "",
+            categories: [],
         })
     }
     const increment = () => {
@@ -88,13 +103,16 @@ export default function AddExercise({
                 )
             )
         }
-        if (searchInfo.categories) {
+        if (isChecked.length === 0) {
+            setCurrentCategories([])
+        }
+        if (isChecked.length !== 0) {
             setCount(0)
             setCurrentCategories(
-                training.filter((el) => el.category === searchInfo.categories)
+                training.filter((item) => isChecked.includes(item.category))
             )
         }
-    }, [searchInfo])
+    }, [searchInfo, isChecked])
 
     useEffect(() => {
         if (planTrainingArr.length >= 7) {
@@ -139,83 +157,61 @@ export default function AddExercise({
         }
     }
 
+    const handleNavigate = (element: ITraining) => {
+        dispatch(writeCurrentVideoId(element))
+        navigate("/exercise")
+    }
+
     return (
-        <section className="add_exercise_container">
-            <menu>
-                <form>
-                    <FormControl
-                        variant="standard"
-                        sx={{ m: "1", width: "250px", marginLeft: "5px" }}
-                    >
-                        <InputLabel id="demo-select-small-label">
-                            Category
-                        </InputLabel>
-                        <Select
-                            labelId="demo-select-small-label"
-                            id="demo-select-small"
-                            value={searchInfo.categories}
-                            label="Age"
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="none">
-                                <em>None</em>
-                            </MenuItem>
-                            {thisCategories.map((category) => (
-                                <MenuItem value={category} key={uuidv4()}>
-                                    {category[0].toUpperCase() +
-                                        category.replace(category[0], "")}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-                    <section className="add_exercise_search_block">
-                        <TextField
-                            type="text"
-                            placeholder="Name exercise..."
-                            variant="standard"
-                            sx={{
-                                "& .MuiInputBase-root": {
-                                    margin: "0",
-                                },
-                                "& input": {
-                                    padding: "10px 0 2px 0",
-                                },
-                                "& label": {
-                                    display: "none",
-                                },
-                            }}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                                setSearchText(e.target.value)
-                            }
-                        />
-                        <Button
-                            variant="contained"
-                            sx={{ minWidth: "25px" }}
-                            onClick={() => changeForm(searchText)}
-                        >
-                            <SearchIcon />
-                        </Button>
-                    </section>
+        <MobileMenuFroExerciseWrapper
+            setToggleMobileFilterForm={setShowDialog}
+            toggleClass={toggleAddExerciseMenu}
+        >
+            <menu className="add_exercise_menu">
+                <form className="add_exercise_form">
+                    <SelectCategories onSubmit={onSubmit} />
+                    <SearchExerciseField />
                 </form>
             </menu>
             <section className="add_exercise_block">
-                {arrTr.map((el) => {
-                    return (
-                        <article key={el.id}>
-                            <span className="add_exercise_block_name">
-                                {el.title}
-                            </span>
-                            <div
-                                style={{ cursor: "pointer" }}
-                                className="add_icon_wrapper"
-                                id={el.id.toString()}
-                                onClick={(e) => addExercise(el.id)}
-                            >
-                                <AddIcon />
-                            </div>
-                        </article>
-                    )
-                })}
+                <ul className="add_exercise_custom_training_list">
+                    {arrTr.map((el) => {
+                        return (
+                            <li key={uuidv4()}>
+                                <section className="add_exercise_item_block">
+                                    <article className="add_exercise_item_block_left_part">
+                                        <img
+                                            src={el.img}
+                                            className="add_exercise_item_block_img"
+                                            alt={el.title}
+                                        />
+                                        <div className="add_exercise_item_block_left_part_info">
+                                            <span className="add_exercise_item_block_left_part_title">
+                                                {el.title}
+                                            </span>
+                                            <div className="add_exercise_item_block_chips">
+                                                <span className="add_exercise_item_chips">
+                                                    {el.category}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article className="add_exercise_item_block_right_part">
+                                        <button
+                                            type="button"
+                                            onTouchStart={() =>
+                                                addExercise(el.id)
+                                            }
+                                            onClick={() => addExercise(el.id)}
+                                        >
+                                            <AddIcon />
+                                        </button>
+                                    </article>
+                                </section>
+                            </li>
+                        )
+                    })}
+                </ul>
             </section>
             <article className="add_exercise_articlePagination">
                 <Button variant="contained" onClick={decrement}>
@@ -235,6 +231,6 @@ export default function AddExercise({
                     Close
                 </Button>
             </article>
-        </section>
+        </MobileMenuFroExerciseWrapper>
     )
 }

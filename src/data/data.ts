@@ -3163,6 +3163,14 @@ const training: ITraining[] = [
         LFC: ["nothing"],
         subCatigories: "adD",
         youtubeLink: "https://www.youtube.com/watch?v=wW7rWh41EZI",
+        describe: [
+            "1. Start in a lunge stance, holding a dumbbell in one hand at shoulder height with the palm facing inwards and the other hand at your side for balance",
+            "2. Press the dumbbell out overhead, fully extending the arm.",
+            "3. Maintain an upright torso position throughout the movement.",
+            "4. Pause briefly at the lowest point with the dumbbell fully extended overhead.",
+            "5. Return the arm to the starting position",
+            "6. Perform the desired number of reps on one side, then switch to the other side.",
+        ],
     },
     {
         id: 232,
@@ -3178,6 +3186,14 @@ const training: ITraining[] = [
         LFC: ["back", "shoulders"],
         subCatigories: "ad",
         youtubeLink: "https://www.youtube.com/watch?v=9-sGJjjMOpI",
+        describe: [
+            "1. Begin by standing with your feet shoulder-width apart, holding a barbell at shoulder height with an overhand grip, elbows bent and pointing forward.",
+            "2. Engage your core and keep your chest up as you slightly bend your knees in preparation for the movement.",
+            "3. Explosively extend your hips and knees while pressing the barbell overhead, using the momentum generated to assist the lift.",
+            "4. Fully extend your arms at the top of the movement, locking out your elbows.",
+            "5. Lower the barbell back to shoulder height under control, bending your knees slightly to absorb the impact.",
+            "6. Repeat the movement for the desired number of repetitions, maintaining proper form and control throughout.",
+        ],
     },
     {
         id: 233,
@@ -3193,6 +3209,14 @@ const training: ITraining[] = [
         LFC: ["back", "shoulders"],
         subCatigories: "adD",
         youtubeLink: "https://www.youtube.com/watch?v=4tCaD42ghlc",
+        describe: [
+            "1. Begin by holding a pair of dumbbells at shoulder height, palms facing inward, with your feet shoulder-width apart.",
+            "2. Bend your knees slightly to initiate the movement.",
+            "3. Explosively extend your hips and knees while pressing the dumbbells overhead, using the momentum generated to assist the lift.",
+            "4. Fully extend your arms at the top of the movement, locking out your elbows.",
+            "5. Lower the dumbbells back to shoulder height under control, bending your knees slightly to absorb the impact.",
+            "6. Repeat the movement for the desired number of repetitions, maintaining proper form and control throughout.",
+        ],
     },
     {
         id: 234,
@@ -3208,6 +3232,14 @@ const training: ITraining[] = [
         LFC: ["shoulders"],
         subCatigories: "ud",
         youtubeLink: "https://www.youtube.com/watch?v=AWsGWt-VMl8",
+        describe: [
+            "1. Stand with your feet shoulder-width apart, knees slightly bent, and hold a barbell with an overhand grip, hands closer than shoulder-width apart.",
+            "2. Allow the barbell to hang in front of your thighs with your arms fully extended.",
+            "3. Engage your core and retract your shoulder blades as you lift the barbell towards your chin by pulling your elbows up and to the sides.",
+            "4. Keep the barbell close to your body throughout the movement, leading with your elbows.",
+            "5. Pause briefly at the top of the movement, then slowly lower the barbell back to the starting position with control.",
+            "6. Repeat for the desired number of repetitions, focusing on proper form and avoiding any swinging or jerking motions.",
+        ],
     },
     {
         id: 235,
@@ -3223,6 +3255,14 @@ const training: ITraining[] = [
         LFC: ["shoulders"],
         subCatigories: "ud",
         youtubeLink: "https://www.youtube.com/watch?v=IYfLFuGKFLI",
+        describe: [
+            "1. Stand with your feet shoulder-width apart, knees slightly bent, and hold a weight plate with both hands in front of your thighs, using an overhand grip.",
+            "2. Keep your back straight, chest up, and shoulders back.",
+            "3. Engage your core muscles and lift the weight plate towards your chin by pulling your elbows up and out to the sides.",
+            "4. Keep the weight plate close to your body throughout the movement, leading with your elbows.",
+            "5. Pause briefly at the top of the movement, then slowly lower the weight plate back to the starting position with control.",
+            "6. Repeat for the desired number of repetitions, focusing on proper form and avoiding any swinging or jerking motions.",
+        ],
     },
     {
         id: 236,
@@ -3238,6 +3278,14 @@ const training: ITraining[] = [
         LFC: ["shoulders"],
         subCatigories: "ud",
         youtubeLink: "https://www.youtube.com/watch?v=IhZLB48kluc",
+        describe: [
+            "1. Stand with your feet shoulder-width apart, knees slightly bent, and hold a dumbbell in each hand down in front of your thighs, using an overhand grip.",
+            "2. Keep your back straight, chest up, and shoulders back.",
+            "3. Engage your core muscles and lift the dumbbells towards your chin by pulling your elbows up and out to the sides.",
+            "4. Keep the dumbbells close to your body throughout the movement, leading with your elbows.",
+            "5. Pause briefly at the top of the movement, then slowly lower the dumbbells back to the starting position with control.",
+            "6. Repeat for the desired number of repetitions, focusing on proper form and avoiding any swinging or jerking motions.",
+        ],
     },
     {
         id: 237,
@@ -3253,6 +3301,14 @@ const training: ITraining[] = [
         LFC: ["shoulders"],
         subCatigories: "ud",
         youtubeLink: "https://www.youtube.com/watch?v=DIm1jhMgYMI",
+        describe: [
+            "1. Stand with your feet shoulder-width apart, knees slightly bent, and hold a kettlebell in each hand down in front of your thighs, using an overhand grip.",
+            "2. Keep your back straight, chest up, and shoulders back.",
+            "3. Engage your core muscles and lift the kettlebells towards your chin by pulling your elbows up and out to the sides.",
+            "4. Keep the kettlebells close to your body throughout the movement, leading with your elbows.",
+            "5. Pause briefly at the top of the movement, then slowly lower the kettlebells back to the starting position with control.",
+            "6. Repeat for the desired number of repetitions, focusing on proper form and avoiding any swinging or jerking motions.",
+        ],
     },
     {
         id: 238,
@@ -3268,6 +3324,15 @@ const training: ITraining[] = [
         LFC: ["shoulders"],
         subCatigories: "ud",
         youtubeLink: "https://www.youtube.com/watch?v=_Lye_1p8NUI",
+        describe: [
+            "1. Stand at the Smith machine, feet flat on the floor, knees slightly bent",
+            "2. Grasp the Smith barbell with an overhead grip, hands shoulder width apart.",
+            "3. Keep your back straight, chest lifted and shoulders pulled back, engaging your core muscles.",
+            "4. Begin the movement by pulling the barbell up to your chin, bringing your elbows forward.",
+            "5. Keep the barbell close to your body and your wrists straight throughout the movement.",
+            "6. Pause at the top point of the movement, then slowly lower the barbell to the starting position, controlling the situation.",
+            "7. Repeat the required number of reps, paying particular attention to proper technique and control.",
+        ],
     },
     {
         id: 239,
@@ -3283,6 +3348,14 @@ const training: ITraining[] = [
         LFC: ["nothing"],
         subCatigories: "fd",
         youtubeLink: "https://www.youtube.com/shorts/S1YrQyboEOE",
+        describe: [
+            "1. Stand with your feet shoulder-width apart, knees slightly bent, and hold a weight plate with both hands in front of your thighs.",
+            "2. Keep your back straight, chest up, and shoulders back, engaging your core for stability.",
+            "3. Exhale as you lift the weight plate straight up in front of you, keeping your arms extended.",
+            "4. Raise the weight plate until it's at shoulder level or slightly above, but not higher than eye level.",
+            "5. Pause briefly at the top of the movement, then inhale as you lower the weight plate back down to the starting position.",
+            "6. Repeat for the desired number of repetitions, focusing on maintaining proper form and controlled movements.",
+        ],
     },
     {
         id: 240,
@@ -3298,6 +3371,15 @@ const training: ITraining[] = [
         LFC: ["nothing"],
         subCatigories: "fd",
         youtubeLink: "https://www.youtube.com/watch?v=MfbcBIBc-cA",
+        describe: [
+            "1. Stand with your feet shoulder-width apart, knees slightly bent, and grasp the weighted plate in front of your hips with both hands.",
+            "2. Keep your back straight, chest lifted and shoulders pulled back, engaging your core for stability.",
+            "3. On an exhale, lift the  plate straight out in front of you, keeping your arms extended.",
+            "4. Perform a rotation of the  plate, starting on one side, then the other.",
+            "5. Pause briefly at the top of the movement, feeling your shoulders contract.",
+            "6. Inhale as you lower the disc to the starting position.",
+            "7. Repeat the movement for the desired number of reps, maintaining controlled movements throughout.",
+        ],
     },
     {
         id: 241,

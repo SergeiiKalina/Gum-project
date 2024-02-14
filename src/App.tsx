@@ -7,7 +7,6 @@ import AdminForm from "./components/Other/AdminForm/AdminForm"
 import StartTraining from "./components/Main/StartTraining/StartTraining"
 import HomeTestForm from "./components/Main/FormGenerationTraining/HomeSelectSplitTraining"
 import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory"
-import FinishedTraining from "./components/Main/FinishedTraining/FinishedTraining"
 import GymSelectSpritTraining from "./components/Main/FormGenerationTraining/GymSelectSplitTraining"
 import Login from "./components/header/Login/Login"
 import Registration from "./components/header/Registration/Registration"
@@ -15,10 +14,10 @@ import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGe
 import PersonalData from "./components/header/MenuUser/PersonalData/PersonalData"
 import { useDispatch } from "react-redux"
 import { checkAuth } from "./store/authorizationSlice"
-import "./App.scss"
-import CustomTraining from "./components/Main/CustomTraining/CustomTraining"
 import MenuUser from "./components/header/MenuUser/MenuUser"
 import Exercise from "./components/Main/Exercise/Exercise"
+import TrainingPlan from "./components/Main/TrainingPlan/TrainingPlan"
+import "./App.scss"
 
 function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
@@ -39,18 +38,13 @@ function App(): React.JSX.Element {
                             element={<FormGenTrainStepOne />}
                         />
                         <Route
-                            path="custom-training"
-                            element={<CustomTraining />}
+                            path="plan-training"
+                            element={<TrainingPlan />}
                         />
                         <Route
                             path="personal-data"
                             element={<PersonalData />}
                         />
-                        <Route
-                            path="/finished-training"
-                            element={<FinishedTraining />}
-                        />
-
                         <Route
                             path="/gentraining/step-2/gym"
                             element={<GymSelectSpritTraining />}

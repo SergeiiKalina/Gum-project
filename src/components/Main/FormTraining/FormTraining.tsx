@@ -1,12 +1,13 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import { changeIsChecked, writeData } from "../../../store/filterTrainingSlice"
+import { changeIsChecked } from "../../../store/filterTrainingSlice"
 import "./formTraining.scss"
-import { Button, IconButton, Paper, TextField } from "@mui/material"
+import { Button } from "@mui/material"
 import { PiSlidersHorizontalLight } from "react-icons/pi"
-import SearchIcon from "@mui/icons-material/Search"
+
 import { theme } from "../../Styled-components/Styled"
 import SelectCategories from "./SelectCategories/SelectCategories"
+import SearchExerciseField from "./SearchExerciseField/SearchExerciseField"
 
 export interface IState {
     filterTraining: {
@@ -20,10 +21,9 @@ const FormTraining = React.memo(function FormTraining({
 }: {
     setToggleMobileFilterForm: (arg: (arg: boolean) => boolean) => void
 }): React.JSX.Element {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
 
     const onSubmit = (data: string[]) => {
-        dispatch(writeData(Object.values(data)))
         dispatch(changeIsChecked(data))
     }
 
@@ -31,47 +31,7 @@ const FormTraining = React.memo(function FormTraining({
         <article className="form_training_wrapper">
             <SelectCategories onSubmit={onSubmit} />
             <section>
-                <Paper
-                    component="form"
-                    sx={{
-                        position: "relative",
-                        display: "flex",
-                        alignItems: "center",
-                        width: "100%",
-                        maxWidth: "400px",
-                        minWidth: "250px",
-                        border: "1px white solid",
-                        borderRadius: "20px",
-                        backgroundColor: "transparent",
-                        [theme.breakpoints.down("xs")]: {
-                            minWidth: "200px",
-                        },
-                    }}
-                >
-                    <TextField
-                        placeholder="Search..."
-                        variant="outlined"
-                        sx={{
-                            "& .MuiOutlinedInput-notchedOutline": {
-                                border: "none",
-                            },
-                            "& .MuiInputBase-input": {
-                                color: "white",
-                            },
-                        }}
-                    />
-                    <IconButton
-                        type="button"
-                        sx={{
-                            position: "absolute",
-                            right: "10px",
-                            color: "white",
-                        }}
-                        aria-label="search"
-                    >
-                        <SearchIcon />
-                    </IconButton>
-                </Paper>
+                <SearchExerciseField />
                 <Button
                     variant="outlined"
                     sx={{
