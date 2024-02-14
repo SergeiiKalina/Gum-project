@@ -42,7 +42,7 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
                     })!
                 )
             )
-            await navigate("/finished-training")
+            await navigate("/plan-training")
         }
     }
 

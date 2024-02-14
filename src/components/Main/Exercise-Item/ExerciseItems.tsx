@@ -18,7 +18,7 @@ interface IExerciseItem {
     exercises: ITraining[]
 }
 
-function ExerciseItem({ exercises }: IExerciseItem) {
+function ExerciseItems({ exercises }: IExerciseItem) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleDragEnd = (result: DropResult): void => {
@@ -105,4 +105,4 @@ function ExerciseItem({ exercises }: IExerciseItem) {
     )
 }
 
-export default ExerciseItem
+export default ExerciseItems

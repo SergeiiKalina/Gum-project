@@ -14,7 +14,7 @@ function ButtonStartTraining(): React.JSX.Element {
         navigate("/start_training")
     }
     return (
-        <div className="finish_training_block_start_button">
+        <div className="start_training_button_wrapper">
             <Button
                 variant="outlined"
                 onClick={() => showStartTraining(0)}

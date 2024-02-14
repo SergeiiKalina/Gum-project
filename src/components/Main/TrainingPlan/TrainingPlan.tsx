@@ -4,7 +4,7 @@ import { Fab } from "@mui/material"
 import AddIcon from "@mui/icons-material/Add"
 import training, { ITraining } from "../../../data/data"
 import { useSelector } from "react-redux"
-import ExerciseItem from "../Exercise-Item/ExerciseItem"
+import ExerciseItems from "../Exercise-Item/ExerciseItems"
 import ButtonStartTraining from "../Button-Start-Training/Button-Start-Training"
 import AddExercise from "../AddExcercise/AddExercise"
 import { IFilterTrainingSlice } from "../Training/Training"
@@ -66,7 +66,7 @@ function TrainingPlan() {
             </header>
 
             {planTrainingArr.length !== 0 ? (
-                <ExerciseItem exercises={planTrainingArr} />
+                <ExerciseItems exercises={planTrainingArr} />
             ) : (
                 <h2 className="custom_training_not_exercise">Not Exercise</h2>
             )}

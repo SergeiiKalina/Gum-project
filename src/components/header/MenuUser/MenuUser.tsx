@@ -58,13 +58,15 @@ const MenuUser: FC = () => {
                 })
 
                 await setUserData(user.data)
-                await dispatch(toggleIsLoading(false))
                 await setToggleRewriteData(false)
             }
         } catch (error) {
             console.log(error)
+        } finally {
+            await dispatch(toggleIsLoading(false))
         }
     }
+
     return (
         <>
             <form
