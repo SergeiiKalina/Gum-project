@@ -1,26 +1,19 @@
 @import "./../../adaptive-fontMixin.scss";
 
-.add_exercise_close_button_wrapper {
-    width: 100%;
+.add_exercise_close_button {
+    width: 150px;
     display: flex;
-    padding-bottom: 50px;
-    .add_exercise_close_button {
-        font-weight: 700;
-        margin: 12px auto 0 auto;
-        cursor: pointer;
-    }
+    cursor: pointer;
+    border-radius: 20px;
 }
+
 .add_exercise_menu {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-top: 12px;
-}
-.add_exercise_form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 0 10px;
+    margin: 0 auto;
     .css-1thtvme-MuiFormControl-root {
         width: 90%;
         display: flex;
@@ -31,15 +24,18 @@
         margin-top: 10px;
     }
 }
+
 .add_exercise_custom_training_list {
+    width: 100%;
     margin: 15px auto 0 auto;
-    cursor: grab;
     display: grid;
     grid-template-columns: 1fr;
     gap: 15px;
 }
 .add_exercise_item_block {
     width: 90%;
+    min-width: 400px;
+    max-width: 400px;
     display: flex;
     background-color: #0c305a;
 
@@ -89,13 +85,6 @@
     }
 }
 
-.add_exercise_block {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    @include adaptive-font(16, 12);
-}
-
 .add_exercise_articlePagination {
     margin: 20px 0 0 0;
     display: flex;
@@ -117,6 +106,10 @@
     }
 }
 @media (max-width: 460px) {
+    .add_exercise_item_block {
+        min-width: 90%;
+        max-width: none;
+    }
     form {
         .add_exercise_label {
             margin: 4px 0 0 0;

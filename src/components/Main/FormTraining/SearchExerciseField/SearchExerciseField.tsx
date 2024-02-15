@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search"
 import { ChangeEvent } from "react"
 import { useDispatch } from "react-redux"
 import {
+    changeCurrentPage,
     fetchSearch,
     writeSearchData,
 } from "../../../../store/filterTrainingSlice"
@@ -19,6 +20,7 @@ function SearchExerciseField() {
         let str: string = e.target.value
         dispatch(writeSearchData(str))
         await dispatch(fetchSearch(str))
+        dispatch(changeCurrentPage(1))
     }
     return (
         <Paper

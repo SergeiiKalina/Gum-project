@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Pagination from "@mui/material/Pagination"
 import {
     IInitialState,
+    changeCurrentPage,
     fetchCategories,
     fetchFilter,
 } from "../../../store/filterTrainingSlice"
@@ -32,6 +33,9 @@ function Training(): React.JSX.Element {
     const isCheckedCategories = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.isChecked
     )
+    const currentPage = useSelector(
+        (state: IFilterTrainingSlice) => state.filterTraining.currentPage
+    )
     const searchData = useSelector(
         (state: IFilterTrainingSlice) => state.filterTraining.searchData
     )
@@ -39,11 +43,13 @@ function Training(): React.JSX.Element {
         (state: IFilterTrainingSlice) =>
             state.filterTraining.allFilteredExercises
     )
+
     const [countPage, setCountPage] = useState<number>(0)
+
     const [currentPageExercises, setCurrentPageExercises] = useState(
         allFilteredExercises.slice(0, 18)
     )
-    const [currentNumberPage, setCurrentNumberPage] = useState(1)
+
     const dispatch = useDispatch<any>()
 
     useEffect(() => {
@@ -65,7 +71,7 @@ function Training(): React.JSX.Element {
 
     useEffect(() => {
         let notePage: number = 18
-        let start: number = (currentNumberPage - 1) * notePage
+        let start: number = (currentPage - 1) * notePage
         let end: number = start + notePage
 
         try {
@@ -86,10 +92,10 @@ function Training(): React.JSX.Element {
         } catch (error) {
             console.log(error)
         }
-    }, [currentNumberPage, isCheckedCategories, searchData])
+    }, [currentPage, isCheckedCategories, searchData])
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        setCurrentNumberPage(value)
+        dispatch(changeCurrentPage(value))
     }
     const handleNavigate = (element: ITraining) => {
         dispatch(writeCurrentVideoId(element))

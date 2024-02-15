@@ -1,6 +1,9 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import { changeIsChecked } from "../../../store/filterTrainingSlice"
+import {
+    changeCurrentPage,
+    changeIsChecked,
+} from "../../../store/filterTrainingSlice"
 import "./formTraining.scss"
 import { Button } from "@mui/material"
 import { PiSlidersHorizontalLight } from "react-icons/pi"
@@ -25,6 +28,7 @@ const FormTraining = React.memo(function FormTraining({
 
     const onSubmit = (data: string[]) => {
         dispatch(changeIsChecked(data))
+        dispatch(changeCurrentPage(1))
     }
 
     return (

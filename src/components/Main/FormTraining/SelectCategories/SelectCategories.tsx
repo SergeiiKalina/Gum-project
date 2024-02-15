@@ -13,6 +13,8 @@ import {
 } from "../../FormGenerationTraining/styles/stylesFormGeneration"
 import { useSelector } from "react-redux"
 import { IState } from "../FormTraining"
+import { useDispatch } from "react-redux"
+import { writeSearchData } from "../../../../store/filterTrainingSlice"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -30,11 +32,12 @@ function SelectCategories({
 }: {
     onSubmit: (array: string[]) => void
 }) {
+    const dispatch = useDispatch()
     const handleChange = (event: SelectChangeEvent<string[]>) => {
         const {
             target: { value },
         } = event
-
+        dispatch(writeSearchData(""))
         onSubmit(typeof value === "string" ? value.split(",") : value)
     }
 

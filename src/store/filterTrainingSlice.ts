@@ -4,11 +4,11 @@ import { API_URL } from "../http"
 
 export interface IInitialState {
     allFilteredExercises: ITraining[]
-
     activeId: number
     isChecked: string[]
     categories: string[]
     searchData: string
+    currentPage: number
 }
 
 export const fetchCategories = createAsyncThunk(
@@ -77,6 +77,7 @@ const initialState: IInitialState = {
     isChecked: ["back"],
     categories: [],
     searchData: "",
+    currentPage: 1,
 }
 const trainingSlice = createSlice({
     name: "trainingSlice",
@@ -85,7 +86,9 @@ const trainingSlice = createSlice({
         writeSearchData(state, action: PayloadAction<string>) {
             state.searchData = action.payload
         },
-
+        changeCurrentPage(state, action: PayloadAction<number>) {
+            state.currentPage = action.payload
+        },
         writeCategories(state, action: PayloadAction<string[]>) {
             state.categories = action.payload
         },
@@ -116,6 +119,7 @@ const trainingSlice = createSlice({
 })
 
 export const {
+    changeCurrentPage,
     writeCategories,
     changeActiveId,
     changeIsChecked,

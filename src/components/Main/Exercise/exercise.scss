@@ -44,6 +44,12 @@
     }
 }
 
+.exercise_button_block {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
 @media (max-width: 1024px) {
     .exercise_youtube_wrapper {
         width: 70%;
