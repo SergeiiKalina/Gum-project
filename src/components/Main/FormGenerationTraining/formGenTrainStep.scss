@@ -81,42 +81,6 @@
     left: 30px;
     transform: translate(0%, -50%);
 }
-.place_training_wrapper {
-    width: 70%;
-    height: calc(100dvh - 92px - 40px - 50px - 46px);
-    margin: 0 auto;
-    h2 {
-        display: flex;
-        @include adaptive-font(30, 20);
-        padding: 8px 0 8px 7%;
-        justify-content: flex-start;
-        font-weight: 500;
-    }
-    article {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        align-items: center;
-        width: 90%;
-        height: 100%;
-        margin: 0 auto;
-    }
-    .place_training__button {
-        display: flex;
-        flex-direction: column;
-        background-color: #182132;
-        @include adaptive-font(100, 70);
-        height: 300px;
-
-        span {
-            padding-top: 8px;
-            @include adaptive-font(18, 16);
-        }
-    }
-    .place_training__button:hover {
-        background-color: #182132;
-    }
-}
 
 .save_and_generation_training_popup {
     width: 100dvw;
@@ -276,14 +240,212 @@
         margin: 8px 0;
     }
 }
-@media (max-width: 1024px) {
+.touch {
     .place_training_wrapper {
-        width: 90%;
+        width: 70%;
+        height: calc(100dvh - 92px - 40px - 50px - 46px);
+        margin: 0 auto;
+        h2 {
+            display: flex;
+            @include adaptive-font(30, 20);
+            padding: 8px 0 8px 7%;
+            justify-content: flex-start;
+            font-weight: 500;
+        }
+        article {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .place_training__button {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 100% 100%;
+            @include adaptive-font(100, 70);
+            height: 300px;
+
+            span {
+                width: 100%;
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-top: 8px;
+                @include adaptive-font(25, 20);
+                font-weight: 700;
+                z-index: 10;
+                color: white;
+            }
+        }
+        .place_training__button.home {
+            background-image: url("./images/homeTraining.jpg");
+        }
+        .place_training__button.gym {
+            background-image: url("./images/gymTraining.jpg");
+        }
+        .place_training__button.library {
+            background-image: url("./images/libraryExercise.jpg");
+        }
+        .place_training__button.customTraining {
+            background-image: url("./images/customTraining.jpg");
+        }
+        .place_training__button:hover {
+            background-color: #182132;
+        }
+
+        .carusel_wrapper {
+            display: block;
+            width: 95%;
+            height: 75vh;
+            margin: 0 auto;
+            overflow: hidden;
+            .alice-carousel__stage-item {
+                width: 100%;
+                height: 78dvh;
+                transform: scale(0.9) translateY(-20px);
+                transition: all 0.3s ease;
+                .place_training__button {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+            .alice-carousel__wrapper {
+                height: 100%;
+                .alice-carousel__stage-item.__active {
+                    width: 100%;
+                    height: 78vh;
+                    transform: scale(1) translateY(0);
+                    transition: all 0.3s ease;
+                    .place_training__button {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
+.pc {
+    .place_training_wrapper {
+        width: 70%;
+        height: calc(100dvh - 92px - 40px - 50px - 46px);
+        margin: 0 auto;
+        h2 {
+            display: flex;
+            @include adaptive-font(30, 20);
+            padding: 8px 0 8px 7%;
+            justify-content: flex-start;
+            font-weight: 500;
+        }
+        article {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .place_training__button {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 100% 120%;
+
+            height: 300px;
+
+            span {
+                width: 100%;
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-top: 8px;
+                @include adaptive-font(18, 14);
+                font-weight: 700;
+                z-index: 10;
+                color: white;
+            }
+        }
+        .place_training__button.home {
+            background-image: url("./images/homeTraining.jpg");
+        }
+        .place_training__button.gym {
+            background-image: url("./images/gymTraining.jpg");
+        }
+        .place_training__button.library {
+            background-image: url("./images/libraryExercise.jpg");
+        }
+        .place_training__button.customTraining {
+            background-image: url("./images/customTraining.jpg");
+        }
+        .place_training__button:hover {
+            background-color: #182132;
+        }
+
+        .carusel_wrapper {
+            display: none;
+            width: 95%;
+            height: 75vh;
+            margin: 0 auto;
+            overflow: hidden;
+            .alice-carousel__stage-item {
+                width: 100%;
+                height: 78dvh;
+                transform: scale(0.9) translateY(-20px);
+                transition: all 0.3s ease;
+                .place_training__button {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+            .alice-carousel__wrapper {
+                height: 100%;
+                .alice-carousel__stage-item.__active {
+                    width: 100%;
+                    height: 78vh;
+                    transform: scale(1) translateY(0);
+                    transition: all 0.3s ease;
+                    .place_training__button {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .touch,
+    .pc {
+        .place_training_wrapper {
+            width: 90%;
+        }
     }
 }
 @media (max-width: 767px) {
-    .place_training_wrapper {
-        width: 100%;
+    .touch,
+    .pc {
+        .place_training_wrapper {
+            width: 100%;
+        }
     }
     .form_gen_train_step_wrapper {
         section {
@@ -297,55 +459,26 @@
 @media (max-width: 600px) {
 }
 @media screen and (max-width: 460px) {
-    .form_gen_train_step_wrapper {
-        section {
-            input {
-                width: 90%;
-            }
-            .textarea {
-                width: 80%;
-            }
-            select {
-                width: 90%;
-            }
-            button {
-                width: 50%;
+    .touch,
+    .pc {
+        .form_gen_train_step_wrapper {
+            section {
+                input {
+                    width: 90%;
+                }
+                .textarea {
+                    width: 80%;
+                }
+                select {
+                    width: 90%;
+                }
+                button {
+                    width: 50%;
+                }
             }
         }
     }
 }
 
 @media screen and (max-width: 360px) {
-}
-.carusel_wrapper {
-    width: 95%;
-    height: 75dvh;
-    margin: 0 auto;
-
-    .alice-carousel__stage-item {
-        width: 100%;
-        height: 78dvh;
-        transform: scale(0.9) translateY(-20px);
-        transition: all 0.3s ease;
-        .place_training__button {
-            width: 100%;
-            height: 100%;
-            margin: 0 auto;
-        }
-    }
-
-    .alice-carousel__wrapper {
-        height: 100%;
-        .alice-carousel__stage-item.__active {
-            width: 100%;
-            height: 75dvh;
-            transform: scale(1) translateY(0);
-            transition: all 0.3s ease;
-            .place_training__button {
-                width: 90%;
-                height: 100%;
-                margin: 0 auto;
-            }
-        }
-    }
 }

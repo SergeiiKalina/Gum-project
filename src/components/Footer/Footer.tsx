@@ -20,16 +20,7 @@ function Footer(): React.JSX.Element {
                 <NavLink to="/gentraining">
                     <GiCardRandom />
                 </NavLink>
-                <NavLink
-                    to="/plan-training"
-                    onClick={() => dispatch(writeCurrentTraining([]))}
-                >
-                    <MdOutlineDashboardCustomize />
-                </NavLink>
 
-                <NavLink to="/workout">
-                    <FaDumbbell />
-                </NavLink>
                 <NavLink to="/setup">
                     <CiSettings />
                 </NavLink>

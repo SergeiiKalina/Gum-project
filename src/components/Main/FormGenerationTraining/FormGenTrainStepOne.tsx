@@ -11,9 +11,7 @@ import { RxHome } from "react-icons/rx"
 import { FaDumbbell } from "react-icons/fa"
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
-
-const handleDragStart: DragEventHandler<HTMLImageElement> = (e) =>
-    e.preventDefault()
+import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const isAuth = useSelector(
@@ -50,19 +48,34 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
     const items = [
         <Button
             variant="contained"
-            className="place_training__button"
+            className="place_training__button home"
             onClick={() => navigate("/gentraining/step-2/home")}
         >
-            <RxHome className="place_training__button_img" />
             <span>Home Training</span>
         </Button>,
         <Button
             variant="contained"
-            className="place_training__button"
+            className="place_training__button gym"
             onClick={() => navigate("/gentraining/step-2/gym")}
         >
-            <FaDumbbell className="place_training__button_img" />
             <span>Gym Training</span>
+        </Button>,
+        <Button
+            variant="contained"
+            className="place_training__button customTraining"
+            onClick={() => {
+                navigate("/plan-training")
+                dispatch(writeCurrentTraining([]))
+            }}
+        >
+            <span>Custom Training</span>
+        </Button>,
+        <Button
+            variant="contained"
+            className="place_training__button library"
+            onClick={() => navigate("/library")}
+        >
+            <span>Exercise Library</span>
         </Button>,
     ]
     return (
@@ -79,6 +92,40 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     disableDotsControls
                 />
             </div>
+
+            <article>
+                <Button
+                    variant="contained"
+                    className="place_training__button home"
+                    onClick={() => navigate("/gentraining/step-2/home")}
+                >
+                    <span>Home Training</span>
+                </Button>
+                <Button
+                    variant="contained"
+                    className="place_training__button gym"
+                    onClick={() => navigate("/gentraining/step-2/gym")}
+                >
+                    <span>Gym Training</span>
+                </Button>
+                <Button
+                    variant="contained"
+                    className="place_training__button customTraining"
+                    onClick={() => {
+                        navigate("/plan-training")
+                        dispatch(writeCurrentTraining([]))
+                    }}
+                >
+                    <span>Custom Training</span>
+                </Button>
+                <Button
+                    variant="contained"
+                    className="place_training__button library"
+                    onClick={() => navigate("/library")}
+                >
+                    <span>Exercise Library</span>
+                </Button>
+            </article>
         </section>
     )
 }

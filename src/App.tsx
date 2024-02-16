@@ -30,7 +30,7 @@ function App(): React.JSX.Element {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<MyLayouts />}>
-                        <Route path="workout" element={<Training />} />
+                        <Route path="library" element={<Training />} />
                         <Route index element={<Login />} />
                         <Route path="/exercise" element={<Exercise />} />
                         <Route
