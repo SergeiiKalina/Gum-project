@@ -268,7 +268,7 @@
 
             background-repeat: no-repeat;
             background-position: 0 0;
-            background-size: 100% 100%;
+            background-size: 101% 100%;
             @include adaptive-font(100, 70);
             height: 300px;
 
@@ -308,28 +308,30 @@
             margin: 0 auto;
             overflow: hidden;
             .alice-carousel__stage-item {
-                width: 100%;
+                width: 95%;
                 height: 78dvh;
                 transform: scale(0.9) translateY(-20px);
                 transition: all 0.3s ease;
                 .place_training__button {
-                    width: 100%;
+                    width: 95%;
                     height: 100%;
                     margin: 0 auto;
+                    border-radius: 20px;
                 }
             }
 
             .alice-carousel__wrapper {
                 height: 100%;
                 .alice-carousel__stage-item.__active {
-                    width: 100%;
+                    width: 95%;
                     height: 78vh;
                     transform: scale(1) translateY(0);
                     transition: all 0.3s ease;
                     .place_training__button {
-                        width: 100%;
+                        width: 95%;
                         height: 100%;
                         margin: 0 auto;
+                        border-radius: 20px;
                     }
                 }
             }
