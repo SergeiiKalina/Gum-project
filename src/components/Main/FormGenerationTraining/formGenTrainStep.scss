@@ -82,80 +82,21 @@
     transform: translate(0%, -50%);
 }
 
-.save_and_generation_training_popup {
-    width: 100dvw;
-    height: 100dvh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    article {
-        width: 50%;
-        background-color: white;
-        display: flex;
-        justify-content: space-around;
-    }
-}
-
 .form_gen_train_step_wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     padding-bottom: 50px;
-    .form_error_message {
-        width: 60%;
-        color: red;
-        margin: 4px auto 0 auto;
-        @include adaptive-font(12, 10);
-    }
     h2 {
         @include adaptive-font(30, 20);
         margin: 16px 0;
-    }
-    .form_gen_train_step_secondHeader {
-        @include adaptive-font(30, 20);
-        margin: 32px 0 32px 0;
-    }
-    .form_gen_train_step_selectBlock {
-        display: flex;
-        flex-direction: column;
-        label {
-            justify-content: center;
-            flex-direction: row;
-            @include adaptive-font(18, 12);
-            span {
-                @include adaptive-font(16, 12);
-            }
-        }
-    }
-
-    .form_gen_train_step_blockInventory {
-        width: 60%;
-        margin: 0 auto;
-        h3 {
-            color: #fefefe;
-            margin: 20px auto 20px auto;
-            @include adaptive-font(26, 16);
-        }
     }
     section {
         width: 100%;
         display: flex;
         flex-direction: column;
         margin: 0 auto;
-        .textField {
-            width: 50%;
-            margin: 0 auto;
-            input {
-                color: white;
-            }
-        }
-
         select {
             width: 50%;
             display: flex;
@@ -192,295 +133,170 @@
             margin: 24px auto 24px auto;
         }
     }
-
-    .textarea {
-        width: 50%;
-        height: 150px;
-        @include adaptive-font(16, 12);
-        padding: 6px 4px;
-        resize: none;
-        margin: 20px auto 0 auto;
-        border: 2px solid lightblue;
-        border-radius: 8px;
-    }
-    .textarea:focus {
-        border: 2px solid white;
-        outline: 2px solid lightseagreen;
-    }
 }
 
-.form_gen_train_step_inlineRadio {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    .radio {
-        width: 35%;
+.place_training_wrapper {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    h2 {
         display: flex;
-        flex-direction: column-reverse;
-        margin: 0;
-        text-align: center;
-        color: #fefefe;
-        input {
-            margin: 15px auto 0 auto;
+        @include adaptive-font(30, 20);
+        padding: 8px 0 8px 0;
+        justify-content: flex-start;
+        font-weight: 500;
+    }
+    article {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 100%;
+        height: 100%;
+        margin: 50px auto 0 auto;
+        gap: 15px;
+    }
+    .place_training__button {
+        position: relative;
+
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 101% 100%;
+        width: 100%;
+        height: 50dvh;
+        span {
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 8px;
+            @include adaptive-font(16, 14);
+            font-weight: 700;
+            z-index: 10;
+            color: #42a5f5;
         }
     }
-    .radio :not(:first-child) {
-        margin: 0 0 0 20px;
+    .place_training__button.home {
+        background-image: url("./images/homeTraining.jpg");
     }
-}
-
-.wrapper_two_button {
-    width: 50%;
-    margin: 20px auto 0 auto;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    .button_third_step {
-        margin: 8px 0;
+    .place_training__button.gym {
+        background-image: url("./images/gymTraining.jpg");
     }
-}
-.touch {
-    .place_training_wrapper {
-        width: 70%;
-        height: calc(100dvh - 92px - 40px - 50px - 46px);
-        margin: 0 auto;
-        h2 {
-            display: flex;
-            @include adaptive-font(30, 20);
-            padding: 8px 0 8px 7%;
-            justify-content: flex-start;
-            font-weight: 500;
-        }
-        article {
-            display: none;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            align-items: center;
-            width: 90%;
-            height: 100%;
-            margin: 0 auto;
-        }
-        .place_training__button {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            background-repeat: no-repeat;
-            background-position: 0 0;
-            background-size: 100% 100%;
-
-            span {
-                width: 100%;
-                position: absolute;
-                top: 40px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding-top: 8px;
-                @include adaptive-font(25, 20);
-                font-weight: 700;
-                z-index: 10;
-                color: white;
-            }
-        }
-        .place_training__button.home {
-            background-image: url("./images/homeTraining.jpg");
-        }
-        .place_training__button.gym {
-            background-image: url("./images/gymTraining.jpg");
-        }
-        .place_training__button.library {
-            background-image: url("./images/libraryExercise.jpg");
-        }
-        .place_training__button.customTraining {
-            background-image: url("./images/customTraining.jpg");
-        }
-        .place_training__button:hover {
-            background-color: #182132;
-        }
-
-        .carusel_wrapper {
-            display: flex;
-            width: 90%;
-            height: 70vh;
-            margin: 0 auto;
-            .alice-carousel__stage-item {
-                width: 100%;
-                height: 70dvh;
-
-                transform: scale(0.9) translateY(-20px);
-                transition: all 0.3s ease;
-                .place_training__button {
-                    width: 100%;
-                    height: 100%;
-                    margin: 0 auto;
-                    border-radius: 20px;
-                }
-            }
-            .alice-carousel__stage-item:first-child {
-                width: 93% !important;
-            }
-
-            .alice-carousel__wrapper {
-                height: 100%;
-                .alice-carousel__stage-item.__active {
-                    width: 100%;
-                    height: 70vh;
-                    transform: scale(1) translateY(0);
-                    transition: all 0.3s ease;
-                    .place_training__button {
-                        width: 100%;
-                        height: 100%;
-                        margin: 0 auto;
-                        border-radius: 20px;
-                    }
-                }
-            }
-        }
+    .place_training__button.library {
+        background-image: url("./images/libraryExercise.jpg");
+    }
+    .place_training__button.customTraining {
+        background-image: url("./images/customTraining.jpg");
+    }
+    .place_training__button:hover {
+        background-color: #182132;
     }
 }
-.pc {
-    .place_training_wrapper {
-        width: 70%;
-        height: calc(100dvh - 92px - 40px - 50px - 46px);
-        margin: 0 auto;
-        h2 {
-            display: flex;
-            @include adaptive-font(30, 20);
-            padding: 8px 0 8px 7%;
-            justify-content: flex-start;
-            font-weight: 500;
-        }
-        article {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 1rem;
-            align-items: center;
-            width: 90%;
-            height: 100%;
-            margin: 0 auto;
-        }
-        .place_training__button {
-            position: relative;
-            display: flex;
-            flex-direction: column;
 
-            background-repeat: no-repeat;
-            background-position: 0 0;
-            background-size: 100% 120%;
-
-            height: 300px;
-
-            span {
-                width: 100%;
-                position: absolute;
-                bottom: 40px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding-top: 8px;
-                @include adaptive-font(18, 14);
-                font-weight: 700;
-                z-index: 10;
-                color: white;
-            }
-        }
-        .place_training__button.home {
-            background-image: url("./images/homeTraining.jpg");
-        }
-        .place_training__button.gym {
-            background-image: url("./images/gymTraining.jpg");
-        }
-        .place_training__button.library {
-            background-image: url("./images/libraryExercise.jpg");
-        }
-        .place_training__button.customTraining {
-            background-image: url("./images/customTraining.jpg");
-        }
-        .place_training__button:hover {
-            background-color: #182132;
-        }
-
-        .carusel_wrapper {
-            display: none;
-            width: 95%;
-            height: 75vh;
-            margin: 0 auto;
-            overflow: hidden;
-            .alice-carousel__stage-item {
-                width: 100%;
-                height: 78dvh;
-                transform: scale(0.9) translateY(-20px);
-                transition: all 0.3s ease;
-                .place_training__button {
-                    width: 100%;
-                    height: 100%;
-                    margin: 0 auto;
-                }
-            }
-
-            .alice-carousel__wrapper {
-                height: 100%;
-                .alice-carousel__stage-item.__active {
-                    width: 100%;
-                    height: 78vh;
-                    transform: scale(1) translateY(0);
-                    transition: all 0.3s ease;
-                    .place_training__button {
-                        width: 100%;
-                        height: 100%;
-                        margin: 0 auto;
-                    }
-                }
-            }
-        }
-    }
+.carousel_wrapper {
+    display: none;
+    width: 20dvw;
+    height: 75dvh;
+    margin: 0 auto;
+    overflow: hidden;
 }
+
 @media (max-width: 1024px) {
-    .touch,
-    .pc {
-        .place_training_wrapper {
-            width: 90%;
+    .place_training_wrapper {
+        width: 90%;
+        h2 {
+            padding: 8px 0 8px 7%;
         }
     }
 }
 @media (max-width: 767px) {
-    .touch,
-    .pc {
-        .place_training_wrapper {
+    .carousel_wrapper {
+        display: flex;
+
+        width: 70dvw;
+        height: 64dvh;
+        margin: 0 auto;
+        overflow: hidden;
+        margin: 20px auto;
+
+        .place_training__button {
             width: 100%;
+            height: 60dvh;
+            border-radius: 20px;
+            padding: 0;
         }
     }
+
+    .place_training_wrapper {
+        width: 100%;
+        article {
+            display: none;
+        }
+        .bullets {
+            display: flex;
+            position: absolute;
+            justify-content: space-between;
+            bottom: 145px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            width: 30%;
+            .bullet {
+                width: 8px;
+                height: 8px;
+                background-color: white;
+                border-radius: 50%;
+            }
+            .bullet.figactive {
+                width: 10px;
+                height: 10px;
+                background-color: #8dff98;
+            }
+        }
+    }
+
     .form_gen_train_step_wrapper {
         section {
             width: 100%;
         }
     }
-    .wrapper_two_button {
-        width: 75%;
-    }
 }
 @media (max-width: 600px) {
+    .carousel_wrapper {
+        width: 80dvw;
+        .place_training__button {
+            height: 60dvh;
+        }
+    }
 }
 @media screen and (max-width: 460px) {
-    .touch,
-    .pc {
-        .form_gen_train_step_wrapper {
-            section {
-                input {
-                    width: 90%;
-                }
-                .textarea {
-                    width: 80%;
-                }
-                select {
-                    width: 90%;
-                }
-                button {
-                    width: 50%;
-                }
+    .carousel_wrapper {
+        min-width: 90dvw;
+        min-height: 74dvh;
+        .place_training__button {
+            height: 70dvh;
+        }
+    }
+    .form_gen_train_step_wrapper {
+        section {
+            input {
+                width: 90%;
+            }
+            select {
+                width: 90%;
+            }
+            button {
+                width: 50%;
             }
         }
     }
 }
 
 @media screen and (max-width: 360px) {
+    .carousel_wrapper {
+        width: 95dvw;
+        min-height: 64dvh;
+        .place_training__button {
+            height: 60dvh;
+        }
+    }
 }

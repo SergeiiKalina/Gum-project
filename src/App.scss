@@ -19,3 +19,18 @@ h2 {
     margin: 12px auto 0 auto;
     border-radius: 10px;
 }
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 8px;
+    .swiper-pagination-bullet {
+        background: white;
+
+        opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+        width: 11px;
+        height: 11px;
+        background: #42a5f5;
+    }
+}

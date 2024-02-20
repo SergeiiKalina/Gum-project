@@ -1,4 +1,4 @@
-import React, { useEffect, DragEventHandler } from "react"
+import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "@mui/material"
@@ -7,11 +7,10 @@ import { writeDataUser } from "../../../store/userSlice"
 import axios from "axios"
 import { API_URL } from "../../../http"
 import { IAuthSliceState } from "../../header/Login/Login"
-import { RxHome } from "react-icons/rx"
-import { FaDumbbell } from "react-icons/fa"
-import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
+import "swiper/css"
+import Slider from "./Slider/Slider"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const isAuth = useSelector(
@@ -45,54 +44,11 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
         }
     }, [isAuth, navigate])
 
-    const items = [
-        <Button
-            variant="contained"
-            className="place_training__button home"
-            onClick={() => navigate("/gentraining/step-2/home")}
-        >
-            <span>Home Training</span>
-        </Button>,
-        <Button
-            variant="contained"
-            className="place_training__button gym"
-            onClick={() => navigate("/gentraining/step-2/gym")}
-        >
-            <span>Gym Training</span>
-        </Button>,
-        <Button
-            variant="contained"
-            className="place_training__button customTraining"
-            onClick={() => {
-                navigate("/plan-training")
-                dispatch(writeCurrentTraining([]))
-            }}
-        >
-            <span>Custom Training</span>
-        </Button>,
-        <Button
-            variant="contained"
-            className="place_training__button library"
-            onClick={() => navigate("/library")}
-        >
-            <span>Exercise Library</span>
-        </Button>,
-    ]
     return (
         <section className="place_training_wrapper">
             <h2>Hello, {localStorage.getItem("name")}</h2>
             <h2>{Date().substring(0, 15)}</h2>
-            <div className="carusel_wrapper">
-                <AliceCarousel
-                    mouseTracking
-                    items={items}
-                    autoWidth
-                    autoHeight
-                    disableButtonsControls={true}
-                    disableDotsControls
-                />
-            </div>
-
+            <Slider />
             <article>
                 <Button
                     variant="contained"
