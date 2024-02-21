@@ -45,7 +45,7 @@ function ExerciseCard({ exercise }: { exercise: ITraining }) {
                 wrapper.style.paddingBottom = "50px"
             }
         }
-    }, [])
+    }, [planTrainingArr.length])
     return (
         <li className="add_exercise_item_block">
             <article className="add_exercise_item_block_left_part">

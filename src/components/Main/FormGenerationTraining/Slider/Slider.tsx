@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Button } from "@mui/material"
@@ -13,6 +13,25 @@ import "swiper/scss/effect-coverflow"
 function Slider() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [marginSlide, setMarginSlide] = useState(8)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth)
+        }
+        if (windowWidth <= 360) {
+            setMarginSlide(0)
+        }
+
+        window.addEventListener("resize", handleResize)
+
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [windowWidth])
+
     const items = [
         <Button
             variant="contained"
@@ -50,12 +69,13 @@ function Slider() {
         <div className="carousel_wrapper">
             <Swiper
                 modules={[EffectCoverflow, Pagination]}
-                spaceBetween={12}
+                spaceBetween={marginSlide}
                 slidesPerView={1.12}
                 pagination={{ clickable: true }}
                 navigation
                 scrollbar={{ draggable: true }}
                 effect="coverflow"
+                speed={500}
             >
                 {items.map((el) => (
                     <SwiperSlide key={uuidv4()}>{el}</SwiperSlide>

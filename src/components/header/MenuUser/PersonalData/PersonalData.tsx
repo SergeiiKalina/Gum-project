@@ -8,6 +8,7 @@ import { API_URL } from "../../../../http"
 import axios from "axios"
 import { IAuthSliceState } from "../../Login/Login"
 import { useNavigate } from "react-router-dom"
+import CircularProgress from "@mui/material/CircularProgress"
 
 export interface IUserSlice {
     usersSlice: {
@@ -19,7 +20,7 @@ const PersonalData: React.FC = () => {
     const userData = useSelector(
         (state: IUserSlice) => state.usersSlice.dataUser
     )
-
+    const [isLoading, setIsLoading] = useState(false)
     const [cofSquat] = useState(
         (Number(userData.squat) / Number(userData.weight)) * 150
     )
@@ -57,6 +58,7 @@ const PersonalData: React.FC = () => {
                     const userRes = await axios.post(url, { email })
                     const userData = userRes.data
 
+                    setTimeout(() => setIsLoading(true), 500)
                     dispatch(writeDataUser(userData))
                 } catch (error) {
                     console.error(error)
@@ -68,170 +70,204 @@ const PersonalData: React.FC = () => {
     }, [dispatch])
 
     return (
-        <section className="wrapper_personal_data">
-            <ul>
-                <li>Name: {userData?.name ? userData?.name : ""}</li>
-                <li>
-                    <span>
-                        Email: {userData?.email ? userData.email : ""}
-                        {userData?.IsActivated ? (
-                            <span className="active_email">
-                                <GrFormCheckmark />
+        <>
+            {isLoading ? (
+                <section className="wrapper_personal_data">
+                    <ul>
+                        <li>Name: {userData?.name ? userData?.name : ""}</li>
+                        <li>
+                            <span>
+                                Email: {userData?.email ? userData.email : ""}
+                                {userData?.IsActivated ? (
+                                    <span className="active_email">
+                                        <GrFormCheckmark />
+                                    </span>
+                                ) : (
+                                    <span className="not_active_email">*</span>
+                                )}
                             </span>
-                        ) : (
-                            <span className="not_active_email">*</span>
-                        )}
-                    </span>
-                </li>
-                <li>Sex: {userData?.sex ? userData.sex : "No data"}</li>
+                        </li>
+                        <li>Sex: {userData?.sex ? userData.sex : "No data"}</li>
 
-                <li>
-                    Lifestyle:{" "}
-                    {userData?.lifestyle ? userData.lifestyle : "No data"}
-                </li>
-                <li>
-                    Weight:{" "}
-                    {userData?.weight ? userData.weight + "kg" : "No data"}
-                </li>
-                <li>
-                    Primary goal: {userData?.goal ? userData.goal : "No data"}
-                </li>
-                <li>
-                    Health problems:{" "}
-                    {userData?.problems ? (
-                        <ol>
-                            {userData.problems.map((el, i) => (
-                                <li key={uuidv4()}>{i + 1 + ". " + el}</li>
-                            ))}
-                        </ol>
-                    ) : (
-                        "No data"
-                    )}
-                </li>
-                <li>
-                    Favorite place to workout:{" "}
-                    {userData.placeToWorkout || "No data"}
-                </li>
-            </ul>
-            <h3>Exercise Results</h3>
-            <ul className="progress_field">
-                <li>
-                    <div className="wrapper_progress">
-                        <div
-                            className="progress"
-                            style={{
-                                height: `${
-                                    userData.squat
-                                        ? cofSquat >= 150
-                                            ? 150
-                                            : cofSquat
-                                        : 0
-                                }px`,
-                            }}
-                        ></div>
-                    </div>
-                    <div>
-                        {userData?.squat ? userData.squat + "kg" : "No data"}
-                    </div>
-                    <div className="personal_page_img_wrapper">
-                        <img src="./images/mini/icon-squat.png" alt="squat" />
-                    </div>
-                </li>
-                <li>
-                    <div className="wrapper_progress">
-                        <div
-                            className="progress"
-                            style={{
-                                height: `${
-                                    userData.benchPress
-                                        ? cofBenchPress >= 150
-                                            ? 150
-                                            : cofBenchPress
-                                        : 0
-                                }px`,
-                            }}
-                        ></div>
-                    </div>
+                        <li>
+                            Lifestyle:{" "}
+                            {userData?.lifestyle
+                                ? userData.lifestyle
+                                : "No data"}
+                        </li>
+                        <li>
+                            Weight:{" "}
+                            {userData?.weight
+                                ? userData.weight + "kg"
+                                : "No data"}
+                        </li>
+                        <li>
+                            Primary goal:{" "}
+                            {userData?.goal ? userData.goal : "No data"}
+                        </li>
+                        <li>
+                            Health problems:{" "}
+                            {userData?.problems ? (
+                                <ol>
+                                    {userData.problems.map((el, i) => (
+                                        <li key={uuidv4()}>
+                                            {i + 1 + ". " + el}
+                                        </li>
+                                    ))}
+                                </ol>
+                            ) : (
+                                "No data"
+                            )}
+                        </li>
+                        <li>
+                            Favorite place to workout:{" "}
+                            {userData.placeToWorkout || "No data"}
+                        </li>
+                    </ul>
+                    <h3>Exercise Results</h3>
+                    <ul className="progress_field">
+                        <li>
+                            <div className="wrapper_progress">
+                                <div
+                                    className="progress"
+                                    style={{
+                                        height: `${
+                                            userData.squat
+                                                ? cofSquat >= 150
+                                                    ? 150
+                                                    : cofSquat
+                                                : 0
+                                        }px`,
+                                    }}
+                                ></div>
+                            </div>
+                            <div>
+                                {userData?.squat
+                                    ? userData.squat + "kg"
+                                    : "No data"}
+                            </div>
+                            <div className="personal_page_img_wrapper">
+                                <img
+                                    src="./images/mini/icon-squat.png"
+                                    alt="squat"
+                                />
+                            </div>
+                        </li>
+                        <li>
+                            <div className="wrapper_progress">
+                                <div
+                                    className="progress"
+                                    style={{
+                                        height: `${
+                                            userData.benchPress
+                                                ? cofBenchPress >= 150
+                                                    ? 150
+                                                    : cofBenchPress
+                                                : 0
+                                        }px`,
+                                    }}
+                                ></div>
+                            </div>
 
-                    {userData?.benchPress
-                        ? userData.benchPress + "kg"
-                        : "No data"}
-                    <div className="personal_page_img_wrapper">
-                        <img
-                            src="./images/mini/bench-press-icon.png"
-                            alt="bench-press"
-                        />
-                    </div>
-                </li>
-                <li>
-                    <div className="wrapper_progress">
-                        <div
-                            className="progress"
-                            style={{
-                                height: `${
-                                    userData.deadLift
-                                        ? cofDeadLift >= 150
-                                            ? 150
-                                            : cofDeadLift
-                                        : 0
-                                }px`,
-                            }}
-                        ></div>
-                    </div>
+                            {userData?.benchPress
+                                ? userData.benchPress + "kg"
+                                : "No data"}
+                            <div className="personal_page_img_wrapper">
+                                <img
+                                    src="./images/mini/bench-press-icon.png"
+                                    alt="bench-press"
+                                />
+                            </div>
+                        </li>
+                        <li>
+                            <div className="wrapper_progress">
+                                <div
+                                    className="progress"
+                                    style={{
+                                        height: `${
+                                            userData.deadLift
+                                                ? cofDeadLift >= 150
+                                                    ? 150
+                                                    : cofDeadLift
+                                                : 0
+                                        }px`,
+                                    }}
+                                ></div>
+                            </div>
 
-                    {userData?.deadLift ? userData.deadLift + "kg" : "No data"}
-                    <div className="personal_page_img_wrapper">
-                        <img
-                            src="./images/mini/dead-lift-icon.png"
-                            alt="dead-lift"
-                        />
-                    </div>
-                </li>
-                <li>
-                    <div className="wrapper_progress">
-                        <div
-                            className="progress"
-                            style={{
-                                height: `${
-                                    userData.pullUp
-                                        ? cofPullUp >= 150
-                                            ? 150
-                                            : cofPullUp
-                                        : 0
-                                }px`,
-                            }}
-                        ></div>
-                    </div>
-                    {userData?.pullUp ? userData.pullUp + " reps" : "No data"}
-                    <div className="personal_page_img_wrapper">
-                        <img
-                            src="./images/mini/pull-up-icon.png"
-                            alt="pull-up"
-                        />
-                    </div>
-                </li>
-                <li>
-                    <div className="wrapper_progress">
-                        <div
-                            className="progress"
-                            style={{
-                                height: `${
-                                    userData.sitUp
-                                        ? cofSitUp >= 150
-                                            ? 150
-                                            : cofSitUp
-                                        : 0
-                                }px`,
-                            }}
-                        ></div>
-                    </div>
-                    {userData?.sitUp ? userData.sitUp + " reps" : "No data"}
-                    <div className="personal_page_img_wrapper">
-                        <img src="./images/mini/sit-up-icon.png" alt="sit-up" />
-                    </div>
-                </li>
-            </ul>
-        </section>
+                            {userData?.deadLift
+                                ? userData.deadLift + "kg"
+                                : "No data"}
+                            <div className="personal_page_img_wrapper">
+                                <img
+                                    src="./images/mini/dead-lift-icon.png"
+                                    alt="dead-lift"
+                                />
+                            </div>
+                        </li>
+                        <li>
+                            <div className="wrapper_progress">
+                                <div
+                                    className="progress"
+                                    style={{
+                                        height: `${
+                                            userData.pullUp
+                                                ? cofPullUp >= 150
+                                                    ? 150
+                                                    : cofPullUp
+                                                : 0
+                                        }px`,
+                                    }}
+                                ></div>
+                            </div>
+                            {userData?.pullUp
+                                ? userData.pullUp + " reps"
+                                : "No data"}
+                            <div className="personal_page_img_wrapper">
+                                <img
+                                    src="./images/mini/pull-up-icon.png"
+                                    alt="pull-up"
+                                />
+                            </div>
+                        </li>
+                        <li>
+                            <div className="wrapper_progress">
+                                <div
+                                    className="progress"
+                                    style={{
+                                        height: `${
+                                            userData.sitUp
+                                                ? cofSitUp >= 150
+                                                    ? 150
+                                                    : cofSitUp
+                                                : 0
+                                        }px`,
+                                    }}
+                                ></div>
+                            </div>
+                            {userData?.sitUp
+                                ? userData.sitUp + " reps"
+                                : "No data"}
+                            <div className="personal_page_img_wrapper">
+                                <img
+                                    src="./images/mini/sit-up-icon.png"
+                                    alt="sit-up"
+                                />
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            ) : (
+                <CircularProgress
+                    color="info"
+                    sx={{
+                        position: "absolute",
+                        top: "calc(50% - 72px )",
+                        left: "calc(50% - 20px )",
+                    }}
+                />
+            )}
+        </>
     )
 }
 

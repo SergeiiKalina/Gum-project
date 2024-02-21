@@ -8,8 +8,6 @@ import { API_URL } from "../../../http"
 import { IUserData } from "../../../store/userSlice"
 import { StyledTextField } from "../../Styled-components/Styled"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { useSelector } from "react-redux"
-import { IAuthSliceState } from "../Login/Login"
 import CircularProgress from "@mui/material/CircularProgress"
 import { Button } from "@mui/material"
 
@@ -26,9 +24,6 @@ interface IRewriteUserData {
 const MenuUser: FC = () => {
     const [userData, setUserData] = useState<IUserData>()
     const [toggleRewriteData, setToggleRewriteData] = useState<boolean>(false)
-    const isLoading = useSelector(
-        (state: IAuthSliceState) => state.authSlice.isLoading
-    )
     const { register, handleSubmit } = useForm<IRewriteUserData>()
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
@@ -42,7 +37,7 @@ const MenuUser: FC = () => {
                     email,
                 })
 
-                setUserData(userData.data)
+                setTimeout(() => setUserData(userData.data), 500)
             }
         }
         getUserData()
@@ -74,7 +69,7 @@ const MenuUser: FC = () => {
                 id="userMenu"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                {isLoading ? (
+                {!userData?.squat ? (
                     <CircularProgress
                         color="info"
                         sx={{
@@ -245,36 +240,38 @@ const MenuUser: FC = () => {
                                 </Button>
                             )}
                         </li>
+                        <section className="menu_user_button_block">
+                            {!toggleRewriteData && (
+                                <>
+                                    <Button
+                                        variant="contained"
+                                        type="button"
+                                        onClick={() =>
+                                            setToggleRewriteData(
+                                                (prev) => !prev
+                                            )
+                                        }
+                                    >
+                                        Rewrite Training Data
+                                    </Button>
+
+                                    <Button
+                                        variant="outlined"
+                                        type="button"
+                                        onClick={async () => {
+                                            await dispatch(logout())
+                                            await navigate("/")
+                                        }}
+                                        sx={{ marginTop: "15px" }}
+                                    >
+                                        Sing out
+                                    </Button>
+                                </>
+                            )}
+                        </section>
                     </ul>
                 )}
             </form>
-            <section className="menu_user_button_block">
-                {!toggleRewriteData && (
-                    <>
-                        <Button
-                            variant="contained"
-                            type="button"
-                            onClick={() =>
-                                setToggleRewriteData((prev) => !prev)
-                            }
-                        >
-                            Rewrite Training Data
-                        </Button>
-
-                        <Button
-                            variant="outlined"
-                            type="button"
-                            onClick={async () => {
-                                await dispatch(logout())
-                                await navigate("/")
-                            }}
-                            sx={{ marginTop: "15px" }}
-                        >
-                            Sing out
-                        </Button>
-                    </>
-                )}
-            </section>
         </>
     )
 }

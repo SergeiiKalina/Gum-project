@@ -1,7 +1,6 @@
 import React from "react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 import training, { ITraining } from "../../../data/data"
 import { Button } from "@mui/material"
 import MobileMenuFroExerciseWrapper from "../MobileMenuFroExerciseWrapper/MobileMenuFroExerciseWrapper"
@@ -93,7 +92,7 @@ export default function AddExercise({
             setCurrentExercises([])
             return
         }
-    }, [searchData])
+    }, [searchData, dispatch, isChecked.length])
 
     useEffect(() => {
         let notePage = 12

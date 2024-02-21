@@ -34,8 +34,9 @@ function TrainingPlan() {
     )
 
     useEffect(() => {
-        createArrayCategories(training)
-    }, [])
+        const categories = createArrayCategories(training)
+        dispatch(writeCategories(categories))
+    }, [dispatch])
 
     function createArrayCategories(value: ITraining[]) {
         const set = new Set<string>()
@@ -44,7 +45,7 @@ function TrainingPlan() {
             set.add(category)
         }
 
-        dispatch(writeCategories(Array.from(set)))
+        return Array.from(set)
     }
     return (
         <section className="custom_training_wrapper">
