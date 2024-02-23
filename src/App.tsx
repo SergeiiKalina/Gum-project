@@ -18,6 +18,7 @@ import MenuUser from "./components/header/MenuUser/MenuUser"
 import Exercise from "./components/Main/Exercise/Exercise"
 import TrainingPlan from "./components/Main/TrainingPlan/TrainingPlan"
 import "./App.scss"
+import Carousel from "./components/Main/Carousel/Carousel"
 
 function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
@@ -54,6 +55,7 @@ function App(): React.JSX.Element {
                             path="/gentraining/step-2/home"
                             element={<HomeTestForm />}
                         />
+                        <Route path="/carousel" element={<Carousel />} />
                         <Route
                             path="/gentraining/step-4/home"
                             element={<AvailabilityOfInventory />}

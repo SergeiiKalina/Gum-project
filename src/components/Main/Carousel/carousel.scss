@@ -1,0 +1,34 @@
+.carousel_wrapper_main {
+    display: flex;
+    width: 90dvw;
+    height: 80dvh;
+    background-color: white;
+    margin: 0 auto;
+    .carousel_container {
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        cursor: pointer;
+        padding: 8px 16px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        .carousel_item {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            min-width: 85dvw;
+            background-color: black;
+            margin: 0 8px;
+            color: aliceblue;
+            border-radius: 20px;
+            transition: all 500ms ease;
+        }
+        .carousel_item.active {
+        }
+    }
+    .carousel_container::-webkit-scrollbar {
+        display: none;
+    }
+}
