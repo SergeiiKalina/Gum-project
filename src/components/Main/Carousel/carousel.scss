@@ -1,8 +1,10 @@
+@import "../../adaptive-fontMixin.scss";
+
 .carousel_wrapper_main {
     display: flex;
     width: 90dvw;
     height: 80dvh;
-
+    margin: 0 auto;
     .carousel_container {
         width: 100%;
         display: flex;
@@ -12,23 +14,52 @@
         padding: 8px 16px;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        perspective: 1200px;
         .carousel_item {
             display: flex;
-
+            position: relative;
             justify-content: center;
             align-items: center;
             height: 100%;
             min-width: 79dvw;
-            background-color: rgb(122, 70, 253);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 101% 100%;
             margin: 0 8px;
             color: aliceblue;
             border-radius: 20px;
             transition: all 500ms ease;
+            transform: rotateY(-30deg);
+            transform-origin: right center;
+            span {
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                @include adaptive-font(40, 30);
+                font-weight: 600;
+            }
         }
+        .carousel_item.home {
+            background-image: url("../FormGenerationTraining/images/homeTraining.jpg");
+        }
+        .carousel_item.gym {
+            background-image: url("../FormGenerationTraining/images/gymTraining.jpg");
+        }
+        .carousel_item.library {
+            background-image: url("../FormGenerationTraining/images/libraryExercise.jpg");
+        }
+        .carousel_item.customTraining {
+            background-image: url("../FormGenerationTraining/images/customTraining.jpg");
+        }
+
         .carousel_item.active {
+            transform: rotateY(0);
+            transform-origin: right center;
         }
-    }
-    .carousel_container::-webkit-scrollbar {
-        display: none;
+
+        .carousel_container::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

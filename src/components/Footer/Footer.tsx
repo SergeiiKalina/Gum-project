@@ -15,7 +15,9 @@ function Footer(): React.JSX.Element {
                 <NavLink to="/gentraining">
                     <GiCardRandom />
                 </NavLink>
-                <NavLink to="/carousel">carousel</NavLink>
+                <NavLink to="/carousel">
+                    <GiCardRandom />
+                </NavLink>
                 <NavLink to="/setup">
                     <CiSettings />
                 </NavLink>

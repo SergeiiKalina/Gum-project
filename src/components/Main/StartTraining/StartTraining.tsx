@@ -182,7 +182,13 @@ export default function StartTraining(): React.JSX.Element {
                         <div className="start_training_title">
                             {exercise.title}
                         </div>
+
                         <form onChange={handleSubmit(onSubmit)}>
+                            <ul>
+                                {exercise.describe?.map((el, index) => (
+                                    <li key={index}>{el}</li>
+                                ))}
+                            </ul>
                             <Box
                                 sx={{
                                     width: "100%",

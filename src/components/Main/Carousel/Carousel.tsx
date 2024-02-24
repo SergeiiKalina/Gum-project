@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react"
 import "./carousel.scss"
-
-const arr = [1, 2, 3, 4, 5]
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 
 function Carousel() {
     const [startTouch, setStartTouch] = useState<number>(0)
@@ -20,7 +21,7 @@ function Carousel() {
             firstItemRef.current
         ) {
             console.log(firstItemRef)
-            if (currentIndex === 4) return
+            if (currentIndex === 3) return
             setCurrentIndex((prev) => prev + 1)
             const children = Array.from(
                 containerRef.current.children
@@ -64,45 +65,46 @@ function Carousel() {
             }
         }
     }
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     return (
         <section className="carousel_wrapper_main">
             <article className="carousel_container" ref={containerRef}>
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    className="carousel_item active"
+                    onClick={() => navigate("/gentraining/step-2/home")}
+                    className="carousel_item home"
                     ref={firstItemRef}
                 >
-                    1
+                    <span>Home Training</span>
                 </div>
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    className="carousel_item"
+                    onClick={() => navigate("/gentraining/step-2/gym")}
+                    className="carousel_item gym"
                 >
-                    2
+                    <span>Gym Training</span>
                 </div>
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    className="carousel_item"
+                    onClick={() => {
+                        navigate("/plan-training")
+                        dispatch(writeCurrentTraining([]))
+                    }}
+                    className="carousel_item customTraining"
                 >
-                    3
+                    <span>Custom Training</span>
                 </div>
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    className="carousel_item"
+                    onClick={() => navigate("/library")}
+                    className="carousel_item library"
                 >
-                    4
-                </div>
-                <div
-                    onTouchStart={handleTouchStart}
-                    onTouchEnd={(e) => handleTouchEnd(e)}
-                    className="carousel_item"
-                >
-                    5
+                    <span>Library</span>
                 </div>
             </article>
         </section>

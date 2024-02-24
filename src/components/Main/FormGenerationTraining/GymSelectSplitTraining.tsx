@@ -68,7 +68,7 @@ export default function GymSelectSpritTraining(): React.JSX.Element {
                     type="submit"
                     sx={stylesFormButton}
                     className="background_image_upper_body"
-                    onClick={() => startGenerationTraining("UpperBody")}
+                    onClick={() => startGenerationTraining("upperBody")}
                 >
                     <span className="header_button_generation_training">
                         Upper Body
