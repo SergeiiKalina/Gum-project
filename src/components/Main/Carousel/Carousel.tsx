@@ -67,7 +67,7 @@ function Carousel() {
                 smoothScroll(
                     containerRef.current!.scrollLeft,
                     containerRef.current!.scrollLeft + countScroll + padding,
-                    400
+                    100
                 )
             }
         }
