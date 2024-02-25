@@ -42,32 +42,24 @@ function Carousel() {
             const end = e.changedTouches[0].clientX
             const diffX = end - startTouch
             const diffTime = performance.now() - startTouchTime
-            const velocity = Math.abs(diffX / diffTime) // Скорость свайпа
+            const velocity = Math.abs(diffX / diffTime)
 
             const threshold = 10
-            const scrollAmount = Number(firstItemRef.current.offsetWidth)
+            const scrollAmount = containerRef.current!.offsetWidth - 42
             if (Math.abs(diffX) >= threshold) {
                 const numBlocksToScroll = Math.ceil(
                     Math.abs(diffX) / containerRef.current!.offsetWidth
                 )
                 const scrollDirection = diffX > 0 ? -1 : 1
 
-                // Прокрутка в зависимости от скорости свайпа
                 const countScroll =
                     velocity > 1
                         ? scrollDirection * scrollAmount * numBlocksToScroll
                         : scrollDirection * scrollAmount
 
-                const padding =
-                    velocity > 1
-                        ? diffX > 0
-                            ? -18 * numBlocksToScroll
-                            : +18 * numBlocksToScroll
-                        : 0
-
                 smoothScroll(
                     containerRef.current!.scrollLeft,
-                    containerRef.current!.scrollLeft + countScroll + padding,
+                    containerRef.current!.scrollLeft + countScroll,
                     300
                 ) // Прокручиваем с анимацией
             }
@@ -105,7 +97,11 @@ function Carousel() {
                     onTouchEnd={(e) => handleTouchEnd(e)}
                     onClick={() => navigate("/gentraining/step-2/home")}
                     className={`carousel_item home ${
-                        currentIndex === 0 ? "active" : ""
+                        currentIndex === 0
+                            ? "active"
+                            : currentIndex === 1
+                            ? "prev"
+                            : ""
                     }`}
                     ref={firstItemRef}
                 >
@@ -116,7 +112,11 @@ function Carousel() {
                     onTouchEnd={(e) => handleTouchEnd(e)}
                     onClick={() => navigate("/gentraining/step-2/gym")}
                     className={`carousel_item gym ${
-                        currentIndex === 1 ? "active" : ""
+                        currentIndex === 1
+                            ? "active"
+                            : currentIndex === 2
+                            ? "prev"
+                            : ""
                     }`}
                 >
                     <span>Gym Training</span>
@@ -129,7 +129,11 @@ function Carousel() {
                         dispatch(writeCurrentTraining([]))
                     }}
                     className={`carousel_item customTraining ${
-                        currentIndex === 2 ? "active" : ""
+                        currentIndex === 2
+                            ? "active"
+                            : currentIndex === 3
+                            ? "prev"
+                            : ""
                     }`}
                 >
                     <span>Custom Training</span>

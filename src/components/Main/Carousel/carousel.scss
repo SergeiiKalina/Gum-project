@@ -5,21 +5,22 @@
     display: flex;
     flex-direction: column;
 
-    width: 90dvw;
+    width: 85dvw;
     height: 80dvh;
-    margin: 0 auto;
+
     h2 {
         display: flex;
         @include adaptive-font(30, 20);
         padding: 8px 0 8px 0;
         justify-content: flex-start;
         font-weight: 500;
+        margin-left: 16px;
     }
     .carousel_container {
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         overflow: hidden;
         cursor: pointer;
         padding: 8px 16px;
@@ -32,7 +33,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            min-width: 79dvw;
+            min-width: 78dvw;
             background-repeat: no-repeat;
             background-position: 0 0;
             background-size: 101% 100%;
@@ -70,6 +71,10 @@
             transform: rotateY(0);
             transform-origin: right center;
         }
+        .carousel_item.prev {
+            transform: rotateY(30deg);
+            transform-origin: left center;
+        }
 
         .carousel_container::-webkit-scrollbar {
             display: none;
@@ -89,14 +94,16 @@
         .bullet_point {
             height: 8px;
             width: 8px;
-            background-color: white;
+            background-color: rgba($color: #42a5f5, $alpha: 0.5);
             border-radius: 50%;
+            transition: all 0.3s ease;
         }
         .bullet_point.active {
-            height: 10px;
-            width: 10px;
-            background-color: #4f43ff;
-            border-radius: 50%;
+            height: 8px;
+            width: 20px;
+            background-color: white;
+            border-radius: 5px;
+            transition: all 0.5s ease;
         }
     }
 }
