@@ -9,6 +9,7 @@ function Carousel() {
     const firstItemRef = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [startTouchTime, setStartTouchTime] = useState<number>(0)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,12 +34,16 @@ function Carousel() {
 
     function handleTouchStart(e: React.TouchEvent<HTMLDivElement>) {
         setStartTouch(e.changedTouches[0].clientX)
+        setStartTouchTime(performance.now())
     }
 
     function handleTouchEnd(e: React.TouchEvent<HTMLElement>) {
         if (startTouch > 0 && firstItemRef.current) {
             const end = e.changedTouches[0].clientX
             const diffX = end - startTouch
+            const diffTime = performance.now() - startTouchTime
+            const velocity = Math.abs(diffX / diffTime)
+
             const threshold = 10
             const scrollAmount = Number(firstItemRef.current.offsetWidth)
             if (Math.abs(diffX) >= threshold) {
@@ -46,19 +51,47 @@ function Carousel() {
                     Math.abs(diffX) / containerRef.current!.offsetWidth
                 )
                 const scrollDirection = diffX > 0 ? -1 : 1
+
                 const countScroll =
-                    scrollDirection * scrollAmount * numBlocksToScroll
+                    velocity > 1
+                        ? scrollDirection * scrollAmount * numBlocksToScroll
+                        : scrollDirection * scrollAmount
+
                 const padding =
-                    diffX > 0
-                        ? -18 * numBlocksToScroll
-                        : +18 * numBlocksToScroll
-                containerRef.current?.scrollBy({
-                    left: countScroll + padding,
-                    behavior: "smooth",
-                })
+                    velocity > 1
+                        ? diffX > 0
+                            ? -18 * numBlocksToScroll
+                            : +18 * numBlocksToScroll
+                        : 0
+
+                smoothScroll(
+                    containerRef.current!.scrollLeft,
+                    containerRef.current!.scrollLeft + countScroll + padding,
+                    400
+                )
             }
         }
     }
+
+    function smoothScroll(start: number, end: number, duration: number) {
+        const startTime = performance.now()
+        const endTime = startTime + duration
+
+        function scroll() {
+            const now = performance.now()
+            const timeFraction = Math.min((now - startTime) / duration, 1)
+
+            const scrollLeft = start + (end - start) * timeFraction
+            containerRef.current!.scrollLeft = scrollLeft
+
+            if (now < endTime) {
+                requestAnimationFrame(scroll)
+            }
+        }
+
+        requestAnimationFrame(scroll)
+    }
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     return (
