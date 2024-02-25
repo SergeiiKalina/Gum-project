@@ -1,12 +1,23 @@
 @import "../../adaptive-fontMixin.scss";
 
 .carousel_wrapper_main {
+    position: relative;
     display: flex;
+    flex-direction: column;
+
     width: 90dvw;
     height: 80dvh;
     margin: 0 auto;
+    h2 {
+        display: flex;
+        @include adaptive-font(30, 20);
+        padding: 8px 0 8px 0;
+        justify-content: flex-start;
+        font-weight: 500;
+    }
     .carousel_container {
         width: 100%;
+        height: 100%;
         display: flex;
         justify-content: flex-start;
         overflow: hidden;
@@ -32,14 +43,16 @@
             transform: rotateY(-30deg);
             transform-origin: right center;
             span {
+                display: block;
+                width: 100%;
                 position: absolute;
                 bottom: 15px;
-                left: 50%;
-                transform: translateX(-50%);
+                text-align: center;
                 @include adaptive-font(40, 30);
                 font-weight: 600;
             }
         }
+
         .carousel_item.home {
             background-image: url("../FormGenerationTraining/images/homeTraining.jpg");
         }
@@ -60,6 +73,30 @@
 
         .carousel_container::-webkit-scrollbar {
             display: none;
+        }
+    }
+    .bullet {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+        height: 10px;
+        z-index: 10;
+
+        .bullet_point {
+            height: 8px;
+            width: 8px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .bullet_point.active {
+            height: 10px;
+            width: 10px;
+            background-color: #4f43ff;
+            border-radius: 50%;
         }
     }
 }
