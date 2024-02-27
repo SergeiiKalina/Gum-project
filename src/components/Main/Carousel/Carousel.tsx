@@ -47,21 +47,18 @@ function Carousel() {
             const threshold = 10
             const scrollAmount = containerRef.current!.offsetWidth - 42
             if (Math.abs(diffX) >= threshold) {
-                const numBlocksToScroll = Math.ceil(
-                    Math.abs(diffX) / containerRef.current!.offsetWidth
-                )
-                const scrollDirection = diffX > 0 ? -1 : 1
+                const numBlocksToScroll =
+                    velocity > 1 ? 3 : velocity > 0.6 ? 2 : 1
 
+                const scrollDirection = diffX > 0 ? -1 : 1
                 const countScroll =
-                    velocity > 1
-                        ? scrollDirection * scrollAmount * numBlocksToScroll
-                        : scrollDirection * scrollAmount
+                    scrollDirection * scrollAmount * numBlocksToScroll
 
                 smoothScroll(
                     containerRef.current!.scrollLeft,
                     containerRef.current!.scrollLeft + countScroll,
-                    300
-                ) // Прокручиваем с анимацией
+                    400
+                )
             }
         }
     }
@@ -72,17 +69,15 @@ function Carousel() {
 
         function scroll() {
             const now = performance.now()
-            const timeFraction = Math.min((now - startTime) / duration, 1) // Коэффициент времени (от 0 до 1)
-
-            const scrollLeft = start + (end - start) * timeFraction // Интерполяция между начальным и конечным значением
-            containerRef.current!.scrollLeft = scrollLeft // Прокрутка
-
+            const timeFraction = Math.min((now - startTime) / duration, 1)
+            const scrollLeft = start + (end - start) * timeFraction
+            containerRef.current!.scrollLeft = scrollLeft
             if (now < endTime) {
-                requestAnimationFrame(scroll) // Рекурсивный вызов, пока не достигнут конечный момент времени
+                requestAnimationFrame(scroll)
             }
         }
 
-        requestAnimationFrame(scroll) // Начать анимацию
+        requestAnimationFrame(scroll)
     }
 
     const navigate = useNavigate()
