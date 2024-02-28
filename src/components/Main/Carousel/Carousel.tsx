@@ -45,10 +45,12 @@ function Carousel() {
             const velocity = Math.abs(diffX / diffTime)
 
             const threshold = 10
-            const scrollAmount = containerRef.current!.offsetWidth - 42
+            const scrollAmount =
+                containerRef.current!.offsetWidth -
+                (containerRef.current!.offsetWidth / 100) * 10
             if (Math.abs(diffX) >= threshold) {
                 const numBlocksToScroll =
-                    velocity > 1 ? 3 : velocity > 0.6 ? 2 : 1
+                    velocity > 1.5 ? 3 : velocity > 1 ? 2 : 1
 
                 const scrollDirection = diffX > 0 ? -1 : 1
                 const countScroll =
@@ -140,6 +142,7 @@ function Carousel() {
                     className={`carousel_item library ${
                         currentIndex === 3 ? "active" : ""
                     }`}
+                    style={{ marginRight: "30px" }}
                 >
                     <span>Library</span>
                 </div>
