@@ -9,8 +9,9 @@ import { API_URL } from "../../../http"
 import { IAuthSliceState } from "../../header/Login/Login"
 import "react-alice-carousel/lib/alice-carousel.css"
 import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
+import Carousel from "../Carousel/Carousel"
 import "swiper/css"
-import Slider from "./Slider/Slider"
+import Footer from "../../Footer/Footer"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const isAuth = useSelector(
@@ -45,11 +46,9 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
     }, [isAuth, navigate])
 
     return (
-        <section className="place_training_wrapper">
-            <h2>Hello, {localStorage.getItem("name")}</h2>
-            <h2>{Date().substring(0, 15)}</h2>
-            <Slider />
-            <article>
+        <>
+            <Carousel />
+            <article className="main_page_computer_page">
                 <Button
                     variant="contained"
                     className="place_training__button home"
@@ -82,6 +81,7 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     <span>Exercise Library</span>
                 </Button>
             </article>
-        </section>
+            <Footer />
+        </>
     )
 }

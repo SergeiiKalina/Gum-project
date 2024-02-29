@@ -33,7 +33,7 @@ function Login(): React.JSX.Element {
     useEffect(() => {
         if (localStorage.getItem("email")) {
             if (isAuth) {
-                navigate("/gentraining")
+                navigate("/main-page")
             }
         }
     }, [navigate, isAuth])

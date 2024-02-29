@@ -5,7 +5,7 @@ import "./logo.scss"
 export default function Logo(): React.JSX.Element {
     return (
         <section className="logo_wrapper">
-            <NavLink to="gentraining" className="logo_link">
+            <NavLink to="main-page" className="logo_link">
                 <div>
                     <h1>Gym Hub</h1>
                 </div>

@@ -10,6 +10,7 @@ import { StyledTextField } from "../../Styled-components/Styled"
 import { SubmitHandler, useForm } from "react-hook-form"
 import CircularProgress from "@mui/material/CircularProgress"
 import { Button } from "@mui/material"
+import Footer from "../../Footer/Footer"
 
 interface IRewriteUserData {
     squat: number
@@ -272,6 +273,7 @@ const MenuUser: FC = () => {
                     </ul>
                 )}
             </form>
+            <Footer />
         </>
     )
 }

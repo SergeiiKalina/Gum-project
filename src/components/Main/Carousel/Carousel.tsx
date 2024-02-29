@@ -3,6 +3,8 @@ import "./carousel.scss"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
+import { useSelector } from "react-redux"
+import { IAuthSliceState } from "../../header/Login/Login"
 
 function Carousel() {
     const [startTouch, setStartTouch] = useState<number>(0)
@@ -10,24 +12,36 @@ function Carousel() {
     const containerRef = useRef<HTMLDivElement>(null)
     const [currentIndex, setCurrentIndex] = useState(0)
     const [startTouchTime, setStartTouchTime] = useState<number>(0)
+    const isAuth = useSelector(
+        (state: IAuthSliceState) => state.authSlice.isAuth
+    )
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
+        if (!isAuth) {
+            navigate("/")
+        }
+    }, [isAuth, navigate])
+
+    useEffect(() => {
+        const currentContainerRef = containerRef.current
         const handleScroll = () => {
-            if (containerRef.current && firstItemRef.current) {
-                const scrollLeft = containerRef.current.scrollLeft
+            if (currentContainerRef && firstItemRef.current) {
+                const scrollLeft = currentContainerRef.scrollLeft
                 const offsetWidth = firstItemRef.current.offsetWidth
                 const index = Math.round(scrollLeft / offsetWidth)
                 setCurrentIndex(index)
             }
         }
 
-        if (containerRef.current) {
-            containerRef.current.addEventListener("scroll", handleScroll)
+        if (currentContainerRef) {
+            currentContainerRef.addEventListener("scroll", handleScroll)
         }
 
         return () => {
-            if (containerRef.current) {
-                containerRef.current.removeEventListener("scroll", handleScroll)
+            if (currentContainerRef) {
+                currentContainerRef.removeEventListener("scroll", handleScroll)
             }
         }
     }, [])
@@ -59,7 +73,7 @@ function Carousel() {
                 smoothScroll(
                     containerRef.current!.scrollLeft,
                     containerRef.current!.scrollLeft + countScroll,
-                    400
+                    countScroll === 3 ? 400 : countScroll === 2 ? 300 : 200
                 )
             }
         }
@@ -82,8 +96,6 @@ function Carousel() {
         requestAnimationFrame(scroll)
     }
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
     return (
         <section className="carousel_wrapper_main">
             <h2>Hello, {localStorage.getItem("name")}</h2>

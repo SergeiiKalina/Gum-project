@@ -8,7 +8,6 @@ function MyLayouts(): React.JSX.Element {
         <>
             <Header />
             <Outlet />
-            <Footer />
         </>
     )
 }

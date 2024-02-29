@@ -75,7 +75,7 @@ function RegistrationStepFour({ setStep }: { setStep: (num: number) => void }) {
             ...data,
         })
         await dispatch(toggleIsLoading(false))
-        await navigate("/gentraining")
+        await navigate("/main-page")
     }
 
     return (

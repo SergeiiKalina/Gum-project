@@ -4,18 +4,27 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: #576fa4;
+    background-color: #1a2131;
     z-index: 10;
     .footer_menu {
         width: 50%;
         height: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         margin: auto auto;
         a {
-            font-size: 30px;
+            display: flex;
+            align-items: center;
+
+            font-size: 24px;
             color: #fefefe;
+            padding: 4px 24px;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+        a.active {
+            background-color: #2196f3;
         }
     }
 }

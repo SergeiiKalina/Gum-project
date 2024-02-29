@@ -9,13 +9,13 @@ function Footer(): React.JSX.Element {
     return (
         <footer className="footer_wrapper">
             <menu className="footer_menu">
-                <NavLink to="/personal-data">
+                <NavLink
+                    to="/personal-data"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                >
                     <BsPersonCircle />
                 </NavLink>
-                <NavLink to="/gentraining">
-                    <GiCardRandom />
-                </NavLink>
-                <NavLink to="/carousel">
+                <NavLink to="/main-page">
                     <GiCardRandom />
                 </NavLink>
                 <NavLink to="/setup">

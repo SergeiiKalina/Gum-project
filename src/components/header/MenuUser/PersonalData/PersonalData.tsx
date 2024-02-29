@@ -9,6 +9,7 @@ import axios from "axios"
 import { IAuthSliceState } from "../../Login/Login"
 import { useNavigate } from "react-router-dom"
 import CircularProgress from "@mui/material/CircularProgress"
+import Footer from "../../../Footer/Footer"
 
 export interface IUserSlice {
     usersSlice: {
@@ -267,6 +268,7 @@ const PersonalData: React.FC = () => {
                     }}
                 />
             )}
+            <Footer />
         </>
     )
 }

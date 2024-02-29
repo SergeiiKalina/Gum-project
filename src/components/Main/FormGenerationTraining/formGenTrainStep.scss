@@ -135,61 +135,53 @@
     }
 }
 
-.place_training_wrapper {
+.main_page_computer_page {
+    position: absolute;
+    top: calc(50% - 86px + 50px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 70%;
-    height: 100%;
-    margin: 0 auto;
-    h2 {
-        display: flex;
-        @include adaptive-font(30, 20);
-        padding: 8px 0 8px 0;
-        justify-content: flex-start;
-        font-weight: 500;
-    }
-    article {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        width: 100%;
-        height: 100%;
-        margin: 50px auto 0 auto;
-        gap: 15px;
-    }
-    .place_training__button {
-        position: relative;
 
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        background-size: 101% 100%;
+    margin: 50px auto 0 auto;
+    gap: 15px;
+}
+.place_training__button {
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 101% 100%;
+    width: 100%;
+    height: 300px;
+    span {
         width: 100%;
-        height: 50dvh;
-        span {
-            width: 100%;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding-top: 8px;
-            @include adaptive-font(16, 14);
-            font-weight: 700;
-            z-index: 10;
-            color: #42a5f5;
-        }
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-top: 8px;
+        @include adaptive-font(16, 14);
+        font-weight: 700;
+        z-index: 10;
+        color: #42a5f5;
     }
-    .place_training__button.home {
-        background-image: url("./images/homeTraining.jpg");
-    }
-    .place_training__button.gym {
-        background-image: url("./images/gymTraining.jpg");
-    }
-    .place_training__button.library {
-        background-image: url("./images/libraryExercise.jpg");
-    }
-    .place_training__button.customTraining {
-        background-image: url("./images/customTraining.jpg");
-    }
-    .place_training__button:hover {
-        background-color: #182132;
-    }
+}
+.place_training__button.home {
+    background-image: url("./images/homeTraining.jpg");
+}
+.place_training__button.gym {
+    background-image: url("./images/gymTraining.jpg");
+}
+.place_training__button.library {
+    background-image: url("./images/libraryExercise.jpg");
+}
+.place_training__button.customTraining {
+    background-image: url("./images/customTraining.jpg");
+}
+.place_training__button:hover {
+    background-color: #182132;
 }
 
 .carousel_wrapper {
@@ -201,7 +193,7 @@
 }
 
 @media (max-width: 1024px) {
-    .place_training_wrapper {
+    .main_page_computer_page {
         width: 90%;
         h2 {
             padding: 8px 0 8px 7%;
@@ -209,51 +201,9 @@
     }
 }
 @media (max-width: 767px) {
-    .carousel_wrapper {
-        display: flex;
-
-        width: 70dvw;
-        height: 64dvh;
-        margin: 0 auto;
-        overflow: hidden;
-        margin: 20px auto;
-
-        .place_training__button {
-            width: 100%;
-            height: 60dvh;
-            border-radius: 20px;
-            padding: 0;
-        }
+    .main_page_computer_page {
+        display: none;
     }
-
-    .place_training_wrapper {
-        width: 100%;
-        article {
-            display: none;
-        }
-        .bullets {
-            display: flex;
-            position: absolute;
-            justify-content: space-between;
-            bottom: 145px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            width: 30%;
-            .bullet {
-                width: 8px;
-                height: 8px;
-                background-color: white;
-                border-radius: 50%;
-            }
-            .bullet.figactive {
-                width: 10px;
-                height: 10px;
-                background-color: #8dff98;
-            }
-        }
-    }
-
     .form_gen_train_step_wrapper {
         section {
             width: 100%;

@@ -1,5 +1,7 @@
 import { theme } from "../../../Styled-components/Styled"
 
+const typeGadget = document.querySelector(".touch")
+
 export const styledToggleButton = {
     width: "90%",
     padding: "6px",
@@ -236,9 +238,11 @@ export const formTrainingStyleForm = {
     "& .MuiSvgIcon-root": {
         color: "white",
     },
-    [theme.breakpoints.down("md")]: {
-        display: "none",
-    },
+    [theme.breakpoints.down("md")]: typeGadget
+        ? {}
+        : {
+              display: "none",
+          },
 }
 
 export const formTrainingSelect = {
