@@ -1,8 +1,9 @@
-import React from "react"
+import React, { MouseEventHandler } from "react"
 import { NavLink } from "react-router-dom"
 import { BsPersonCircle } from "react-icons/bs"
 import { GiCardRandom } from "react-icons/gi"
 import { CiSettings } from "react-icons/ci"
+
 import "./footer.scss"
 
 function Footer(): React.JSX.Element {
