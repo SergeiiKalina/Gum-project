@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
-import toolkitSlice, { IMenuState } from "./menuSlice"
 import generatorTrainingSlice, {
     IGeneratorTrainingSliceData,
 } from "./generatorTrainingReducer"
@@ -12,7 +11,6 @@ import authorizationSlice, {
 
 // Стан для кореневого редуктора
 export interface RootState {
-    showMenu: IMenuState
     training: IGeneratorTrainingSliceData
     filterTraining: IInitialState
     usersSlice: IUsersSlice
@@ -20,7 +18,6 @@ export interface RootState {
 }
 
 const rootReducer = combineReducers({
-    showMenu: toolkitSlice,
     training: generatorTrainingSlice,
     filterTraining: trainingSlice,
     usersSlice: userSlice,

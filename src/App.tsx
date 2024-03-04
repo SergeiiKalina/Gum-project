@@ -13,7 +13,7 @@ import Registration from "./components/header/Registration/Registration"
 import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGenTrainStepOne"
 import PersonalData from "./components/header/MenuUser/PersonalData/PersonalData"
 import { useDispatch } from "react-redux"
-import { checkAuth } from "./store/authorizationSlice"
+import { checkAuth, checkAuthGoogle } from "./store/authorizationSlice"
 import MenuUser from "./components/header/MenuUser/MenuUser"
 import Exercise from "./components/Main/Exercise/Exercise"
 import TrainingPlan from "./components/Main/TrainingPlan/TrainingPlan"
@@ -23,19 +23,27 @@ function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
 
     useEffect(() => {
-        dispatch(checkAuth())
+        if (localStorage.getItem("email")) {
+            dispatch(checkAuth())
+        }
+        if (localStorage.getItem("googleEmail")) {
+            dispatch(checkAuthGoogle())
+        }
     }, [dispatch])
     return (
         <BrowserRouter>
             <div className="App">
                 <Routes>
                     <Route path="/" element={<MyLayouts />}>
-                        <Route path="library" element={<Training />} />
+                        <Route
+                            path="/main-page/library"
+                            element={<Training />}
+                        />
                         <Route index element={<Login />} />
                         <Route path="/exercise" element={<Exercise />} />
 
                         <Route
-                            path="plan-training"
+                            path="/main-page/plan-training"
                             element={<TrainingPlan />}
                         />
                         <Route
@@ -43,12 +51,12 @@ function App(): React.JSX.Element {
                             element={<PersonalData />}
                         />
                         <Route
-                            path="/gentraining/step-2/gym"
+                            path="/main-page/step-2/gym"
                             element={<GymSelectSpritTraining />}
                         />
 
                         <Route
-                            path="/gentraining/step-2/home"
+                            path="/main-page/step-2/home"
                             element={<HomeTestForm />}
                         />
                         <Route

@@ -52,7 +52,9 @@ const PersonalData: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const email = localStorage.getItem("email")
+            const email =
+                localStorage.getItem("email") ||
+                localStorage.getItem("googleEmail")
             if (email) {
                 const url = API_URL + "/user/email"
                 try {
@@ -268,7 +270,6 @@ const PersonalData: React.FC = () => {
                     }}
                 />
             )}
-            <Footer />
         </>
     )
 }

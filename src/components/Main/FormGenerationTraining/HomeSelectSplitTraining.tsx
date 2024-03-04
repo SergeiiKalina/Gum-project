@@ -19,7 +19,8 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const startGenerationTraining = async (focus: string) => {
-        let email = localStorage.getItem("email")
+        let email =
+            localStorage.getItem("email") || localStorage.getItem("googleEmail")
 
         if (email !== null) {
             const userData = await axios.post(API_URL + "/user/get-user", {
@@ -42,7 +43,7 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
                     })!
                 )
             )
-            await navigate("/plan-training")
+            await navigate("/main-page/plan-training")
         }
     }
 

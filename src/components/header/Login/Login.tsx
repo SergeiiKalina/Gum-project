@@ -31,19 +31,29 @@ function Login(): React.JSX.Element {
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
     useEffect(() => {
-        if (localStorage.getItem("email")) {
+        if (
+            localStorage.getItem("email") ||
+            localStorage.getItem("googleEmail")
+        ) {
             if (isAuth) {
                 navigate("/main-page")
             }
         }
     }, [navigate, isAuth])
     const handlerGoogleLogin = () => {
-        signInWithPopup(auth, provider).then((data: UserCredential) => {
-            localStorage.setItem("email", data.user?.email || "")
-            localStorage.setItem("userName", data.user?.displayName || "")
-            localStorage.setItem("photo", data.user?.photoURL || "")
-            window.location.reload()
-        })
+        signInWithPopup(auth, provider)
+            .then((data: UserCredential) => {
+                localStorage.setItem("googleEmail", data.user?.email || "")
+                localStorage.setItem("userName", data.user?.displayName || "")
+                localStorage.setItem("photo", data.user?.photoURL || "")
+                window.location.reload()
+            })
+            .catch((error) => {
+                console.error(
+                    "Ошибка при аутентификации через Google:",
+                    error.message
+                )
+            })
     }
     const buttonLogin = async (email: string, password: string) => {
         await dispatch(toggleIsLoading(true))

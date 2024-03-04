@@ -26,6 +26,27 @@ export interface IRegistrationData {
     bodyMassIndex?: number
     inventory?: string[]
 }
+export interface IGoogleUser {
+    email: string
+    name?: string
+    sex?: string
+    age?: number
+    benchPress?: number
+    deadLift?: number
+    goal?: string
+    lifestyle?: string
+    problems?: string[]
+    pullUp?: number
+    sitUp?: number
+    squat?: number
+    weight?: string | number
+    bodyType?: string
+    pushUpQuantity?: number
+    squatQuantity?: number
+    fitnessLevel?: number
+    bodyMassIndex?: number
+    inventory?: string[]
+}
 
 const initialState: IInitialStateAuthorizationSlice = {
     user: {
@@ -59,6 +80,9 @@ const initialState: IInitialStateAuthorizationSlice = {
         bodyMassIndex: 2,
         inventory: [""],
     },
+    googleUserData: {
+        email: "",
+    },
 }
 
 export interface IInitialStateAuthorizationSlice {
@@ -67,6 +91,7 @@ export interface IInitialStateAuthorizationSlice {
     isLoading: boolean
     error: string | undefined
     registrationData: IRegistrationData
+    googleUserData: IGoogleUser
 }
 
 export interface IPropertyRegistration {
@@ -135,12 +160,31 @@ export const checkAuth = createAsyncThunk(
     "authorizationSlice/checkAuth",
     async () => {
         try {
-            const response = await axios.get<AuthResponse>(
-                `${API_URL}/user/refresh`,
-                { withCredentials: true }
-            )
-            localStorage.setItem("token", response.data.accessToken)
-            return response.data.user
+            if (localStorage.getItem("email")) {
+                const response = await axios.get<AuthResponse>(
+                    `${API_URL}/user/refresh`,
+                    { withCredentials: true }
+                )
+                localStorage.setItem("token", response.data.accessToken)
+                return response.data.user
+            }
+        } catch (error: any) {
+            throw new Error("User not login")
+        }
+    }
+)
+export const checkAuthGoogle = createAsyncThunk(
+    "authorizationSlice/checkAuthGoogle",
+    async () => {
+        try {
+            if (localStorage.getItem("googleEmail")) {
+                const email = localStorage.getItem("googleEmail")
+                const response = await axios.post(
+                    API_URL + "/user/googleAuthCheck",
+                    { email }
+                )
+                return response.data
+            }
         } catch (error: any) {
             throw new Error("User not login")
         }
@@ -199,7 +243,11 @@ const authorizationSlice = createSlice({
                 state.user = action.payload
                 state.isAuth = false
                 state.isLoading = false
-                localStorage.clear()
+            })
+            .addCase(checkAuthGoogle.fulfilled, (state, action: any) => {
+                state.googleUserData = action.payload
+                state.isAuth = true
+                state.isLoading = false
             })
     },
 })

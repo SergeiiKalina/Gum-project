@@ -1,9 +1,12 @@
 import { initializeApp } from "firebase/app"
 import { getAuth, GoogleAuthProvider } from "firebase/auth"
+import { getDatabase } from "firebase/database"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAFix-hxAkjDzIXEu7LDV0mJOG2Vh_Ld1o",
     authDomain: "gum-app-77e1b.firebaseapp.com",
+    databaseURL:
+        "https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "gum-app-77e1b",
     storageBucket: "gum-app-77e1b.appspot.com",
     messagingSenderId: "973371654715",
@@ -15,4 +18,6 @@ const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
 
-export { auth, provider }
+const db = getDatabase(app)
+
+export { auth, provider, db }

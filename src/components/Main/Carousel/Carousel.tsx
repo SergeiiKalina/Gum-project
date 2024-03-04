@@ -73,7 +73,11 @@ function Carousel() {
                 smoothScroll(
                     containerRef.current!.scrollLeft,
                     containerRef.current!.scrollLeft + countScroll,
-                    countScroll === 3 ? 400 : countScroll === 2 ? 300 : 200
+                    numBlocksToScroll === 3
+                        ? 300
+                        : numBlocksToScroll === 2
+                        ? 200
+                        : 150
                 )
             }
         }
@@ -104,7 +108,7 @@ function Carousel() {
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    onClick={() => navigate("/gentraining/step-2/home")}
+                    onClick={() => navigate("/main-page/step-2/home")}
                     className={`carousel_item home ${
                         currentIndex === 0
                             ? "active"
@@ -119,7 +123,7 @@ function Carousel() {
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    onClick={() => navigate("/gentraining/step-2/gym")}
+                    onClick={() => navigate("/main-page/step-2/gym")}
                     className={`carousel_item gym ${
                         currentIndex === 1
                             ? "active"
@@ -134,7 +138,7 @@ function Carousel() {
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
                     onClick={() => {
-                        navigate("/plan-training")
+                        navigate("/main-page/plan-training")
                         dispatch(writeCurrentTraining([]))
                     }}
                     className={`carousel_item customTraining ${
@@ -150,7 +154,7 @@ function Carousel() {
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchEnd={(e) => handleTouchEnd(e)}
-                    onClick={() => navigate("/library")}
+                    onClick={() => navigate("/main-page/library")}
                     className={`carousel_item library ${
                         currentIndex === 3 ? "active" : ""
                     }`}

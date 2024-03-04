@@ -1,12 +1,12 @@
-import React from "react"
 import { IoIosArrowBack } from "react-icons/io"
-import "./backButton.scss"
 import { useNavigate } from "react-router-dom"
+import "./backButton.scss"
 
 function BackButton() {
     const currentURL: string = window.location.href
         .replace("http://localhost:3000/", "")
         .replace("https://gym-project-6bll.onrender.com/", "")
+
     const navigate = useNavigate()
     return currentURL === "setup" ||
         currentURL === "main-page" ||

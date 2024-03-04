@@ -13,6 +13,9 @@ import Carousel from "../Carousel/Carousel"
 import "swiper/css"
 import Footer from "../../Footer/Footer"
 
+import { getDatabase, ref, child, get, set } from "firebase/database"
+import training from "../../../data/data"
+
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const isAuth = useSelector(
         (state: IAuthSliceState) => state.authSlice.isAuth
@@ -44,6 +47,23 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
             navigate("/")
         }
     }, [isAuth, navigate])
+    const func = async () => {
+        const dbRef = getDatabase()
+
+        await set(ref(dbRef, "exercise/"), training).then(() =>
+            console.log("ok")
+        )
+    }
+
+    const func2 = async () => {
+        const dbRef = ref(getDatabase())
+
+        await get(child(dbRef, "exercise/")).then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val())
+            }
+        })
+    }
 
     return (
         <>
@@ -52,14 +72,20 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                 <Button
                     variant="contained"
                     className="place_training__button home"
-                    onClick={() => navigate("/gentraining/step-2/home")}
+                    onClick={() => {
+                        navigate("/main-page/step-2/home")
+                        // func()
+                    }}
                 >
                     <span>Home Training</span>
                 </Button>
                 <Button
                     variant="contained"
                     className="place_training__button gym"
-                    onClick={() => navigate("/gentraining/step-2/gym")}
+                    onClick={() => {
+                        // func2()
+                        navigate("/main-page/step-2/gym")
+                    }}
                 >
                     <span>Gym Training</span>
                 </Button>
@@ -67,7 +93,7 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     variant="contained"
                     className="place_training__button customTraining"
                     onClick={() => {
-                        navigate("/plan-training")
+                        navigate("/main-page/plan-training")
                         dispatch(writeCurrentTraining([]))
                     }}
                 >
@@ -76,12 +102,11 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                 <Button
                     variant="contained"
                     className="place_training__button library"
-                    onClick={() => navigate("/library")}
+                    onClick={() => navigate("/main-page/library")}
                 >
                     <span>Exercise Library</span>
                 </Button>
             </article>
-            <Footer />
         </>
     )
 }

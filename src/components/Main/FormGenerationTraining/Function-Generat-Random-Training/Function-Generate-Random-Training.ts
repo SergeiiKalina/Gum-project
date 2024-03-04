@@ -280,7 +280,6 @@ function generateFullBodyTraining(updateData: IFormData) {
 }
 
 function generateUpperBodyTraining(updateData: IFormData) {
-    console.log("call")
     randomWorkout = generateRandomExercisesForWorkout(
         2,
         filterArrayByCategory(updateData, "back", true)
@@ -341,7 +340,7 @@ function generateUpperBodyTraining(updateData: IFormData) {
             filterArrayByCategory(updateData, "triceps", false)
         )
     )
-    console.log(randomWorkout)
+
     return randomWorkout
 }
 
@@ -602,8 +601,8 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
 }
 export const generateTraining = (data: IFormData) => {
     const updateData = calculateIndicators(data)
-    console.log(data)
+
     const result = generateTrainingForHome(updateData, updateData.focus)
-    console.log(result)
+
     return result
 }
