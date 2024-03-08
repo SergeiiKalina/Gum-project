@@ -9,7 +9,10 @@ import {
 import { IRegisterForm } from "./Registration"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { writeRegistrationData } from "../../../store/authorizationSlice"
+import {
+    changeStepRegistration,
+    writeRegistrationData,
+} from "../../../store/authorizationSlice"
 import { IStateAuth } from "./RegistrationStepOne"
 import { useSelector } from "react-redux"
 import { BsGenderFemale, BsGenderMale } from "react-icons/bs"
@@ -50,7 +53,7 @@ const marks = [
     },
 ]
 
-function RegistrationStepTwo({ setStep }: { setStep: (num: number) => void }) {
+function RegistrationStepTwo() {
     const { handleSubmit } = useForm<IRegisterForm>({})
     const dispatch = useDispatch()
     const [sex, setSex] = useState<string>("")
@@ -66,15 +69,21 @@ function RegistrationStepTwo({ setStep }: { setStep: (num: number) => void }) {
     )
 
     const onSubmit: SubmitHandler<IRegisterForm> = (data) => {
-        dispatch(
-            writeRegistrationData({
-                ...registrationData,
-                ...data,
-                sex,
-                age: dateOfBirth,
-            })
-        )
-        setStep(2)
+        if (typeof weight === "number") {
+            dispatch(
+                writeRegistrationData({
+                    ...registrationData,
+                    ...data,
+                    mainInfo: {
+                        sex,
+                        age: dateOfBirth,
+                        weight,
+                    },
+                })
+            )
+        }
+
+        dispatch(changeStepRegistration(2))
     }
 
     const handelWeight = (

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import "./personalData.scss"
 import { IUserData, writeDataUser } from "../../../../store/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { GrFormCheckmark } from "react-icons/gr"
@@ -9,7 +8,7 @@ import axios from "axios"
 import { IAuthSliceState } from "../../Login/Login"
 import { useNavigate } from "react-router-dom"
 import CircularProgress from "@mui/material/CircularProgress"
-import Footer from "../../../Footer/Footer"
+import "./personalData.scss"
 
 export interface IUserSlice {
     usersSlice: {
@@ -23,19 +22,30 @@ const PersonalData: React.FC = () => {
     )
     const [isLoading, setIsLoading] = useState(false)
     const [cofSquat] = useState(
-        (Number(userData.squat) / Number(userData.weight)) * 150
+        (Number(userData.mainInfo.squat) / Number(userData.mainInfo.weight)) *
+            150
     )
     const [cofBenchPress] = useState(
-        (Number(userData.benchPress) / Number(userData.weight) / 0.85) * 150
+        (Number(userData.mainInfo.benchPress) /
+            Number(userData.mainInfo.weight) /
+            0.85) *
+            150
     )
     const [cofDeadLift] = useState(
-        (Number(userData.deadLift) / Number(userData.weight) / 1.25) * 150
+        (Number(userData.mainInfo.deadLift) /
+            Number(userData.mainInfo.weight) /
+            1.25) *
+            150
     )
     const [cofPullUp] = useState(
-        (Number(userData.pullUp) / (userData.sex === "male" ? 15 : 10)) * 150
+        (Number(userData.mainInfo.pullUp) /
+            (userData.mainInfo.sex === "male" ? 15 : 10)) *
+            150
     )
     const [cofSitUp] = useState(
-        (Number(userData.sitUp) / (userData.sex === "male" ? 50 : 35)) * 150
+        (Number(userData.mainInfo.sitUp) /
+            (userData.mainInfo.sex === "male" ? 50 : 35)) *
+            150
     )
     const dispatch = useDispatch()
 
@@ -52,20 +62,30 @@ const PersonalData: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const email =
-                localStorage.getItem("email") ||
-                localStorage.getItem("googleEmail")
-            if (email) {
-                const url = API_URL + "/user/email"
-                try {
+            const email = localStorage.getItem("email")
+            const googleEmail = localStorage.getItem("googleEmail")
+            try {
+                if (email) {
+                    const url = API_URL + "/user/email"
+
                     const userRes = await axios.post(url, { email })
                     const userData = userRes.data
 
                     setTimeout(() => setIsLoading(true), 500)
                     dispatch(writeDataUser(userData))
-                } catch (error) {
-                    console.error(error)
+                    return
                 }
+                if (googleEmail) {
+                    const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                        "googleUserId"
+                    )}.json?auth=${localStorage.getItem("googleToken")}`
+                    const userData = await axios.get(url)
+                    dispatch(writeDataUser(userData.data))
+                    setTimeout(() => setIsLoading(true), 500)
+                    return
+                }
+            } catch (error) {
+                console.error(error)
             }
         }
 
@@ -90,29 +110,36 @@ const PersonalData: React.FC = () => {
                                 )}
                             </span>
                         </li>
-                        <li>Sex: {userData?.sex ? userData.sex : "No data"}</li>
+                        <li>
+                            Sex:{" "}
+                            {userData.mainInfo.sex
+                                ? userData.mainInfo.sex
+                                : "No data"}
+                        </li>
 
                         <li>
                             Lifestyle:{" "}
-                            {userData?.lifestyle
-                                ? userData.lifestyle
+                            {userData.mainInfo.lifestyle
+                                ? userData.mainInfo.lifestyle
                                 : "No data"}
                         </li>
                         <li>
                             Weight:{" "}
-                            {userData?.weight
-                                ? userData.weight + "kg"
+                            {userData.mainInfo.weight
+                                ? userData.mainInfo.weight + "kg"
                                 : "No data"}
                         </li>
                         <li>
                             Primary goal:{" "}
-                            {userData?.goal ? userData.goal : "No data"}
+                            {userData.mainInfo.goal
+                                ? userData.mainInfo.goal
+                                : "No data"}
                         </li>
                         <li>
                             Health problems:{" "}
-                            {userData?.problems ? (
+                            {userData.mainInfo.problems ? (
                                 <ol>
-                                    {userData.problems.map((el, i) => (
+                                    {userData.mainInfo.problems.map((el, i) => (
                                         <li key={uuidv4()}>
                                             {i + 1 + ". " + el}
                                         </li>
@@ -124,7 +151,7 @@ const PersonalData: React.FC = () => {
                         </li>
                         <li>
                             Favorite place to workout:{" "}
-                            {userData.placeToWorkout || "No data"}
+                            {userData.mainInfo.placeToWorkout || "No data"}
                         </li>
                     </ul>
                     <h3>Exercise Results</h3>
@@ -135,7 +162,7 @@ const PersonalData: React.FC = () => {
                                     className="progress"
                                     style={{
                                         height: `${
-                                            userData.squat
+                                            userData.mainInfo.squat
                                                 ? cofSquat >= 150
                                                     ? 150
                                                     : cofSquat
@@ -145,8 +172,8 @@ const PersonalData: React.FC = () => {
                                 ></div>
                             </div>
                             <div>
-                                {userData?.squat
-                                    ? userData.squat + "kg"
+                                {userData.mainInfo.squat
+                                    ? userData.mainInfo.squat + "kg"
                                     : "No data"}
                             </div>
                             <div className="personal_page_img_wrapper">
@@ -162,7 +189,7 @@ const PersonalData: React.FC = () => {
                                     className="progress"
                                     style={{
                                         height: `${
-                                            userData.benchPress
+                                            userData.mainInfo.benchPress
                                                 ? cofBenchPress >= 150
                                                     ? 150
                                                     : cofBenchPress
@@ -172,8 +199,8 @@ const PersonalData: React.FC = () => {
                                 ></div>
                             </div>
 
-                            {userData?.benchPress
-                                ? userData.benchPress + "kg"
+                            {userData.mainInfo.benchPress
+                                ? userData.mainInfo.benchPress + "kg"
                                 : "No data"}
                             <div className="personal_page_img_wrapper">
                                 <img
@@ -188,7 +215,7 @@ const PersonalData: React.FC = () => {
                                     className="progress"
                                     style={{
                                         height: `${
-                                            userData.deadLift
+                                            userData.mainInfo.deadLift
                                                 ? cofDeadLift >= 150
                                                     ? 150
                                                     : cofDeadLift
@@ -198,8 +225,8 @@ const PersonalData: React.FC = () => {
                                 ></div>
                             </div>
 
-                            {userData?.deadLift
-                                ? userData.deadLift + "kg"
+                            {userData.mainInfo.deadLift
+                                ? userData.mainInfo.deadLift + "kg"
                                 : "No data"}
                             <div className="personal_page_img_wrapper">
                                 <img
@@ -214,7 +241,7 @@ const PersonalData: React.FC = () => {
                                     className="progress"
                                     style={{
                                         height: `${
-                                            userData.pullUp
+                                            userData.mainInfo.pullUp
                                                 ? cofPullUp >= 150
                                                     ? 150
                                                     : cofPullUp
@@ -223,8 +250,8 @@ const PersonalData: React.FC = () => {
                                     }}
                                 ></div>
                             </div>
-                            {userData?.pullUp
-                                ? userData.pullUp + " reps"
+                            {userData.mainInfo.pullUp
+                                ? userData.mainInfo.pullUp + " reps"
                                 : "No data"}
                             <div className="personal_page_img_wrapper">
                                 <img
@@ -239,7 +266,7 @@ const PersonalData: React.FC = () => {
                                     className="progress"
                                     style={{
                                         height: `${
-                                            userData.sitUp
+                                            userData.mainInfo.sitUp
                                                 ? cofSitUp >= 150
                                                     ? 150
                                                     : cofSitUp
@@ -248,8 +275,8 @@ const PersonalData: React.FC = () => {
                                     }}
                                 ></div>
                             </div>
-                            {userData?.sitUp
-                                ? userData.sitUp + " reps"
+                            {userData.mainInfo.sitUp
+                                ? userData.mainInfo.sitUp + " reps"
                                 : "No data"}
                             <div className="personal_page_img_wrapper">
                                 <img

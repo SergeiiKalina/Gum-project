@@ -4,7 +4,10 @@ import { Box } from "@mui/system"
 import { IRegisterForm } from "./Registration"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
-import { writeRegistrationData } from "../../../store/authorizationSlice"
+import {
+    changeStepRegistration,
+    writeRegistrationData,
+} from "../../../store/authorizationSlice"
 import { useSelector } from "react-redux"
 import { IStateAuth } from "./RegistrationStepOne"
 import { useState } from "react"
@@ -83,11 +86,7 @@ const marksReps = [
     },
 ]
 
-function RegistrationStepThree({
-    setStep,
-}: {
-    setStep: (num: number) => void
-}) {
+function RegistrationStepThree() {
     const dispatch = useDispatch()
     const { handleSubmit } = useForm<IRegisterForm>({})
     const registrationData = useSelector(
@@ -105,16 +104,20 @@ function RegistrationStepThree({
         dispatch(
             writeRegistrationData({
                 ...registrationData,
-                benchPress: benchPressWeight,
-                deadLift: deadLiftWeight,
-                pullUp: pullUpsReps,
-                sitUp: sitUpReps,
-                squat: squatWeight,
-                pushUpQuantity: pushUpReps,
-                squatQuantity: airSquatReps,
+                mainInfo: {
+                    ...registrationData.mainInfo,
+                    benchPress: benchPressWeight,
+                    deadLift: deadLiftWeight,
+                    pullUp: pullUpsReps,
+                    sitUp: sitUpReps,
+                    squat: squatWeight,
+                    pushUpQuantity: pushUpReps,
+                    squatQuantity: airSquatReps,
+                },
             })
         )
-        setStep(3)
+
+        dispatch(changeStepRegistration(3))
     }
 
     return (

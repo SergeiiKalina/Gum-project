@@ -37,7 +37,7 @@ function filterArrayByCategory(
     category: string,
     basic: boolean
 ) {
-    const { fitnessLevel, placeToWorkout, problems, sex } = data
+    const { fitnessLevel, placeToWorkout, problems, sex } = data.mainInfo
 
     return training
         .filter((el) => !el.LFC.some((item) => problems.includes(item)))
@@ -114,7 +114,7 @@ function filterArrayByCategory(
 }
 
 function calculateIndicators(data: IFormData): IFormData {
-    if (data.placeToWorkout === "home") {
+    if (data.mainInfo.placeToWorkout === "home") {
         const {
             pushUpQuantity,
             sitUp,
@@ -124,7 +124,7 @@ function calculateIndicators(data: IFormData): IFormData {
             pullUp,
             sex,
             ...rest
-        } = data
+        } = data.mainInfo
 
         let cofSitUp = 0
         let cofPullUp = 0
@@ -183,8 +183,11 @@ function calculateIndicators(data: IFormData): IFormData {
             (Number(weight) / (1.75 * 1.75)) * Number(age)
         )
 
-        return { ...rest, fitnessLevel, bodyMassIndex, sex }
-    } else if (data.placeToWorkout === "gym") {
+        return {
+            ...data,
+            mainInfo: { ...rest, fitnessLevel, bodyMassIndex, sex },
+        }
+    } else if (data.mainInfo.placeToWorkout === "gym") {
         const {
             benchPress,
             deadLift,
@@ -194,7 +197,7 @@ function calculateIndicators(data: IFormData): IFormData {
             age,
             weight,
             ...rest
-        } = data
+        } = data.mainInfo
         let cofBenchPress = Number(benchPress) / Number(weight)
         let cofSquat = Number(squat) / Number(weight)
         let cofDeadLift = Number(deadLift) / Number(weight)
@@ -241,7 +244,7 @@ function calculateIndicators(data: IFormData): IFormData {
             (Number(weight) / (1.75 * 1.75)) * Number(age)
         )
 
-        return { ...rest, fitnessLevel, bodyMassIndex }
+        return { ...data, mainInfo: { ...rest, fitnessLevel, bodyMassIndex } }
     }
     return data
 }
@@ -284,7 +287,7 @@ function generateUpperBodyTraining(updateData: IFormData) {
         2,
         filterArrayByCategory(updateData, "back", true)
     )
-    if (updateData.placeToWorkout === "home") {
+    if (updateData.mainInfo.placeToWorkout === "home") {
         randomWorkout = randomWorkout.concat(
             generateRandomExercisesForWorkout(
                 1,
@@ -390,7 +393,7 @@ function generateBackTraining(
         quantityBaseExercise,
         filterArrayByCategory(updateData, "back", true)
     )
-    if (updateData.placeToWorkout === "home") {
+    if (updateData.mainInfo.placeToWorkout === "home") {
         randomWorkout = randomWorkout.concat(
             generateRandomExercisesForWorkout(
                 quantityNoBaseExercise,
@@ -529,7 +532,7 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
             randomWorkout = generateLowerBodyTraining(updateData)
             break
         case "back":
-            switch (updateData.placeToWorkout) {
+            switch (updateData.mainInfo.placeToWorkout) {
                 case "home":
                     randomWorkout = generateBackTraining(updateData, 2, 3)
                     break
@@ -544,16 +547,16 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
             randomWorkout = generateLegsTraining(updateData)
             break
         case "chest":
-            switch (updateData.placeToWorkout) {
+            switch (updateData.mainInfo.placeToWorkout) {
                 case "home":
                     randomWorkout = generateChestTraining(
                         updateData,
                         3,
-                        4 - updateData.fitnessLevel!
+                        4 - updateData.mainInfo.fitnessLevel!
                     )
                     break
                 case "gym":
-                    switch (updateData.sex) {
+                    switch (updateData.mainInfo.sex) {
                         case "male":
                             randomWorkout = generateChestTraining(
                                 updateData,
@@ -583,7 +586,7 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
             randomWorkout = generateHandTraining(updateData)
             break
         case "press":
-            switch (updateData.placeToWorkout) {
+            switch (updateData.mainInfo.placeToWorkout) {
                 case "home":
                     randomWorkout = generatePressTraining(updateData, 5)
                     break
@@ -602,7 +605,10 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
 export const generateTraining = (data: IFormData) => {
     const updateData = calculateIndicators(data)
 
-    const result = generateTrainingForHome(updateData, updateData.focus)
+    const result = generateTrainingForHome(
+        updateData,
+        updateData.mainInfo.focus
+    )
 
     return result
 }

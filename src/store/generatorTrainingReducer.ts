@@ -9,53 +9,59 @@ export interface IGeneratorTrainingSliceData {
     currentExercise: ITraining
 }
 export interface IFormData {
-    age?: number
-    benchPress?: string
-    deadLift?: string
+    mainInfo: {
+        age?: number
+        benchPress?: string
+        deadLift?: string
+        focus: string
+        goal: string
+        lifestyle: string
+        placeToWorkout: string
+        problems: string[]
+        pullUp?: string
+        sex: string
+        sitUp?: string
+        squat?: string
+        weight?: string
+        bodyType?: string
+        pushUpQuantity?: string
+        squatQuantity?: string
+        fitnessLevel?: number
+        bodyMassIndex?: number
+        inventory?: string[]
+    }
     email: string
     firstName: string
-    focus: string
-    goal: string
     lastName: string
-    lifestyle: string
-    placeToWorkout: string
-    problems: string[]
-    pullUp?: string
-    sex: string
-    sitUp?: string
-    squat?: string
-    weight?: string
-    bodyType?: string
-    pushUpQuantity?: string
-    squatQuantity?: string
-    fitnessLevel?: number
-    bodyMassIndex?: number
-    inventory?: string[]
 }
 
 const initialState: IGeneratorTrainingSliceData = {
     arr: [],
     formData: {
-        age: 0,
-        benchPress: "",
-        deadLift: "",
+        mainInfo: {
+            age: 0,
+            benchPress: "",
+            deadLift: "",
+            focus: "",
+            goal: "",
+            lifestyle: "",
+            placeToWorkout: "",
+            problems: [""],
+            pullUp: "",
+            sex: "",
+            sitUp: "",
+            squat: "",
+            weight: "",
+            bodyType: "",
+            pushUpQuantity: "",
+            squatQuantity: "",
+            fitnessLevel: 0,
+            bodyMassIndex: 0,
+            inventory: [""],
+        },
         email: "",
         firstName: "",
-        focus: "",
-        goal: "",
         lastName: "",
-        lifestyle: "",
-        placeToWorkout: "",
-        problems: [""],
-        pullUp: "",
-        sex: "",
-        sitUp: "",
-        squat: "",
-        weight: "",
-        pushUpQuantity: "",
-        squatQuantity: "",
-        fitnessLevel: 0,
-        bodyMassIndex: 0,
     },
     startTrainingIndex: 9999,
     thisDragElement: null,

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { auth, provider } from "../../layouts/config"
-import { signInWithPopup, UserCredential } from "firebase/auth"
+import { handlerGoogleLogin } from "../../layouts/config"
 import {
     IInitialStateAuthorizationSlice,
+    changeStepRegistration,
     login,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
 import FormAuthorization from "./FormAuthorization"
-import "./login.scss"
 import { CircularProgress } from "@mui/material"
+import { RootState } from "../../../store"
+import "./login.scss"
+
 export interface IUser {
     userName: string | null
     photo: string | null
@@ -18,6 +20,7 @@ export interface IUser {
 export interface IAuthSliceState {
     authSlice: IInitialStateAuthorizationSlice
 }
+
 function Login(): React.JSX.Element {
     const dispatch = useDispatch<any>()
     const [email, setEmail] = useState<string>("")
@@ -28,33 +31,26 @@ function Login(): React.JSX.Element {
     const authSliceState = useSelector(
         (state: IAuthSliceState) => state.authSlice
     )
+    const authUserData = useSelector(
+        (state: RootState) => state.authSlice.authUser
+    )
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
+
     useEffect(() => {
         if (
             localStorage.getItem("email") ||
             localStorage.getItem("googleEmail")
         ) {
-            if (isAuth) {
+            if (isAuth && authUserData.mainInfo) {
                 navigate("/main-page")
+            } else if (isAuth && !authUserData.mainInfo) {
+                navigate("/registration")
+                dispatch(changeStepRegistration(1))
             }
         }
-    }, [navigate, isAuth])
-    const handlerGoogleLogin = () => {
-        signInWithPopup(auth, provider)
-            .then((data: UserCredential) => {
-                localStorage.setItem("googleEmail", data.user?.email || "")
-                localStorage.setItem("userName", data.user?.displayName || "")
-                localStorage.setItem("photo", data.user?.photoURL || "")
-                window.location.reload()
-            })
-            .catch((error) => {
-                console.error(
-                    "Ошибка при аутентификации через Google:",
-                    error.message
-                )
-            })
-    }
+    }, [navigate, isAuth, authUserData, dispatch])
+
     const buttonLogin = async (email: string, password: string) => {
         await dispatch(toggleIsLoading(true))
         await dispatch(login({ email, password }))

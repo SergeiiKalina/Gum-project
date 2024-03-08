@@ -102,7 +102,13 @@ function Carousel() {
 
     return (
         <section className="carousel_wrapper_main">
-            <h2>Hello, {localStorage.getItem("name")}</h2>
+            <h2>
+                Hello,
+                <span>
+                    {localStorage.getItem("userName") ||
+                        localStorage.getItem("name")}
+                </span>
+            </h2>
             <h2>{Date().substring(0, 15)}</h2>
             <article className="carousel_container" ref={containerRef}>
                 <div

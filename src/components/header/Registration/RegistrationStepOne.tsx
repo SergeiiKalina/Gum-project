@@ -9,6 +9,7 @@ import { Button } from "@mui/material"
 import { useDispatch } from "react-redux"
 import {
     IRegistrationData,
+    changeStepRegistration,
     writeRegistrationData,
 } from "../../../store/authorizationSlice"
 import { IUserAPI } from "../../../models/response/IUser"
@@ -24,7 +25,7 @@ export interface IStateAuth {
     }
 }
 
-function RegistrationStepOne({ setStep }: { setStep: (num: number) => void }) {
+function RegistrationStepOne() {
     const {
         register,
         handleSubmit,
@@ -62,7 +63,7 @@ function RegistrationStepOne({ setStep }: { setStep: (num: number) => void }) {
 
     const onSubmit: SubmitHandler<IRegisterForm> = (data) => {
         dispatch(writeRegistrationData(data))
-        setStep(1)
+        dispatch(changeStepRegistration(1))
     }
     return (
         <form className="registration_form" onSubmit={handleSubmit(onSubmit)}>
@@ -79,6 +80,7 @@ function RegistrationStepOne({ setStep }: { setStep: (num: number) => void }) {
                         }}
                         {...register("name", {
                             validate: nameValidation,
+                            required: true,
                         })}
                         className="registration_input"
                     ></StyledTextField>

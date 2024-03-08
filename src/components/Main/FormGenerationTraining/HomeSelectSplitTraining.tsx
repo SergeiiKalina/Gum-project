@@ -19,10 +19,9 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const startGenerationTraining = async (focus: string) => {
-        let email =
-            localStorage.getItem("email") || localStorage.getItem("googleEmail")
-
-        if (email !== null) {
+        let email = localStorage.getItem("email")
+        const googleEmail = localStorage.getItem("googleEmail")
+        if (email) {
             const userData = await axios.post(API_URL + "/user/get-user", {
                 email,
             })
@@ -30,20 +29,59 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
             await dispatch(
                 writeFormData({
                     ...userData.data,
-                    focus,
-                    placeToWorkout: "home",
+                    mainInfo: {
+                        ...userData.data.mainInfo,
+                        focus,
+                        placeToWorkout: "gym",
+                    },
                 })
             )
             await dispatch(
                 writeCurrentTraining(
                     generateTraining({
                         ...userData.data,
-                        focus,
-                        placeToWorkout: "home",
+                        mainInfo: {
+                            ...userData.data.mainInfo,
+                            focus,
+                            placeToWorkout: "gym",
+                        },
                     })!
                 )
             )
             await navigate("/main-page/plan-training")
+            return
+        }
+        if (googleEmail) {
+            const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                "googleUserId"
+            )}.json?auth=${localStorage.getItem("googleToken")}`
+            const response = await axios.get(url)
+            const userData = response.data
+
+            await dispatch(
+                writeFormData({
+                    ...userData,
+                    mainInfo: {
+                        ...userData.mainInfo,
+                        focus,
+                        placeToWorkout: "gym",
+                    },
+                })
+            )
+            await dispatch(
+                writeCurrentTraining(
+                    generateTraining({
+                        ...userData,
+                        mainInfo: {
+                            ...userData.mainInfo,
+                            focus,
+                            placeToWorkout: "gym",
+                        },
+                    })!
+                )
+            )
+            await navigate("/main-page/plan-training")
+            return
         }
     }
 

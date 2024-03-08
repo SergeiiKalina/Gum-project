@@ -1,4 +1,3 @@
-import { useState } from "react"
 import StepperRegistration from "./StepperRegistration"
 import RegistrationStepOne, { IStateAuth } from "./RegistrationStepOne"
 import RegistrationStepTwo from "./RegistrationStepTwo"
@@ -6,21 +5,26 @@ import RegistrationStepFour from "./RegistrationStepFour"
 import "./registration.scss"
 import { useSelector } from "react-redux"
 import RegistrationStepThree from "./RegistrationStepThree"
+import { RootState } from "../../../store"
 
 export interface IRegisterForm {
     email: string
     password: string
     name: string
-    sex?: string
-    weight?: number
-    age?: number
-    lifestyle?: string
-    goal?: string
-    problems?: string[]
+    mainInfo: {
+        sex?: string
+        weight?: number
+        age?: number
+        lifestyle?: string
+        goal?: string
+        problems?: string[]
+    }
 }
 
 const Registration = () => {
-    const [step, setStep] = useState<number>(0)
+    const step = useSelector(
+        (state: RootState) => state.authSlice.registrationStep
+    )
     const isLoading = useSelector(
         (state: IStateAuth) => state.authSlice.isLoading
     )
@@ -32,10 +36,10 @@ const Registration = () => {
                 <p className="registration_loader"> Loading...</p>
             ) : (
                 <>
-                    {step === 0 && <RegistrationStepOne setStep={setStep} />}
-                    {step === 1 && <RegistrationStepTwo setStep={setStep} />}
-                    {step === 2 && <RegistrationStepThree setStep={setStep} />}
-                    {step === 3 && <RegistrationStepFour setStep={setStep} />}
+                    {step === 0 && <RegistrationStepOne />}
+                    {step === 1 && <RegistrationStepTwo />}
+                    {step === 2 && <RegistrationStepThree />}
+                    {step === 3 && <RegistrationStepFour />}
                 </>
             )}
         </>

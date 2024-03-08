@@ -13,7 +13,7 @@ import Registration from "./components/header/Registration/Registration"
 import FormGenTrainStepOne from "./components/Main/FormGenerationTraining/FormGenTrainStepOne"
 import PersonalData from "./components/header/MenuUser/PersonalData/PersonalData"
 import { useDispatch } from "react-redux"
-import { checkAuth, checkAuthGoogle } from "./store/authorizationSlice"
+import { checkAuth, checkUserInfo } from "./store/authorizationSlice"
 import MenuUser from "./components/header/MenuUser/MenuUser"
 import Exercise from "./components/Main/Exercise/Exercise"
 import TrainingPlan from "./components/Main/TrainingPlan/TrainingPlan"
@@ -26,10 +26,11 @@ function App(): React.JSX.Element {
         if (localStorage.getItem("email")) {
             dispatch(checkAuth())
         }
-        if (localStorage.getItem("googleEmail")) {
-            dispatch(checkAuthGoogle())
+        if (localStorage.getItem("googleToken")) {
+            dispatch(checkUserInfo())
         }
     }, [dispatch])
+
     return (
         <BrowserRouter>
             <div className="App">

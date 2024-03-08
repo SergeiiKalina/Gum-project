@@ -1,9 +1,9 @@
 import React, { FC, Dispatch, SetStateAction, ChangeEvent } from "react"
 import { StyledTextField } from "../../Styled-components/Styled"
 import { Button } from "@mui/material"
-import "./login.scss"
 import { useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc"
+import "./login.scss"
 interface IFormAuthorizationProps {
     email: string
     password: string
@@ -23,7 +23,20 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
     const navigate = useNavigate()
     return (
         <>
-            {/* <form>
+            <Button
+                variant="outlined"
+                onClick={handlerGoogleLogin}
+                sx={{
+                    color: "white",
+                    textTransform: "none",
+                    fontSize: "24px",
+                    padding: "25px 75px",
+                }}
+            >
+                <FcGoogle style={{ marginRight: "5px" }} />
+                Google
+            </Button>
+            <form>
                 <section className="form_authorization_input_block">
                     <StyledTextField
                         type="text"
@@ -58,24 +71,7 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                         </Button>
                     </article>
                 </section>
-            </form> */}
-            <Button
-                variant="outlined"
-                onClick={handlerGoogleLogin}
-                sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%,-50%)",
-                    color: "white",
-                    textTransform: "none",
-                    fontSize: "24px",
-                    padding: "25px 75px",
-                }}
-            >
-                <FcGoogle style={{ marginRight: "5px" }} />
-                Google
-            </Button>
+            </form>
         </>
     )
 }

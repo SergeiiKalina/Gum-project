@@ -50,7 +50,7 @@ export default function AvailabilityOfInventory(): React.JSX.Element {
                     <FormGroup>
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={
                                 <Checkbox sx={stylesCheckBox} defaultChecked />
                             }
@@ -58,37 +58,37 @@ export default function AvailabilityOfInventory(): React.JSX.Element {
                         />
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={<Checkbox sx={stylesCheckBox} />}
                             label="kettlebell"
                         />
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={<Checkbox sx={stylesCheckBox} />}
                             label="band"
                         />
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={<Checkbox sx={stylesCheckBox} />}
                             label="mini-band"
                         />
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={<Checkbox sx={stylesCheckBox} />}
                             label="bar"
                         />
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={<Checkbox sx={stylesCheckBox} />}
                             label="TRX"
                         />
                         <FormControlLabel
                             sx={stylesFormControlLabel}
-                            {...register("inventory")}
+                            {...register("mainInfo.inventory")}
                             control={<Checkbox sx={stylesCheckBox} />}
                             label="fitball"
                         />

@@ -8,44 +8,48 @@ export interface IRegistrationData {
     email: string
     name?: string
     password: string
-    sex?: string
-    age?: number
-    benchPress?: number
-    deadLift?: number
-    goal?: string
-    lifestyle?: string
-    problems?: string[]
-    pullUp?: number
-    sitUp?: number
-    squat?: number
-    weight?: string | number
-    bodyType?: string
-    pushUpQuantity?: number
-    squatQuantity?: number
-    fitnessLevel?: number
-    bodyMassIndex?: number
-    inventory?: string[]
+    mainInfo: {
+        sex?: string
+        age?: number
+        benchPress?: number
+        deadLift?: number
+        goal?: string
+        lifestyle?: string
+        problems?: string[]
+        pullUp?: number
+        sitUp?: number
+        squat?: number
+        weight?: string | number
+        bodyType?: string
+        pushUpQuantity?: number
+        squatQuantity?: number
+        fitnessLevel?: number
+        bodyMassIndex?: number
+        inventory?: string[]
+    }
 }
-export interface IGoogleUser {
+export interface IAuthUser {
     email: string
     name?: string
-    sex?: string
-    age?: number
-    benchPress?: number
-    deadLift?: number
-    goal?: string
-    lifestyle?: string
-    problems?: string[]
-    pullUp?: number
-    sitUp?: number
-    squat?: number
-    weight?: string | number
-    bodyType?: string
-    pushUpQuantity?: number
-    squatQuantity?: number
-    fitnessLevel?: number
-    bodyMassIndex?: number
-    inventory?: string[]
+    mainInfo: {
+        sex?: string
+        age?: number
+        benchPress?: number
+        deadLift?: number
+        goal?: string
+        lifestyle?: string
+        problems?: string[]
+        pullUp?: number
+        sitUp?: number
+        squat?: number
+        weight?: string | number
+        bodyType?: string
+        pushUpQuantity?: number
+        squatQuantity?: number
+        fitnessLevel?: number
+        bodyMassIndex?: number
+        inventory?: string[]
+    }
 }
 
 const initialState: IInitialStateAuthorizationSlice = {
@@ -62,27 +66,51 @@ const initialState: IInitialStateAuthorizationSlice = {
         email: "",
         name: "",
         password: "",
-        sex: "",
-        age: 0,
-        benchPress: 0,
-        deadLift: 0,
-        goal: "",
-        lifestyle: "",
-        problems: [""],
-        pullUp: 0,
-        sitUp: 0,
-        squat: 0,
-        weight: "",
-        bodyType: "",
-        pushUpQuantity: 0,
-        squatQuantity: 0,
-        fitnessLevel: 1,
-        bodyMassIndex: 2,
-        inventory: [""],
+        mainInfo: {
+            sex: "",
+            age: 0,
+            benchPress: 0,
+            deadLift: 0,
+            goal: "",
+            lifestyle: "",
+            problems: [""],
+            pullUp: 0,
+            sitUp: 0,
+            squat: 0,
+            weight: "",
+            bodyType: "",
+            pushUpQuantity: 0,
+            squatQuantity: 0,
+            fitnessLevel: 1,
+            bodyMassIndex: 2,
+            inventory: [""],
+        },
     },
-    googleUserData: {
+    authUser: {
         email: "",
+        name: "",
+
+        mainInfo: {
+            sex: "",
+            age: 0,
+            benchPress: 0,
+            deadLift: 0,
+            goal: "",
+            lifestyle: "",
+            problems: [""],
+            pullUp: 0,
+            sitUp: 0,
+            squat: 0,
+            weight: "",
+            bodyType: "",
+            pushUpQuantity: 0,
+            squatQuantity: 0,
+            fitnessLevel: 1,
+            bodyMassIndex: 2,
+            inventory: [""],
+        },
     },
+    registrationStep: 0,
 }
 
 export interface IInitialStateAuthorizationSlice {
@@ -91,13 +119,15 @@ export interface IInitialStateAuthorizationSlice {
     isLoading: boolean
     error: string | undefined
     registrationData: IRegistrationData
-    googleUserData: IGoogleUser
+    authUser: IAuthUser
+    registrationStep: number
 }
 
 export interface IPropertyRegistration {
     email: string
     password: string
-    name: string
+    name?: string
+    mainInfo: {}
 }
 export interface IPropertyLogin {
     email: string
@@ -173,16 +203,17 @@ export const checkAuth = createAsyncThunk(
         }
     }
 )
-export const checkAuthGoogle = createAsyncThunk(
-    "authorizationSlice/checkAuthGoogle",
+export const checkUserInfo = createAsyncThunk(
+    "authorizationSlice/checkUserInfo",
     async () => {
         try {
-            if (localStorage.getItem("googleEmail")) {
-                const email = localStorage.getItem("googleEmail")
-                const response = await axios.post(
-                    API_URL + "/user/googleAuthCheck",
-                    { email }
-                )
+            const email = localStorage.getItem("googleEmail")
+            const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                "googleUserId"
+            )}.json?auth=${localStorage.getItem("googleToken")}`
+            if (email) {
+                const response = await axios.get(url)
+
                 return response.data
             }
         } catch (error: any) {
@@ -200,6 +231,9 @@ const authorizationSlice = createSlice({
         },
         writeRegistrationData(state, action: PayloadAction<IRegistrationData>) {
             state.registrationData = action.payload
+        },
+        changeStepRegistration(state, action: PayloadAction<number>) {
+            state.registrationStep = action.payload
         },
     },
     extraReducers: (build) => {
@@ -244,15 +278,18 @@ const authorizationSlice = createSlice({
                 state.isAuth = false
                 state.isLoading = false
             })
-            .addCase(checkAuthGoogle.fulfilled, (state, action: any) => {
-                state.googleUserData = action.payload
+            .addCase(checkUserInfo.fulfilled, (state, action: any) => {
+                state.authUser = action.payload
                 state.isAuth = true
                 state.isLoading = false
             })
     },
 })
 
-export const { toggleIsLoading, writeRegistrationData } =
-    authorizationSlice.actions
+export const {
+    toggleIsLoading,
+    writeRegistrationData,
+    changeStepRegistration,
+} = authorizationSlice.actions
 
 export default authorizationSlice.reducer

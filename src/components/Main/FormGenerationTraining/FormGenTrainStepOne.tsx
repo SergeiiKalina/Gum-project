@@ -2,30 +2,47 @@ import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "@mui/material"
-import "./formGenTrainStep.scss"
 import { writeDataUser } from "../../../store/userSlice"
 import axios from "axios"
 import { API_URL } from "../../../http"
 import { IAuthSliceState } from "../../header/Login/Login"
-import "react-alice-carousel/lib/alice-carousel.css"
 import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 import Carousel from "../Carousel/Carousel"
-import "swiper/css"
-import Footer from "../../Footer/Footer"
-
-import { getDatabase, ref, child, get, set } from "firebase/database"
-import training from "../../../data/data"
+import "./formGenTrainStep.scss"
+import { RootState } from "../../../store"
+import {
+    changeStepRegistration,
+    checkUserInfo,
+} from "../../../store/authorizationSlice"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const isAuth = useSelector(
         (state: IAuthSliceState) => state.authSlice.isAuth
     )
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
     const navigate = useNavigate()
+
+    const authUserData = useSelector(
+        (state: RootState) => state.authSlice.authUser
+    )
+
+    useEffect(() => {
+        const checkDataUser = async () => {
+            await dispatch(checkUserInfo())
+            if (authUserData.mainInfo) {
+                return
+            } else {
+                dispatch(changeStepRegistration(1))
+                navigate("/registration")
+            }
+        }
+        checkDataUser()
+    }, [dispatch, navigate, authUserData])
 
     useEffect(() => {
         const fetchData = async () => {
             const email = localStorage.getItem("email")
+            const googleEmail = localStorage.getItem("googleEmail")
             if (email) {
                 const url = API_URL + "/user/email"
                 try {
@@ -33,6 +50,18 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                     const userData = userRes.data
 
                     dispatch(writeDataUser(userData))
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+            if (googleEmail) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+                try {
+                    const response = await axios.get(url)
+
+                    dispatch(writeDataUser(response.data))
                 } catch (error) {
                     console.error(error)
                 }
@@ -47,23 +76,6 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
             navigate("/")
         }
     }, [isAuth, navigate])
-    const func = async () => {
-        const dbRef = getDatabase()
-
-        await set(ref(dbRef, "exercise/"), training).then(() =>
-            console.log("ok")
-        )
-    }
-
-    const func2 = async () => {
-        const dbRef = ref(getDatabase())
-
-        await get(child(dbRef, "exercise/")).then((snapshot) => {
-            if (snapshot.exists()) {
-                console.log(snapshot.val())
-            }
-        })
-    }
 
     return (
         <>
@@ -72,20 +84,14 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
                 <Button
                     variant="contained"
                     className="place_training__button home"
-                    onClick={() => {
-                        navigate("/main-page/step-2/home")
-                        // func()
-                    }}
+                    onClick={() => navigate("/main-page/step-2/home")}
                 >
                     <span>Home Training</span>
                 </Button>
                 <Button
                     variant="contained"
                     className="place_training__button gym"
-                    onClick={() => {
-                        // func2()
-                        navigate("/main-page/step-2/gym")
-                    }}
+                    onClick={() => navigate("/main-page/step-2/gym")}
                 >
                     <span>Gym Training</span>
                 </Button>

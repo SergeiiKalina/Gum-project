@@ -14,7 +14,7 @@ import {
     writeRegistrationData,
 } from "../../../store/authorizationSlice"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { IRegisterForm } from "./Registration"
+
 import { useSelector } from "react-redux"
 import { IStateAuth } from "./RegistrationStepOne"
 import { useDispatch } from "react-redux"
@@ -27,6 +27,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { API_URL } from "../../../http"
 import axios from "axios"
+import { auth } from "../../layouts/config"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -39,11 +40,17 @@ const MenuProps = {
     },
 }
 
+interface IRegisterFormStepFour {
+    problems: string[]
+    goal: string
+    lifestyle: string
+}
+
 const multiSelect = ["back", "elbows", "shoulders", "knees", "hip joint"]
 
-function RegistrationStepFour({ setStep }: { setStep: (num: number) => void }) {
+function RegistrationStepFour() {
     const dispatch = useDispatch<any>()
-    const { register, handleSubmit } = useForm<IRegisterForm>({})
+    const { register, handleSubmit } = useForm<IRegisterFormStepFour>({})
     const [problems, setProblems] = useState<string[]>([])
     const [lifestyle, setLifestyle] = useState("")
     const [goal, setGoal] = useState("")
@@ -64,18 +71,85 @@ function RegistrationStepFour({ setStep }: { setStep: (num: number) => void }) {
         setProblems(typeof value === "string" ? value.split(",") : value)
     }
 
-    const onSubmit: SubmitHandler<IRegisterForm> = async (data) => {
-        await dispatch(toggleIsLoading(true))
-        await dispatch(writeRegistrationData({ ...registrationData, ...data }))
-        await dispatch(registration({ ...registrationData, ...data }))
+    const onSubmit: SubmitHandler<IRegisterFormStepFour> = async (data) => {
+        try {
+            await dispatch(toggleIsLoading(true))
+            if (localStorage.getItem("email")) {
+                await dispatch(
+                    writeRegistrationData({
+                        ...registrationData,
+                        mainInfo: {
+                            ...registrationData.mainInfo,
+                            problems,
+                            goal,
+                            lifestyle,
+                        },
+                    })
+                )
 
-        const { password, ...dataWithoutPassword } = await registrationData
-        await axios.patch(API_URL + "/user/update", {
-            ...dataWithoutPassword,
-            ...data,
-        })
-        await dispatch(toggleIsLoading(false))
-        await navigate("/main-page")
+                await dispatch(
+                    registration({
+                        ...registrationData,
+                        mainInfo: {
+                            ...registrationData.mainInfo,
+                            problems,
+                            goal,
+                            lifestyle,
+                        },
+                    })
+                )
+
+                const { password, ...dataWithoutPassword } =
+                    await registrationData
+
+                await axios.patch(API_URL + "/user/update", {
+                    ...dataWithoutPassword,
+                    mainInfo: {
+                        ...registrationData.mainInfo,
+                        problems,
+                        goal,
+                        lifestyle,
+                    },
+                })
+                return
+            }
+            if (localStorage.getItem("googleEmail")) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+                await dispatch(
+                    writeRegistrationData({
+                        ...registrationData,
+                        mainInfo: {
+                            ...registrationData.mainInfo,
+                            problems,
+                            goal,
+                            lifestyle,
+                        },
+                    })
+                )
+                const { password, ...dataWithoutPassword } =
+                    await registrationData
+
+                await axios.patch(url, {
+                    ...dataWithoutPassword,
+                    email: localStorage.getItem("googleEmail"),
+                    name: auth.currentUser?.displayName,
+                    mainInfo: {
+                        ...registrationData.mainInfo,
+                        problems,
+                        goal,
+                        lifestyle,
+                    },
+                })
+                return
+            }
+        } catch (error) {
+            console.log(error)
+        } finally {
+            await dispatch(toggleIsLoading(false))
+            await navigate("/main-page")
+        }
     }
 
     return (

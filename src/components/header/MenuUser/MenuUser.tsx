@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { logout, toggleIsLoading } from "../../../store/authorizationSlice"
-import "./menuUser.scss"
+
 import axios from "axios"
 import { API_URL } from "../../../http"
 import { IUserData } from "../../../store/userSlice"
@@ -10,7 +10,7 @@ import { StyledTextField } from "../../Styled-components/Styled"
 import { SubmitHandler, useForm } from "react-hook-form"
 import CircularProgress from "@mui/material/CircularProgress"
 import { Button } from "@mui/material"
-import Footer from "../../Footer/Footer"
+import "./menuUser.scss"
 
 interface IRewriteUserData {
     squat: number
@@ -31,16 +31,24 @@ const MenuUser: FC = () => {
 
     useEffect(() => {
         async function getUserData() {
-            let email =
-                localStorage.getItem("email") ||
-                localStorage.getItem("googleEmail")
+            let email = localStorage.getItem("email")
+            const googleEmail = localStorage.getItem("googleEmail")
 
-            if (email !== null) {
+            if (email) {
                 const userData = await axios.post(API_URL + "/user/get-user", {
                     email,
                 })
 
                 setTimeout(() => setUserData(userData.data), 500)
+            }
+            if (googleEmail) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+                const userData = await axios.get(url)
+
+                await setUserData(userData.data)
+                await setToggleRewriteData(false)
             }
         }
         getUserData()
@@ -50,7 +58,7 @@ const MenuUser: FC = () => {
             await dispatch(toggleIsLoading(true))
             const email =
                 (await localStorage.getItem("email")) ||
-                localStorage.getItem("googleE   mail")
+                localStorage.getItem("googleEmail")
             if (email) {
                 const user = await axios.patch(API_URL + "/user/update", {
                     ...data,
@@ -73,7 +81,7 @@ const MenuUser: FC = () => {
             id="userMenu"
             onSubmit={handleSubmit(onSubmit)}
         >
-            {!userData?.squat ? (
+            {!userData?.mainInfo.squat ? (
                 <CircularProgress
                     color="info"
                     sx={{
@@ -106,7 +114,7 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 1PR Squat:
-                                <span>{userData?.squat + "kg"}</span>
+                                <span>{userData?.mainInfo.squat + "kg"}</span>
                             </>
                         )}
                     </li>
@@ -125,7 +133,9 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 1PR Bench Press:
-                                <span>{userData?.benchPress + "kg"}</span>
+                                <span>
+                                    {userData?.mainInfo.benchPress + "kg"}
+                                </span>
                             </>
                         )}
                     </li>
@@ -144,7 +154,9 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 1PR Dead Lift:
-                                <span>{userData?.deadLift + "kg"}</span>
+                                <span>
+                                    {userData?.mainInfo.deadLift + "kg"}
+                                </span>
                             </>
                         )}
                     </li>
@@ -163,7 +175,9 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 Quantity Pull-ups:
-                                <span>{userData?.pullUp + "reps"}</span>
+                                <span>
+                                    {userData?.mainInfo.pullUp + "reps"}
+                                </span>
                             </>
                         )}
                     </li>
@@ -182,7 +196,9 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 Quantity Push-ups:
-                                <span>{userData?.pushUpQuantity + "reps"}</span>
+                                <span>
+                                    {userData?.mainInfo.pushUpQuantity + "reps"}
+                                </span>
                             </>
                         )}
                     </li>
@@ -201,7 +217,7 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 Quantity Sit-ups:
-                                <span>{userData?.sitUp + "reps"}</span>
+                                <span>{userData?.mainInfo.sitUp + "reps"}</span>
                             </>
                         )}
                     </li>
@@ -220,7 +236,9 @@ const MenuUser: FC = () => {
                         ) : (
                             <>
                                 Quantity Air Squats:
-                                <span>{userData?.squatQuantity + "reps"}</span>
+                                <span>
+                                    {userData?.mainInfo.squatQuantity + "reps"}
+                                </span>
                             </>
                         )}
                     </li>
