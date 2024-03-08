@@ -11,6 +11,8 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import CircularProgress from "@mui/material/CircularProgress"
 import { Button } from "@mui/material"
 import "./menuUser.scss"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store"
 
 interface IRewriteUserData {
     squat: number
@@ -28,7 +30,9 @@ const MenuUser: FC = () => {
     const { register, handleSubmit } = useForm<IRewriteUserData>()
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
-
+    const isLoading = useSelector(
+        (state: RootState) => state.authSlice.isLoading
+    )
     useEffect(() => {
         async function getUserData() {
             let email = localStorage.getItem("email")
@@ -48,17 +52,16 @@ const MenuUser: FC = () => {
                 const userData = await axios.get(url)
 
                 await setUserData(userData.data)
-                await setToggleRewriteData(false)
             }
         }
         getUserData()
-    }, [])
+    }, [toggleRewriteData])
+
     const onSubmit: SubmitHandler<IRewriteUserData> = async (data) => {
         try {
             await dispatch(toggleIsLoading(true))
-            const email =
-                (await localStorage.getItem("email")) ||
-                localStorage.getItem("googleEmail")
+            const email = localStorage.getItem("email")
+            const googleEmail = localStorage.getItem("googleEmail")
             if (email) {
                 const user = await axios.patch(API_URL + "/user/update", {
                     ...data,
@@ -66,12 +69,25 @@ const MenuUser: FC = () => {
                 })
 
                 await setUserData(user.data)
-                await setToggleRewriteData(false)
+            }
+            if (googleEmail) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+
+                await axios.patch(url, {
+                    ...userData,
+                    mainInfo: {
+                        ...userData?.mainInfo,
+                        ...data,
+                    },
+                })
             }
         } catch (error) {
             console.log(error)
         } finally {
             await dispatch(toggleIsLoading(false))
+            await setToggleRewriteData(false)
         }
     }
 
@@ -81,6 +97,16 @@ const MenuUser: FC = () => {
             id="userMenu"
             onSubmit={handleSubmit(onSubmit)}
         >
+            {isLoading && (
+                <CircularProgress
+                    color="info"
+                    sx={{
+                        position: "absolute",
+                        top: "calc(50% - 72px )",
+                        left: "calc(50% - 20px )",
+                    }}
+                />
+            )}
             {!userData?.mainInfo.squat ? (
                 <CircularProgress
                     color="info"
