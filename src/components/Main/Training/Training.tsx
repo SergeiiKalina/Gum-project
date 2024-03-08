@@ -6,6 +6,7 @@ import {
     changeCurrentPage,
     fetchCategories,
     fetchFilter,
+    writeArrTraining,
 } from "../../../store/filterTrainingSlice"
 import FormTraining from "../FormTraining/FormTraining"
 import NotTraining from "./NotTraining"
@@ -18,6 +19,7 @@ import { useNavigate } from "react-router-dom"
 import { ITraining } from "../../../data/data"
 import { writeCurrentVideoId } from "../../../store/generatorTrainingReducer"
 import MobileToggleButtons from "../FormTraining/MobileToggleButtons/MobileToggleButtons"
+import axios from "axios"
 
 export interface IFilterTrainingSlice {
     filterTraining: IInitialState
@@ -57,6 +59,7 @@ function Training(): React.JSX.Element {
             navigate("/")
         }
     }, [isAuth, navigate])
+
     useEffect(() => {
         setCountPage(Math.ceil(allFilteredExercises.length / 18))
     }, [allFilteredExercises])
@@ -64,8 +67,27 @@ function Training(): React.JSX.Element {
         dispatch(fetchCategories())
     }, [dispatch])
     useEffect(() => {
-        if (searchData === "") {
+        if (searchData === "" && localStorage.getItem("email")) {
             dispatch(fetchFilter(isCheckedCategories))
+            return
+        }
+        if (searchData === "" && localStorage.getItem("googleEmail")) {
+            const fetchExercisesGoogle = async () => {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/exercise.json?auth=${localStorage.getItem(
+                    "googleToken"
+                )}`
+                const response = await axios.get(url)
+                const exercises = await response.data
+                await dispatch(
+                    writeArrTraining(
+                        exercises.filter((el: ITraining) =>
+                            isCheckedCategories.includes(el.category)
+                        )
+                    )
+                )
+            }
+
+            fetchExercisesGoogle()
         }
     }, [isCheckedCategories, dispatch, searchData])
 
@@ -75,20 +97,25 @@ function Training(): React.JSX.Element {
         let end: number = start + notePage
 
         try {
-            fetch(API_URL + "/exercise/current-page", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    start,
-                    end,
-                    categories: isCheckedCategories,
-                    searchData,
-                }),
-            })
-                .then((res) => res.json())
-                .then((res) => setCurrentPageExercises(res))
+            if (localStorage.getItem("email")) {
+                fetch(API_URL + "/exercise/current-page", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        start,
+                        end,
+                        categories: isCheckedCategories,
+                        searchData,
+                    }),
+                })
+                    .then((res) => res.json())
+                    .then((res) => setCurrentPageExercises(res))
+            }
+            if (localStorage.getItem("googleEmail")) {
+                setCurrentPageExercises(allFilteredExercises.slice(start, end))
+            }
         } catch (error) {
             console.log(error)
         }
