@@ -11,6 +11,7 @@ interface IFormAuthorizationProps {
     setPassword: Dispatch<SetStateAction<string>>
     buttonLogin: (email: string, password: string) => void
     handlerGoogleLogin: () => void
+    serverStatus: boolean
 }
 const FormAuthorization: FC<IFormAuthorizationProps> = ({
     email,
@@ -19,8 +20,10 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
     setPassword,
     buttonLogin,
     handlerGoogleLogin,
+    serverStatus,
 }) => {
     const navigate = useNavigate()
+
     return (
         <>
             <Button
@@ -37,6 +40,9 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                 Google
             </Button>
             <form>
+                {serverStatus && (
+                    <h2>There is no connection to the server, use Google</h2>
+                )}
                 <section className="form_authorization_input_block">
                     <StyledTextField
                         type="text"
@@ -45,6 +51,7 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setEmail(e.target.value)
                         }
+                        disabled={serverStatus}
                     />
                     <StyledTextField
                         type="password"
@@ -53,6 +60,7 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
                             setPassword(e.target.value)
                         }
+                        disabled={serverStatus}
                     />
                 </section>
                 <section>
@@ -60,12 +68,26 @@ const FormAuthorization: FC<IFormAuthorizationProps> = ({
                         <Button
                             onClick={() => buttonLogin(email, password)}
                             variant="contained"
+                            disabled={serverStatus}
+                            sx={{
+                                "&.Mui-disabled": {
+                                    backgroundColor: "rgba(128, 128, 128, 0.3)",
+                                    color: "rgba(128, 128, 128, 0.5)",
+                                },
+                            }}
                         >
                             Login
                         </Button>
                         <Button
                             variant="contained"
                             onClick={() => navigate("/registration")}
+                            disabled={serverStatus}
+                            sx={{
+                                "&.Mui-disabled": {
+                                    backgroundColor: "rgba(128, 128, 128, 0.3)",
+                                    color: "rgba(128, 128, 128, 0.5)",
+                                },
+                            }}
                         >
                             Registration
                         </Button>

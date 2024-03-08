@@ -12,6 +12,8 @@ import FormAuthorization from "./FormAuthorization"
 import { CircularProgress } from "@mui/material"
 import { RootState } from "../../../store"
 import "./login.scss"
+import axios from "axios"
+import { API_URL } from "../../../http"
 
 export interface IUser {
     userName: string | null
@@ -23,6 +25,7 @@ export interface IAuthSliceState {
 
 function Login(): React.JSX.Element {
     const dispatch = useDispatch<any>()
+    const [serverStatus, setServerStatus] = useState(true)
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [storageEmail] = useState<string | null>(
@@ -36,6 +39,23 @@ function Login(): React.JSX.Element {
     )
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const checkServer = async () => {
+            try {
+                const response = await axios.get(API_URL)
+
+                if (response.status === 200) {
+                    setServerStatus(false)
+                } else {
+                    setServerStatus(true)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        checkServer()
+    }, [dispatch])
 
     useEffect(() => {
         if (
@@ -74,6 +94,7 @@ function Login(): React.JSX.Element {
                     buttonLogin={buttonLogin}
                     setEmail={setEmail}
                     handlerGoogleLogin={handlerGoogleLogin}
+                    serverStatus={serverStatus}
                 />
             )}
         </section>

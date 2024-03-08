@@ -37,10 +37,16 @@ export const StyledTextField = styled(TextField)({
         "&:hover .MuiInputBase-input ": {
             borderBottom: "1px solid #42a5f5",
         },
+        "&:hover .Mui-disabled.MuiInputBase-input ": {
+            borderBottom: "1px solid grey",
+        },
         "&.Mui-focused": {},
         "& .MuiInputBase-input": {
             color: "white",
             borderBottom: "1px solid #fefefe",
+        },
+        "& .Mui-disabled.MuiInputBase-input": {
+            borderBottom: "1px solid grey",
         },
     },
     "&.registration_input ": {
@@ -57,6 +63,12 @@ export const StyledTextField = styled(TextField)({
     },
     "&:hover .MuiInputLabel-root": {
         color: "#42a5f5",
+    },
+    "&:hover .Mui-disabled.MuiInputLabel-root": {
+        color: "grey",
+    },
+    "& .Mui-disabled.MuiInputLabel-root": {
+        color: "grey",
     },
     "& .MuiOutlinedInput-notchedOutline": {
         border: "none",
