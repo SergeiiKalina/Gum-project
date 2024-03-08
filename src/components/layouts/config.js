@@ -21,7 +21,9 @@ const checkIfUserExists = async (res) => {
                 res.uid
             }.json?auth=${localStorage.getItem("googleToken")}`
         )
+        console.log("call")
         if (!response.data) {
+            console.log("call")
             createUser(res)
         } else {
             return response.data
@@ -60,12 +62,9 @@ export const handlerGoogleLogin = () => {
             localStorage.setItem("googleToken", user.accessToken || "")
             localStorage.setItem("googleEmail", user.email || "")
             localStorage.setItem("googleUserId", user.uid || "")
-
+            checkIfUserExists(user)
             window.location.reload()
             return user
-        })
-        .then((res) => {
-            checkIfUserExists(res)
         })
         .catch((error) => {
             console.error("Error auth with Google:", error.message)

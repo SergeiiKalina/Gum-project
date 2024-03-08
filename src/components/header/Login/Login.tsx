@@ -37,6 +37,7 @@ function Login(): React.JSX.Element {
     const authUserData = useSelector(
         (state: RootState) => state.authSlice.authUser
     )
+
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
 
@@ -58,17 +59,29 @@ function Login(): React.JSX.Element {
     }, [dispatch])
 
     useEffect(() => {
-        if (
-            localStorage.getItem("email") ||
-            localStorage.getItem("googleEmail")
-        ) {
-            if (isAuth && authUserData.mainInfo) {
+        const checkDataUser = async () => {
+            if (localStorage.getItem("email")) {
                 navigate("/main-page")
-            } else if (isAuth && !authUserData.mainInfo) {
-                navigate("/registration")
-                dispatch(changeStepRegistration(1))
+                return
+            }
+            if (localStorage.getItem("googleEmail")) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+                const response = await axios.get(url)
+                if (response.data === null) {
+                    await axios.post(url, {})
+                }
+                if (response.data.mainInfo) {
+                    navigate("/main-page")
+                    return
+                } else {
+                    navigate("/registration")
+                    dispatch(changeStepRegistration(1))
+                }
             }
         }
+        checkDataUser()
     }, [navigate, isAuth, authUserData, dispatch])
 
     const buttonLogin = async (email: string, password: string) => {
