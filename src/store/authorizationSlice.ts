@@ -196,6 +196,7 @@ export const checkAuth = createAsyncThunk(
                     { withCredentials: true }
                 )
                 localStorage.setItem("token", response.data.accessToken)
+
                 return response.data.user
             }
         } catch (error: any) {
@@ -207,15 +208,13 @@ export const checkUserInfo = createAsyncThunk(
     "authorizationSlice/checkUserInfo",
     async () => {
         try {
-            const email = localStorage.getItem("googleEmail")
             const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
                 "googleUserId"
             )}.json?auth=${localStorage.getItem("googleToken")}`
-            if (email) {
-                const response = await axios.get(url)
 
-                return response.data
-            }
+            const response = await axios.get(url)
+
+            return response.data
         } catch (error: any) {
             throw new Error("User not login")
         }
@@ -269,18 +268,25 @@ const authorizationSlice = createSlice({
                 state.isLoading = false
             })
             .addCase(checkAuth.fulfilled, (state, action: any) => {
-                state.user = action.payload
+                state.authUser = action.payload
                 state.isAuth = true
                 state.isLoading = false
             })
             .addCase(checkAuth.rejected, (state, action: any) => {
-                state.user = action.payload
+                state.authUser = action.payload
                 state.isAuth = false
                 state.isLoading = false
+            })
+            .addCase(checkUserInfo.pending, (state, action: any) => {
+                state.isLoading = true
             })
             .addCase(checkUserInfo.fulfilled, (state, action: any) => {
                 state.authUser = action.payload
                 state.isAuth = true
+                state.isLoading = false
+            })
+            .addCase(checkUserInfo.rejected, (state, action: any) => {
+                state.isAuth = false
                 state.isLoading = false
             })
     },

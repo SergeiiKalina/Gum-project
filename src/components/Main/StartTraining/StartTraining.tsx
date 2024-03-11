@@ -3,8 +3,18 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { useSelector } from "react-redux"
 import EndTraining from "../EndTraining/EndTraining"
 import { ITraining } from "../../../data/data"
-import { Box, OutlinedInput, InputAdornment } from "@mui/material"
-import { styleOutlinedInput } from "../FormGenerationTraining/styles/stylesFormGeneration"
+import {
+    Box,
+    OutlinedInput,
+    InputAdornment,
+    ToggleButtonGroup,
+    ToggleButton,
+} from "@mui/material"
+import {
+    styleOutlinedInput,
+    styledToggleButton,
+    styledToggleButtonWrapper,
+} from "../FormGenerationTraining/styles/stylesFormGeneration"
 import YouTube from "react-youtube"
 import "./startTraining.scss"
 import { ITrainingReducer } from "../TrainingPlan/TrainingPlan"
@@ -19,7 +29,7 @@ export default function StartTraining(): React.JSX.Element {
     )
 
     const value = useSelector((state: ITrainingReducer) => state.training.arr)
-
+    const [buttonChecked, setButtonChecked] = useState<string>("set")
     const [numExercise, setNumExercise] = useState<number>(0)
     const [showEndButton, setShowEndButton] = useState<boolean>(false)
     const [exercise, setExercise] = useState<ITraining>(value[numExercise])
@@ -96,10 +106,11 @@ export default function StartTraining(): React.JSX.Element {
         setShowTimer(true)
     }
     function increment() {
-        if (value.length - 1 === numExercise) {
+        if (value.length === numExercise) {
+            console.log("call")
             setShowEndButton(true)
         }
-        if (value.length - 1 === numExercise) {
+        if (value.length === numExercise) {
             return
         } else {
             setShowTimer(false)
@@ -107,12 +118,13 @@ export default function StartTraining(): React.JSX.Element {
             setButtonValue("Go")
         }
     }
+    console.log(value.length)
+    console.log(numExercise)
     function decrement() {
-        console.log(value)
         if (value.length > numExercise) {
             setShowEndButton(false)
         }
-        if (numExercise === 1) {
+        if (numExercise === 0) {
             return
         } else {
             setShowTimer(false)
@@ -159,6 +171,16 @@ export default function StartTraining(): React.JSX.Element {
         setShowEndTraining(false)
     }
 
+    const handleButtonGroup = (
+        event: React.MouseEvent<HTMLElement>,
+        categories: string
+    ) => {
+        const target = event.target as HTMLInputElement
+
+        if (buttonChecked === target.value) return
+        setButtonChecked(categories)
+    }
+
     return (
         <>
             {showEndTraining ? (
@@ -176,93 +198,114 @@ export default function StartTraining(): React.JSX.Element {
                             opts={opts}
                         />
                     </article>
-
+                    <span className="border_logic_block"></span>
+                    <article className="start_training_tabs_button">
+                        <ToggleButtonGroup
+                            onChange={handleButtonGroup}
+                            exclusive
+                            value={buttonChecked}
+                            sx={styledToggleButtonWrapper}
+                        >
+                            <ToggleButton
+                                value={"info"}
+                                sx={styledToggleButton}
+                            >
+                                info
+                            </ToggleButton>
+                            <ToggleButton value={"set"} sx={styledToggleButton}>
+                                set
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </article>
                     <article className="start_training_blockApproach">
                         <output>{`${numExercise + 1}/${value.length}`}</output>
                         <div className="start_training_title">
                             {exercise.title}
                         </div>
-
-                        <form onChange={handleSubmit(onSubmit)}>
-                            <ul>
+                        {buttonChecked === "info" && (
+                            <ul className="start_training_info_block">
                                 {exercise.describe?.map((el, index) => (
                                     <li key={index}>{el}</li>
                                 ))}
                             </ul>
-                            <Box
-                                sx={{
-                                    width: "100%",
-                                    display: "flex",
+                        )}
+                        {buttonChecked === "set" && (
+                            <form onChange={handleSubmit(onSubmit)}>
+                                <Box
+                                    sx={{
+                                        width: "100%",
+                                        display: "flex",
 
-                                    flexDirection: "column",
-                                }}
-                            >
-                                <OutlinedInput
-                                    sx={styleOutlinedInput}
-                                    type="number"
-                                    id="outlined-adornment-weight"
-                                    placeholder="First approach"
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            kg
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="outlined-weight-helper-text"
-                                    inputProps={{
-                                        "aria-label": "weight",
+                                        flexDirection: "column",
                                     }}
-                                    {...register(`${titleExercise}[${0}]`)}
-                                />
-                                <OutlinedInput
-                                    sx={styleOutlinedInput}
-                                    type="number"
-                                    id="outlined-adornment-weight"
-                                    placeholder="Second approach"
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            kg
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="outlined-weight-helper-text"
-                                    inputProps={{
-                                        "aria-label": "weight",
-                                    }}
-                                    {...register(`${titleExercise}[${1}]`)}
-                                />
-                                <OutlinedInput
-                                    sx={styleOutlinedInput}
-                                    type="number"
-                                    id="outlined-adornment-weight"
-                                    placeholder="Third approach"
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            kg
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="outlined-weight-helper-text"
-                                    inputProps={{
-                                        "aria-label": "weight",
-                                    }}
-                                    {...register(`${titleExercise}[${2}]`)}
-                                />
-                                <OutlinedInput
-                                    sx={styleOutlinedInput}
-                                    type="number"
-                                    id="outlined-adornment-weight"
-                                    placeholder="Fourth approach"
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            kg
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="outlined-weight-helper-text"
-                                    inputProps={{
-                                        "aria-label": "weight",
-                                    }}
-                                    {...register(`${titleExercise}[${3}]`)}
-                                />
-                            </Box>
-                        </form>
+                                >
+                                    <OutlinedInput
+                                        sx={styleOutlinedInput}
+                                        type="number"
+                                        id="outlined-adornment-weight"
+                                        placeholder="First approach"
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                kg
+                                            </InputAdornment>
+                                        }
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            "aria-label": "weight",
+                                        }}
+                                        {...register(`${titleExercise}[${0}]`)}
+                                    />
+                                    <OutlinedInput
+                                        sx={styleOutlinedInput}
+                                        type="number"
+                                        id="outlined-adornment-weight"
+                                        placeholder="Second approach"
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                kg
+                                            </InputAdornment>
+                                        }
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            "aria-label": "weight",
+                                        }}
+                                        {...register(`${titleExercise}[${1}]`)}
+                                    />
+                                    <OutlinedInput
+                                        sx={styleOutlinedInput}
+                                        type="number"
+                                        id="outlined-adornment-weight"
+                                        placeholder="Third approach"
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                kg
+                                            </InputAdornment>
+                                        }
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            "aria-label": "weight",
+                                        }}
+                                        {...register(`${titleExercise}[${2}]`)}
+                                    />
+                                    <OutlinedInput
+                                        sx={styleOutlinedInput}
+                                        type="number"
+                                        id="outlined-adornment-weight"
+                                        placeholder="Fourth approach"
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                kg
+                                            </InputAdornment>
+                                        }
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            "aria-label": "weight",
+                                        }}
+                                        {...register(`${titleExercise}[${3}]`)}
+                                    />
+                                </Box>
+                            </form>
+                        )}
                     </article>
                     <article className="start_training_blockButton">
                         <button

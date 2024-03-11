@@ -20,6 +20,7 @@ function MobileMenuFroExerciseWrapper({
     }
 
     const handleTouchMove = (e: React.TouchEvent<HTMLSpanElement>) => {
+        e.preventDefault()
         if (!isDragging) return
         const touchYEnd = e.touches[0].clientY
         const newDeltaY = touchYEnd - touchYStart.current

@@ -23,10 +23,12 @@ function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
 
     useEffect(() => {
-        if (localStorage.getItem("email")) {
+        const fireBaseEmail = localStorage.getItem("googleToken")
+        const serverEmail = localStorage.getItem("email")
+        if (serverEmail) {
             dispatch(checkAuth())
         }
-        if (localStorage.getItem("googleToken")) {
+        if (fireBaseEmail) {
             dispatch(checkUserInfo())
         }
     }, [dispatch])

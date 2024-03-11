@@ -23,6 +23,11 @@
             margin: 0 auto;
         }
     }
+
+    .start_training_tabs_button {
+        width: 50%;
+        margin: 0 auto;
+    }
     .start_training_blockButton {
         width: 30%;
         display: flex;
@@ -69,7 +74,18 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        .start_training_info_block {
+            display: flex;
+            flex-direction: column;
 
+            width: 40%;
+            margin: 16px auto 0 auto;
+            @include adaptive-font(16, 12);
+            color: white;
+            li {
+                margin-top: 12px;
+            }
+        }
         .start_training_title {
             @include adaptive-font(18, 14);
             margin: 10px auto 0 auto;
@@ -115,6 +131,9 @@ input[type="number"] {
             form {
                 width: 40%;
             }
+            .start_training_info_block {
+                width: 60%;
+            }
         }
         .start_training_blockButton {
             width: 40%;
@@ -124,12 +143,19 @@ input[type="number"] {
 
 @media (max-width: 767px) {
     .start_training_section {
+        .start_training_tabs_button {
+            width: 80%;
+            margin: 0 auto;
+        }
         .start_training_infoBlock {
             width: 90%;
         }
         .start_training_blockApproach {
             form {
                 width: 60%;
+            }
+            .start_training_info_block {
+                width: 80%;
             }
         }
         .start_training_blockButton {
@@ -147,6 +173,10 @@ input[type="number"] {
 
 @media (max-width: 460px) {
     .start_training_section {
+        .start_training_tabs_button {
+            width: 90%;
+            margin: 0 auto;
+        }
         .start_training_infoBlock {
             width: 100%;
             height: 300px;
@@ -158,12 +188,19 @@ input[type="number"] {
             form {
                 width: 70%;
             }
+            .start_training_info_block {
+                width: 90%;
+            }
         }
     }
 }
 
 @media (max-width: 360px) {
     .start_training_section {
+        .start_training_tabs_button {
+            width: 95%;
+            margin: 0 auto;
+        }
         .start_training_blockApproach {
             form {
                 width: 90%;

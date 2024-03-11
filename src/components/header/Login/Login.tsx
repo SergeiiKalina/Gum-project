@@ -4,13 +4,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { handlerGoogleLogin } from "../../layouts/config"
 import {
     IInitialStateAuthorizationSlice,
-    changeStepRegistration,
     login,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
 import FormAuthorization from "./FormAuthorization"
 import { CircularProgress } from "@mui/material"
-import { RootState } from "../../../store"
 import "./login.scss"
 import axios from "axios"
 import { API_URL } from "../../../http"
@@ -28,16 +26,10 @@ function Login(): React.JSX.Element {
     const [serverStatus, setServerStatus] = useState(true)
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const [storageEmail] = useState<string | null>(
-        localStorage.getItem("email")
-    )
+
     const authSliceState = useSelector(
         (state: IAuthSliceState) => state.authSlice
     )
-    const authUserData = useSelector(
-        (state: RootState) => state.authSlice.authUser
-    )
-
     const { isLoading, isAuth } = authSliceState
     const navigate = useNavigate()
 
@@ -59,30 +51,17 @@ function Login(): React.JSX.Element {
     }, [dispatch])
 
     useEffect(() => {
-        const checkDataUser = async () => {
-            if (localStorage.getItem("email")) {
+        const checkAuthUser = () => {
+            const serverEmail = localStorage.getItem("email")
+            const fireBaseEmail = localStorage.getItem("googleEmail")
+            if (serverEmail || fireBaseEmail) {
                 navigate("/main-page")
+            } else {
                 return
             }
-            if (localStorage.getItem("googleEmail")) {
-                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                    "googleUserId"
-                )}.json?auth=${localStorage.getItem("googleToken")}`
-                const response = await axios.get(url)
-                if (response.data === null) {
-                    await axios.post(url, {})
-                }
-                if (response.data.mainInfo) {
-                    navigate("/main-page")
-                    return
-                } else {
-                    navigate("/registration")
-                    dispatch(changeStepRegistration(1))
-                }
-            }
         }
-        checkDataUser()
-    }, [navigate, isAuth, authUserData, dispatch])
+        checkAuthUser()
+    }, [navigate, isAuth])
 
     const buttonLogin = async (email: string, password: string) => {
         await dispatch(toggleIsLoading(true))
@@ -99,7 +78,7 @@ function Login(): React.JSX.Element {
                         transform: "translate( -50%, -50%)",
                     }}
                 />
-            ) : storageEmail ? null : (
+            ) : (
                 <FormAuthorization
                     email={email}
                     password={password}

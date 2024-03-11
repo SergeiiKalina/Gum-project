@@ -63,9 +63,13 @@ const MenuUser: FC = () => {
             const email = localStorage.getItem("email")
             const googleEmail = localStorage.getItem("googleEmail")
             if (email) {
+                console.log(data)
                 const user = await axios.patch(API_URL + "/user/update", {
-                    ...data,
-                    email,
+                    ...userData,
+                    mainInfo: {
+                        ...userData?.mainInfo,
+                        ...data,
+                    },
                 })
 
                 await setUserData(user.data)
@@ -133,7 +137,7 @@ const MenuUser: FC = () => {
                                 variant="outlined"
                                 autoComplete="off"
                                 InputProps={{
-                                    type: "number",
+                                    type: "text",
                                 }}
                                 {...register("squat")}
                             />
