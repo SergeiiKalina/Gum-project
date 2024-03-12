@@ -22,30 +22,28 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
     )
 
     useEffect(() => {
-        if (!isAuth) {
-            navigate("/")
-        } else {
-            const checkGoogleDataUser = async () => {
-                if (localStorage.getItem("googleEmail")) {
-                    const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                        "googleUserId"
-                    )}.json?auth=${localStorage.getItem("googleToken")}`
-                    const response = await axios.get(url)
+        const checkGoogleDataUser = async () => {
+            if (localStorage.getItem("googleEmail")) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+                const response = await axios.get(url)
 
-                    if (response.data === null) {
-                        await axios.post(url, {})
-                    }
-                    if (response.data.mainInfo) {
-                        return
-                    } else {
-                        navigate("/registration")
-                        dispatch(changeStepRegistration(1))
-                    }
+                if (response.data === null) {
+                    await axios.post(url, {})
+                }
+                if (response.data.mainInfo) {
+                    return
+                } else {
+                    console.log("call")
+                    navigate("/registration")
+                    dispatch(changeStepRegistration(1))
                 }
             }
+
             checkGoogleDataUser()
         }
-    }, [isAuth, navigate, dispatch])
+    }, [navigate, dispatch])
 
     return (
         <>

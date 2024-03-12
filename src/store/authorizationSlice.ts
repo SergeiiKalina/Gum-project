@@ -234,6 +234,9 @@ const authorizationSlice = createSlice({
         changeStepRegistration(state, action: PayloadAction<number>) {
             state.registrationStep = action.payload
         },
+        toggleIsAuth(state, action: PayloadAction<boolean>) {
+            state.isAuth = action.payload
+        },
     },
     extraReducers: (build) => {
         build
@@ -296,6 +299,7 @@ export const {
     toggleIsLoading,
     writeRegistrationData,
     changeStepRegistration,
+    toggleIsAuth,
 } = authorizationSlice.actions
 
 export default authorizationSlice.reducer

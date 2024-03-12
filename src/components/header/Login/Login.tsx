@@ -5,6 +5,7 @@ import { handlerGoogleLogin } from "../../layouts/config"
 import {
     IInitialStateAuthorizationSlice,
     login,
+    toggleIsAuth,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
 import FormAuthorization from "./FormAuthorization"
@@ -55,6 +56,7 @@ function Login(): React.JSX.Element {
             const serverEmail = localStorage.getItem("email")
             const fireBaseEmail = localStorage.getItem("googleEmail")
             if (serverEmail || fireBaseEmail) {
+                console.log("call")
                 navigate("/main-page")
             } else {
                 return
@@ -63,10 +65,22 @@ function Login(): React.JSX.Element {
         checkAuthUser()
     }, [navigate, isAuth])
 
-    const buttonLogin = async (email: string, password: string) => {
+    const buttonLoginServer = async (email: string, password: string) => {
         await dispatch(toggleIsLoading(true))
         await dispatch(login({ email, password }))
+        await navigate("/main-page")
     }
+
+    const loginWithGoogle = async () => {
+        try {
+            await handlerGoogleLogin()
+            await dispatch(toggleIsAuth(true))
+            await navigate("/main-page")
+        } catch (error) {
+            console.error("Error logging in with Google:", error)
+        }
+    }
+
     return (
         <section className="login_block">
             {isLoading ? (
@@ -83,9 +97,9 @@ function Login(): React.JSX.Element {
                     email={email}
                     password={password}
                     setPassword={setPassword}
-                    buttonLogin={buttonLogin}
+                    buttonLogin={buttonLoginServer}
                     setEmail={setEmail}
-                    handlerGoogleLogin={handlerGoogleLogin}
+                    handlerGoogleLogin={loginWithGoogle}
                     serverStatus={serverStatus}
                 />
             )}

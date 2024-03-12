@@ -24,7 +24,6 @@ const checkIfUserExists = async (res) => {
 
         if (!response.data) {
             await createUser(res)
-            window.location.href = await "http://localhost:3000/main-page"
         } else {
             return response.data
         }
@@ -56,19 +55,27 @@ const createUser = async (res) => {
 }
 
 export const handlerGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            const user = result.user
-            localStorage.setItem("googleToken", user.accessToken || "")
-            localStorage.setItem("googleEmail", user.email || "")
-            localStorage.setItem("googleUserId", user.uid || "")
-            checkIfUserExists(user)
-
-            return user
-        })
-        .catch((error) => {
-            console.error("Error auth with Google:", error.message)
-        })
+    return new Promise((resolve, reject) => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const user = result.user
+                localStorage.setItem("googleToken", user.accessToken || "")
+                localStorage.setItem("googleEmail", user.email || "")
+                localStorage.setItem("googleUserId", user.uid || "")
+                checkIfUserExists(user)
+                    .then((userData) => {
+                        resolve(userData)
+                    })
+                    .catch((error) => {
+                        console.error("Error checking user existence:", error)
+                        reject(error)
+                    })
+            })
+            .catch((error) => {
+                console.error("Error auth with Google:", error.message)
+                reject(error)
+            })
+    })
 }
 
 const app = initializeApp(firebaseConfig)
