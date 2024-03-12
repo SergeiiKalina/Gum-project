@@ -77,6 +77,7 @@ function Login(): React.JSX.Element {
             await navigate("/main-page")
         } catch (error) {
             console.error("Error logging in with Google:", error)
+            localStorage.clear()
         }
     }
 

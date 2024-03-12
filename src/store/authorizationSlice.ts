@@ -154,6 +154,7 @@ export const login = createAsyncThunk(
 export const registration = createAsyncThunk(
     "authorizationSlice/registration",
     async ({ email, password, name }: IPropertyRegistration) => {
+        console.log("call")
         try {
             const defaultFirstName = name || "user"
 
@@ -162,7 +163,7 @@ export const registration = createAsyncThunk(
                 password,
                 defaultFirstName
             )
-
+            console.log(response)
             localStorage.setItem("token", response.data.accessToken)
             localStorage.setItem("name", response.data.user.name)
             localStorage.setItem("email", response.data.user.email)

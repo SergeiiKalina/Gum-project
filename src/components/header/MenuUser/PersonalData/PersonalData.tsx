@@ -9,6 +9,7 @@ import { IAuthSliceState } from "../../Login/Login"
 import { useNavigate } from "react-router-dom"
 import CircularProgress from "@mui/material/CircularProgress"
 import "./personalData.scss"
+import { toggleIsAuth } from "../../../../store/authorizationSlice"
 
 export interface IUserSlice {
     usersSlice: {
@@ -25,6 +26,7 @@ const PersonalData: React.FC = () => {
         (Number(userData.mainInfo.squat) / Number(userData.mainInfo.weight)) *
             150
     )
+
     const [cofBenchPress] = useState(
         (Number(userData.mainInfo.benchPress) /
             Number(userData.mainInfo.weight) /
@@ -64,6 +66,7 @@ const PersonalData: React.FC = () => {
         const fetchData = async () => {
             const email = localStorage.getItem("email")
             const googleEmail = localStorage.getItem("googleEmail")
+
             try {
                 if (email) {
                     const url = API_URL + "/user/email"
@@ -86,6 +89,8 @@ const PersonalData: React.FC = () => {
                 }
             } catch (error) {
                 console.error(error)
+                localStorage.clear()
+                dispatch(toggleIsAuth(false))
             }
         }
 

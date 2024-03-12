@@ -2,7 +2,6 @@ import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, CircularProgress } from "@mui/material"
-import { IAuthSliceState } from "../../header/Login/Login"
 import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 import Carousel from "../Carousel/Carousel"
 import "./formGenTrainStep.scss"
@@ -17,25 +16,35 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
     const isLoading = useSelector(
         (state: RootState) => state.authSlice.isLoading
     )
+    const isAuth = useSelector((state: RootState) => state.authSlice.isAuth)
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/")
+        }
+    }, [isAuth, navigate])
 
     useEffect(() => {
         const checkGoogleDataUser = async () => {
-            if (localStorage.getItem("googleEmail")) {
-                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                    "googleUserId"
-                )}.json?auth=${localStorage.getItem("googleToken")}`
-                const response = await axios.get(url)
+            try {
+                if (localStorage.getItem("googleEmail")) {
+                    const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                        "googleUserId"
+                    )}.json?auth=${localStorage.getItem("googleToken")}`
+                    const response = await axios.get(url)
 
-                if (response.data === null) {
-                    await axios.post(url, {})
+                    if (response.data === null) {
+                        await axios.post(url, {})
+                    }
+                    if (response.data.mainInfo) {
+                        return
+                    } else {
+                        console.log("call")
+                        navigate("/registration")
+                        dispatch(changeStepRegistration(1))
+                    }
                 }
-                if (response.data.mainInfo) {
-                    return
-                } else {
-                    console.log("call")
-                    navigate("/registration")
-                    dispatch(changeStepRegistration(1))
-                }
+            } catch (error) {
+                localStorage.clear()
             }
         }
         checkGoogleDataUser()

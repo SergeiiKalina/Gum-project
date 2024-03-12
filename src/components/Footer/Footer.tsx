@@ -8,11 +8,13 @@ import "./footer.scss"
 function Footer(): React.JSX.Element {
     const [showFooter, setShowFooter] = useState(false)
 
-    const [email] = useState<string | null>(
-        localStorage.getItem("email") || localStorage.getItem("googleEmail")
-    )
+    const [email, setEmail] = useState<string | null>()
     const location = useLocation()
-
+    useEffect(() => {
+        const email =
+            localStorage.getItem("email") || localStorage.getItem("googleEmail")
+        setEmail(email)
+    }, [])
     useEffect(() => {
         const bodyClass = document.querySelector(".touch")
         if (

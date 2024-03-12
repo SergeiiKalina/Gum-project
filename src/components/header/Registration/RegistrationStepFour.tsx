@@ -74,7 +74,38 @@ function RegistrationStepFour() {
     const onSubmit: SubmitHandler<IRegisterFormStepFour> = async (data) => {
         try {
             await dispatch(toggleIsLoading(true))
-            if (localStorage.getItem("email")) {
+
+            if (localStorage.getItem("googleEmail")) {
+                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                    "googleUserId"
+                )}.json?auth=${localStorage.getItem("googleToken")}`
+                await dispatch(
+                    writeRegistrationData({
+                        ...registrationData,
+                        mainInfo: {
+                            ...registrationData.mainInfo,
+                            problems,
+                            goal,
+                            lifestyle,
+                        },
+                    })
+                )
+                const { password, ...dataWithoutPassword } =
+                    await registrationData
+
+                await axios.patch(url, {
+                    ...dataWithoutPassword,
+                    email: localStorage.getItem("googleEmail"),
+                    name: auth.currentUser?.displayName,
+                    mainInfo: {
+                        ...registrationData.mainInfo,
+                        problems,
+                        goal,
+                        lifestyle,
+                    },
+                })
+                return
+            } else {
                 await dispatch(
                     writeRegistrationData({
                         ...registrationData,
@@ -104,37 +135,6 @@ function RegistrationStepFour() {
 
                 await axios.patch(API_URL + "/user/update", {
                     ...dataWithoutPassword,
-                    mainInfo: {
-                        ...registrationData.mainInfo,
-                        problems,
-                        goal,
-                        lifestyle,
-                    },
-                })
-                return
-            }
-            if (localStorage.getItem("googleEmail")) {
-                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                    "googleUserId"
-                )}.json?auth=${localStorage.getItem("googleToken")}`
-                await dispatch(
-                    writeRegistrationData({
-                        ...registrationData,
-                        mainInfo: {
-                            ...registrationData.mainInfo,
-                            problems,
-                            goal,
-                            lifestyle,
-                        },
-                    })
-                )
-                const { password, ...dataWithoutPassword } =
-                    await registrationData
-
-                await axios.patch(url, {
-                    ...dataWithoutPassword,
-                    email: localStorage.getItem("googleEmail"),
-                    name: auth.currentUser?.displayName,
                     mainInfo: {
                         ...registrationData.mainInfo,
                         problems,
