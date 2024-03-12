@@ -56,7 +56,6 @@ function Login(): React.JSX.Element {
             const serverEmail = localStorage.getItem("email")
             const fireBaseEmail = localStorage.getItem("googleEmail")
             if (serverEmail || fireBaseEmail) {
-                console.log("call")
                 navigate("/main-page")
             } else {
                 return

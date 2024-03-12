@@ -20,13 +20,12 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
 
     useEffect(() => {
         const checkGoogleDataUser = async () => {
-            console.log("call")
             if (localStorage.getItem("googleEmail")) {
                 const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
                     "googleUserId"
                 )}.json?auth=${localStorage.getItem("googleToken")}`
                 const response = await axios.get(url)
-                console.log(response)
+
                 if (response.data === null) {
                     await axios.post(url, {})
                 }
