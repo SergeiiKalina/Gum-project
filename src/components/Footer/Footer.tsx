@@ -4,9 +4,12 @@ import { BsPersonCircle } from "react-icons/bs"
 import { GiCardRandom } from "react-icons/gi"
 import { CiSettings } from "react-icons/ci"
 import "./footer.scss"
+import { useSelector } from "react-redux"
+import { RootState } from "../../store"
 
 function Footer(): React.JSX.Element {
     const [showFooter, setShowFooter] = useState(false)
+    const isAuth = useSelector((state: RootState) => state.authSlice.isAuth)
 
     const [email, setEmail] = useState<string | null>()
     const location = useLocation()
@@ -46,7 +49,13 @@ function Footer(): React.JSX.Element {
         <footer className="footer_wrapper">
             <menu className="footer_menu">
                 <NavLink
-                    to={!email ? "/" : "/personal-data"}
+                    to={
+                        !email
+                            ? isAuth
+                                ? "/personal-data"
+                                : "/"
+                            : "/personal-data"
+                    }
                     className={({ isActive }) =>
                         isActive && location.pathname === "/personal-data"
                             ? "active"
@@ -56,7 +65,7 @@ function Footer(): React.JSX.Element {
                     <BsPersonCircle />
                 </NavLink>
                 <NavLink
-                    to={!email ? "/" : "/main-page"}
+                    to={!email ? (isAuth ? "/main-page" : "/") : "/main-page"}
                     className={({ isActive }) =>
                         isActive && location.pathname === "/main-page"
                             ? "active"
@@ -66,7 +75,7 @@ function Footer(): React.JSX.Element {
                     <GiCardRandom />
                 </NavLink>
                 <NavLink
-                    to={!email ? "/" : "/setup"}
+                    to={!email ? (isAuth ? "/setup" : "/") : "/setup"}
                     className={({ isActive }) =>
                         isActive && location.pathname === "/setup"
                             ? "active"
