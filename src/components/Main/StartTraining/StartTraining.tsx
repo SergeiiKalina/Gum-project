@@ -9,6 +9,7 @@ import {
     InputAdornment,
     ToggleButtonGroup,
     ToggleButton,
+    createTheme,
 } from "@mui/material"
 import {
     styleOutlinedInput,
@@ -18,6 +19,19 @@ import {
 import YouTube from "react-youtube"
 import "./startTraining.scss"
 import { ITrainingReducer } from "../TrainingPlan/TrainingPlan"
+import ProgressBar from "./ProgressBar/ProgressBar"
+
+export const theme = createTheme({
+    palette: {
+        mode: "light",
+        primary: {
+            main: "#1976d2",
+        },
+        secondary: {
+            main: "#dc004e",
+        },
+    },
+})
 
 interface IInfoApproach {
     [key: string]: string[]
@@ -105,12 +119,14 @@ export default function StartTraining(): React.JSX.Element {
         }
         setShowTimer(true)
     }
+
     function increment() {
-        if (value.length === numExercise) {
-            console.log("call")
+        console.log(value.length === numExercise)
+        console.log(numExercise)
+        if (value.length === numExercise + 2) {
             setShowEndButton(true)
         }
-        if (value.length === numExercise) {
+        if (value.length === numExercise + 1) {
             return
         } else {
             setShowTimer(false)
@@ -118,8 +134,7 @@ export default function StartTraining(): React.JSX.Element {
             setButtonValue("Go")
         }
     }
-    console.log(value.length)
-    console.log(numExercise)
+
     function decrement() {
         if (value.length > numExercise) {
             setShowEndButton(false)
@@ -180,7 +195,7 @@ export default function StartTraining(): React.JSX.Element {
         if (buttonChecked === target.value) return
         setButtonChecked(categories)
     }
-
+    console.log(value.length)
     return (
         <>
             {showEndTraining ? (
@@ -190,6 +205,18 @@ export default function StartTraining(): React.JSX.Element {
                 />
             ) : (
                 <section className="start_training_section">
+                    <article className="start_training_wrapper_progress_bar">
+                        <div className="start_training_title">
+                            {exercise.title}
+                        </div>
+                        <output>{`${numExercise + 1}/${value.length}`}</output>
+                        <ProgressBar
+                            theme={theme}
+                            totalSteps={value.length}
+                            completedSteps={numExercise + 1}
+                        />
+                    </article>
+
                     <article className="start_training_infoBlock">
                         <YouTube
                             videoId={exercise.youtubeLink
@@ -210,18 +237,14 @@ export default function StartTraining(): React.JSX.Element {
                                 value={"info"}
                                 sx={styledToggleButton}
                             >
-                                info
+                                description
                             </ToggleButton>
                             <ToggleButton value={"set"} sx={styledToggleButton}>
-                                set
+                                sets
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </article>
                     <article className="start_training_blockApproach">
-                        <output>{`${numExercise + 1}/${value.length}`}</output>
-                        <div className="start_training_title">
-                            {exercise.title}
-                        </div>
                         {buttonChecked === "info" && (
                             <ul className="start_training_info_block">
                                 {exercise.describe?.map((el, index) => (

@@ -7,7 +7,23 @@
     flex-direction: column;
 
     padding-bottom: 50px;
-
+    .start_training_wrapper_progress_bar {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        color: white;
+        margin: 5px auto;
+        .start_training_title {
+            @include adaptive-font(18, 14);
+            width: 100%;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        output {
+            @include adaptive-font(20, 14);
+            margin-left: 5px;
+        }
+    }
     .start_training_infoBlock {
         position: relative;
         width: 50%;
@@ -86,18 +102,6 @@
                 margin-top: 12px;
             }
         }
-        .start_training_title {
-            @include adaptive-font(18, 14);
-            margin: 10px auto 0 auto;
-            font-weight: 600;
-            text-align: center;
-            color: white;
-        }
-        output {
-            color: white;
-            margin: 10px auto 0 auto;
-            @include adaptive-font(20, 14);
-        }
 
         form {
             display: flex;
@@ -127,6 +131,9 @@ input[type="number"] {
             width: 70%;
             height: 350px;
         }
+        .start_training_wrapper_progress_bar {
+            width: 70%;
+        }
         .start_training_blockApproach {
             form {
                 width: 40%;
@@ -146,6 +153,9 @@ input[type="number"] {
         .start_training_tabs_button {
             width: 80%;
             margin: 0 auto;
+        }
+        .start_training_wrapper_progress_bar {
+            width: 90%;
         }
         .start_training_infoBlock {
             width: 90%;
@@ -176,6 +186,9 @@ input[type="number"] {
         .start_training_tabs_button {
             width: 90%;
             margin: 0 auto;
+        }
+        .start_training_wrapper_progress_bar {
+            width: 100%;
         }
         .start_training_infoBlock {
             width: 100%;
