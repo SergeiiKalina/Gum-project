@@ -6,6 +6,7 @@ import {
     GoogleAuthProvider,
     signInWithEmailAndPassword,
     signInWithPopup,
+    signOut,
 } from "firebase/auth"
 
 const firebaseConfig = {
@@ -121,6 +122,14 @@ export const handlerGoogleLogin = () => {
                 reject(error)
             })
     })
+}
+
+export const singOut = () => {
+    signOut(auth)
+        .then(() => {})
+        .catch((error) => {
+            console.log(error)
+        })
 }
 
 const app = initializeApp(firebaseConfig)

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import {
     rewriteAuthUser,
+    toggleIsAuth,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
 import axios from "axios"
@@ -13,6 +14,7 @@ import { Button } from "@mui/material"
 import "./menuUser.scss"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../store"
+import { singOut } from "../../layouts/config"
 
 interface IRewriteUserData {
     squat: number
@@ -274,9 +276,11 @@ const MenuUser: FC = () => {
                                 <Button
                                     variant="outlined"
                                     type="button"
-                                    onClick={() => {
+                                    onClick={async () => {
+                                        dispatch(toggleIsAuth(false))
                                         localStorage.clear()
-                                        navigate("/")
+                                        await singOut()
+                                        await navigate("/")
                                     }}
                                     sx={{ marginTop: "15px" }}
                                 >
