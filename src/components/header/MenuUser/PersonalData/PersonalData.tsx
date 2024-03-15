@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react"
-import { IUserData, writeDataUser } from "../../../../store/userSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { IUserData } from "../../../../store/userSlice"
+import { useSelector } from "react-redux"
 import { GrFormCheckmark } from "react-icons/gr"
 import { v4 as uuidv4 } from "uuid"
-import { API_URL } from "../../../../http"
-import axios from "axios"
 import { IAuthSliceState } from "../../Login/Login"
 import { useNavigate } from "react-router-dom"
 import CircularProgress from "@mui/material/CircularProgress"
+import { RootState } from "../../../../store"
 import "./personalData.scss"
-import { toggleIsAuth } from "../../../../store/authorizationSlice"
 
 export interface IUserSlice {
     usersSlice: {
@@ -18,9 +16,7 @@ export interface IUserSlice {
 }
 
 const PersonalData: React.FC = () => {
-    const userData = useSelector(
-        (state: IUserSlice) => state.usersSlice.dataUser
-    )
+    const userData = useSelector((state: RootState) => state.authSlice.authUser)
     const [isLoading, setIsLoading] = useState(false)
     const [cofSquat] = useState(
         (Number(userData.mainInfo.squat) / Number(userData.mainInfo.weight)) *
@@ -49,8 +45,6 @@ const PersonalData: React.FC = () => {
             (userData.mainInfo.sex === "male" ? 50 : 35)) *
             150
     )
-    const dispatch = useDispatch()
-
     const isAuth = useSelector(
         (state: IAuthSliceState) => state.authSlice.isAuth
     )
@@ -61,41 +55,9 @@ const PersonalData: React.FC = () => {
             navigate("/")
         }
     }, [isAuth, navigate])
-
     useEffect(() => {
-        const fetchData = async () => {
-            const email = localStorage.getItem("email")
-            const googleEmail = localStorage.getItem("googleEmail")
-
-            try {
-                if (email) {
-                    const url = API_URL + "/user/email"
-
-                    const userRes = await axios.post(url, { email })
-                    const userData = userRes.data
-
-                    setTimeout(() => setIsLoading(true), 500)
-                    dispatch(writeDataUser(userData))
-                    return
-                }
-                if (googleEmail) {
-                    const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                        "googleUserId"
-                    )}.json?auth=${localStorage.getItem("googleToken")}`
-                    const userData = await axios.get(url)
-                    dispatch(writeDataUser(userData.data))
-                    setTimeout(() => setIsLoading(true), 500)
-                    return
-                }
-            } catch (error) {
-                console.error(error)
-                localStorage.clear()
-                dispatch(toggleIsAuth(false))
-            }
-        }
-
-        fetchData()
-    }, [dispatch])
+        setTimeout(() => setIsLoading(true), 500)
+    }, [])
 
     return (
         <>

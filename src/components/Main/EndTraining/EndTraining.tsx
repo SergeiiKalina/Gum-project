@@ -1,41 +1,41 @@
 import React from "react"
-import ReactDOM from "react-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store"
+import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
-interface IEndTraining {
-    totalWeight: number
-    closeModal: () => void
-}
+export default function EndTraining(): React.JSX.Element {
+    const totalWeight = useSelector(
+        (state: RootState) => state.trainingSlice.totalWeight
+    )
+    const navigate = useNavigate()
 
-export default function EndTraining({
-    totalWeight,
-    closeModal,
-}: IEndTraining): React.JSX.Element {
-    const portalRoot = document.getElementById("newRoot")!
-
-    return ReactDOM.createPortal(
-        <>
-            <h1>Congratulations Training End</h1>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "20px 0 0 0",
-                }}
-            >
-                Your Total Weight {totalWeight} kg
-            </div>
-
-            <button
-                onClick={closeModal}
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "20px auto 0 auto",
-                }}
+    return (
+        <div
+            style={{
+                position: "absolute",
+                top: "45%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                margin: "20px 0 0 0",
+                color: "white",
+            }}
+        >
+            <h2 style={{ margin: "0 0 12px 0" }}>Congratulations </h2>
+            <h2 style={{ margin: " 0 0 12px 0" }}>Training End</h2>
+            <span style={{ margin: "0 auto 20px auto" }}>
+                Your Total Weight {totalWeight}kg
+            </span>
+            <Button
+                variant="contained"
+                sx={{ width: "50%", margin: "0 auto" }}
+                onClick={() => navigate("/main-page")}
             >
                 Close Portal
-            </button>
-        </>,
-        portalRoot
+            </Button>
+        </div>
     )
 }

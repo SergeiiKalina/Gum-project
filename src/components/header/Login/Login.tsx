@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { handlerGoogleLogin } from "../../layouts/config"
+import {
+    handlerGoogleLogin,
+    singInUserWithFireBase,
+} from "../../layouts/config"
 import {
     IInitialStateAuthorizationSlice,
-    login,
+    changeStepRegistration,
     toggleIsAuth,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
 import FormAuthorization from "./FormAuthorization"
 import { CircularProgress } from "@mui/material"
 import "./login.scss"
-import axios from "axios"
-import { API_URL } from "../../../http"
+import { writeDataUser } from "../../../store/userSlice"
 
 export interface IUser {
     userName: string | null
@@ -24,60 +26,53 @@ export interface IAuthSliceState {
 
 function Login(): React.JSX.Element {
     const dispatch = useDispatch<any>()
-    const [serverStatus, setServerStatus] = useState(true)
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
     const authSliceState = useSelector(
         (state: IAuthSliceState) => state.authSlice
     )
-    const { isLoading, isAuth } = authSliceState
+    const { isLoading, isAuth, authUser } = authSliceState
     const navigate = useNavigate()
 
     useEffect(() => {
-        const checkServer = async () => {
-            try {
-                const response = await axios.get(API_URL)
-
-                if (response.status === 200) {
-                    setServerStatus(false)
-                } else {
-                    setServerStatus(true)
-                }
-            } catch (error) {
-                console.log(error)
-            }
+        if (!authUser.mainInfo) {
+            dispatch(changeStepRegistration(1))
+            navigate("/registration")
         }
-        checkServer()
-    }, [dispatch])
-
-    useEffect(() => {
-        const checkAuthUser = () => {
-            const serverEmail = localStorage.getItem("email")
-            const fireBaseEmail = localStorage.getItem("googleEmail")
-            if (serverEmail || fireBaseEmail) {
-                navigate("/main-page")
-            } else {
-                return
-            }
+        if (isAuth) {
+            navigate("/main-page")
         }
-        checkAuthUser()
-    }, [navigate, isAuth])
+    }, [navigate, isAuth, authUser, dispatch])
 
     const buttonLoginServer = async (email: string, password: string) => {
-        await dispatch(toggleIsLoading(true))
-        await dispatch(login({ email, password }))
-        await navigate("/main-page")
+        try {
+            await dispatch(toggleIsLoading(true))
+            await singInUserWithFireBase(email, password)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            await dispatch(toggleIsAuth(true))
+            await dispatch(toggleIsLoading(false))
+            await navigate("/main-page")
+        }
     }
 
     const loginWithGoogle = async () => {
         try {
-            await handlerGoogleLogin()
-            await dispatch(toggleIsAuth(true))
-            await navigate("/main-page")
+            const user = await handlerGoogleLogin()
+            if (!user.mainInfo) {
+                dispatch(writeDataUser(user))
+                dispatch(changeStepRegistration(1))
+                navigate("/registration")
+            } else {
+                await dispatch(toggleIsAuth(true))
+                await navigate("/main-page")
+            }
         } catch (error) {
             console.error("Error logging in with Google:", error)
             localStorage.clear()
+            await navigate("/")
         }
     }
 
@@ -100,7 +95,6 @@ function Login(): React.JSX.Element {
                     buttonLogin={buttonLoginServer}
                     setEmail={setEmail}
                     handlerGoogleLogin={loginWithGoogle}
-                    serverStatus={serverStatus}
                 />
             )}
         </section>

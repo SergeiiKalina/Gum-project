@@ -1,11 +1,13 @@
 import React, { FC, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { logout, toggleIsLoading } from "../../../store/authorizationSlice"
+import {
+    logout,
+    rewriteAuthUser,
+    toggleIsLoading,
+} from "../../../store/authorizationSlice"
 
 import axios from "axios"
-import { API_URL } from "../../../http"
-import { IUserData } from "../../../store/userSlice"
 import { StyledTextField } from "../../Styled-components/Styled"
 import { SubmitHandler, useForm } from "react-hook-form"
 import CircularProgress from "@mui/material/CircularProgress"
@@ -25,7 +27,7 @@ interface IRewriteUserData {
 }
 
 const MenuUser: FC = () => {
-    const [userData, setUserData] = useState<IUserData>()
+    const userData = useSelector((state: RootState) => state.authSlice.authUser)
     const [toggleRewriteData, setToggleRewriteData] = useState<boolean>(false)
     const { register, handleSubmit } = useForm<IRewriteUserData>()
     const dispatch = useDispatch<any>()
@@ -34,61 +36,31 @@ const MenuUser: FC = () => {
         (state: RootState) => state.authSlice.isLoading
     )
     useEffect(() => {
-        async function getUserData() {
-            let email = localStorage.getItem("email")
-            const googleEmail = localStorage.getItem("googleEmail")
-
-            if (email) {
-                const userData = await axios.post(API_URL + "/user/get-user", {
-                    email,
-                })
-
-                setTimeout(() => setUserData(userData.data), 500)
-            }
-            if (googleEmail) {
-                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                    "googleUserId"
-                )}.json?auth=${localStorage.getItem("googleToken")}`
-                const userData = await axios.get(url)
-
-                await setUserData(userData.data)
-            }
-        }
-        getUserData()
-    }, [toggleRewriteData])
-
+        dispatch(toggleIsLoading(true))
+        setTimeout(() => dispatch(toggleIsLoading(false)), 500)
+    }, [dispatch])
     const onSubmit: SubmitHandler<IRewriteUserData> = async (data) => {
         try {
             await dispatch(toggleIsLoading(true))
-            const email = localStorage.getItem("email")
             const googleEmail = localStorage.getItem("googleEmail")
-            if (email) {
-                console.log(data)
-                const user = await axios.patch(API_URL + "/user/update", {
-                    ...userData,
-                    mainInfo: {
-                        ...userData?.mainInfo,
-                        ...data,
-                    },
-                })
 
-                await setUserData(user.data)
-            }
             if (googleEmail) {
                 const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
                     "googleUserId"
                 )}.json?auth=${localStorage.getItem("googleToken")}`
 
-                await axios.patch(url, {
+                const response = await axios.patch(url, {
                     ...userData,
                     mainInfo: {
                         ...userData?.mainInfo,
                         ...data,
                     },
                 })
+                dispatch(rewriteAuthUser(response.data))
             }
         } catch (error) {
             console.log(error)
+            localStorage.clear()
         } finally {
             await dispatch(toggleIsLoading(false))
             await setToggleRewriteData(false)
@@ -111,7 +83,7 @@ const MenuUser: FC = () => {
                     }}
                 />
             )}
-            {!userData?.mainInfo.squat ? (
+            {!!userData?.mainInfo && isLoading ? (
                 <CircularProgress
                     color="info"
                     sx={{
@@ -126,7 +98,8 @@ const MenuUser: FC = () => {
                     <li className="date_registration">
                         Date Registration:
                         {userData?.registrationDate
-                            ? " " + userData.registrationDate.substring(0, 10)
+                            ? " " +
+                              new Date(userData.registrationDate).toDateString()
                             : ""}
                     </li>
                     <li>

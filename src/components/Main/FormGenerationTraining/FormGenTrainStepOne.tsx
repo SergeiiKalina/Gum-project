@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { Button, CircularProgress } from "@mui/material"
 import { writeCurrentTraining } from "../../../store/generatorTrainingReducer"
 import Carousel from "../Carousel/Carousel"
-import "./formGenTrainStep.scss"
 import { RootState } from "../../../store"
-import axios from "axios"
-import { changeStepRegistration } from "../../../store/authorizationSlice"
+import "./formGenTrainStep.scss"
 
 export default function FormGenTrainStepOne(): React.JSX.Element {
     const dispatch = useDispatch<any>()
@@ -22,33 +20,6 @@ export default function FormGenTrainStepOne(): React.JSX.Element {
             navigate("/")
         }
     }, [isAuth, navigate])
-
-    useEffect(() => {
-        const checkGoogleDataUser = async () => {
-            try {
-                if (localStorage.getItem("googleEmail")) {
-                    const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                        "googleUserId"
-                    )}.json?auth=${localStorage.getItem("googleToken")}`
-                    const response = await axios.get(url)
-
-                    if (response.data === null) {
-                        await axios.post(url, {})
-                    }
-                    if (response.data.mainInfo) {
-                        return
-                    } else {
-                        console.log("call")
-                        navigate("/registration")
-                        dispatch(changeStepRegistration(1))
-                    }
-                }
-            } catch (error) {
-                localStorage.clear()
-            }
-        }
-        checkGoogleDataUser()
-    }, [navigate, dispatch])
 
     return (
         <>

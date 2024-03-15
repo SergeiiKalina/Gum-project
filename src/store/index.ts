@@ -8,13 +8,14 @@ import userSlice, { IUsersSlice } from "./userSlice"
 import authorizationSlice, {
     IInitialStateAuthorizationSlice,
 } from "./authorizationSlice"
+import trainingSliceTwo, { ITrainingSliceTwo } from "./trainingSlice"
 
-// Стан для кореневого редуктора
 export interface RootState {
     training: IGeneratorTrainingSliceData
     filterTraining: IInitialState
     usersSlice: IUsersSlice
     authSlice: IInitialStateAuthorizationSlice
+    trainingSlice: ITrainingSliceTwo
 }
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     filterTraining: trainingSlice,
     usersSlice: userSlice,
     authSlice: authorizationSlice,
+    trainingSlice: trainingSliceTwo,
 })
 
 export const store = configureStore({

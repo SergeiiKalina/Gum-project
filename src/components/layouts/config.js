@@ -1,6 +1,12 @@
 import axios from "axios"
 import { initializeApp } from "firebase/app"
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import {
+    createUserWithEmailAndPassword,
+    getAuth,
+    GoogleAuthProvider,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+} from "firebase/auth"
 
 const firebaseConfig = {
     apiKey: "AIzaSyAFix-hxAkjDzIXEu7LDV0mJOG2Vh_Ld1o",
@@ -54,6 +60,44 @@ const createUser = async (res) => {
     }
 }
 
+export const createUserFireBase = (email, password) => {
+    return new Promise((resolve, reject) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user
+
+                return user
+            })
+            .then((user) => resolve(user))
+            .catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message
+                console.log(errorCode)
+                console.log(errorMessage)
+            })
+    })
+}
+
+export const singInUserWithFireBase = (email, password) => {
+    return new Promise((resolve, reject) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user
+                localStorage.setItem("googleToken", user.accessToken || "")
+                localStorage.setItem("googleEmail", user.email || "")
+                localStorage.setItem("googleUserId", user.uid || "")
+                localStorage.setItem("googleName", user.displayName || "")
+                return user
+            })
+            .then((user) => resolve(user))
+            .catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message
+                console.error(errorCode, errorMessage)
+            })
+    })
+}
+
 export const handlerGoogleLogin = () => {
     return new Promise((resolve, reject) => {
         signInWithPopup(auth, provider)
@@ -62,6 +106,7 @@ export const handlerGoogleLogin = () => {
                 localStorage.setItem("googleToken", user.accessToken || "")
                 localStorage.setItem("googleEmail", user.email || "")
                 localStorage.setItem("googleUserId", user.uid || "")
+                localStorage.setItem("googleName", user.displayName || "")
                 checkIfUserExists(user)
                     .then((userData) => {
                         resolve(userData)

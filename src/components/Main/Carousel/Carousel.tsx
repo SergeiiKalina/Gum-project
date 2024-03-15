@@ -105,7 +105,7 @@ function Carousel() {
             <h2>
                 Hello,
                 <span>
-                    {localStorage.getItem("userName") ||
+                    {localStorage.getItem("googleName") ||
                         localStorage.getItem("name")}
                 </span>
             </h2>

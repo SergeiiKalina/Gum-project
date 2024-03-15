@@ -9,7 +9,6 @@ import {
 } from "@mui/material"
 import { theme } from "../../Styled-components/Styled"
 import {
-    registration,
     toggleIsLoading,
     writeRegistrationData,
 } from "../../../store/authorizationSlice"
@@ -25,9 +24,8 @@ import {
 } from "../../Main/FormGenerationTraining/styles/stylesFormGeneration"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { API_URL } from "../../../http"
 import axios from "axios"
-import { auth } from "../../layouts/config"
+import { auth, createUserFireBase } from "../../layouts/config"
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -74,11 +72,10 @@ function RegistrationStepFour() {
     const onSubmit: SubmitHandler<IRegisterFormStepFour> = async (data) => {
         try {
             await dispatch(toggleIsLoading(true))
-
+            const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
+                "googleUserId"
+            )}.json?auth=${localStorage.getItem("googleToken")}`
             if (localStorage.getItem("googleEmail")) {
-                const url = `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${localStorage.getItem(
-                    "googleUserId"
-                )}.json?auth=${localStorage.getItem("googleToken")}`
                 await dispatch(
                     writeRegistrationData({
                         ...registrationData,
@@ -97,6 +94,7 @@ function RegistrationStepFour() {
                     ...dataWithoutPassword,
                     email: localStorage.getItem("googleEmail"),
                     name: auth.currentUser?.displayName,
+                    registrationDate: Date.now(),
                     mainInfo: {
                         ...registrationData.mainInfo,
                         problems,
@@ -118,30 +116,31 @@ function RegistrationStepFour() {
                     })
                 )
 
-                await dispatch(
-                    registration({
-                        ...registrationData,
+                const user = await createUserFireBase(
+                    registrationData.email,
+                    registrationData.password
+                )
+
+                const { password, ...dataWithoutPassword } =
+                    await registrationData
+
+                await axios.patch(
+                    `https://gum-app-77e1b-default-rtdb.europe-west1.firebasedatabase.app/users/${
+                        user.uid
+                    }.json?auth=${localStorage.getItem("googleToken")}`,
+                    {
+                        ...dataWithoutPassword,
+                        email: registrationData.email,
+                        name: registrationData.name,
+                        registrationDate: Date.now(),
                         mainInfo: {
                             ...registrationData.mainInfo,
                             problems,
                             goal,
                             lifestyle,
                         },
-                    })
+                    }
                 )
-
-                const { password, ...dataWithoutPassword } =
-                    await registrationData
-
-                await axios.patch(API_URL + "/user/update", {
-                    ...dataWithoutPassword,
-                    mainInfo: {
-                        ...registrationData.mainInfo,
-                        problems,
-                        goal,
-                        lifestyle,
-                    },
-                })
                 return
             }
         } catch (error) {

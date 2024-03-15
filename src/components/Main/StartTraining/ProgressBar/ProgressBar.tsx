@@ -14,7 +14,7 @@ interface ProgressBarProps {
 
 const BorderLinearProgress = styled(LinearProgress)(
     ({ theme }: { theme: Theme }) => ({
-        height: 10,
+        height: 5,
         borderRadius: 5,
         [`&.${linearProgressClasses.colorPrimary}`]: {
             backgroundColor:
@@ -32,7 +32,7 @@ function ProgressBar({ theme, totalSteps, completedSteps }: ProgressBarProps) {
     const [stateProgressBar, setStateProgressBar] = useState<number>(1)
     useEffect(() => {
         setStateProgressBar(() => (completedSteps / totalSteps) * 100)
-    }, [completedSteps])
+    }, [completedSteps, totalSteps])
     return (
         <Box sx={{ flexGrow: 1 }}>
             <BorderLinearProgress

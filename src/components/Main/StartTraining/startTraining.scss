@@ -45,10 +45,21 @@
         margin: 0 auto;
     }
     .start_training_blockButton {
-        width: 30%;
-        display: flex;
-        justify-content: space-evenly;
-        margin: 20px auto 0 auto;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        background-color: #1a2131;
+
+        .start_training_blockButton_container {
+            width: 40%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10px;
+        }
         .start_training_buttonDirection {
             padding: 12px 20px;
             border: none;
@@ -90,6 +101,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        margin-bottom: 30px;
         .start_training_info_block {
             display: flex;
             flex-direction: column;
@@ -143,7 +155,10 @@ input[type="number"] {
             }
         }
         .start_training_blockButton {
-            width: 40%;
+            width: 60%;
+            .start_training_blockButton_container {
+                width: 100%;
+            }
         }
     }
 }
@@ -169,14 +184,10 @@ input[type="number"] {
             }
         }
         .start_training_blockButton {
-            width: 60%;
-        }
-    }
-}
-@media (max-width: 600px) {
-    .start_training_section {
-        .start_training_blockButton {
-            width: 60%;
+            width: 100%;
+            .start_training_blockButton_container {
+                width: 70%;
+            }
         }
     }
 }
@@ -195,7 +206,9 @@ input[type="number"] {
             height: 300px;
         }
         .start_training_blockButton {
-            width: 70%;
+            .start_training_blockButton_container {
+                width: 80%;
+            }
         }
         .start_training_blockApproach {
             form {
@@ -218,9 +231,6 @@ input[type="number"] {
             form {
                 width: 90%;
             }
-        }
-        .start_training_blockButton {
-            width: 90%;
         }
     }
 }

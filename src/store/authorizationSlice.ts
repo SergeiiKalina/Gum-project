@@ -31,6 +31,8 @@ export interface IRegistrationData {
 export interface IAuthUser {
     email: string
     name?: string
+    IsActivated?: boolean
+    registrationDate?: number
     mainInfo: {
         sex?: string
         age?: number
@@ -49,6 +51,7 @@ export interface IAuthUser {
         fitnessLevel?: number
         bodyMassIndex?: number
         inventory?: string[]
+        placeToWorkout?: string
     }
 }
 
@@ -89,7 +92,8 @@ const initialState: IInitialStateAuthorizationSlice = {
     authUser: {
         email: "",
         name: "",
-
+        IsActivated: false,
+        registrationDate: 0,
         mainInfo: {
             sex: "",
             age: 0,
@@ -238,6 +242,9 @@ const authorizationSlice = createSlice({
         toggleIsAuth(state, action: PayloadAction<boolean>) {
             state.isAuth = action.payload
         },
+        rewriteAuthUser(state, action: PayloadAction<IAuthUser>) {
+            state.authUser = action.payload
+        },
     },
     extraReducers: (build) => {
         build
@@ -285,9 +292,15 @@ const authorizationSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(checkUserInfo.fulfilled, (state, action: any) => {
-                state.authUser = action.payload
-                state.isAuth = true
-                state.isLoading = false
+                if (!action.payload.mainInfo) {
+                    state.authUser = action.payload
+                    state.isAuth = false
+                    state.isLoading = false
+                } else {
+                    state.authUser = action.payload
+                    state.isAuth = true
+                    state.isLoading = false
+                }
             })
             .addCase(checkUserInfo.rejected, (state, action: any) => {
                 state.isAuth = false
@@ -301,6 +314,7 @@ export const {
     writeRegistrationData,
     changeStepRegistration,
     toggleIsAuth,
+    rewriteAuthUser,
 } = authorizationSlice.actions
 
 export default authorizationSlice.reducer

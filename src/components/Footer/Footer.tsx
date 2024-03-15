@@ -37,6 +37,9 @@ function Footer(): React.JSX.Element {
             setShowFooter(false)
         }
 
+        if (!bodyClass && location.pathname === "/start_training") {
+            setShowFooter(false)
+        }
         if (!bodyClass) {
             setShowFooter(true)
         }

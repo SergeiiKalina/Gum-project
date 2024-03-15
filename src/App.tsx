@@ -17,6 +17,7 @@ import { checkAuth, checkUserInfo } from "./store/authorizationSlice"
 import MenuUser from "./components/header/MenuUser/MenuUser"
 import Exercise from "./components/Main/Exercise/Exercise"
 import TrainingPlan from "./components/Main/TrainingPlan/TrainingPlan"
+import EndTraining from "./components/Main/EndTraining/EndTraining"
 import "./App.scss"
 
 function App(): React.JSX.Element {
@@ -80,6 +81,7 @@ function App(): React.JSX.Element {
                             path="start_training"
                             element={<StartTraining />}
                         />
+                        <Route path="end_training" element={<EndTraining />} />
                         <Route path="setup" element={<MenuUser />} />
                         <Route path="registration" element={<Registration />} />
                     </Route>

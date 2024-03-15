@@ -1,12 +1,14 @@
 @import "../../adaptive-fontMixin.scss";
 .menu_user_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     display: flex;
     justify-content: center;
     ul {
         width: 50%;
-        padding: 0 0 0 12px;
-
         a {
             margin: 0;
         }
@@ -54,17 +56,32 @@
     margin: 0 auto;
     padding-bottom: 60px;
 }
-@media (max-width: 767px) {
+
+@media (max-width: 1280px) {
     .menu_user_wrapper {
         ul {
             width: 70%;
         }
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 1024px) {
+    .menu_user_wrapper {
+        ul {
+            width: 80%;
+        }
+    }
+}
+@media (max-width: 767px) {
     .menu_user_wrapper {
         ul {
             width: 90%;
+        }
+    }
+}
+@media (max-width: 480px) {
+    .menu_user_wrapper {
+        ul {
+            width: 100%;
         }
     }
 }
