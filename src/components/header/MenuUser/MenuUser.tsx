@@ -2,11 +2,9 @@ import React, { FC, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import {
-    logout,
     rewriteAuthUser,
     toggleIsLoading,
 } from "../../../store/authorizationSlice"
-
 import axios from "axios"
 import { StyledTextField } from "../../Styled-components/Styled"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -276,9 +274,9 @@ const MenuUser: FC = () => {
                                 <Button
                                     variant="outlined"
                                     type="button"
-                                    onClick={async () => {
-                                        await dispatch(logout())
-                                        await navigate("/")
+                                    onClick={() => {
+                                        localStorage.clear()
+                                        navigate("/")
                                     }}
                                     sx={{ marginTop: "15px" }}
                                 >
