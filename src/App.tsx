@@ -19,10 +19,12 @@ import Exercise from "./components/Main/Exercise/Exercise"
 import TrainingPlan from "./components/Main/TrainingPlan/TrainingPlan"
 import EndTraining from "./components/Main/EndTraining/EndTraining"
 import "./App.scss"
+import { useSelector } from "react-redux"
+import { RootState } from "./store"
 
 function App(): React.JSX.Element {
     const dispatch = useDispatch<any>()
-
+    const isAuth = useSelector((state: RootState) => state.authSlice.isAuth)
     useEffect(() => {
         const fireBaseEmail = localStorage.getItem("googleToken")
         const serverEmail = localStorage.getItem("email")
@@ -32,7 +34,7 @@ function App(): React.JSX.Element {
         if (fireBaseEmail) {
             dispatch(checkUserInfo())
         }
-    }, [dispatch])
+    }, [dispatch, isAuth])
 
     return (
         <BrowserRouter>
