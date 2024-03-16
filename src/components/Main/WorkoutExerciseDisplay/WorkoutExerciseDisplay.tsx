@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
 import { useSelector } from "react-redux"
 import { ITraining } from "../../../data/data"
-import {
-    Box,
-    OutlinedInput,
-    InputAdornment,
-    ToggleButtonGroup,
-    ToggleButton,
-    createTheme,
-} from "@mui/material"
-import {
-    styleOutlinedInput,
-    styledToggleButton,
-    styledToggleButtonWrapper,
-} from "../FormGenerationTraining/styles/stylesFormGeneration"
+import { createTheme } from "@mui/material"
 import YouTube from "react-youtube"
-import "./startTraining.scss"
+import "./workoutExerciseDisplay.scss"
 import { ITrainingReducer } from "../TrainingPlan/TrainingPlan"
 import ProgressBar from "./ProgressBar/ProgressBar"
 import { useNavigate } from "react-router-dom"
@@ -24,6 +11,8 @@ import { useDispatch } from "react-redux"
 import { writeTotalWeight } from "../../../store/trainingSlice"
 import { RootState } from "../../../store"
 import FooterPanel from "./FooterPanel/FooterPanel"
+import ToggleButtonBlock from "./ToggleButtonBlock/ToggleButtonBlock"
+import DescribeBlock from "./DescribeBlock/DescribeBlock"
 
 export const theme = createTheme({
     palette: {
@@ -41,7 +30,7 @@ export interface IInfoApproach {
     [key: string]: string[]
 }
 
-export default function StartTraining(): React.JSX.Element {
+export default function WorkoutExerciseDisplay(): React.JSX.Element {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const index = useSelector(
@@ -64,7 +53,7 @@ export default function StartTraining(): React.JSX.Element {
     )
     const [showTimer, setShowTimer] = useState<boolean>(false)
     const [workTime, setWorkTime] = useState<number>(0)
-    const { register, handleSubmit } = useForm()
+
     const [infoApproach, setInfoApproach] = useState<IInfoApproach>({})
     const [buttonValue, setButtonValue] = useState<string>("Go")
 
@@ -181,19 +170,6 @@ export default function StartTraining(): React.JSX.Element {
         }
     }, [showTimer, workTime])
 
-    const onSubmit: SubmitHandler<IInfoApproach> = (data: IInfoApproach) => {
-        setInfoApproach(data)
-    }
-    const handleButtonGroup = (
-        event: React.MouseEvent<HTMLElement>,
-        categories: string
-    ) => {
-        const target = event.target as HTMLInputElement
-
-        if (buttonChecked === target.value) return
-        setButtonChecked(categories)
-    }
-
     return (
         <section className="start_training_section">
             <article className="start_training_wrapper_progress_bar">
@@ -217,107 +193,16 @@ export default function StartTraining(): React.JSX.Element {
                 />
             </article>
             <span className="border_logic_block"></span>
-            <article className="start_training_tabs_button">
-                <ToggleButtonGroup
-                    onChange={handleButtonGroup}
-                    exclusive
-                    value={buttonChecked}
-                    sx={styledToggleButtonWrapper}
-                >
-                    <ToggleButton value={"info"} sx={styledToggleButton}>
-                        description
-                    </ToggleButton>
-                    <ToggleButton value={"set"} sx={styledToggleButton}>
-                        sets
-                    </ToggleButton>
-                </ToggleButtonGroup>
-            </article>
-            <article className="start_training_blockApproach">
-                {buttonChecked === "info" && (
-                    <ul className="start_training_info_block">
-                        {exercise.describe?.map((el, index) => (
-                            <li key={index}>{el}</li>
-                        ))}
-                    </ul>
-                )}
-                {buttonChecked === "set" && (
-                    <form onChange={handleSubmit(onSubmit)}>
-                        <Box
-                            sx={{
-                                width: "100%",
-                                display: "flex",
-
-                                flexDirection: "column",
-                            }}
-                        >
-                            <OutlinedInput
-                                sx={styleOutlinedInput}
-                                type="number"
-                                id="outlined-adornment-weight"
-                                placeholder="First approach"
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        kg
-                                    </InputAdornment>
-                                }
-                                aria-describedby="outlined-weight-helper-text"
-                                inputProps={{
-                                    "aria-label": "weight",
-                                }}
-                                {...register(`${titleExercise}[${0}]`)}
-                            />
-                            <OutlinedInput
-                                sx={styleOutlinedInput}
-                                type="number"
-                                id="outlined-adornment-weight"
-                                placeholder="Second approach"
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        kg
-                                    </InputAdornment>
-                                }
-                                aria-describedby="outlined-weight-helper-text"
-                                inputProps={{
-                                    "aria-label": "weight",
-                                }}
-                                {...register(`${titleExercise}[${1}]`)}
-                            />
-                            <OutlinedInput
-                                sx={styleOutlinedInput}
-                                type="number"
-                                id="outlined-adornment-weight"
-                                placeholder="Third approach"
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        kg
-                                    </InputAdornment>
-                                }
-                                aria-describedby="outlined-weight-helper-text"
-                                inputProps={{
-                                    "aria-label": "weight",
-                                }}
-                                {...register(`${titleExercise}[${2}]`)}
-                            />
-                            <OutlinedInput
-                                sx={styleOutlinedInput}
-                                type="number"
-                                id="outlined-adornment-weight"
-                                placeholder="Fourth approach"
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        kg
-                                    </InputAdornment>
-                                }
-                                aria-describedby="outlined-weight-helper-text"
-                                inputProps={{
-                                    "aria-label": "weight",
-                                }}
-                                {...register(`${titleExercise}[${3}]`)}
-                            />
-                        </Box>
-                    </form>
-                )}
-            </article>
+            <ToggleButtonBlock
+                buttonChecked={buttonChecked}
+                setButtonChecked={setButtonChecked}
+            />
+            <DescribeBlock
+                buttonChecked={buttonChecked}
+                exercise={exercise}
+                setInfoApproach={setInfoApproach}
+                titleExercise={titleExercise}
+            />
             <FooterPanel
                 props={{
                     showTimer,

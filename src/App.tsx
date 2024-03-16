@@ -4,7 +4,7 @@ import MyLayouts from "./components/layouts/MyLayouts"
 import Training from "./components/Main/Training/Training"
 import RegistrationForTraining from "./components/Main/RegistrationForTraining/RegistrationForTraining"
 import AdminForm from "./components/Other/AdminForm/AdminForm"
-import StartTraining from "./components/Main/StartTraining/StartTraining"
+import WorkoutExerciseDisplay from "./components/Main/WorkoutExerciseDisplay/WorkoutExerciseDisplay"
 import HomeTestForm from "./components/Main/FormGenerationTraining/HomeSelectSplitTraining"
 import AvailabilityOfInventory from "./components/Main/FormGenerationTraining/AvailabilityOfInventory"
 import GymSelectSpritTraining from "./components/Main/FormGenerationTraining/GymSelectSplitTraining"
@@ -81,7 +81,7 @@ function App(): React.JSX.Element {
 
                         <Route
                             path="start_training"
-                            element={<StartTraining />}
+                            element={<WorkoutExerciseDisplay />}
                         />
                         <Route path="end_training" element={<EndTraining />} />
                         <Route path="setup" element={<MenuUser />} />

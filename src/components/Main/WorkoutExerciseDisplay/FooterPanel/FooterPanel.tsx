@@ -1,6 +1,6 @@
 import React from "react"
 import { ITraining } from "../../../../data/data"
-import { IInfoApproach } from "../StartTraining"
+import { IInfoApproach } from "../WorkoutExerciseDisplay"
 
 interface IFooterPanelProps {
     props: {
