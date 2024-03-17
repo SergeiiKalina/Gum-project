@@ -1,12 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { ITraining } from "../data/data"
 
+export interface IAllExerciseSetsInfo {
+    name: string
+    reps: string[]
+    weight: string[]
+}
+
 export interface IGeneratorTrainingSliceData {
-    arr: ITraining[] | null
+    arr: ITraining[]
     formData: IFormData
     startTrainingIndex: number
     thisDragElement: ITraining | null
     currentExercise: ITraining
+    allExerciseSetsInfo: IAllExerciseSetsInfo[]
 }
 export interface IFormData {
     mainInfo: {
@@ -88,6 +95,7 @@ const initialState: IGeneratorTrainingSliceData = {
             "6. Keep the barbell close to the body while lowering.",
         ],
     },
+    allExerciseSetsInfo: [{ name: "", reps: [""], weight: [""] }],
 }
 
 const generatorTrainingSlice = createSlice({
@@ -112,6 +120,12 @@ const generatorTrainingSlice = createSlice({
         writeDragElement(state, action: PayloadAction<ITraining | null>) {
             state.thisDragElement = action.payload
         },
+        writeAllExerciseSetsInfo(
+            state,
+            action: PayloadAction<IAllExerciseSetsInfo[]>
+        ) {
+            state.allExerciseSetsInfo = action.payload
+        },
     },
 })
 
@@ -122,6 +136,7 @@ export const {
     setIndexStartTraining,
     writeDragElement,
     writeCurrentVideoId,
+    writeAllExerciseSetsInfo,
 } = generatorTrainingSlice.actions
 
 export default generatorTrainingSlice.reducer

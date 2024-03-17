@@ -34,7 +34,7 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
                         mainInfo: {
                             ...userData.data.mainInfo,
                             focus,
-                            placeToWorkout: "gym",
+                            placeToWorkout: "home",
                         },
                     })
                 )
@@ -45,7 +45,7 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
                             mainInfo: {
                                 ...userData.data.mainInfo,
                                 focus,
-                                placeToWorkout: "gym",
+                                placeToWorkout: "home",
                             },
                         })!
                     )
@@ -66,7 +66,7 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
                         mainInfo: {
                             ...userData.mainInfo,
                             focus,
-                            placeToWorkout: "gym",
+                            placeToWorkout: "home",
                         },
                     })
                 )
@@ -77,7 +77,7 @@ export default function HomeSelectSplitTraining(): React.JSX.Element {
                             mainInfo: {
                                 ...userData.mainInfo,
                                 focus,
-                                placeToWorkout: "gym",
+                                placeToWorkout: "home",
                             },
                         })!
                     )

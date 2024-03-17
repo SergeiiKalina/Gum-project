@@ -14,13 +14,11 @@ import {
     stylesFormButton,
     stylesFormControlLabel,
 } from "./styles/stylesFormGeneration"
+import { RootState } from "../../../store"
 import "./formGenTrainStep.scss"
-import { ITrainingReducer } from "../TrainingPlan/TrainingPlan"
 
 export default function AvailabilityOfInventory(): React.JSX.Element {
-    const formData = useSelector(
-        (state: ITrainingReducer) => state.training.formData
-    )
+    const formData = useSelector((state: RootState) => state.training.formData)
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm<IFormData>({ mode: "onBlur" })
     const dispatch = useDispatch()

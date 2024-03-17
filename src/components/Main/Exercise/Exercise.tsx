@@ -1,12 +1,12 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import YouTube from "react-youtube"
-import { IGeneratorTrainingSliceData } from "../../../store/generatorTrainingReducer"
 import { Button } from "@mui/material"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import { useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from "uuid"
 import "./exercise.scss"
+import { RootState } from "../../../store"
 
 const opts = {
     height: "100%",
@@ -16,14 +16,11 @@ const opts = {
         loop: 1,
     },
 }
-export interface ITrainingSlice {
-    training: IGeneratorTrainingSliceData
-}
 
 function Exercise() {
     const navigate = useNavigate()
     const exercise = useSelector(
-        (state: ITrainingSlice) => state.training.currentExercise
+        (state: RootState) => state.training.currentExercise
     )
     return (
         <section className="exercise_container">

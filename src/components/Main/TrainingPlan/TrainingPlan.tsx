@@ -7,30 +7,19 @@ import { useSelector } from "react-redux"
 import ExerciseItems from "../Exercise-Item/ExerciseItems"
 import ButtonStartTraining from "../Button-Start-Training/Button-Start-Training"
 import AddExercise from "../AddExcercise/AddExercise"
-import { IFilterTrainingSlice } from "../Training/Training"
 import { useDispatch } from "react-redux"
 import { writeCategories } from "../../../store/filterTrainingSlice"
+import { RootState } from "../../../store"
 import "./trainingPlan.scss"
-import { IFormData } from "../../../store/generatorTrainingReducer"
-
-export interface ITrainingReducer {
-    training: {
-        arr: ITraining[]
-        formData: IFormData
-        startTrainingIndex: number
-        placeTraining: string
-        thisDragElement: ITraining | null
-    }
-}
 
 function TrainingPlan() {
     const dispatch = useDispatch()
     const [toggleAddExerciseMenu, setToggleAddExerciseMenu] = useState(false)
     const planTrainingArr: ITraining[] = useSelector(
-        (state: ITrainingReducer) => state.training.arr
+        (state: RootState) => state.training.arr
     )
     const categories = useSelector(
-        (state: IFilterTrainingSlice) => state.filterTraining.categories
+        (state: RootState) => state.filterTraining.categories
     )
 
     useEffect(() => {

@@ -2,12 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export interface ITrainingSliceTwo {
     totalWeight: number
-    allSetWeight: number[]
 }
 
 const initialState: ITrainingSliceTwo = {
     totalWeight: 0,
-    allSetWeight: [],
 }
 
 const trainingSliceTwo = createSlice({

@@ -10,7 +10,7 @@ export const styledToggleButton = {
     color: "white",
     marginTop: "12px",
     [theme.breakpoints.down("md")]: {
-        width: "60%",
+        width: "70%",
     },
     [theme.breakpoints.down("sm")]: {
         width: "80%",
@@ -181,30 +181,36 @@ export const stylesFormControlLabel = {
 export const stylesCheckBox = { color: "white" }
 
 export const styleOutlinedInput = {
-    width: "100%",
-    margin: "8px auto 0 auto",
-
+    width: "40%",
+    backgroundColor: "#4d4d54",
     "& .MuiInputBase-input": {
-        padding: "8px 0 8px 8px",
+        padding: "3px 0 3px 8px",
         color: "white",
         outline: "none",
     },
 
     "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-        border: "1px solid white",
+        border: "none",
     },
     "& .MuiInputAdornment-root": {
         margin: "0",
         color: "white",
     },
     "& fieldset": {
-        borderColor: "white",
+        border: "none",
     },
     "&:hover.MuiInputBase-root fieldset": {
         borderColor: "white",
     },
     "& p": {
         color: "white",
+    },
+    [theme.breakpoints.down("sm")]: {
+        "& .MuiInputBase-input": {
+            padding: "1px 0 1px 8px",
+            color: "white",
+            outline: "none",
+        },
     },
 }
 

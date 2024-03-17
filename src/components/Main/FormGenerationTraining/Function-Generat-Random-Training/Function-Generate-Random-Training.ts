@@ -604,11 +604,9 @@ function generateTrainingForHome(updateData: IFormData, focus: string) {
 }
 export const generateTraining = (data: IFormData) => {
     const updateData = calculateIndicators(data)
-
     const result = generateTrainingForHome(
         updateData,
         updateData.mainInfo.focus
     )
-
     return result
 }

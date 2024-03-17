@@ -1,76 +1,118 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { ITraining } from "../../../../data/data"
-import { IInfoApproach } from "../WorkoutExerciseDisplay"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../store"
+import "./footerPanel.scss"
+import { Button } from "@mui/material"
+import ChevronRightIcon from "@mui/icons-material/ChevronRight"
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 
 interface IFooterPanelProps {
     props: {
-        showTimer: boolean
-        decrement: () => void | undefined
-        onTimer: (e: React.MouseEvent<HTMLButtonElement>) => void
-        buttonValue: string
-        workTime: number
-        currentTraining: ITraining[]
         numExercise: number
-        calculateWeight: (prop: IInfoApproach) => void
-        infoApproach: IInfoApproach
-        increment: () => void | undefined
+        calculateWeight: (prop: number) => void
+
+        setNumExercise: (arg: number) => void
     }
 }
 
 function FooterPanel({ props }: IFooterPanelProps) {
-    const {
-        decrement,
-        showTimer,
-        onTimer,
-        buttonValue,
-        workTime,
-        currentTraining,
-        numExercise,
-        calculateWeight,
-        infoApproach,
-        increment,
-    } = props
+    const { numExercise, calculateWeight, setNumExercise } = props
+    const [showTimer, setShowTimer] = useState<boolean>(false)
+    const [workTime, setWorkTime] = useState<number>(0)
+    const currentTraining: ITraining[] = useSelector(
+        (state: RootState) => state.training.arr
+    )
+    function onTimer() {
+        setWorkTime(90)
+        setShowTimer(true)
+    }
+
+    function increment() {
+        if (currentTraining.length === numExercise + 1) {
+            return
+        } else {
+            const index = numExercise + 1
+            setShowTimer(false)
+            setNumExercise(index)
+        }
+    }
+
+    function decrement() {
+        if (numExercise === 0) {
+            return
+        } else {
+            const index = numExercise - 1
+            setShowTimer(false)
+            setNumExercise(index)
+        }
+    }
+
+    useEffect(() => {
+        if (workTime === 0) {
+            setShowTimer(false)
+        }
+    }, [workTime])
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout | undefined
+        if (showTimer && workTime > 0) {
+            interval = setInterval(() => {
+                setWorkTime((prev) => prev - 1)
+            }, 1000)
+        } else if (workTime === 0) {
+            clearInterval(interval)
+            setShowTimer(false)
+        }
+        return () => {
+            clearInterval(interval)
+        }
+    }, [showTimer, workTime])
+
     return (
-        <article className="start_training_blockButton">
-            <div className="start_training_blockButton_container">
-                <button
-                    className="start_training_buttonDirection"
+        <article className="workout_display_footer_wrapper">
+            <div className="workout_display_footer_button_block">
+                <Button
+                    variant="text"
                     onClick={decrement}
+                    sx={{
+                        transform: "scale(1.4)",
+                        "&:hover": {
+                            background: "none",
+                        },
+                    }}
                 >
-                    Prev
-                </button>
-                {showTimer ? (
-                    <button
-                        className="start_training_buttonGo"
-                        onClick={(e) => onTimer(e)}
-                        value={buttonValue}
-                    >
-                        {buttonValue}
-                        {workTime}
-                    </button>
-                ) : (
-                    <button
-                        className="start_training_buttonGo"
-                        onClick={(e) => onTimer(e)}
-                        value={buttonValue}
-                    >
-                        {buttonValue}
-                    </button>
-                )}
+                    <ChevronLeftIcon />
+                </Button>
+
+                <Button variant="outlined" onClick={() => onTimer()}>
+                    Rest{showTimer && ": " + workTime}
+                </Button>
                 {currentTraining.length === numExercise + 1 ? (
-                    <button
-                        className="start_training_buttonDirection"
-                        onClick={() => calculateWeight(infoApproach)}
+                    <Button
+                        variant="text"
+                        sx={{
+                            "&:hover": {
+                                background: "none",
+                            },
+                        }}
+                        onClick={() => calculateWeight(0)}
                     >
                         End
-                    </button>
+                    </Button>
                 ) : (
-                    <button
-                        className="start_training_buttonDirection"
+                    <Button
+                        variant="text"
+                        sx={{
+                            transform: "scale(1.4)",
+                            "&:hover": {
+                                background: "none",
+                            },
+                        }}
                         onClick={increment}
                     >
-                        Next
-                    </button>
+                        <ChevronRightIcon />
+                    </Button>
                 )}
             </div>
         </article>
