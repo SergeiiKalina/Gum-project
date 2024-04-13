@@ -1,10 +1,15 @@
 import React from "react"
 import { ITraining } from "../../../../data/data"
 import { Box } from "@mui/system"
-import { Button, InputAdornment, OutlinedInput } from "@mui/material"
+import {
+    Button,
+    InputAdornment,
+    OutlinedInput,
+    ToggleButton,
+} from "@mui/material"
 import { styleOutlinedInput } from "../../FormGenerationTraining/styles/stylesFormGeneration"
 import { SubmitHandler, useForm } from "react-hook-form"
-
+import CheckIcon from "@mui/icons-material/Check"
 import { v4 as uuidv4 } from "uuid"
 import "./describeBlock.scss"
 import { IInfoSet } from "../interfaces/workoutExerciseDisplayInterfaces"
@@ -72,7 +77,7 @@ function DescribeBlock({
             )}
             {buttonChecked === "set" && (
                 <form
-                    onChange={handleSubmit(onSubmit)}
+                    onSubmit={handleSubmit(onSubmit)}
                     className="describe_block_sets_form"
                 >
                     <Box

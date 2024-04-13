@@ -38,7 +38,7 @@ function Footer(): React.JSX.Element {
         }
 
         if (!bodyClass) {
-            if (location.pathname === "/start_training") {
+            if (location.pathname === "/workout_exercise_display") {
                 setShowFooter(false)
                 return
             }

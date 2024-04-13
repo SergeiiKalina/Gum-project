@@ -3,7 +3,7 @@
 .custom_training_wrapper {
     width: 70%;
     margin: 0 auto;
-
+    padding-bottom: 50px;
     h2 {
         @include adaptive-font(30, 20);
         margin: 0 auto;

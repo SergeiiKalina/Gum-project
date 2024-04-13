@@ -34,7 +34,7 @@ function ButtonStartTraining(): React.JSX.Element {
 
     function showStartTraining(index: number) {
         dispatch(setIndexStartTraining(index))
-        navigate("/start_training")
+        navigate("/workout_exercise_display")
     }
     return (
         <div className="start_training_button_wrapper">

@@ -80,7 +80,7 @@ function App(): React.JSX.Element {
                         <Route path="admin" element={<AdminForm />} />
 
                         <Route
-                            path="start_training"
+                            path="workout_exercise_display"
                             element={<WorkoutExerciseDisplay />}
                         />
                         <Route path="end_training" element={<EndTraining />} />
