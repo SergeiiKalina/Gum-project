@@ -1,0 +1,80 @@
+@import "./../../../adaptive-fontMixin.scss";
+.describe_exercise {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    .describe_exercise_list {
+        display: flex;
+        flex-direction: column;
+
+        width: 40%;
+        margin: 16px auto 0 auto;
+        @include adaptive-font(16, 12);
+        color: white;
+        .describe_exercise_list_item {
+            margin-top: 12px;
+        }
+    }
+
+    .describe_block_sets_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        width: 30%;
+        @include adaptive-font(18, 14);
+        margin: 24px auto 0 auto;
+    }
+    .describe_block_set_item {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        @include adaptive-font(18, 16);
+        margin-top: 4px;
+        span {
+            width: 20px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .describe_exercise {
+        .describe_block_sets_form {
+            width: 40%;
+        }
+        .describe_exercise_list {
+            width: 60%;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .describe_exercise {
+        .describe_block_sets_form {
+            width: 60%;
+        }
+        .describe_exercise_list {
+            width: 80%;
+        }
+    }
+}
+@media (max-width: 460px) {
+    .describe_exercise {
+        .describe_block_sets_form {
+            width: 70%;
+        }
+        .describe_exercise_list {
+            width: 90%;
+        }
+    }
+}
+@media (max-width: 360px) {
+    .describe_exercise {
+        .describe_block_sets_form {
+            width: 90%;
+        }
+    }
+}

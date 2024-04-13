@@ -1,0 +1,74 @@
+.workout_display_footer_wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: #1a2131;
+
+    .workout_display_footer_button_block {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        padding: 10px 10px 15px 10px;
+    }
+
+    .start_training_buttonDirection:hover {
+        background-color: #0056b3;
+    }
+
+    .start_training_buttonDirection:active {
+        transform: scale(0.95);
+    }
+    .start_training_buttonGo {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 20px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .start_training_buttonGo:hover {
+        background-color: #218838;
+    }
+
+    .start_training_buttonGo:active {
+        transform: scale(0.95);
+    }
+}
+@media (max-width: 1024px) {
+    .workout_display_footer_wrapper {
+        .workout_display_footer_button_block {
+            width: 30%;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .workout_display_footer_wrapper {
+        .workout_display_footer_button_block {
+            width: 40%;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .workout_display_footer_wrapper {
+        .workout_display_footer_button_block {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    .workout_display_footer_wrapper {
+        .workout_display_footer_button_block {
+            width: 60%;
+        }
+    }
+}

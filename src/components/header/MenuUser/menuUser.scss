@@ -1,0 +1,87 @@
+@import "../../adaptive-fontMixin.scss";
+.menu_user_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    ul {
+        width: 50%;
+        a {
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: center;
+            margin: 12px 0;
+            color: white;
+            @include adaptive-font(22, 16);
+            font-weight: 500;
+        }
+        span {
+            display: flex;
+
+            color: orangered;
+            align-items: center;
+            padding-left: 5px;
+        }
+
+        .menu_user_sing_out {
+            display: block;
+            width: 200px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: white;
+        }
+        .menu_user_sing_out:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        .date_registration {
+            font-weight: 600;
+        }
+    }
+}
+.menu_user_button_block {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+@media (max-width: 1280px) {
+    .menu_user_wrapper {
+        ul {
+            width: 70%;
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .menu_user_wrapper {
+        ul {
+            width: 80%;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .menu_user_wrapper {
+        ul {
+            width: 90%;
+        }
+    }
+}
+@media (max-width: 480px) {
+    .menu_user_wrapper {
+        ul {
+            width: 100%;
+        }
+    }
+}

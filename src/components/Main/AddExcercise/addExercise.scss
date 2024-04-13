@@ -1,0 +1,118 @@
+@import "./../../adaptive-fontMixin.scss";
+
+.add_exercise_close_button {
+    width: 150px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.add_exercise_menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+    margin: 0 auto;
+    .css-1thtvme-MuiFormControl-root {
+        width: 90%;
+        display: flex;
+        margin-top: 10px;
+    }
+    .MuiPaper-root {
+        width: 90%;
+        margin-top: 10px;
+    }
+}
+
+.add_exercise_custom_training_list {
+    width: 100%;
+    margin: 15px auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+.add_exercise_item_block {
+    width: 90%;
+    min-width: 400px;
+    max-width: 400px;
+    display: flex;
+    background-color: #0c305a;
+
+    margin: 0 auto 0 auto;
+    padding: 10px 8px 10px 2px;
+    border: 2px solid #bbdefb;
+    border-radius: 20px;
+    justify-content: space-between;
+    .add_exercise_item_block_img {
+        width: 80px;
+    }
+    .add_exercise_item_block_left_part {
+        @include adaptive-font(16, 12);
+        display: flex;
+        padding-left: 10px;
+        .add_exercise_item_block_left_part_info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 8px;
+            .add_exercise_item_block_left_part_title {
+                color: white;
+            }
+        }
+        .add_exercise_item_block_chips {
+            margin-top: 4px;
+            .add_exercise_item_chips {
+                background-color: #1a2131;
+                color: white;
+                padding: 1px 8px;
+                border-radius: 16px;
+                text-align: center;
+            }
+        }
+    }
+    .add_exercise_item_block_right_part {
+        display: flex;
+        align-items: center;
+        button {
+            font-size: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: white;
+        }
+    }
+}
+
+.add_exercise_articlePagination {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+        width: 80px;
+        padding: 8px 12px;
+        border-radius: 20px;
+        margin: 0 0 0 10px;
+    }
+    button:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    button:active {
+        background-color: rgba(0, 0, 0, 0.2);
+        transform: scale(0.9);
+        transition: all 0.3s ease;
+    }
+}
+@media (max-width: 460px) {
+    .add_exercise_item_block {
+        min-width: 90%;
+        max-width: none;
+    }
+    form {
+        .add_exercise_label {
+            margin: 4px 0 0 0;
+        }
+    }
+}

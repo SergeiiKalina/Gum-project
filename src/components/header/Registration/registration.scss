@@ -1,0 +1,63 @@
+@import "../../adaptive-fontMixin.scss";
+.registration_loader {
+    color: white;
+}
+.registration_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    .registration_input_block {
+        width: 60%;
+        position: relative;
+        margin: 0 auto;
+        .registration_input_icon {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            color: white;
+        }
+        .MuiSlider-markLabel {
+            color: white;
+        }
+    }
+    .registration_input_block:hover {
+        .registration_input_icon {
+            color: #42a5f5;
+        }
+    }
+    h2 {
+        margin-top: 50px;
+        @include adaptive-font(30, 24);
+    }
+} /* Смартфони (переважно портретна орієнтація) */
+@media only screen and (max-width: 480px) {
+    .registration_form {
+        width: 95%;
+        .registration_input_block {
+            width: 100%;
+        }
+    }
+} /* Смартфони (переважно ландшафтна орієнтація) */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    .registration_form {
+        width: 100%;
+    }
+} /* Планшети */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .registration_form {
+        width: 90%;
+    }
+} /* Невеликі настільні комп'ютери та ноутбуки */
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+    .registration_form {
+        width: 80%;
+        .registration_input_block {
+            width: 60%;
+        }
+    }
+} /* Середні настільні комп'ютери */
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+}

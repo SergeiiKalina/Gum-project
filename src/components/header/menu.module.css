@@ -1,9 +1,0 @@
-.menu {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 30px 0 0 200px;
-}
-.menu li {
-    font-size: 20px;
-}

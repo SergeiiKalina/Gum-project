@@ -1,0 +1,17 @@
+.button_back {
+    display: none;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    border: none;
+    background: none;
+    padding: 0;
+    color: #2196f3;
+    font-size: 30px;
+}
+
+@media (max-width: 767px) {
+    .button_back {
+        display: flex;
+    }
+}

@@ -1,0 +1,267 @@
+@import "./../../adaptive-fontMixin.scss";
+
+.background_image_full_body {
+    position: relative;
+    background-image: url("./images/fullBody.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_upper_body {
+    position: relative;
+    background-image: url("./images/upperBody.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_lower_body {
+    position: relative;
+    background-image: url("./images/lowerBody.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_legs {
+    position: relative;
+    background-image: url("./images/legs.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_back {
+    position: relative;
+    background-image: url("./images/back.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_chest {
+    position: relative;
+    background-image: url("./images/chest.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_shoulder {
+    position: relative;
+    background-image: url("./images/shoulder.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_hand {
+    position: relative;
+    background-image: url("./images/hand.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.background_image_press {
+    position: relative;
+    background-image: url("./images/press.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 120%;
+    background-blend-mode: multiply;
+}
+.header_button_generation_training {
+    display: block;
+    position: absolute;
+    @include adaptive-font(50, 26);
+    font-weight: 700;
+    top: 50%;
+    left: 30px;
+    transform: translate(0%, -50%);
+}
+
+.form_gen_train_step_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    h2 {
+        @include adaptive-font(30, 20);
+        margin: 16px 0;
+    }
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        select {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            @include adaptive-font(16, 12);
+            padding: 6px 0 6px 4px;
+            margin: 20px auto 0 auto;
+            border-bottom: 2px solid lightblue;
+            color: #fefefe;
+        }
+        button {
+            width: 30%;
+            margin: 15px auto 20px auto;
+            padding: 8px 0 8px 0;
+            border-radius: 10px;
+            @include adaptive-font(16, 12);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .button:active {
+            background-color: #003b80;
+            transform: scale(0.9);
+            box-shadow: none;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        article {
+            margin: 24px auto 24px auto;
+        }
+    }
+}
+
+.main_page_computer_page {
+    position: absolute;
+    top: calc(50% - 86px + 50px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 70%;
+
+    margin: 50px auto 0 auto;
+    gap: 15px;
+}
+.place_training__button {
+    position: relative;
+
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 101% 100%;
+    width: 100%;
+    height: 30dvw;
+    span {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-top: 8px;
+        @include adaptive-font(16, 14);
+        font-weight: 700;
+        z-index: 10;
+        color: #42a5f5;
+    }
+}
+.place_training__button.home {
+    background-image: url("./images/homeTraining.jpg");
+}
+.place_training__button.gym {
+    background-image: url("./images/gymTraining.jpg");
+}
+.place_training__button.library {
+    background-image: url("./images/libraryExercise.jpg");
+}
+.place_training__button.customTraining {
+    background-image: url("./images/customTraining.jpg");
+}
+.place_training__button:hover {
+    background-color: #182132;
+}
+
+.carousel_wrapper {
+    display: none;
+    width: 20dvw;
+    height: 75dvh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    .main_page_computer_page {
+        width: 90%;
+        h2 {
+            padding: 8px 0 8px 7%;
+        }
+    }
+    .place_training__button {
+        height: 40dvw;
+    }
+}
+@media (max-width: 767px) {
+    .main_page_computer_page {
+        display: none;
+    }
+    .form_gen_train_step_wrapper {
+        section {
+            width: 100%;
+        }
+    }
+}
+@media (max-width: 600px) {
+    .carousel_wrapper {
+        width: 80dvw;
+        .place_training__button {
+            height: 60dvh;
+        }
+    }
+}
+@media screen and (max-width: 460px) {
+    .carousel_wrapper {
+        min-width: 90dvw;
+        min-height: 74dvh;
+        .place_training__button {
+            height: 70dvh;
+        }
+    }
+    .form_gen_train_step_wrapper {
+        section {
+            input {
+                width: 90%;
+            }
+            select {
+                width: 90%;
+            }
+            button {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .carousel_wrapper {
+        width: 95dvw;
+        min-height: 64dvh;
+        margin: 25px auto 0 auto;
+        .place_training__button {
+            height: 60dvh;
+        }
+    }
+}
+
+@media screen and (max-width: 376px) and (max-height: 668px) {
+    .carousel_wrapper {
+        width: 95dvw;
+        min-height: 59dvh;
+        margin: 25px auto 0 auto;
+        .place_training__button {
+            height: 59dvh;
+        }
+    }
+}
